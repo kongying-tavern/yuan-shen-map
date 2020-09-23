@@ -1,0 +1,391 @@
+/* Reset S */
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+
+body {
+    font-family: "Microsoft YaHei", '\5FAE\8F6F\96C5\9ED1';
+}
+
+body, html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: none;
+    -webkit-user-select: none;
+    user-select: none;
+    width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:focus, a:active, a {
+    outline: none;
+}
+
+a, button, input {
+    -webkit-tap-highlight-color: rgba(255, 0, 0, 0);
+}
+
+a, p, span, i, h1, h2, h3, h4, h5, h6 {
+    -webkit-font-smoothing: antialiased;
+}
+
+a, img, input {
+    border: none;
+}
+
+a, img {
+    -webkit-touch-callout: none;
+}
+
+img {
+    height: auto;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+input[type="text"], input[type="password"], select, a {
+    -webkit-appearance: none;
+    appearance: none;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    border-radius: 0;
+    box-sizing: border-box;
+}
+
+input, textarea, select {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+.text-hide {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+em, i, b {
+    font-style: normal;
+}
+
+fieldset, img {
+    border: 0;
+    display: block;
+}
+
+input, textarea, select {
+    *font-size: 100%
+}
+
+audio, canvas, video {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+}
+
+address, caption, cite, code, dfn, em, strong, th, var {
+    font-style: normal;
+    font-weight: normal
+}
+
+abbr, acronym {
+    border: 0;
+    font-variant: normal
+}
+
+sup {
+    vertical-align: text-top
+}
+
+sub {
+    vertical-align: text-bottom
+}
+
+.clear:after {
+    content: '\20';
+    display: block;
+    height: 0;
+    line-height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.hd {
+    display: block;
+    text-indent: -9999px;
+    color: rgba(0, 0, 0, 0);
+}
+
+.hide {
+    display: none;
+}
+
+.browser-tips {
+    background: #ffc;
+    color: #626262;
+    font-size: 14px;
+    text-align: center;
+    padding: 10px 0;
+}
+@font-face
+{
+    font-family: hywh;
+    src: url(hywh.ttf);
+}
+.selector
+{
+    position: fixed;
+    z-index: 99999;
+    top: 20%;
+    left: 0px;
+    list-style-type: none;
+}
+.first-class-menu
+{
+    display: flex;
+    font-family: hywh;
+    color: #846040;
+    width: 150px;
+    height: 50px;
+    background: #ffe2be;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    padding-left: 5px;
+}
+.first-class-menu:nth-of-type(1)
+{
+    border-top: 1px solid gray;
+}
+.first-class-menu:hover
+{
+    background: #ab9178;
+}
+.first-class-menu:hover span
+{
+    color: #fff;
+}
+.selector li
+{
+    cursor: pointer;
+}
+.selector-icon
+{
+    display: block;
+    width: 33px;
+    height: 35px;
+    background: url(../imgs/icon.png) no-repeat;
+    background-size: 100% 100%;
+}
+.selector li span
+{
+    display: block;
+    font-size: 18px;
+    margin-left: 8px;
+    font-weight: bold;
+}
+.select-list
+{
+    position: absolute;
+    top: 0px;
+    left: 150px;
+    width: 150px;
+    height: 50px;
+    background: #efe8de;
+    border: 1px solid gray;
+}
+.select-list::-webkit-scrollbar
+{
+    background: none;
+    width: 5px;
+}
+.select-list::-webkit-scrollbar-thumb
+{
+    border-radius: 1px 1px;
+    background: gray;
+}
+.st-list
+{
+    width: 150px;
+}
+.st-list-li
+{
+    display: flex;
+    font-family: hywh;
+    color: #846040;
+    width: 150px;
+    height: 50px;
+    background: #efe8de;
+    align-items: center;
+    border-bottom: 1px solid gray;
+}
+.st-list-li:last-of-type
+{
+    border-bottom: none;
+}
+.st-list-li-icon
+{
+    display: block;
+    width: 35px;
+    height: 35px;
+    margin-left: 5px;
+}
+.fst-li i
+{
+    background: url(../imgs/fst-icon.png) no-repeat;
+    background-size: 100% 100%;
+}
+.yst-li i
+{
+    background: url(../imgs/yst-icon.png) no-repeat;
+    background-size: 100% 100%;
+}
+.st-list-li:hover,.st-list-li.on
+{
+    background: #ab9178;
+}
+.st-list-li:hover span,.st-list-li span.on
+{
+    color: #fff;
+}
+.mines-list
+{
+    width: 100%;
+    height: 280px;
+    position: relative;
+}
+.region-list
+{
+    position: absolute;
+    top: 0;
+    width: 80px;
+    left: 296px;
+    zoom: 0.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: #cea472;
+    justify-content: center;
+}
+.region1
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l1.png) no-repeat center;
+    background-size: 68px 100%;
+}
+.region2
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l2.png) no-repeat center;
+    background-size: 71px 100%;
+}
+.region3
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l3.png) no-repeat center;
+    background-size: 71px 100%;
+}
+.region4
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l4.png) no-repeat center;
+    background-size: 64px 100%;
+}
+.region5
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l5.png) no-repeat center;
+    background-size: 68px 100%;
+}
+.region6
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l6.png) no-repeat center;
+    background-size: 77px 100%;
+}
+.region7
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l7.png) no-repeat center;
+    background-size: 63px 80px;
+}
+.region1:hover
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l1-on.png) no-repeat center;
+    background-size: 67px 100%;
+}
+.region2:hover
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l2-on.png) no-repeat center;
+    background-size: 72px 100%;
+}
+.region3:hover
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l3-on.png) no-repeat center;
+    background-size: 76px 100%;
+}
+.region4:hover
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l4-on.png) no-repeat center;
+    background-size: 64px 100%;
+}
+.region5:hover
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l5-on.png) no-repeat center;
+    background-size: 64px 100%;
+}
+.region6:hover
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l6-on.png) no-repeat center;
+    background-size: 76px 100%;
+}
+.region7:hover
+{
+    width: 80px;
+    height: 80px;
+    background: url(../imgs/l7-on.png) no-repeat center;
+    background-size: 67px 80px;
+}
+
