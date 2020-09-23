@@ -3964,6 +3964,28 @@ var JS_LLBH = {
             "popupContent": "这是一株琉璃百合",
         },
         "id": 31
+    }, {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-32.38923910985902, 35.58471679687501]
+        },
+        "type": "Feature",
+        "properties": {
+            "popTitle": "琉璃百合",
+            "popupContent": "这是一株琉璃百合",
+        },
+        "id": 32
+    }, {
+        "geometry": {
+            "type": "Point",
+            "coordinates": [-54.6865342345297, 36.78222656250001]
+        },
+        "type": "Feature",
+        "properties": {
+            "popTitle": "琉璃百合",
+            "popupContent": "这是一株琉璃百合",
+        },
+        "id": 33
     }]
 };
 
@@ -35177,7 +35199,7 @@ var JS_LLD = {
             "popupContent": "这是一个琉璃袋",
         },
         "id": 4
-    },{
+    }, {
         "geometry": {
             "type": "Point",
             "coordinates": [-37.01859574489768, 47.7685546875]
