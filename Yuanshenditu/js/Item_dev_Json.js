@@ -53,7 +53,7 @@ let success = function (res) {
             "type": "Feature",
             "properties": {
                 "popTitle": item.popTitle,
-                "popupContent": item.popContent,
+                "popupContent": item.popupContent,
             },
             "id": item.id
         };
@@ -69,5 +69,9 @@ $.ajax({
         type: 'POST',
         url: url,
         success: success,
-		contentType: 'application/json;charset=UTF-8',
+        contentType: 'application/json;charset=UTF-8',
+        error:function(result)
+        {
+            console.log(result); 
+        }
 })

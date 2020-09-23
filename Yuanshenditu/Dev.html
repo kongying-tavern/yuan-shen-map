@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
@@ -211,35 +212,59 @@
 	<div class="dialog" id="modify_window" style="display: none;">
 		<div class="dia-con">
 			<div style="width: 100%;height: 1px;"></div>
-			<form action="" method="POST">
-				<div class="options-div">
-					<label class="form-options">
-						<span>点位名称：</span>
-						<input type="text" class="modify-window-input">
-					</label>
-					<label class="form-options">
-						<span>点位描述：</span>
-						<textarea></textarea>
-					</label>
-					<label class="form-options">
-						<span>x坐标：</span>
-						<input type="text" class="modify-window-input" readonly="readonly">
-					</label>
-					<label class="form-options">
-						<span>y坐标：</span>
-						<input type="text" class="modify-window-input" readonly="readonly">
-					</label>
-					<input type="submit" class="modify-submit-btn" value="提交">
-				</div>
-			</form>
+			<div class="options-div">
+				<label class="form-options">
+					<span>点位名称：</span>
+					<input type="text" class="modify-window-input" id="modify-name">
+				</label>
+				<label class="form-options">
+					<span>点位描述：</span>
+					<textarea id="modify-text"></textarea>
+				</label>
+				<label class="form-options">
+					<span>x坐标（不需要改动）：</span>
+					<input type="text" class="modify-window-input" readonly="readonly" id="modify-x">
+				</label>
+				<label class="form-options">
+					<span>y坐标（不需要改动）：</span>
+					<input type="text" class="modify-window-input" readonly="readonly" id="modify-y">
+				</label>
+				<input type="button" class="modify-submit-btn" onclick="updatemarker()" value="提交">
+			</div>
+		</div>
+		<a class="dia-close dev-close" href="javascript:closeDialog()" title="关闭">×</a>
+	</div>
+	<div class="dialog" id="add_window" style="display: none;">
+		<div class="dia-con">
+			<div style="width: 100%;height: 1px;"></div>
+			<div class="options-div">
+				<label class="form-options">
+					<span>点位名称：</span>
+					<input type="text" class="modify-window-input" id="add-name">
+				</label>
+				<label class="form-options">
+					<span>点位描述：</span>
+					<textarea id="add-text"></textarea>
+				</label>
+				<label class="form-options">
+					<span>x坐标（不需要改动）：</span>
+					<input type="text" class="modify-window-input" readonly="readonly" id="add-x">
+				</label>
+				<label class="form-options">
+					<span>y坐标（不需要改动）：</span>
+					<input type="text" class="modify-window-input" readonly="readonly" id="add-y">
+				</label>
+				<input type="button" class="modify-submit-btn" onclick="updatemarker()" value="提交">
+			</div>
 		</div>
 		<a class="dia-close dev-close" href="javascript:closeDialog()" title="关闭">×</a>
 	</div>
 	<script src="js/jquery-3.5.1.min.js"></script>
 	<script src="leaflet/leaflet.js"></script>
+	<!-- <script src="js/Item_Json.js"></script> -->
 	<script src="js/Item_dev_Json.js"></script>
-	<script src="js/Item_dev.js"></script>
 	<script src="js/Dev_functions.js"></script>
+	<script src="js/Item_dev.js"></script>
 	<script src="js/milo.js"></script>
 	<script>
 		//修改弹窗的弹出函数调用
@@ -505,7 +530,7 @@
 					<td class="table-options-operation">
 						<a href="javascript:;" class="checkout" lid="${i}">查看</a>
 						<a href="javascript:;" class="modify-btn" onclick="TGDialogS('modify_window'),modifymarker(${typearray2[index].features[i].id})" lid="${i}">修改点位</a>
-						<a href="javascript:;" class="delete-btn" onclick="delmarker(${typearray2[index].features[i].id}) lid=${i})">删除点位</a>
+						<a href="javascript:;" class="delete-btn" onclick="delmarker(${typearray2[index].features[i].id})" lid=${i})">删除点位</a>
 					</td>
 				</tr>
 				`)
@@ -530,14 +555,7 @@
 			if($(".add-checkbox").is(":checked")==true)
 			{
 				let index=$(".item-select option:selected").index();
-				if($(".add-name-input").val()!="")
-				{
-					popTitle=$(".add-name-input").val();
-				}
-				if($(".add-des-input").val()!="")
-				{
-					popupContent=$(".add-des-input").val();
-				}
+				markerid=layerarray.length+1;
 				var locationtype = {
 					"geometry": {
 						"type": "Point",
@@ -547,8 +565,8 @@
 					},
 					"type": "Feature",
 					"properties": {
-						"popTitle": "${popTitle}",
-						"popupContent": "${popupContent}",
+						"popTitle": `${popTitle}`,
+						"popupContent": `${popupContent}`,
 					},
 					"id": markerid
 				};
@@ -566,30 +584,55 @@
 						icon:addicon,
 						draggable:true,
 					}).addTo(map);
+					var position = marker.getLatLng();
+					$("#add-x").val(position.lat);
+					$("#add-y").val(position.lng);
 					marker.on('dragend', function (event) {
 						var position = marker.getLatLng();
+						$("#add-x").val(position.lat);
+						$("#add-y").val(position.lng);
 					})
 				markers.push(marker);
 				marker.bindPopup(`<span class="add-title">${popTitle}</span>
 									<span class="add-des">${popupContent}</span>
-								<a href="javascript:;" class="marker-correct-btn" onclick="TGDialogS('modify_window'),delmarker(${layerarray.length})" lid="${markerid}">修改</a>
-								<a href="javascript:;" class="marker-del-btn" onclick="delmarker(${layerarray.length})">删除</a>`);
-				console.log(markers);
+								<a href="javascript:;" class="marker-correct-btn" onclick="TGDialogS('add_window'),modifymarker(${layerarray.length+1})" lid="${markerid}">新增</a>
+								<a href="javascript:;" class="marker-del-btn" onclick="delmarker(${layerarray.length+1})">删除</a>`);
 			}
 		});
 		//删除点位函数
 		function delmarker(id){
-			for(let i=0;i<layerarray.length;i++)
+			let check=confirm("你确定要删除点位么？")
+			if(check==true)
 			{
-				if(layerarray[i].feature.id==id)
+				for(let i=0;i<layerarray.length;i++)
 				{
-					map.removeLayer(layerarray[i]);
+					if(layerarray[i].feature.id==id)
+					{
+						map.removeLayer(layerarray[i]);
+					}
 				}
+				$(`.table-options:eq(${id-1}) .table-options-operation`).html(`<span>已删除</span>`);
 			}
+			
 		}
 		//新增点位
-		function  modifymarker(id){
-
+		function modifymarker(id){
+			if($("#add-name").val()!="")
+			{
+				popTitle=$("#add-name").val();
+			}
+			if($("#add-text").val()!="")
+			{
+				popupContent=$("#add-text").val();
+			}
+		}
+		function updatemarker()
+		{
+			let check=confirm("你确定要删除点位么？")
+			if(check==true)
+			{
+				
+			}
 		}
 	</script>
 </body>
