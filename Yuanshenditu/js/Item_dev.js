@@ -23,7 +23,7 @@ L.TileLayer.T = L.TileLayer.extend({
 	getTileUrl: function (coords) {
 		x = coords.x
 		y = coords.y
-		return 'http://aaaaaaa8.gitee.io/yuan-shen-dt/tiles_test/' + coords.z + '/ppp' + x + '_' + y + '.png';
+		return 'tiles_test/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
 	}
 });
 L.tileLayer.t = function () {
@@ -203,7 +203,7 @@ function onEachFeature(feature, layer) {
 				<div class="myPopClose" onclick="closePop()"></div>
 				<div class="myPopComment">${feature.properties.popupContent}</div>
 				<div class="myPopPicture">
-					<img src=http://a8chan.gitee.io/yuan-shen-dt/comment_png/${key}.png onerror="this.src='./imgs/Icon_51.png'">
+					<img src=comment_png/${key}.jpg onerror="this.src='./imgs/Icon_51.png'">
 				</div>
 				<a href="javascript:;" class="marker-correct-btn" onclick="TGDialogS('modify_window'),modifymarker(${feature.id})" lid=${feature.id}>修改</a>
 				<a href="javascript:;" class="marker-del-btn" lid=${feature.id}>删除</a>
@@ -372,7 +372,7 @@ map.on('popupopen', function (e) {
 				<div class="myPopClose" onclick="closePop()"></div>
 				<div class="myPopComment">${marker.feature.properties.popupContent}</div>
 				<div class="myPopPicture">
-					<img src=http://a8chan.gitee.io/yuan-shen-dt/comment_png/${key}.png onerror="this.src='./imgs/Icon_51.png'">
+					<img src=comment_png/${key}.jpg onerror="this.src='./imgs/Icon_51.png'">
 				</div>
 				<a href="javascript:;" class="marker-correct-btn" onclick="TGDialogS('modify_window'),show_modify_marker(${marker.feature.id})" lid="${marker.feature.id}">修改</a>
 				<a href="javascript:;" class="marker-del-btn" onclick="delmarker_old(${marker.feature.id})">删除</a>
