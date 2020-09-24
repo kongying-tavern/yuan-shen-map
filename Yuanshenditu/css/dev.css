@@ -138,3 +138,12 @@
     border-radius: 3px;
     cursor: pointer;
 }
+.add-all-btn
+{
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    padding: 5px;
+    cursor: pointer;
+}

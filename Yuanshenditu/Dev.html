@@ -15,10 +15,11 @@
 	<div class="panel-table">
 		<h1 class="tname">点位名称</h1>
 		<span class="add-method"><input class="add-checkbox" type="checkbox"><span>打点模式</span></span>
-		<div class="add-panel">
+		<input type="submit" class="add-all-btn" value="上传所有新增点位">
+		<!-- <div class="add-panel">
 			<span class="add-span">点位名称（不填为默认）：<input class="add-name-input" type="text"></span>
 			<span class="add-span">点位描述（不填为默认）：<input class="add-des-input" type="text"></span>
-		</div>
+		</div> -->
 		<select class="item-select">
 				<option class="default">请选择</option>
 				<option class="FST">风神瞳</option>
@@ -222,18 +223,19 @@
 					<textarea id="modify-text"></textarea>
 				</label>
 				<label class="form-options">
-					<span>x坐标（不需要改动）：</span>
+					<span>x坐标（不需要手动修改）：</span>
 					<input type="text" class="modify-window-input" readonly="readonly" id="modify-x">
 				</label>
 				<label class="form-options">
-					<span>y坐标（不需要改动）：</span>
+					<span>y坐标（不需要手动修改）：</span>
 					<input type="text" class="modify-window-input" readonly="readonly" id="modify-y">
 				</label>
-				<input type="button" class="modify-submit-btn" onclick="updatemarker()" value="提交">
+				<input type="button" class="modify-submit-btn" id="modify-submit" value="提交" lid="0">
 			</div>
 		</div>
 		<a class="dia-close dev-close" href="javascript:closeDialog()" title="关闭">×</a>
 	</div>
+	<!-- 添加点位的弹窗 -->
 	<div class="dialog" id="add_window" style="display: none;">
 		<div class="dia-con">
 			<div style="width: 100%;height: 1px;"></div>
@@ -247,14 +249,14 @@
 					<textarea id="add-text"></textarea>
 				</label>
 				<label class="form-options">
-					<span>x坐标（不需要改动）：</span>
+					<span>x坐标（不需要手动修改）：</span>
 					<input type="text" class="modify-window-input" readonly="readonly" id="add-x">
 				</label>
 				<label class="form-options">
-					<span>y坐标（不需要改动）：</span>
+					<span>y坐标（不需要手动修改）：</span>
 					<input type="text" class="modify-window-input" readonly="readonly" id="add-y">
 				</label>
-				<input type="button" class="modify-submit-btn" onclick="updatemarker()" value="提交">
+				<input type="button" class="modify-submit-btn" id="add-submit" lid="0" value="提交">
 			</div>
 		</div>
 		<a class="dia-close dev-close" href="javascript:closeDialog()" title="关闭">×</a>
@@ -508,13 +510,15 @@
 			$(".panel-table").toggle();
 		});
 		var typearray2 = [JS_FST,JS_YST,JS_DLK_MD,JS_DLK_LY,JS_BX_LY,JS_BX_MD,JS_SJK_LY,JS_BTK_LY,JS_SJK_MD,JS_BTK_MD,JS_JYJJ,JS_NSH,JS_LLBH,JS_YPS,JS_SP,JS_GGG,JS_DDL,JS_LLM,JS_SXLYH,JS_MFMG,JS_FCJ,JS_PGYZ,JS_YJSW_LY,JS_YJLZ_LY,JS_DXQQR_LY,JS_SYFS_LY,JS_ZWCLR_LY,JS_LYSS_LY];
+		var textarray=["Layer_FST","Layer_YST","Layer_DLK_MD","Layer_DLK_LY","Layer_JYJJ","Layer_NSH","Layer_LLBH","Layer_GGG","Layer_DDL","Layer_SXLYH","Layer_MFMG","Layer_LLM","Layer_FCJ","Layer_PGYZ","Layer_YPS","Layer_SP","Layer_SJK_LY","Layer_BTK_LY","Layer_SJK_MD","Layer_BTK_MD","Layer_YJSW_LY","Layer_YJLZ_LY","Layer_LYSS_LY","Layer_ZWCLR_LY","Layer_SYFS_LY","Layer_DXQQR_LY","Layer_BX_MD","Layer_BX_LY"]
 		var layerarray;
+		var idxclass;
 		$(".item-select").change(function(){
 			//查看当前选中项在地图上的点位
 			$(".default").remove();
 			$(".add-method").show();
 			$(".options-list .map-opts.on").trigger("click");
-			var idxclass=$(".item-select option:selected").attr("class");
+			idxclass=$(".item-select option:selected").attr("class");
 			layerarray=LayerMap[`Layer_${idxclass}`].getLayers();
 			$(`.options-list .Layer_${idxclass}`).trigger("click");
 			//渲染表格
@@ -529,8 +533,8 @@
 					<td class="table-options-description">${typearray2[index].features[i].properties.popupContent}</td>
 					<td class="table-options-operation">
 						<a href="javascript:;" class="checkout" lid="${i}">查看</a>
-						<a href="javascript:;" class="modify-btn" onclick="TGDialogS('modify_window'),modifymarker(${typearray2[index].features[i].id})" lid="${i}">修改点位</a>
-						<a href="javascript:;" class="delete-btn" onclick="delmarker(${typearray2[index].features[i].id})" lid=${i})">删除点位</a>
+						<a href="javascript:;" class="modify-btn" onclick="TGDialogS('modify_window'),show_modify_marker(${typearray2[index].features[i].id})" lid="${i}">修改点位</a>
+						<a href="javascript:;" class="delete-btn" onclick="delmarker_old(${typearray2[index].features[i].id})" lid=${i})">删除点位</a>
 					</td>
 				</tr>
 				`)
@@ -545,9 +549,20 @@
 		$(".add-method").change(function(){
 			$(".add-panel").toggle();
 		});
-		var markers=[];
+		$(".add-checkbox").change(function(){
+			if($(".add-checkbox").is(":checked")==true)
+			{
+				$(".item-select").attr("disabled",true);
+				$(".add-all-btn").toggle();
+			}
+			else
+			{
+				$(".item-select").attr("disabled",false);
+				$(".add-all-btn").toggle();
+			}
+		});
 		var markerid=0;
-		var loactionsarray=[];
+		var markerlist=[];
 		//在地图上打点函数
 		map.on('click', function (e) {
 			var popTitle=$(".table-options:eq(0) .table-options-name").text();
@@ -568,12 +583,10 @@
 						"popTitle": `${popTitle}`,
 						"popupContent": `${popupContent}`,
 					},
-					"id": markerid
+					"id": `${markerid}`
 				};
+				markerlist.push(locationtype);
 				markerid=layerarray.length+1;
-				loactionsarray.push(locationtype);
-				typearray2[index].features.push(locationtype);
-				console.log(typearray2[index].features);
 				//添加地图标记
 				var addicon=L.icon({
 					iconUrl: `imgs/old_icons/icon_${index}.png`,
@@ -582,7 +595,7 @@
 				var marker = L.marker([e.latlng.lat, e.latlng.lng],{
 						alt:`${e.latlng.lng},${e.latlng.lat}`,
 						icon:addicon,
-						draggable:true,
+						// draggable:true,
 					}).addTo(map);
 					var position = marker.getLatLng();
 					$("#add-x").val(position.lat);
@@ -591,49 +604,121 @@
 						var position = marker.getLatLng();
 						$("#add-x").val(position.lat);
 						$("#add-y").val(position.lng);
-					})
-				markers.push(marker);
+					});
 				marker.bindPopup(`<span class="add-title">${popTitle}</span>
 									<span class="add-des">${popupContent}</span>
-								<a href="javascript:;" class="marker-correct-btn" onclick="TGDialogS('add_window'),modifymarker(${layerarray.length+1})" lid="${markerid}">新增</a>
-								<a href="javascript:;" class="marker-del-btn" onclick="delmarker(${layerarray.length+1})">删除</a>`);
+								<a href="javascript:;" class="marker-correct-btn" id="ad-btn" onclick="TGDialogS('add_window'),show_modify_marker(${layerarray.length+1})" lid="${markerid}">新增</a>
+								<a href="javascript:;" class="marker-del-btn" onclick="delmarker_add(${layerarray.length+1})">删除</a>`);
+				LayerMap[`Layer_${idxclass}`].addLayer(marker);
+				layerarray=LayerMap[`Layer_${idxclass}`].getLayers();
+				layerarray[markerid-1].feature=locationtype;
+				console.log(markerlist);
 			}
 		});
-		//删除点位函数
-		function delmarker(id){
-			let check=confirm("你确定要删除点位么？")
+		//删除点位函数（新增，仅做DOM的修改）
+		function delmarker_add(id){
+			var checkid=id;
+			let check=confirm("你确定要删除点位么？新增点位的删除不会发送到数据库，该操作不可撤销！")
 			if(check==true)
 			{
 				for(let i=0;i<layerarray.length;i++)
 				{
-					if(layerarray[i].feature.id==id)
+					if(layerarray[i].feature.id==checkid)
 					{
 						map.removeLayer(layerarray[i]);
 					}
 				}
+				for(let i=0;i<markerlist.length;i++)
+				{
+					if(markerlist[i].id==checkid)
+					{
+						markerlist.splice(i,1);
+					}
+				}
+			}	
+		}
+		//删除点位函数（已有，对数据库进行修改）
+		function delmarker_old(id){
+			var checkid=id;
+			let check=confirm("你确定要删除点位么？该操作不可撤销！")
+			if(check==true)
+			{
+				for(let i=0;i<layerarray.length;i++)
+				{
+					if(layerarray[i].feature.id==checkid)
+					{
+						map.removeLayer(layerarray[i]);
+					}
+				}
+				let idx=textarray.indexOf(`Layer_${idxclass}`);
+				deleteMarker(idx,checkid);
 				$(`.table-options:eq(${id-1}) .table-options-operation`).html(`<span>已删除</span>`);
 			}
 			
 		}
-		//新增点位
-		function modifymarker(id){
-			if($("#add-name").val()!="")
-			{
-				popTitle=$("#add-name").val();
-			}
-			if($("#add-text").val()!="")
-			{
-				popupContent=$("#add-text").val();
-			}
+		//在弹窗中渲染数据
+		function show_modify_marker(id){
+			$("#add-name").val($(".table-options:eq(0) .table-options-name").text());
+			$("#add-text").val($(".table-options:eq(0) .table-options-description").text());
+			$("#add-submit").attr("lid",id);
 		}
-		function updatemarker()
-		{
-			let check=confirm("你确定要删除点位么？")
+		//提交新增点位(单独提交)
+		var addlist=[];
+		$("#add-submit").click(function(){
+			let check=confirm("你确定要提交该新增点位么？")
 			if(check==true)
 			{
-				
+				let idx=textarray.indexOf(`Layer_${idxclass}`);
+				let marker_idx=$("#add-submit").attr("lid");
+				for(let i=0;i<markerlist.length;i++)
+				{
+					if(marker_idx==markerlist[i].id)
+					{
+						markerlist[i].properties.popTitle=$("#add-name").val();
+						markerlist[i].properties.popupContent=$("#add-text").val();
+					}
+					var addmarker=markerlist[i]
+				}
+				addlist.push(addmarker);
+				addNewMarkers(idx,addlist);
 			}
+		});
+		//提交新增点位(批量提交)
+		$(".add-all-btn").click(function(){
+			let check=confirm("你确定要提交所有新增点位么？")
+			if(check==true)
+			{
+				let idx=textarray.indexOf(`Layer_${idxclass}`);
+				addNewMarkers(idx,markerlist);
+			}
+		});
+		//渲染修改弹窗
+		function show_modify_marker(id)
+		{
+			if(changeposition=="")
+			{
+				$("#modify-x").val(layerarray[id-1]._latlng.lat);
+				$("#modify-y").val(layerarray[id-1]._latlng.lng);
+			}
+			else
+			{
+				$("#modify-x").val(changeposition.lat);
+				$("#modify-y").val(changeposition.lng);
+			}
+			$("#modify-name").val(layerarray[id-1].feature.properties.popTitle);
+			$("#modify-text").val(layerarray[id-1].feature.properties.popupContent);
+			$("#modify-submit").attr("lid",id);
 		}
+		$("#modify-submit").click(function(){
+			let idx=textarray.indexOf(`Layer_${idxclass}`);
+			let marker_idx=$("#modify-submit").attr("lid");
+			var changedata=layerarray[marker_idx-1].feature;
+			changedata.properties.popTitle=$("#modify-name").val();
+			changedata.properties.popupContent=$("#modify-text").val();
+			changedata.geometry.coordinates[0]=$("#modify-x").val();
+			changedata.geometry.coordinates[1]=$("#modify-y").val();
+			updateMarker(idx,changedata);
+		});
 	</script>
 </body>
 </html>

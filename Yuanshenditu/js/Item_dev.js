@@ -78,7 +78,7 @@ var LayerMap = {
 	Layer_SYFS_LY: L.layerGroup(),
 	Layer_DXQQR_LY: L.layerGroup(),
 	Layer_BX_MD: L.layerGroup(),
-	Layer_BX_LY: L.layerGroup()
+	Layer_BX_LY: L.layerGroup(),
 }
 //定义各个坐标使用的图标
 function getIconInfo(Name) {
@@ -281,6 +281,7 @@ function MarkPoint(element) {
 }
 
 //初始化各个坐标
+var changeposition="";
 for (let i = 0; i < typearray.length; i++) {
 	localStorage.setItem("layerNumber", i);
 	var currentIcon = getIconInfo(typearray[i][2]);
@@ -305,17 +306,17 @@ for (let i = 0; i < typearray.length; i++) {
 				}),
 				alt: `${latlng.lng},${latlng.lat}`,
 				draggable:true
-			},);
+			});
 			markers[key] = marker;
-			return marker.addTo(typearray[i][0]);
+			return marker.addTo(typearray[i][0]).on('dragend', function (event) {
+				changeposition = marker.getLatLng();
+			});
 		},
 		onEachFeature: onEachFeature
-	})
+	});
 };
 
 function dealIcon(target, key) {
-
-
 	return target
 }
 
@@ -373,8 +374,8 @@ map.on('popupopen', function (e) {
 				<div class="myPopPicture">
 					<img src=http://a8chan.gitee.io/yuan-shen-dt/comment_png/${key}.png onerror="this.src='./imgs/Icon_51.png'">
 				</div>
-				<a href="javascript:;" class="marker-correct-btn" onclick="TGDialogS('modify_window'),modifymarker(${marker.feature.id})" lid="${marker.feature.id}">修改</a>
-				<a href="javascript:;" class="marker-del-btn" onclick="delmarker(${marker.feature.id})">删除</a>
+				<a href="javascript:;" class="marker-correct-btn" onclick="TGDialogS('modify_window'),show_modify_marker(${marker.feature.id})" lid="${marker.feature.id}">修改</a>
+				<a href="javascript:;" class="marker-del-btn" onclick="delmarker_old(${marker.feature.id})">删除</a>
 			</div>`
 	marker.bindPopup(popupHtml);
 });

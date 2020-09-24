@@ -62,13 +62,14 @@ function addNewMarkers(layerId,markerList) {
 */
 function updateMarker(layerId,markerInfo) {
 	var flag = false;
-	var url = 'http://yuanshen.site/marker/updateMarker'
+	var url = 'http://yuanshen.site:8848/marker/updateMarker'
     var data = {
         layerId: layerId,
         markerInfo: markerInfo
     }
     var success = function (res) {
-		flag = true;
+        flag = true;
+        alert("修改成功！")
     }
     let err = function (msg) {
         alert(msg);
@@ -92,7 +93,7 @@ function updateMarker(layerId,markerInfo) {
 */
 function deleteMarker(layerId,markerId) {
 	var flag = false;
-	var url = 'http://yuanshen.site/marker/deleteMarker'
+	var url = 'http://yuanshen.site:8848/marker/deleteMarker'
     var data = {
         layerId: layerId,
         markerId: markerId
