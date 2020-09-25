@@ -190,6 +190,36 @@ function getIconInfo(Name) {
 	}
 }
 
+var state = 1;
+
+function change() {
+	if (!$(".myPopComment").hasClass("disable")) {
+		if (state == 1) {
+			$(".Select").animate({}, function () {
+				$(".Select").css({
+					'transform': 'rotate(-180deg)'
+				})
+			});
+			$(".myPopPicture").animate({
+				height: '0px'
+			}, function () {
+				state = 0;
+			});
+		} else {
+			$(".Select").animate({}, function () {
+				$(".Select").css({
+					'transform': 'rotate(0deg)'
+				})
+			});
+			$(".myPopPicture").animate({
+				height: '326px'
+			}, function () {
+				state = 1;
+			});
+		}
+	}
+};
+
 //添加坐标点击信息
 function onEachFeature(feature, layer) {
 	var layerNumber = localStorage.getItem("layerNumber");
@@ -198,14 +228,14 @@ function onEachFeature(feature, layer) {
 	popupHtml = '<div class="myPopTitle" >';
 	popupHtml += '<div class="myPopName" >' + feature.properties.popTitle + feature.id + '</div>';
 	var switchClass = (!(localStorage.getItem(key))) ? "myPopSwitchTodo" : "myPopSwitchDone"
-	popupHtml += '<div class="' + switchClass + '" onclick="MarkPoint(this)" data-key="' + key + '"></div>';
 	popupHtml += '</div>';
 	popupHtml += '<div class="myPopLine"></div>';
 	popupHtml += '<div class="myPopClose" onclick="closePop()"></div>';
-	popupHtml += '<div class="myPopComment">' + feature.properties.popupContent + '</div>';
+	popupHtml += '<div class="myPopComment"><span>' + feature.properties.popupContent + '</span><img class="Select" src=imgs/con_img/Select.png></div>';
 	popupHtml += '<div class="myPopPicture">';
-	popupHtml += '<img src=comment_png/' + key + '.jpg onerror="this.src=\'./imgs/Icon_51.png\'">';
+	popupHtml += '<img src=comment_png/' + key + '.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">';
 	popupHtml += '</div>';
+	popupHtml += '<div class="' + switchClass + '" onclick="MarkPoint(this)" data-key="' + key + '"></div>';
 	popupHtml += '</div>';
 	layer.bindPopup(popupHtml);
 }
@@ -355,6 +385,7 @@ function dealIcon(target, key) {
 // }).addTo(map);
 
 map.on('popupopen', function (e) {
+	state = 1;
 	var marker = e.popup._source;
 	var className = marker.options.icon.options.className;
 	var key = className.substring(5, className.length);
@@ -363,14 +394,14 @@ map.on('popupopen', function (e) {
 	var popupHtml = '<div class="myPopContainer">';
 	popupHtml = '<div class="myPopTitle" >';
 	popupHtml += '<div class="myPopName" >' + marker.feature.properties.popTitle + marker.feature.id + '</div>';
-	popupHtml += '<div class="' + switchClass + '" onclick="MarkPoint(this)" data-key="' + key + '"></div>';
 	popupHtml += '</div>';
 	popupHtml += '<div class="myPopLine"></div>';
 	popupHtml += '<div class="myPopClose" onclick="closePop()"></div>';
-	popupHtml += '<div class="myPopComment">' + marker.feature.properties.popupContent + '</div>';
+	popupHtml += '<div class="myPopComment" onclick="change()"><span>' + marker.feature.properties.popupContent + '</span><img class="Select" src=imgs/con_img/Select.png></div>';
 	popupHtml += '<div class="myPopPicture">';
-	popupHtml += '<img src=comment_png/' + key + '.jpg onerror="this.src=\'./imgs/Icon_51.png\'">';
+	popupHtml += '<img src=comment_png/' + key + '.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">';
 	popupHtml += '</div>';
+	popupHtml += '<div class="' + switchClass + '" onclick="MarkPoint(this)" data-key="' + key + '"></div>';
 	popupHtml += '</div>';
 	marker.bindPopup(popupHtml);
 });

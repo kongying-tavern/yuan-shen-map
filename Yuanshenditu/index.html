@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 	<title>原神地图</title>
@@ -8,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 </head>
+
 <body>
 	<div id='map'></div>
 	<!-- 筛选器 -->
@@ -171,6 +173,7 @@
 		//筛选函数
 		var i_type = "ALL";
 		var area_idx = "MD";
+
 		function filter() {
 			if (i_type == "ALL") {
 				for (let i = 0; i < $(".options-list .map-opts").length; i++) {
@@ -180,16 +183,12 @@
 						$(".options-list .map-opts").eq(i).hide();
 					}
 				}
-			} 
-			else 
-			{
+			} else {
 				for (let i = 0; i < $(".options-list .map-opts").length; i++) {
-					if ($(".options-list .map-opts").eq(i).attr("itemtype") == i_type && $(".options-list .map-opts").eq(i).attr("area") == area_idx) 
-					{
+					if ($(".options-list .map-opts").eq(i).attr("itemtype") == i_type && $(".options-list .map-opts").eq(i)
+						.attr("area") == area_idx) {
 						$(".options-list .map-opts").eq(i).show();
-					} 
-					else 
-					{
+					} else {
 						$(".options-list .map-opts").eq(i).hide();
 					}
 				}
@@ -216,7 +215,7 @@
 			}
 		});
 		//点击筛选项以改变选择器项目
-		$(".options-list .map-opts").click(function(){
+		$(".options-list .map-opts").click(function () {
 			$(".selector-hint").hide();
 			if ($(this).hasClass("on") == true) {
 				let text = $(this).text();
@@ -234,9 +233,7 @@
 				let typetext = typeclass.slice(0, idx);
 				// $(`.leaflet-control-layers-overlays .${typetext}`).parent().prev().trigger("click");
 				map.removeLayer(LayerMap[fclass]);
-			} 
-			else 
-			{
+			} else {
 				let text = $(this).text();
 				let fclass = $(this).attr("class");
 				fclass = fclass.slice(0, fclass.indexOf(" "));
@@ -250,8 +247,7 @@
 							$(".options-list .map-opts").eq(i).trigger("click");
 						}
 					}
-					if($(".opt-selector").length==0)
-					{
+					if ($(".opt-selector").length == 0) {
 						$(".selector-hint").show();
 					}
 				});
@@ -263,9 +259,8 @@
 				map.addLayer(LayerMap[fclass]);
 			}
 			$(this).toggleClass("on");
-			$(".map-opts.on").click(function(){
-				if($(".opt-selector").length==0)
-				{
+			$(".map-opts.on").click(function () {
+				if ($(".opt-selector").length == 0) {
 					$(".selector-hint").show();
 				}
 			})
@@ -273,7 +268,7 @@
 		//初始化筛选器功能
 		$(document).ready(function () {
 			$(".con-type-label:first").trigger("click");
-			$(".reg_log_link,.save-btn").click(function(){
+			$(".reg_log_link,.save-btn").click(function () {
 				alert("即将开放,敬请期待！");
 			})
 			var statu = 1;
@@ -308,7 +303,7 @@
 						$(".area-list-li-containor").fadeOut(500);
 					}
 				});
-			} 
+			}
 			// else 
 			// {
 			// 	//面板切换动画(pc)
@@ -336,8 +331,7 @@
 			// 		}, 500) //移出鼠标延迟500ms收回
 			// 	});
 			// }
-			else
-			{
+			else {
 				$(".fold-btn").click(function () {
 					if (statu == 1) {
 						// $(".control-containor").css("width", "420px");
@@ -360,11 +354,11 @@
 					}
 				});
 				$(".control-containor").animate({
-							right: '-108px'
-						}, function () {
-							statu = 0;
-						});
-						$(".area-list-li-containor").fadeIn(500);
+					right: '-108px'
+				}, function () {
+					statu = 0;
+				});
+				$(".area-list-li-containor").fadeIn(500);
 			}
 		});
 		//防止IOS的缩放函数
@@ -390,4 +384,5 @@
 		}
 	</script>
 </body>
+
 </html>
