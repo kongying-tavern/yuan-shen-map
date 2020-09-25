@@ -476,7 +476,7 @@ body,
 
 .Select{
     display: inline-block;
-    margin-bottom: 3px;
+    margin-bottom: 2px;
     transform-origin: 50% 50% 0;
     transition: all 0.5s;
 }
