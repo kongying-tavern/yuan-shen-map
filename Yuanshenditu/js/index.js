@@ -56,32 +56,37 @@ var LayerMap = {
 	Layer_YST: L.layerGroup(),
 	Layer_DLK_MD: L.layerGroup(),
 	Layer_DLK_LY: L.layerGroup(),
-	Layer_JYJJ: L.layerGroup(),
-	Layer_NSH: L.layerGroup(),
-	Layer_LLBH: L.layerGroup(),
-	Layer_GGG: L.layerGroup(),
-	Layer_DDL: L.layerGroup(),
-	Layer_SXLYH: L.layerGroup(),
-	Layer_MFMG: L.layerGroup(),
-	Layer_LLM: L.layerGroup(),
-	Layer_FCJ: L.layerGroup(),
-	Layer_PGYZ: L.layerGroup(),
-	Layer_YPS: L.layerGroup(),
-	Layer_SP: L.layerGroup(),
-	Layer_SJK_LY: L.layerGroup(),
-	Layer_BTK_LY: L.layerGroup(),
-	Layer_SJK_MD: L.layerGroup(),
-	Layer_BTK_MD: L.layerGroup(),
-	Layer_YJSW_LY: L.layerGroup(),
-	Layer_YJLZ_LY: L.layerGroup(),
-	Layer_LYSS_LY: L.layerGroup(),
-	Layer_ZWCLR_LY: L.layerGroup(),
-	Layer_SYFS_LY: L.layerGroup(),
-	Layer_DXQQR_LY: L.layerGroup(),
-	Layer_BX_MD: L.layerGroup(),
-	Layer_BX_LY: L.layerGroup(),
-	Layer_LLD: L.layerGroup()
+	Layer_JYJJ: L.markerClusterGroup(),
+	Layer_NSH: L.markerClusterGroup(),
+	Layer_LLBH: L.markerClusterGroup(),
+	Layer_GGG: L.markerClusterGroup(),
+	Layer_DDL: L.markerClusterGroup(),
+	Layer_SXLYH: L.markerClusterGroup(),
+	Layer_MFMG: L.markerClusterGroup(),
+	Layer_LLM: L.markerClusterGroup(),
+	Layer_FCJ: L.markerClusterGroup(),
+	Layer_PGYZ: L.markerClusterGroup(),
+	Layer_YPS: L.markerClusterGroup(),
+	Layer_SP: L.markerClusterGroup(),
+	Layer_SJK_LY: L.markerClusterGroup(),
+	Layer_BTK_LY: L.markerClusterGroup(),
+	Layer_SJK_MD: L.markerClusterGroup(),
+	Layer_BTK_MD: L.markerClusterGroup(),
+	Layer_YJSW_LY: L.markerClusterGroup(),
+	Layer_YJLZ_LY: L.markerClusterGroup(),
+	Layer_LYSS_LY: L.markerClusterGroup(),
+	Layer_ZWCLR_LY: L.markerClusterGroup(),
+	Layer_SYFS_LY: L.markerClusterGroup(),
+	Layer_DXQQR_LY: L.markerClusterGroup(),
+	Layer_BX_MD: L.markerClusterGroup({maxClusterRadius: 100}),
+	Layer_BX_LY: L.markerClusterGroup({maxClusterRadius: 100}),
+	Layer_LLD: L.markerClusterGroup()
 }
+
+LayerMap["Layer_BX_LY"].on('clusterclick', function (a) {
+	a.layer.spiderfy();
+});
+
 //定义各个坐标使用的图标
 function getIconInfo(Name) {
 	switch (Name) {
