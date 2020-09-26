@@ -717,12 +717,19 @@
 		$("#modify-submit").click(function(){
 			let idx=textarray.indexOf(`Layer_${idxclass}`);
 			let marker_idx=$("#modify-submit").attr("lid");
-			var changedata=layerarray[marker_idx-1].feature;
+			for(let i=0;i<layerarray.length;i++)
+			{
+				if(layerarray[i].feature.id==marker_idx)
+				{
+					changedata=layerarray[i].feature;
+				}
+			}
 			changedata.properties.popTitle=$("#modify-name").val();
 			changedata.properties.popupContent=$("#modify-text").val();
 			changedata.geometry.coordinates[0]=$("#modify-x").val();
 			changedata.geometry.coordinates[1]=$("#modify-y").val();
-			updateMarker(idx,changedata);
+			console.log(changedata);
+			// updateMarker(idx,changedata);
 		});
 	</script>
 </body>
