@@ -569,7 +569,8 @@
 			var popupContent=$(".table-options:eq(0) .table-options-description").text();
 			if($(".add-checkbox").is(":checked")==true)
 			{
-				let index=$(".item-select option:selected").index();
+				let classTemp=$(".item-select option:selected").attr("class");
+				let index=textarray.indexOf(`Layer_${classTemp}`);
 				markerid=layerarray.length+1;
 				var locationtype = {
 					"geometry": {
@@ -588,9 +589,11 @@
 				markerlist.push(locationtype);
 				markerid=layerarray.length+1;
 				//添加地图标记
-				var addicon=L.icon({
-					iconUrl: `imgs/old_icons/icon_${index}.png`,
-					iconSize: [25, 25], // size of the icon
+				let iconName=typearray[index][2];
+				let iconType=getIconInfo(iconName);
+				var addicon=new iconType({
+					iconUrl: `imgs/icon_${index}.png`,
+					shadowUrl: "./imgs/loc_find_new.png",
 				})
 				var marker = L.marker([e.latlng.lat, e.latlng.lng],{
 						alt:`${e.latlng.lng},${e.latlng.lat}`,
