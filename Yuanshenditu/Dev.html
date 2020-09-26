@@ -591,9 +591,11 @@
 				//添加地图标记
 				let iconName=typearray[index][2];
 				let iconType=getIconInfo(iconName);
+				var currentShowdow = iconType.prototype.options.shadowUrl
+				var doneShadowUrl = currentShowdow ? "./imgs/loc_find_new.png" : ""
 				var addicon=new iconType({
 					iconUrl: `imgs/icon_${index}.png`,
-					shadowUrl: "./imgs/loc_find_new.png",
+					shadowUrl: doneShadowUrl,
 				})
 				var marker = L.marker([e.latlng.lat, e.latlng.lng],{
 						alt:`${e.latlng.lng},${e.latlng.lat}`,
