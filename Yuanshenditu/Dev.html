@@ -532,9 +532,9 @@
 					<td class="table-options-id">${i}</td>
 					<td class="table-options-description">${typearray2[index].features[i].properties.popupContent}</td>
 					<td class="table-options-operation">
-						<a href="javascript:;" class="checkout" lid="${i}">查看</a>
-						<a href="javascript:;" class="modify-btn" onclick="TGDialogS('modify_window'),show_modify_marker(${typearray2[index].features[i].id})" lid="${i}">修改点位</a>
-						<a href="javascript:;" class="delete-btn" onclick="delmarker_old(${typearray2[index].features[i].id})" lid=${i})">删除点位</a>
+						<a href="javascript:;" class="checkout" lid="${typearray2[index].features[i].id}">查看</a>
+						<a href="javascript:;" class="modify-btn" onclick="TGDialogS('modify_window'),show_modify_marker(${typearray2[index].features[i].id})" lid="${typearray2[index].features[i].id}">修改点位</a>
+						<a href="javascript:;" class="delete-btn" onclick="delmarker_old(${typearray2[index].features[i].id})" lid=${typearray2[index].features[i].id})">删除点位</a>
 					</td>
 				</tr>
 				`)
