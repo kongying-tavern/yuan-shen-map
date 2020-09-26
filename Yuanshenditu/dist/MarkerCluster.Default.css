@@ -68,3 +68,13 @@
 		background-repeat: no-repeat;
 		color: white;
 	}
+
+	.cluster-27{
+		display: flex;
+        justify-content: center; /* 水平居中 */
+        align-items: center;     /* 垂直居中 */
+		background-image:url("BK.svg");
+		background-size: contain;
+		background-repeat: no-repeat;
+		color: white;
+	}
