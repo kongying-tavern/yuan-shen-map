@@ -543,7 +543,14 @@
 			//查看当前选中项在地图上的点位
 			$(".checkout").click(function(){
 				let index=$(this).attr("lid");
-				layerarray[index].openPopup();
+				for(let i=0;i<layerarray.length;i++)
+				{
+					if(layerarray[i].feature.id==index)
+					{
+						layerarray[i].openPopup();
+					}
+				}
+				
 			});
 			console.log(layerarray);
 		});
