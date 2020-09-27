@@ -694,6 +694,7 @@
 				}
 				addlist.push(addmarker);
 				addNewMarkers(idx,addlist);
+				addlist=[];
 			}
 		});
 		//提交新增点位(批量提交)
@@ -704,6 +705,7 @@
 				let idx=textarray.indexOf(`Layer_${idxclass}`);
 				addNewMarkers(idx,markerlist);
 			}
+			markerlist=[];
 		});
 		//渲染修改弹窗
 		function show_modify_marker(id)
