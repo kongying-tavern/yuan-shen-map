@@ -710,16 +710,28 @@
 		{
 			if(changeposition=="")
 			{
-				$("#modify-x").val(layerarray[id-1]._latlng.lat);
-				$("#modify-y").val(layerarray[id-1]._latlng.lng);
+				for(let i=0;i<layerarray.length;i++)
+				{
+					if(layerarray[i].feature.id==id)
+					{
+						$("#modify-x").val(layerarray[i]._latlng.lat);
+						$("#modify-y").val(layerarray[i]._latlng.lng);
+					}
+				}
 			}
 			else
 			{
 				$("#modify-x").val(changeposition.lat);
 				$("#modify-y").val(changeposition.lng);
 			}
-			$("#modify-name").val(layerarray[id-1].feature.properties.popTitle);
-			$("#modify-text").val(layerarray[id-1].feature.properties.popupContent);
+			for(let i=0;i<layerarray.length;i++)
+				{
+					if(layerarray[i].feature.id==id)
+					{
+						$("#modify-name").val(layerarray[i].feature.properties.popTitle);
+						$("#modify-text").val(layerarray[i].feature.properties.popupContent);
+					}
+				}
 			$("#modify-submit").attr("lid",id);
 		}
 		$("#modify-submit").click(function(){
@@ -736,7 +748,6 @@
 			changedata.properties.popupContent=$("#modify-text").val();
 			changedata.geometry.coordinates[0]=$("#modify-x").val();
 			changedata.geometry.coordinates[1]=$("#modify-y").val();
-			console.log(changedata);
 			updateMarker(idx,changedata);
 		});
 	</script>
