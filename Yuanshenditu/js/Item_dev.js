@@ -79,6 +79,7 @@ var LayerMap = {
 	Layer_DXQQR_LY: L.layerGroup(),
 	Layer_BX_MD: L.layerGroup(),
 	Layer_BX_LY: L.layerGroup(),
+	Layer_LLD: L.layerGroup(),
 }
 //定义各个坐标使用的图标
 function getIconInfo(Name) {
@@ -244,7 +245,8 @@ var typearray = [
 	[LayerMap["Layer_SYFS_LY"], JS_SYFS_LY, "PTG"],
 	[LayerMap["Layer_DXQQR_LY"], JS_DXQQR_LY, "PTG"],
 	[LayerMap["Layer_BX_MD"], JS_BX_MD, "BX"],
-	[LayerMap["Layer_BX_LY"], JS_BX_LY, "BX"]
+	[LayerMap["Layer_BX_LY"], JS_BX_LY, "BX"],
+	[LayerMap["Layer_LLD"], JS_LLD, "TC"]
 ];
 
 //标记方法
