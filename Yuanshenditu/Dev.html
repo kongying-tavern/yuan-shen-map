@@ -50,6 +50,7 @@
 				<option class="SYFS_LY">深渊法师</option>
 				<option class="ZWCLR_LY">债务处理人</option>
 				<option class="LYSS_LY">雷莹术士</option>
+				<option class="LLD">琉璃袋</option>
 		</select>
 		<table class="data-table">
 			<tr class="table-options-title">
@@ -200,6 +201,9 @@
 				</span>
 				<span class="Layer_LYSS_LY map-opts" area="LY" itemtype="GW">
 					<div class="img-border"><img src="imgs/icon_22.png" class="map-opts-icon" alt="icon"></div>雷莹术士
+				</span>
+				<span class="Layer_LLD map-opts" area="LY" itemtype="TC">
+					<div class="img-border"><img src="imgs/icon_28.png" class="map-opts-icon" alt="icon"></div>琉璃袋
 				</span>
 			</div>
 		</div>
@@ -510,8 +514,8 @@
 		$(".switch-btn").click(function(){
 			$(".panel-table").toggle();
 		});
-		var typearray2 = [JS_FST,JS_YST,JS_DLK_MD,JS_DLK_LY,JS_BX_LY,JS_BX_MD,JS_SJK_LY,JS_BTK_LY,JS_SJK_MD,JS_BTK_MD,JS_JYJJ,JS_NSH,JS_LLBH,JS_YPS,JS_SP,JS_GGG,JS_DDL,JS_LLM,JS_SXLYH,JS_MFMG,JS_FCJ,JS_PGYZ,JS_YJSW_LY,JS_YJLZ_LY,JS_DXQQR_LY,JS_SYFS_LY,JS_ZWCLR_LY,JS_LYSS_LY];
-		var textarray=["Layer_FST","Layer_YST","Layer_DLK_MD","Layer_DLK_LY","Layer_JYJJ","Layer_NSH","Layer_LLBH","Layer_GGG","Layer_DDL","Layer_SXLYH","Layer_MFMG","Layer_LLM","Layer_FCJ","Layer_PGYZ","Layer_YPS","Layer_SP","Layer_SJK_LY","Layer_BTK_LY","Layer_SJK_MD","Layer_BTK_MD","Layer_YJSW_LY","Layer_YJLZ_LY","Layer_LYSS_LY","Layer_ZWCLR_LY","Layer_SYFS_LY","Layer_DXQQR_LY","Layer_BX_MD","Layer_BX_LY"]
+		var typearray2 = [JS_FST,JS_YST,JS_DLK_MD,JS_DLK_LY,JS_BX_LY,JS_BX_MD,JS_SJK_LY,JS_BTK_LY,JS_SJK_MD,JS_BTK_MD,JS_JYJJ,JS_NSH,JS_LLBH,JS_YPS,JS_SP,JS_GGG,JS_DDL,JS_LLM,JS_SXLYH,JS_MFMG,JS_FCJ,JS_PGYZ,JS_YJSW_LY,JS_YJLZ_LY,JS_DXQQR_LY,JS_SYFS_LY,JS_ZWCLR_LY,JS_LYSS_LY,JS_LLD];
+		var textarray=["Layer_FST","Layer_YST","Layer_DLK_MD","Layer_DLK_LY","Layer_JYJJ","Layer_NSH","Layer_LLBH","Layer_GGG","Layer_DDL","Layer_SXLYH","Layer_MFMG","Layer_LLM","Layer_FCJ","Layer_PGYZ","Layer_YPS","Layer_SP","Layer_SJK_LY","Layer_BTK_LY","Layer_SJK_MD","Layer_BTK_MD","Layer_YJSW_LY","Layer_YJLZ_LY","Layer_LYSS_LY","Layer_ZWCLR_LY","Layer_SYFS_LY","Layer_DXQQR_LY","Layer_BX_MD","Layer_BX_LY","Layer_LLD"]
 		var layerarray;
 		var idxclass;
 		$(".item-select").change(function(){
