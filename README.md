@@ -14,7 +14,10 @@
 ⑤如果各位旅行者发现了问题，可以[【点击这里并简述问题】](https://docs.qq.com/sheet/DSm9jV29kcFVHdVZL?tab=BB08J2)
 
 制作：A8、大白米、Icarusss、南极风
-[!实例](https://upload-bbs.mihoyo.com/upload/2020/09/09/5284717/58b1e0a88e58bed8ddfc3bd34b439b75_259109571177980462.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg)
+![实例](https://upload-bbs.mihoyo.com/upload/2020/09/09/5284717/58b1e0a88e58bed8ddfc3bd34b439b75_259109571177980462.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg)
+![实例](https://upload-bbs.mihoyo.com/upload/2020/09/19/5284717/3f2f022e016c245b43939b50d6a43de3_2462893354478986890.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg)
+![实例](https://upload-bbs.mihoyo.com/upload/2020/09/19/5284717/3947428880da5f99e329198c3d779e4c_6341180947935966441.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg)
+![实例](https://upload-bbs.mihoyo.com/upload/2020/09/26/5284717/82ae121d6c53ad415f69f2315724d14f_1311956324983884438.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg)
 # 更新日志：
 
 >9/27 再次更新了一大波宝箱点位，校准了部分琉璃袋点位及配图
