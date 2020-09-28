@@ -83,7 +83,8 @@ var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 			console.log(childClassName[1]);
 			let doneNum=0;
 			for(let i=0;i<cluster.getChildCount();i++){
-				if(childMarkers[i].options.icon.options.iconUrl.indexOf("done")!=-1){
+				let key = childClassName[1] + "_" + childMarkers[i].feature.id;
+				if(localStorage.getItem(key)){
 					doneNum++;
 				}
 			}
@@ -2586,6 +2587,7 @@ L.MarkerClusterGroup.include({
 	_unspiderfyWrapper: function () {
 		/// <summary>_unspiderfy but passes no arguments</summary>
 		this._unspiderfy();
+		this.refreshClusters();
 	},
 
 	_unspiderfy: function (zoomDetails) {
