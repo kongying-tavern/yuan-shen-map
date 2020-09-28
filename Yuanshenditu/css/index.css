@@ -20,6 +20,20 @@ body,
     /* right: 0px; */
     right: -1000px;
 }
+/* 单机下载样式 */
+.danjixiazai{
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 10vw;
+    background: url(../imgs/con_img/danjixiazai.png) no-repeat center top;
+    background-size: contain;
+    width: 50vw;
+    height: 50px;
+    z-index: 999;
+    cursor: pointer;
+}
+
 /* 地图筛选器样式 */
 .hd {
     display: block;

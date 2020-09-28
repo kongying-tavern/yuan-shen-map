@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="baidu-site-verification" content="code-GKb2vGn6sE" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+	<title>原神地图</title>
+	<meta charset="utf-8">
+</head>
+<script src="js/jquery-3.5.1.min.js"></script>
+
+<body>
+	由于用户量过大，图片服务器无法负担流量需求，经秃子程序们正在全力抢救，网页版地图服务已经恢复，但也许会有卡顿现象。
+	</br>各位旅行者仍可点击下面的按钮继续使用在线地图，我们也会提供离线版的地图支持，并且支持导入您在网站中标记的数据。最新离线版下载盘版地址：
+	</br>链接：<a href="https://pan.baidu.com/s/1YQQWkdqddcKVQLKI08XP4A"
+		target="_blank">https://pan.baidu.com/s/1YQQWkdqddcKVQLKI08XP4A</a>
+	</br>
+	提取码：aapo
+	</br>您也可以加群下载离线更新包：1群765302904（未满）；2群853210278（已满）；3群932683801（已满）
+	</br><button id="submitMarker">一键导出标记点位记录</button> 【使用说明】将导出数据的内容复制到离线版的导入框中，提交即可
+	</br>不能下载？<button id="submitMarker2">点击复制记录到剪切板</button>
+	</br>PS.在线地图中点击上传也可下载点位记录并记录到剪切板
+	</br>
+	</br><button id="enterIndex">进入在线地图</button>
+</body>
+<script>
+	// 复制的方法
+	function copyText(text, callback) { // text: 要复制的内容， callback: 回调
+		var tag = document.createElement('input');
+		tag.setAttribute('id', 'cp_hgz_input');
+		tag.value = text;
+		document.getElementsByTagName('body')[0].appendChild(tag);
+		document.getElementById('cp_hgz_input').select();
+		document.execCommand('copy');
+		document.getElementById('cp_hgz_input').remove();
+		if (callback) {
+			callback(text)
+		}
+	}
+	$("#submitMarker").click(function () {
+		var markedLog = []
+		for (var i = 0; i < 29; i++) {
+			for (var j = 1; j < 1200; j++) {
+				var key = i + "_" + j
+				if (localStorage.getItem(key)) {
+					markedLog.push(key)
+				}
+			}
+		}
+		var eleLink = document.createElement('a');
+		eleLink.download = 'markers.json';
+		eleLink.style.display = 'none';
+		var blob = new Blob([JSON.stringify(markedLog)]);
+		eleLink.href = URL.createObjectURL(blob);
+		document.body.appendChild(eleLink);
+		eleLink.click();
+		document.body.removeChild(eleLink);
+	})
+	$("#submitMarker2").click(function () {
+		var markedLog = []
+		for (var i = 0; i < 29; i++) {
+			for (var j = 1; j < 1200; j++) {
+				var key = i + "_" + j
+				if (localStorage.getItem(key)) {
+					markedLog.push(key)
+				}
+			}
+		}
+		toolresult = JSON.stringify(markedLog);
+		var texts = toolresult
+		copyText(texts, function () {
+			alert('复制成功 \n复制内容' + texts)
+		})
+		console.log(toolresult);
+	})
+	$("#enterIndex").click(function () {
+		window.event.returnValue = false;
+		window.location.href = 'index.html';
+	})
+</script>
+
+</html>

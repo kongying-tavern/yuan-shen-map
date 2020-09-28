@@ -14,6 +14,7 @@
 
 <body>
 	<div id='map'></div>
+	<div class="danjixiazai"></div>
 	<!-- 筛选器 -->
 	<div class="control-containor">
 		<img class="Background" src="imgs/con_img/Content.png">
@@ -324,6 +325,12 @@
 					alert('复制成功 \n复制内容' + texts)
 				})
 				console.log(toolresult);
+			})
+
+			//单机跳转
+			$(".danjixiazai").click(function () {
+				window.event.returnValue = false;
+				window.location.href = 'index2.html';
 			})
 
 			var statu = 1;
