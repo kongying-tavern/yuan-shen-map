@@ -62,17 +62,22 @@
 	.cluster-26{
 		display: flex;
         justify-content: center; /* 水平居中 */
-        align-items: center;     /* 垂直居中 */
+        align-items: flex-end;    /* 垂直居中 */
 		background-image:url("BK.svg");
 		background-size: contain;
 		background-repeat: no-repeat;
 		color: white;
 	}
+	b{
+		position: absolute;
+		bottom: -13px;
+		text-shadow: 2px 2px 0px #000000;
+	}
 
 	.cluster-27{
 		display: flex;
         justify-content: center; /* 水平居中 */
-        align-items: center;     /* 垂直居中 */
+        align-items: flex-end;      /* 垂直居中 */
 		background-image:url("BK.svg");
 		background-size: contain;
 		background-repeat: no-repeat;

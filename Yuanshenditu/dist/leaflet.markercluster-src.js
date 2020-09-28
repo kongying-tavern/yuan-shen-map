@@ -81,8 +81,14 @@ var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 			let childClassNameTemp=childMarkers[0].options.icon.options.className.split("_");
 			let childClassName=childClassNameTemp[0].split("-");
 			console.log(childClassName[1]);
+			let doneNum=0;
+			for(let i=0;i<cluster.getChildCount();i++){
+				if(childMarkers[i].options.icon.options.iconUrl.indexOf("done")!=-1){
+					doneNum++;
+				}
+			}
 			return L.divIcon({
-					html: '<b>' + cluster.getChildCount() + '</b>' ,
+					html: '<b>' + doneNum + '/' + cluster.getChildCount() + '</b>' ,
 					className:"cluster-"+childClassName[1],
 					iconSize: [30+cluster.getChildCount()/2, 30+cluster.getChildCount()/2], // size of the icon
 				});
