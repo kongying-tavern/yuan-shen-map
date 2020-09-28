@@ -271,9 +271,61 @@
 		//初始化筛选器功能
 		$(document).ready(function () {
 			$(".con-type-label:first").trigger("click");
-			$(".reg_log_link,.save-btn").click(function () {
+			$(".reg_log_link").click(function () {
 				alert("即将开放,敬请期待！");
 			})
+
+			// 复制的方法
+			function copyText(text, callback) { // text: 要复制的内容， callback: 回调
+				var tag = document.createElement('input');
+				tag.setAttribute('id', 'cp_hgz_input');
+				tag.value = text;
+				document.getElementsByTagName('body')[0].appendChild(tag);
+				document.getElementById('cp_hgz_input').select();
+				document.execCommand('copy');
+				document.getElementById('cp_hgz_input').remove();
+				if (callback) {
+					callback(text)
+				}
+			}
+
+			//下载保存数据并复制到剪切板
+			$(".save-btn").click(function () {
+				var markedLog = []
+				for (var i = 0; i < 29; i++) {
+					for (var j = 1; j < 1200; j++) {
+						var key = i + "_" + j
+						if (localStorage.getItem(key)) {
+							markedLog.push(key)
+						}
+					}
+				}
+				var eleLink = document.createElement('a');
+				eleLink.download = 'markers.json';
+				eleLink.style.display = 'none';
+				var blob = new Blob([JSON.stringify(markedLog)]);
+				eleLink.href = URL.createObjectURL(blob);
+				document.body.appendChild(eleLink);
+				eleLink.click();
+				document.body.removeChild(eleLink);
+
+				var markedLog1 = []
+				for (var i = 0; i < 29; i++) {
+					for (var j = 1; j < 1200; j++) {
+						var key = i + "_" + j
+						if (localStorage.getItem(key)) {
+							markedLog1.push(key)
+						}
+					}
+				}
+				toolresult = JSON.stringify(markedLog1);
+				var texts = toolresult
+				copyText(texts, function () {
+					alert('复制成功 \n复制内容' + texts)
+				})
+				console.log(toolresult);
+			})
+
 			var statu = 1;
 			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
 				$(".bottom-beian").hide();
@@ -345,7 +397,7 @@
 							statu = 0;
 						});
 						$(".area-list-li-containor").fadeIn(500);
-						$(".fold-btn").css("background","url(imgs/con_img/fold.png)");
+						$(".fold-btn").css("background", "url(imgs/con_img/fold.png)");
 					} else {
 						$(".control-containor").animate({
 							right: '-415px'
@@ -355,7 +407,7 @@
 							// $(".fold-btn").css("left", "-60px");
 						});
 						$(".area-list-li-containor").fadeOut(500);
-						$(".fold-btn").css("background","url(imgs/con_img/fold_open.png)");
+						$(".fold-btn").css("background", "url(imgs/con_img/fold_open.png)");
 					}
 				});
 				$(".control-containor").animate({
@@ -364,7 +416,7 @@
 					statu = 0;
 				});
 				$(".area-list-li-containor").fadeIn(500);
-				$(".fold-btn").css("background","url(imgs/con_img/fold.png)");
+				$(".fold-btn").css("background", "url(imgs/con_img/fold.png)");
 			}
 		});
 		//防止IOS的缩放函数

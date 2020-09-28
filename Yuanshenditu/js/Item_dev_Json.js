@@ -1,4 +1,3 @@
-
 var JS_Item = {
     "type": "FeatureCollection",
     "features": []
@@ -37,19 +36,130 @@ var JS_YJSW_MD = JSON.parse(JSON.stringify(JS_Item));
 var JS_DXQQR_MD = JSON.parse(JSON.stringify(JS_Item));
 var JS_SYFS_MD = JSON.parse(JSON.stringify(JS_Item));
 var JS_LYSS_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_DBT_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_DBT_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_PPH_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_PPH_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_XQD_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_XQD_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_YYLX_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_SLM_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_SLM_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_KFZH_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_KFZH_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_QX = JSON.parse(JSON.stringify(JS_Item));
+var JS_MW = JSON.parse(JSON.stringify(JS_Item));
+var JS_LP = JSON.parse(JSON.stringify(JS_Item));
+var JS_XL = JSON.parse(JSON.stringify(JS_Item));
+var JS_XDC = JSON.parse(JSON.stringify(JS_Item));
+var JS_BWHHD_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_BWHHD_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_LYHHR_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_LYHHR_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_DQSJ_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_DQSJ_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_SBLM_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_SBLM_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_FGS_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_FGS_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_JH_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_JH_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_JYC_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_JYC_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_HDCB_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_HDCB_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_PX_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_PX_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_QW_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_QW_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_TTH_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_TTH_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_BH_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_BH_LY = JSON.parse(JSON.stringify(JS_Item));
 
-
-var JS_array = [JS_FST,JS_YST,JS_DLK_MD,JS_DLK_LY,JS_JYJJ,JS_NSH,JS_LLBH,JS_GGG,JS_DDL,JS_SXLYH,JS_MFMG,
-JS_LLM,JS_FCJ,JS_PGYZ,JS_YPS,JS_SP,JS_SJK_LY,JS_BTK_LY,JS_SJK_MD,JS_BTK_MD,
-JS_YJSW_LY,JS_YJLZ_LY,JS_LYSS_LY,JS_ZWCLR_LY,JS_SYFS_LY,JS_DXQQR_LY,JS_BX_MD,JS_BX_LY,JS_LLD,JS_YJSW_MD,JS_DXQQR_MD,JS_SYFS_MD,JS_LYSS_MD];
+var JS_array = [
+    JS_FST,
+    JS_YST,
+    JS_DLK_MD,
+    JS_DLK_LY,
+    JS_JYJJ,
+    JS_NSH,
+    JS_LLBH,
+    JS_GGG,
+    JS_DDL,
+    JS_SXLYH,
+    JS_MFMG,
+    JS_LLM,
+    JS_FCJ,
+    JS_PGYZ,
+    JS_YPS,
+    JS_SP,
+    JS_SJK_LY,
+    JS_BTK_LY,
+    JS_SJK_MD,
+    JS_BTK_MD,
+    JS_YJSW_LY,
+    JS_YJLZ_LY,
+    JS_LYSS_LY,
+    JS_ZWCLR_LY,
+    JS_SYFS_LY,
+    JS_DXQQR_LY,
+    JS_BX_MD,
+    JS_BX_LY,
+    JS_LLD,
+    JS_YJSW_MD,
+    JS_DXQQR_MD,
+    JS_SYFS_MD,
+    JS_LYSS_MD,
+    JS_DBT_MD,
+    JS_DBT_LY,
+    JS_PPH_MD,
+    JS_PPH_LY,
+    JS_XQD_MD,
+    JS_XQD_LY,
+    JS_YYLX_LY,
+    JS_SLM_MD,
+    JS_SLM_LY,
+    JS_KFZH_MD,
+    JS_KFZH_LY,
+    JS_QX,
+    JS_MW,
+    JS_LP,
+    JS_XL,
+    JS_XDC,
+    JS_BWHHD_MD,
+    JS_BWHHD_LY,
+    JS_LYHHR_MD,
+    JS_LYHHR_LY,
+    JS_DQSJ_MD,
+    JS_DQSJ_LY,
+    JS_SBLM_MD,
+    JS_SBLM_LY,
+    JS_FGS_MD,
+    JS_FGS_LY,
+    JS_JH_MD,
+    JS_JH_LY,
+    JS_JYC_MD,
+    JS_JYC_LY,
+    JS_HDCB_MD,
+    JS_HDCB_LY,
+    JS_PX_MD,
+    JS_PX_LY,
+    JS_QW_MD,
+    JS_QW_LY,
+    JS_TTH_MD,
+    JS_TTH_LY,
+    JS_BH_MD,
+    JS_BH_LY,
+];
 
 let url = 'http://yuanshen.site:8848/marker/queryAll'
 let success = function (res) {
-	for(var i = 0 ; i< res.data.list.length; i++) {
-	    var item = res.data.list[i];
-		var markerX = item.xy.split(',')[0];
-		var markerY = item.xy.split(',')[1];
-		var markerInfo = {
+    for (var i = 0; i < res.data.list.length; i++) {
+        var item = res.data.list[i];
+        var markerX = item.xy.split(',')[0];
+        var markerY = item.xy.split(',')[1];
+        var markerInfo = {
             "geometry": {
                 "type": "Point",
                 "coordinates": [
@@ -63,21 +173,20 @@ let success = function (res) {
             },
             "id": item.id
         };
-		JS_array[item.layerId].features.push(markerInfo);
-	}
+        JS_array[item.layerId].features.push(markerInfo);
+    }
 }
-      // eslint-disable-next-line no-unused-vars
+// eslint-disable-next-line no-unused-vars
 let err = function (msg) {
     alert(msg)
 }
 $.ajax({
-	    async: false,
-        type: 'POST',
-        url: url,
-        success: success,
-        contentType: 'application/json;charset=UTF-8',
-        error:function(result)
-        {
-            console.log(result); 
-        }
+    async: false,
+    type: 'POST',
+    url: url,
+    success: success,
+    contentType: 'application/json;charset=UTF-8',
+    error: function (result) {
+        console.log(result);
+    }
 })

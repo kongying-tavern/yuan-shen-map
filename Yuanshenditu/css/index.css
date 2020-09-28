@@ -53,7 +53,7 @@ body,
 }
 .save-btn.disable
 {
-    opacity: 0.4;
+    opacity: 1;
 }
 .topLine{
     position: absolute;
