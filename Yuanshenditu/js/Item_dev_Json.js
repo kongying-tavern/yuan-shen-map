@@ -33,10 +33,15 @@ var JS_DXQQR_LY = JSON.parse(JSON.stringify(JS_Item));
 var JS_BX_MD = JSON.parse(JSON.stringify(JS_Item));
 var JS_BX_LY = JSON.parse(JSON.stringify(JS_Item));
 var JS_LLD = JSON.parse(JSON.stringify(JS_Item));
+var JS_YJSW_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_DXQQR_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_SYFS_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_LYSS_MD = JSON.parse(JSON.stringify(JS_Item));
+
 
 var JS_array = [JS_FST,JS_YST,JS_DLK_MD,JS_DLK_LY,JS_JYJJ,JS_NSH,JS_LLBH,JS_GGG,JS_DDL,JS_SXLYH,JS_MFMG,
 JS_LLM,JS_FCJ,JS_PGYZ,JS_YPS,JS_SP,JS_SJK_LY,JS_BTK_LY,JS_SJK_MD,JS_BTK_MD,
-JS_YJSW_LY,JS_YJLZ_LY,JS_LYSS_LY,JS_ZWCLR_LY,JS_SYFS_LY,JS_DXQQR_LY,JS_BX_MD,JS_BX_LY,JS_LLD];
+JS_YJSW_LY,JS_YJLZ_LY,JS_LYSS_LY,JS_ZWCLR_LY,JS_SYFS_LY,JS_DXQQR_LY,JS_BX_MD,JS_BX_LY,JS_LLD,JS_YJSW_MD,JS_DXQQR_MD,JS_SYFS_MD,JS_LYSS_MD];
 
 let url = 'http://yuanshen.site:8848/marker/queryAll'
 let success = function (res) {

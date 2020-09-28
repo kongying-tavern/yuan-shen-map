@@ -5,7 +5,7 @@ var map = L.map("map", {
 	center: [-35, 45],
 	zoomDelta: 0.5,
 	zoomSnap: 0.5,
-	maxZoom: 7,
+	maxZoom: 8,
 	minZoom: 4,
 	zoom: 4,
 	maxBounds: t,
@@ -80,6 +80,10 @@ var LayerMap = {
 	Layer_BX_MD: L.layerGroup(),
 	Layer_BX_LY: L.layerGroup(),
 	Layer_LLD: L.layerGroup(),
+	Layer_YJSW_MD: L.layerGroup(),
+	Layer_DXQQR_MD: L.layerGroup(),
+	Layer_SYFS_MD: L.layerGroup(),
+	Layer_LYSS_MD: L.layerGroup(),
 }
 //定义各个坐标使用的图标
 function getIconInfo(Name) {
@@ -246,7 +250,11 @@ var typearray = [
 	[LayerMap["Layer_DXQQR_LY"], JS_DXQQR_LY, "PTG"],
 	[LayerMap["Layer_BX_MD"], JS_BX_MD, "BX"],
 	[LayerMap["Layer_BX_LY"], JS_BX_LY, "BX"],
-	[LayerMap["Layer_LLD"], JS_LLD, "TC"]
+	[LayerMap["Layer_LLD"], JS_LLD, "TC"],
+	[LayerMap["Layer_YJSW_MD"], JS_YJSW_MD, "JYG"],
+	[LayerMap["Layer_DXQQR_MD"], JS_DXQQR_MD, "PTG"],
+	[LayerMap["Layer_SYFS_MD"], JS_SYFS_MD, "PTG"],
+	[LayerMap["Layer_LYSS_MD"], JS_LYSS_MD, "PTG"],
 ];
 
 //标记方法
