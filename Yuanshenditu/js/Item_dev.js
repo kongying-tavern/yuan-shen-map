@@ -124,6 +124,26 @@ var LayerMap = {
 	Layer_TTH_LY: L.layerGroup(),
 	Layer_BH_MD: L.layerGroup(),
 	Layer_BH_LY: L.layerGroup(),
+	Layer_SongR_MD: L.layerGroup(),
+	Layer_SongR_LY: L.layerGroup(),
+	Layer_ShouR_MD: L.layerGroup(),
+	Layer_ShouR_LY: L.layerGroup(),
+	Layer_QR_MD: L.layerGroup(),
+	Layer_QR_LY: L.layerGroup(),
+	Layer_YR_MD: L.layerGroup(),
+	Layer_YR_LY: L.layerGroup(),
+	Layer_BLB_MD: L.layerGroup(),
+	Layer_BLB_LY: L.layerGroup(),
+	Layer_HLB_MD: L.layerGroup(),
+	Layer_HLB_LY: L.layerGroup(),
+	Layer_MG_MD: L.layerGroup(),
+	Layer_MG_LY: L.layerGroup(),
+	Layer_XYWB_MD: L.layerGroup(),
+	Layer_XYWB_LY: L.layerGroup(),
+	Layer_SG_MD: L.layerGroup(),
+	Layer_SG_LY: L.layerGroup(),
+	Layer_SM_MD: L.layerGroup(),
+	Layer_SM_LY: L.layerGroup(),
 }
 //定义各个坐标使用的图标
 function getIconInfo(Name) {
@@ -238,7 +258,7 @@ function onEachFeature(feature, layer) {
 	var layerNumber = localStorage.getItem("layerNumber");
 	var key = layerNumber + "_" + feature.id;
 	var switchClass = (!(localStorage.getItem(key))) ? "myPopSwitchTodo" : "myPopSwitchDone"
-	var popupHtml=`
+	var popupHtml = `
 			<div class="myPopContainer">
 				<div class="myPopTitle">
 					<div class="myPopName" >${feature.properties.popTitle}${feature.id}</div>
@@ -335,6 +355,26 @@ var typearray = [
 	[LayerMap["Layer_TTH_LY"], JS_TTH_LY, "TC"],
 	[LayerMap["Layer_BH_MD"], JS_BH_MD, "TC"],
 	[LayerMap["Layer_BH_LY"], JS_BH_LY, "TC"],
+	[LayerMap["Layer_SongR_MD"], JS_SongR_MD, "TC"],
+	[LayerMap["Layer_SongR_LY"], JS_SongR_LY, "TC"],
+	[LayerMap["Layer_ShouR_MD"], JS_ShouR_MD, "TC"],
+	[LayerMap["Layer_ShouR_LY"], JS_ShouR_LY, "TC"],
+	[LayerMap["Layer_QR_MD"], JS_QR_MD, "TC"],
+	[LayerMap["Layer_QR_LY"], JS_QR_LY, "TC"],
+	[LayerMap["Layer_YR_MD"], JS_YR_MD, "TC"],
+	[LayerMap["Layer_YR_LY"], JS_YR_LY, "TC"],
+	[LayerMap["Layer_BLB_MD"], JS_BLB_MD, "TC"],
+	[LayerMap["Layer_BLB_LY"], JS_BLB_LY, "TC"],
+	[LayerMap["Layer_HLB_MD"], JS_HLB_MD, "TC"],
+	[LayerMap["Layer_HLB_LY"], JS_HLB_LY, "TC"],
+	[LayerMap["Layer_MG_MD"], JS_MG_MD, "TC"],
+	[LayerMap["Layer_MG_LY"], JS_MG_LY, "TC"],
+	[LayerMap["Layer_XYWB_MD"], JS_XYWB_MD, "TC"],
+	[LayerMap["Layer_XYWB_LY"], JS_XYWB_LY, "TC"],
+	[LayerMap["Layer_SG_MD"], JS_SG_MD, "TC"],
+	[LayerMap["Layer_SG_LY"], JS_SG_LY, "TC"],
+	[LayerMap["Layer_SM_MD"], JS_SM_MD, "TC"],
+	[LayerMap["Layer_SM_LY"], JS_SM_LY, "TC"],
 ];
 
 //标记方法
@@ -371,7 +411,7 @@ function MarkPoint(element) {
 }
 
 //初始化各个坐标
-var changeposition="";
+var changeposition = "";
 for (let i = 0; i < typearray.length; i++) {
 	localStorage.setItem("layerNumber", i);
 	var currentIcon = getIconInfo(typearray[i][2]);
@@ -395,7 +435,7 @@ for (let i = 0; i < typearray.length; i++) {
 					shadowUrl: doneShadowUrl,
 				}),
 				alt: `${latlng.lng},${latlng.lat}`,
-				draggable:true
+				draggable: true
 			});
 			markers[key] = marker;
 			return marker.addTo(typearray[i][0]).on('dragend', function (event) {
@@ -452,7 +492,7 @@ map.on('popupopen', function (e) {
 	var key = className.substring(5, className.length);
 	var markedFlag = localStorage.getItem(key);
 	var switchClass = (!(localStorage.getItem(key))) ? "myPopSwitchTodo" : "myPopSwitchDone"
-	popupHtml=`
+	popupHtml = `
 			<div class="myPopContainer">
 				<div class="myPopTitle">
 					<div class="myPopName" >${marker.feature.properties.popTitle}${marker.feature.id}</div>
