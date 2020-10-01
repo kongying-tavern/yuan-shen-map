@@ -972,26 +972,12 @@
 		//渲染修改弹窗
 		function show_modify_marker(id)
 		{
-			if(changeposition=="")
-			{
-				for(let i=0;i<layerarray.length;i++)
+			for(let i=0;i<layerarray.length;i++)
 				{
 					if(layerarray[i].feature.id==id)
 					{
 						$("#modify-x").val(layerarray[i]._latlng.lat);
 						$("#modify-y").val(layerarray[i]._latlng.lng);
-					}
-				}
-			}
-			else
-			{
-				$("#modify-x").val(changeposition.lat);
-				$("#modify-y").val(changeposition.lng);
-			}
-			for(let i=0;i<layerarray.length;i++)
-				{
-					if(layerarray[i].feature.id==id)
-					{
 						$("#modify-name").val(layerarray[i].feature.properties.popTitle);
 						$("#modify-text").val(layerarray[i].feature.properties.popupContent);
 					}
