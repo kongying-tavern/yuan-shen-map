@@ -12,16 +12,19 @@
 <body>
 	由于用户量过大，图片服务器无法负担流量需求，经秃子程序们正在全力抢救，网页版地图服务已经恢复，但也许会有卡顿现象。
 	</br>各位旅行者仍可继续使用在线地图，我们也会提供离线版的地图支持，并且支持导入您在网站中标记的数据。最新离线版下载盘版地址：
-	</br>链接：<a href="https://pan.baidu.com/s/1YQQWkdqddcKVQLKI08XP4A"
-		target="_blank">https://pan.baidu.com/s/1YQQWkdqddcKVQLKI08XP4A</a>
+	</br>链接：<a href="https://pan.baidu.com/s/1zVB1pxVuRztbnrYbkez40g "
+		target="_blank">https://pan.baidu.com/s/1zVB1pxVuRztbnrYbkez40g </a>
 	</br>
-	提取码：aapo
-	</br>您也可以加群下载离线更新包：1群765302904（未满）；2群853210278（已满）；3群932683801（已满）
+	提取码：KYJG
+	</br>您也可以加群下载离线更新包：1群765302904（已满）；2群853210278（已满）；3群932683801（已满）；4群1139510554（未满）
 	</br><button id="submitMarker">一键导出标记点位记录</button> 【使用说明】将导出数据的内容复制到离线版的导入框中，提交即可
 	</br>不能下载？<button id="submitMarker2">点击复制记录到剪切板</button>
-	</br>PS.在线地图中点击上传也可下载点位记录并记录到剪切板
+	</br>PS.在线地图中点击存档也可下载点位记录并记录到剪切板或用下方按钮跳转到上传点位记录页面
 	</br>
-	</br><button id="enterIndex">进入在线地图</button>
+	</br><button id="update">点击跳转到上传页面</button>
+	</br>
+	</br><button id="enterIndex">进入新版在线地图（带点位聚合）</button>
+	</br><button id="enterIndex2">进入旧版在线地图（不带点位聚合）</button>
 </body>
 <script>
 	// 复制的方法
@@ -76,6 +79,14 @@
 	$("#enterIndex").click(function () {
 		window.event.returnValue = false;
 		window.location.href = 'index.html';
+	})
+	$("#enterIndex2").click(function () {
+		window.event.returnValue = false;
+		window.location.href = 'index3.html';
+	})
+	$("#update").click(function () {
+		window.event.returnValue = false;
+		window.location.href = 'shangchuan.html';
 	})
 </script>
 
