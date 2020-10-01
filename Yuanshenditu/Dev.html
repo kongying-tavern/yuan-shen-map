@@ -124,7 +124,7 @@
 				<td class="table-options-operation">操作</td>
 			</tr>
 		</table>
-		<button onclick='downloadJson("Item_Json")'>导出json</button>
+		<button class="export-btn" onclick='downloadJson("Item_Json")'>导出json</button>
 	</div>
 	<div id='map'></div>
 	<!-- 筛选器 -->
@@ -807,9 +807,11 @@
 				let index=$(this).attr("lid");
 				for(let i=0;i<layerarray.length;i++)
 				{
-					if(layerarray[i].feature.id==index)
+					if(layerarray[i].feature.id == index)
 					{
-						layerarray[i].openPopup();
+            const currentPoint = layerarray[i]
+						currentPoint.openPopup();
+						map.setView(currentPoint._latlng, 7)
 					}
 				}
 				

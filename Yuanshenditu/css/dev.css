@@ -17,6 +17,8 @@
     width: 600px;
     height: 300px;
     background: #ffffff;
+    border-radius: 10px;
+    padding: 16px;
     overflow: hidden scroll;
 }
 .tname
@@ -146,4 +148,8 @@
     top: 40px;
     padding: 5px;
     cursor: pointer;
+}
+.export-btn {
+    position: sticky;
+    top: 0;
 }
