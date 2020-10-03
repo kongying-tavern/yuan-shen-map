@@ -78,8 +78,12 @@ var LayerMap = {
 	Layer_ZWCLR_LY: L.layerGroup(),
 	Layer_SYFS_LY: L.layerGroup(),
 	Layer_DXQQR_LY: L.layerGroup(),
-	Layer_BX_MD: L.markerClusterGroup({maxClusterRadius: 100}),
-	Layer_BX_LY: L.markerClusterGroup({maxClusterRadius: 100}),
+	Layer_BX_MD: L.markerClusterGroup({
+		maxClusterRadius: 100
+	}),
+	Layer_BX_LY: L.markerClusterGroup({
+		maxClusterRadius: 100
+	}),
 	Layer_LLD: L.layerGroup(),
 	Layer_YJSW_MD: L.layerGroup(),
 	Layer_DXQQR_MD: L.layerGroup(),
@@ -153,11 +157,11 @@ function getIconInfo(Name) {
 		case "ST": { //神瞳
 			var icon_base = L.Icon.extend({
 				options: {
-					iconSize: [32.4, 34.2], // size of the icon
+					iconSize: [24, 24], // size of the icon
 					shadowSize: [50, 64], // size of the shadow
-					iconAnchor: [16.2, 17.4], // point of the icon which will correspond to marker's location
+					iconAnchor: [12, 12], // point of the icon which will correspond to marker's location
 					shadowAnchor: [4, 62], // the same for the shadow
-					popupAnchor: [0, -17.1] // point from which the popup should open relative to the iconAnchor
+					popupAnchor: [0, -12] // point from which the popup should open relative to the iconAnchor
 				}
 			});
 			return icon_base;
@@ -277,7 +281,7 @@ function change() {
 				})
 			});
 			$(".myPopPicture").animate({
-				height: '326px'
+				height: '311px'
 			}, function () {
 				state = 1;
 			});
@@ -301,6 +305,7 @@ function onEachFeature(feature, layer) {
 	popupHtml += '<img src=comment_png/' + key + '.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">';
 	popupHtml += '</div>';
 	popupHtml += '<div class="' + switchClass + '" onclick="MarkPoint(this)" data-key="' + key + '"></div>';
+	popupHtml += '<div class="tipcard"></div>'
 	popupHtml += '</div>';
 	layer.bindPopup(popupHtml);
 }
@@ -419,8 +424,11 @@ function MarkPoint(element) {
 	localStorage.setItem(key, newValue ? "1" : "");
 
 	var doneUrl = newValue ? "_done" : ""
-	var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".png";
-
+	if (layerNumber == 0 || layerNumber == 1) {
+		var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".svg";
+	} else {
+		var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".png";
+	}
 	var currentShowdow = currentIcon.prototype.options.shadowUrl
 	var downShadow = newValue ? "./imgs/loc_find.svg" : "./imgs/loc_notfind.svg"
 	var doneShadowUrl = currentShowdow ? downShadow : ""
@@ -451,8 +459,11 @@ for (let i = 0; i < typearray.length; i++) {
 				markedFlag = true;
 			}
 			var doneUrl = markedFlag ? "_done" : ""
-			var iconUrl = "./imgs/icon_" + i + doneUrl + ".png";
-
+			if (i == 0 || i == 1) {
+				var iconUrl = "./imgs/icon_" + i + doneUrl + ".svg";
+			} else {
+				var iconUrl = "./imgs/icon_" + i + doneUrl + ".png";
+			}
 			var currentShowdow = currentIcon.prototype.options.shadowUrl
 			var downShadow = markedFlag ? "./imgs/loc_find.svg" : "./imgs/loc_notfind.svg"
 			var doneShadowUrl = currentShowdow ? downShadow : ""
@@ -531,6 +542,7 @@ map.on('popupopen', function (e) {
 	popupHtml += '<img src=comment_png/' + key + '.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">';
 	popupHtml += '</div>';
 	popupHtml += '<div class="' + switchClass + '" onclick="MarkPoint(this)" data-key="' + key + '"></div>';
+	popupHtml += '<div class="tipcard"></div>'
 	popupHtml += '</div>';
 	marker.bindPopup(popupHtml);
 });

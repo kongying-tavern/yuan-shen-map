@@ -501,13 +501,12 @@ body,
 
 .myPopPicture {
     position: relative;
-    display: inline-block;
     overflow: hidden;
-    width: 327px;
-    height: 326px;
-    left: 13px;
+    width: 311px;
+    height: 311px;
     margin-top: 30px;
-    border-radius: 5px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .myPopPicture.disable{
@@ -516,11 +515,22 @@ body,
 
 .myPopPicture img {
     display: inline-block;
-    width: 327px;
-    height: 326px;
-    left: 0px;
-    top: 0px;
-    border-radius: 5px;
+    width: 100%;
+    box-sizing:border-box;
+    border: 3px solid rgba(255, 255, 255, 1);
+    border-radius: 9px;
+}
+
+.tipcard{
+    position: absolute;
+    background: url("../imgs/con_img/tips.png") no-repeat;
+    background-size: contain;
+    background-position: center bottom;
+    width: 353px;
+    height: 53px;
+    left: -4px;
+    bottom: -38px;
+    pointer-events: none;
 }
 
 .leaflet-popup-content-wrapper {
@@ -529,9 +539,12 @@ body,
     width: 353px;
     left: -176.5px;
     bottom: 0px;
-    border-radius: 7px;
+    border-radius: 20px;
     background: #F0E9E2;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 4px solid transparent;
+    border-color: rgba(0, 0, 0, 0.3);
+    background-clip: padding-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
     cursor: default;
     transform-origin: 50% 100% 0;
     transform: scale(0.6);
@@ -543,13 +556,24 @@ body,
 
 .leaflet-popup-content {
     display: inline-block;
-    width: 353px !important;
+    width: 100% !important;
     margin: 0;
     clear:both;
 }
 
 .leaflet-popup-tip {
     background: #F0E9E2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
+}
+
+.leaflet-popup-tip-container{
+    top: -3px;
+    width: 30px;
+    height: 30px;
+    margin-left: -15px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0);
+    opacity: 0;
+    pointer-events: auto;
 }
 
 .myPopClose {
@@ -564,29 +588,25 @@ body,
 }
 
 .myPopSwitchTodo {
-    display: inline-block;
     position: relative;
-    width: 131px;
-    height: 38px;
-    left: 210px;
+    width: 311px;
+    height: 48px;
     top: 0px;
-    background: url(../imgs/con_img/Todo.png);
+    background: url(../imgs/con_img/Todo.png) no-repeat;
     cursor: pointer;
     order: 1;
-    margin: 10px 0px;
+    margin: 10px auto;
 }
 
 .myPopSwitchDone {
-    display: inline-block;
     position: relative;
-    width: 131px;
-    height: 38px;
-    left: 210px;
+    width: 311px;
+    height: 48px;
     top: 0px;
-    background: url(../imgs/con_img/Done.png);
+    background: url(../imgs/con_img/Done.png) no-repeat;
     cursor: pointer;
     order: 1;
-    margin: 10px 0px;
+    margin: 10px auto;
 }
 @media screen and (max-width: 750px) {
     .leaflet-popup-content-wrapper {
