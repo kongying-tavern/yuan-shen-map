@@ -1,8 +1,7 @@
-/* 初始化地图样式，字体 */
-/* @font-face {
+@font-face {
     font-family: font;
-    src: url(hywh_thin.ttf);
-} */
+    src: url(/gitee/hywh_thin.ttf);
+}
 html,
 body,
 #map {
@@ -433,51 +432,44 @@ body,
     position: relative;
     flex-direction: column;
     padding: 0px;
-    left: 14px;
-    top: 14px;
+    left: 17px;
+    margin-top: 15px;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .myPopName {
-    position: static;
-    height: auto;
-    left: 0px;
-    top: 0px;
+    position: block;
     font-family: font;
     font-style: normal;
     font-weight: bold;
-    font-size: 24px;
-    line-height: 28px;
-    align-items: left;
+    font-size: 28px;
+    line-height: 100%;
     color: #4B5368;
-    flex: none;
     order: 0;
-    align-self: left;
-    margin: 0px;
+    margin: 4px 0;
 }
 
 .myPopLine {
     display: inline-block;
     position: relative;
-    width: 327px;
+    width: 312px;
     height: 0px;
-    left: 13px;
-    top: 23px;
+    left: 17px;
+    margin-top: 15px;
     border: 1px solid rgba(167, 138, 113, 0.2);
 }
 
 .myPopComment {
-    display: inline-block;
+    display: block;
     position: relative;
-    width: auto;
-    height: 41px;
-    left: 14px;
-    top: 24px;
+    width: 100%;
+    margin: 14px 0;
+    padding: 0 17px;
     font-family: font;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
-    line-height: 41px;
+    line-height: 100%;
     align-items: center;
     color: #4B5368;
     cursor: pointer;
@@ -490,6 +482,10 @@ body,
 
 .Select{
     display: inline-block;
+    position: absolute;
+    right: 0;
+    margin-right: 14px;
+    top: 50%;
     margin-bottom: 2px;
     transform-origin: 50% 50% 0;
     transition: all 0.5s;
@@ -502,11 +498,9 @@ body,
 .myPopPicture {
     position: relative;
     overflow: hidden;
-    width: 311px;
-    height: 311px;
-    margin-top: 30px;
-    margin-left:auto;
-    margin-right:auto;
+    width: 312px;
+    height: 312px;
+    margin: 0 auto;
 }
 
 .myPopPicture.disable{
@@ -526,11 +520,12 @@ body,
     background: url("../imgs/con_img/tips.png") no-repeat;
     background-size: contain;
     background-position: center bottom;
-    width: 353px;
-    height: 53px;
-    left: -4px;
-    bottom: -38px;
+    width: 150px;
+    height: 52px;
+    left: 50%;
+    bottom: -35px;
     pointer-events: none;
+    margin-left: -75px;
 }
 
 .leaflet-popup-content-wrapper {
@@ -578,35 +573,34 @@ body,
 
 .myPopClose {
     position: absolute !important;
-    right: 12px !important;
-    top: 14px !important;
-    background: url(../imgs/con_img/popClose.png);
+    right: 20px !important;
+    top: 19px !important;
+    background: url(../imgs/con_img/popClose.svg) no-repeat;
+    background-size: contain;
     box-sizing: border-box !important;
-    width: 32px;
-    height: 31px;
+    width: 33px;
+    height: 33px;
     cursor: pointer;
 }
 
 .myPopSwitchTodo {
     position: relative;
     width: 311px;
-    height: 48px;
-    top: 0px;
+    height: 43px;
     background: url(../imgs/con_img/Todo.png) no-repeat;
     cursor: pointer;
     order: 1;
-    margin: 10px auto;
+    margin: 17px auto;
 }
 
 .myPopSwitchDone {
     position: relative;
     width: 311px;
-    height: 48px;
-    top: 0px;
+    height: 43px;
     background: url(../imgs/con_img/Done.png) no-repeat;
     cursor: pointer;
     order: 1;
-    margin: 10px auto;
+    margin: 17px auto;
 }
 @media screen and (max-width: 750px) {
     .leaflet-popup-content-wrapper {

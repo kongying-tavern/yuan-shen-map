@@ -92,6 +92,7 @@ var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 					html: '<b>' + doneNum + '/' + cluster.getChildCount() + '</b>' ,
 					className:"cluster-"+childClassName[1],
 					iconSize: [30+cluster.getChildCount()/2, 30+cluster.getChildCount()/2], // size of the icon
+					iconAnchor:[(30+cluster.getChildCount()/2)/2,(30+cluster.getChildCount()/2)/2+15]
 				});
 		}
 	},

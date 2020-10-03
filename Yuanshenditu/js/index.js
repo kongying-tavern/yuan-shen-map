@@ -78,11 +78,27 @@ var LayerMap = {
 	Layer_ZWCLR_LY: L.layerGroup(),
 	Layer_SYFS_LY: L.layerGroup(),
 	Layer_DXQQR_LY: L.layerGroup(),
-	Layer_BX_MD: L.markerClusterGroup({
-		maxClusterRadius: 100
+	Layer_BX_MD:L.markerClusterGroup({
+		maxClusterRadius: function(e){
+			let radius=100;
+			if(e==4)radius=100;
+			else if(e==5)radius=80;
+			else if(e==6)radius=55;
+			else if(e==7)radius=25;
+			console.log(radius);
+			return radius;
+		}
 	}),
-	Layer_BX_LY: L.markerClusterGroup({
-		maxClusterRadius: 100
+	Layer_BX_LY:L.markerClusterGroup({
+		maxClusterRadius: function(e){
+			let radius=100;
+			if(e==4)radius=100;
+			else if(e==5)radius=80;
+			else if(e==6)radius=55;
+			else if(e==7)radius=25;
+			console.log(radius);
+			return radius;
+		}
 	}),
 	Layer_LLD: L.layerGroup(),
 	Layer_YJSW_MD: L.layerGroup(),
@@ -281,7 +297,7 @@ function change() {
 				})
 			});
 			$(".myPopPicture").animate({
-				height: '311px'
+				height: '312px'
 			}, function () {
 				state = 1;
 			});
