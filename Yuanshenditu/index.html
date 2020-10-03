@@ -375,6 +375,7 @@
 			var statu = 1;
 			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
 				$(".bottom-beian").hide();
+				$(".fold-btn").css("background", "url(imgs/con_img/fold_open.png)");
 				//几项M端的适配
 				$(".control-containor").css("transform-origin", "0% 0% 0");
 				$(".control-containor").css("transform", "scale(0.5)");
