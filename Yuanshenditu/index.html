@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -393,6 +393,7 @@
 							statu = 0;
 						});
 						$(".area-list-li-containor").fadeIn(500);
+						$(".fold-btn").css("background", "url(imgs/con_img/fold.png)");
 					} else {
 						$(".control-containor").animate({
 							right: '-415px'
@@ -402,6 +403,7 @@
 							// $(".fold-btn").css("left", "-55px");
 						});
 						$(".area-list-li-containor").fadeOut(500);
+						$(".fold-btn").css("background", "url(imgs/con_img/fold_open.png)");
 					}
 				});
 			}
