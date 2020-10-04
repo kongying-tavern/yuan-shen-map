@@ -10,6 +10,15 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" href="dist/MarkerCluster.css" />
 	<link rel="stylesheet" href="dist/MarkerCluster.Default.css" />
+	<script>
+		var _hmt = _hmt || [];
+		(function () {
+			var hm = document.createElement("script");
+			hm.src = "https://hm.baidu.com/hm.js?cd4f7eed0a6e62d83b92c5dfb9f1a20f";
+			var s = document.getElementsByTagName("script")[0];
+			s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
 </head>
 
 <body>
@@ -372,7 +381,7 @@
 			//单机跳转
 			$(".danjixiazai").click(function () {
 				window.event.returnValue = false;
-				window.location.href = 'index2.html';
+				window.location.href = 'main.html';
 			})
 
 			var statu = 1;
@@ -397,7 +406,7 @@
 							statu = 0;
 						});
 						$(".area-list-li-containor").fadeIn(500);
-						$(".fold-btn").css("background", "url(imgs/con_img/fold.png)");
+						$(".fold-btn").css("background-image", "url(imgs/con_img/fold.png)");
 					} else {
 						$(".control-containor").animate({
 							right: '-415px'
@@ -407,7 +416,7 @@
 							// $(".fold-btn").css("left", "-55px");
 						});
 						$(".area-list-li-containor").fadeOut(500);
-						$(".fold-btn").css("background", "url(imgs/con_img/fold_open.png)");
+						$(".fold-btn").css("background-image", "url(imgs/con_img/fold_open.png)");
 					}
 				});
 				$(".area-list-containor").show();
@@ -419,7 +428,7 @@
 					statu = 0;
 				});
 				$(".area-list-li-containor").fadeIn(500);
-				$(".fold-btn").css("background", "url(imgs/con_img/fold.png)");
+				$(".fold-btn").css("background-image", "url(imgs/con_img/fold.png)");
 			}
 			// else 
 			// {
@@ -459,7 +468,7 @@
 							statu = 0;
 						});
 						$(".area-list-li-containor").fadeIn(500);
-						$(".fold-btn").css("background", "url(imgs/con_img/fold.png)");
+						$(".fold-btn").css("background-image", "url(imgs/con_img/fold.png)");
 					} else {
 						$(".control-containor").animate({
 							right: '-415px'
@@ -469,7 +478,7 @@
 							// $(".fold-btn").css("left", "-60px");
 						});
 						$(".area-list-li-containor").fadeOut(500);
-						$(".fold-btn").css("background", "url(imgs/con_img/fold_open.png)");
+						$(".fold-btn").css("background-image", "url(imgs/con_img/fold_open.png)");
 					}
 				});
 				$(".control-containor").animate({
@@ -478,7 +487,7 @@
 					statu = 0;
 				});
 				$(".area-list-li-containor").fadeIn(500);
-				$(".fold-btn").css("background", "url(imgs/con_img/fold.png)");
+				$(".fold-btn").css("background-image", "url(imgs/con_img/fold.png)");
 			}
 		});
 		//防止IOS的缩放函数
