@@ -1,6 +1,6 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
+
 <head>
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 	<title>原神地图</title>
@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="css/dev.css">
 </head>
+
 <body>
 	<input type="button" class="switch-btn" value="显示/隐藏面板">
 	<div class="panel-table">
@@ -120,25 +121,25 @@
 		</select> -->
 
 		<select id="type" onchange="setMono()">
-			<option value="1" selected>特性</option>
-		<select>
-		<select id="are" onchange="setMono()">
-			<option value="a" selected>蒙德</option>
-		<select>
-		<select id="mono" class="item-select">
-			<option class="default">请选择</option>
-		<select>
-		<!-- zjj 2020/10/4 end-->
+			<option value="TX" selected>特性</option>
+			<select>
+				<select id="are" onchange="setMono()">
+					<option value="MD" selected>蒙德</option>
+					<select>
+						<select id="mono" class="item-select">
+							<option class="default">请选择</option>
+							<select>
+								<!-- zjj 2020/10/4 end-->
 
-		<table class="data-table">
-			<tr class="table-options-title">
-				<td class="table-options-name">名称</td>
-				<td class="table-options-id">ID</td>
-				<td class="table-options-description">点位描述</td>
-				<td class="table-options-operation">操作</td>
-			</tr>
-		</table>
-		<button class="export-btn" onclick='downloadJson("Item_Json")'>导出json</button>
+								<table class="data-table">
+									<tr class="table-options-title">
+										<td class="table-options-name">名称</td>
+										<td class="table-options-id">ID</td>
+										<td class="table-options-description">点位描述</td>
+										<td class="table-options-operation">操作</td>
+									</tr>
+								</table>
+								<button class="export-btn" onclick='downloadJson("Item_Json")'>导出json</button>
 	</div>
 	<div id='map'></div>
 	<!-- 筛选器 -->
@@ -193,7 +194,7 @@
 			<p style="display: none;"></p>
 			<p class="selector-hint">尚未选择收集要素</p>
 		</ul>
-		
+
 		<!-- 筛选器筛选列表以及筛选项 -->
 		<div class="options-containor">
 			<div class="options-list">
@@ -547,22 +548,23 @@
 	<script src="js/milo.js"></script>
 	<script>
 		//修改弹窗的弹出函数调用
-		function TGDialogS(e){
-				// 利用milo库引入dialog组件
-				need("biz.dialog",function(Dialog){
-					Dialog.show({
-						id:e,
-						bgcolor:'#000', //弹出“遮罩”的颜色，格式为"#FF6600"，可修改，默认为"#fff"
-						opacity:50 //弹出“遮罩”的透明度，格式为｛10-100｝，可选
-					});
+		function TGDialogS(e) {
+			// 利用milo库引入dialog组件
+			need("biz.dialog", function (Dialog) {
+				Dialog.show({
+					id: e,
+					bgcolor: '#000', //弹出“遮罩”的颜色，格式为"#FF6600"，可修改，默认为"#fff"
+					opacity: 50 //弹出“遮罩”的透明度，格式为｛10-100｝，可选
 				});
-			}
-        function closeDialog(){
-            // 利用milo库引入dialog组件
-            need("biz.dialog",function(Dialog){
-                Dialog.hide();
-            });
-        }
+			});
+		}
+
+		function closeDialog() {
+			// 利用milo库引入dialog组件
+			need("biz.dialog", function (Dialog) {
+				Dialog.hide();
+			});
+		}
 	</script>
 	<script>
 		$(".area-list-li-containor").hide();
@@ -570,6 +572,7 @@
 		//筛选函数
 		var i_type = "ALL";
 		var area_idx = "MD";
+
 		function filter() {
 			if (i_type == "ALL") {
 				for (let i = 0; i < $(".options-list .map-opts").length; i++) {
@@ -579,16 +582,12 @@
 						$(".options-list .map-opts").eq(i).hide();
 					}
 				}
-			} 
-			else 
-			{
+			} else {
 				for (let i = 0; i < $(".options-list .map-opts").length; i++) {
-					if ($(".options-list .map-opts").eq(i).attr("itemtype") == i_type && $(".options-list .map-opts").eq(i).attr("area") == area_idx) 
-					{
+					if ($(".options-list .map-opts").eq(i).attr("itemtype") == i_type && $(".options-list .map-opts").eq(i)
+						.attr("area") == area_idx) {
 						$(".options-list .map-opts").eq(i).show();
-					} 
-					else 
-					{
+					} else {
 						$(".options-list .map-opts").eq(i).hide();
 					}
 				}
@@ -615,7 +614,7 @@
 			}
 		});
 		//点击筛选项以改变选择器项目
-		$(".options-list .map-opts").click(function(){
+		$(".options-list .map-opts").click(function () {
 			$(".selector-hint").hide();
 			if ($(this).hasClass("on") == true) {
 				let text = $(this).text();
@@ -633,9 +632,7 @@
 				let typetext = typeclass.slice(0, idx);
 				// $(`.leaflet-control-layers-overlays .${typetext}`).parent().prev().trigger("click");
 				map.removeLayer(LayerMap[fclass]);
-			} 
-			else 
-			{
+			} else {
 				let text = $(this).text();
 				let fclass = $(this).attr("class");
 				fclass = fclass.slice(0, fclass.indexOf(" "));
@@ -649,8 +646,7 @@
 							$(".options-list .map-opts").eq(i).trigger("click");
 						}
 					}
-					if($(".opt-selector").length==0)
-					{
+					if ($(".opt-selector").length == 0) {
 						$(".selector-hint").show();
 					}
 				});
@@ -662,9 +658,8 @@
 				map.addLayer(LayerMap[fclass]);
 			}
 			$(this).toggleClass("on");
-			$(".map-opts.on").click(function(){
-				if($(".opt-selector").length==0)
-				{
+			$(".map-opts.on").click(function () {
+				if ($(".opt-selector").length == 0) {
 					$(".selector-hint").show();
 				}
 			})
@@ -672,7 +667,7 @@
 		//初始化筛选器功能
 		$(document).ready(function () {
 			$(".con-type-label:first").trigger("click");
-			$(".reg_log_link,.save-btn").click(function(){
+			$(".reg_log_link,.save-btn").click(function () {
 				alert("即将开放,敬请期待！");
 			})
 			var statu = 1;
@@ -707,7 +702,7 @@
 						$(".area-list-li-containor").fadeOut(500);
 					}
 				});
-			} 
+			}
 			// else 
 			// {
 			// 	//面板切换动画(pc)
@@ -735,8 +730,7 @@
 			// 		}, 500) //移出鼠标延迟500ms收回
 			// 	});
 			// }
-			else
-			{
+			else {
 				$(".fold-btn").click(function () {
 					if (statu == 1) {
 						// $(".control-containor").css("width", "420px");
@@ -783,81 +777,88 @@
 		}
 	</script>
 	<script>
-		$(".switch-btn").click(function(){
+		$(".switch-btn").click(function () {
 			$(".panel-table").toggle();
 		});
-		var typearray2 = [JS_FST,JS_YST,JS_DLK_MD,JS_DLK_LY,JS_BX_LY,JS_BX_MD,JS_SJK_LY,JS_BTK_LY,JS_SJK_MD,JS_BTK_MD,JS_JYJJ,JS_NSH,JS_LLBH,JS_YPS,JS_SP,JS_GGG,JS_DDL,JS_LLM,JS_SXLYH,JS_MFMG,JS_FCJ,JS_PGYZ,JS_YJSW_LY,JS_YJLZ_LY,JS_DXQQR_LY,JS_SYFS_LY,JS_ZWCLR_LY,JS_LYSS_LY,JS_LLD,JS_YJSW_MD,JS_DXQQR_MD,JS_SYFS_MD,JS_LYSS_MD,JS_DBT_MD,JS_DBT_LY,JS_PPH_MD,JS_PPH_LY,JS_XQD_MD,JS_XQD_LY,JS_YYLX_LY,JS_SLM_MD,JS_SLM_LY,JS_KFZH_MD,JS_KFZH_LY,JS_QX,JS_MW,JS_LP,JS_XL,JS_XDC,JS_BWHHD_MD,JS_BWHHD_LY,JS_LYHHR_MD,JS_LYHHR_LY,JS_DQSJ_MD,JS_DQSJ_LY,JS_SBLM_MD,JS_SBLM_LY,JS_FGS_MD,JS_FGS_LY,JS_JH_MD,JS_JH_LY,JS_JYC_MD,JS_JYC_LY,JS_HDCB_MD,JS_HDCB_LY,JS_PX_MD,JS_PX_LY,JS_QW_MD,JS_QW_LY,JS_TTH_MD,JS_TTH_LY,JS_BH_MD,JS_BH_LY,JS_SongR_MD,JS_SongR_LY,JS_ShouR_MD,JS_ShouR_LY,JS_QR_MD,JS_QR_LY,JS_YR_MD,JS_YR_LY,JS_BLB_MD,JS_BLB_LY,JS_HLB_MD,JS_HLB_LY,JS_MG_MD,JS_MG_LY,JS_XYWB_MD,JS_XYWB_LY,JS_SG_MD,JS_SG_LY,JS_SM_MD,JS_SM_LY];
-		var textarray=["Layer_FST","Layer_YST","Layer_DLK_MD","Layer_DLK_LY","Layer_JYJJ","Layer_NSH","Layer_LLBH","Layer_GGG","Layer_DDL","Layer_SXLYH","Layer_MFMG","Layer_LLM","Layer_FCJ","Layer_PGYZ","Layer_YPS","Layer_SP","Layer_SJK_LY","Layer_BTK_LY","Layer_SJK_MD","Layer_BTK_MD","Layer_YJSW_LY","Layer_YJLZ_LY","Layer_LYSS_LY","Layer_ZWCLR_LY","Layer_SYFS_LY","Layer_DXQQR_LY","Layer_BX_MD","Layer_BX_LY","Layer_LLD","Layer_YJSW_MD","Layer_DXQQR_MD","Layer_SYFS_MD","Layer_LYSS_MD","Layer_DBT_MD","Layer_DBT_LY","Layer_PPH_MD","Layer_PPH_LY","Layer_XQD_MD","Layer_XQD_LY","Layer_YYLX_LY","Layer_SLM_MD","Layer_SLM_LY","Layer_KFZH_MD","Layer_KFZH_LY","Layer_QX","Layer_MW","Layer_LP","Layer_XL","Layer_XDC","Layer_BWHHD_MD","Layer_BWHHD_LY","Layer_LYHHR_MD","Layer_LYHHR_LY","Layer_DQSJ_MD","Layer_DQSJ_LY","Layer_SBLM_MD","Layer_SBLM_LY","Layer_FGS_MD","Layer_FGS_LY","Layer_JH_MD","Layer_JH_LY","Layer_JYC_MD","Layer_JYC_LY","Layer_HDCB_MD","Layer_HDCB_LY","Layer_PX_MD","Layer_PX_LY","Layer_QW_MD","Layer_QW_LY","Layer_TTH_MD","Layer_TTH_LY","Layer_BH_MD","Layer_BH_LY","Layer_SongR_MD","Layer_SongR_LY","Layer_ShouR_MD","Layer_ShouR_LY","Layer_QR_MD","Layer_QR_LY","Layer_YR_MD","Layer_YR_LY","Layer_BLB_MD","Layer_BLB_LY","Layer_HLB_MD","Layer_HLB_LY","Layer_MG_MD","Layer_MG_LY","Layer_XYWB_MD","Layer_XYWB_LY","Layer_SG_MD","Layer_SG_LY","Layer_SM_MD","Layer_SM_LY"]
+		var textarray = ["Layer_FST", "Layer_YST", "Layer_DLK_MD", "Layer_DLK_LY", "Layer_JYJJ", "Layer_NSH", "Layer_LLBH",
+			"Layer_GGG", "Layer_DDL", "Layer_SXLYH", "Layer_MFMG", "Layer_LLM", "Layer_FCJ", "Layer_PGYZ", "Layer_YPS",
+			"Layer_SP", "Layer_SJK_LY", "Layer_BTK_LY", "Layer_SJK_MD", "Layer_BTK_MD", "Layer_YJSW_LY", "Layer_YJLZ_LY",
+			"Layer_LYSS_LY", "Layer_ZWCLR_LY", "Layer_SYFS_LY", "Layer_DXQQR_LY", "Layer_BX_MD", "Layer_BX_LY",
+			"Layer_LLD", "Layer_YJSW_MD", "Layer_DXQQR_MD", "Layer_SYFS_MD", "Layer_LYSS_MD", "Layer_DBT_MD",
+			"Layer_DBT_LY", "Layer_PPH_MD", "Layer_PPH_LY", "Layer_XQD_MD", "Layer_XQD_LY", "Layer_YYLX_LY",
+			"Layer_SLM_MD", "Layer_SLM_LY", "Layer_KFZH_MD", "Layer_KFZH_LY", "Layer_QX", "Layer_MW", "Layer_LP",
+			"Layer_XL", "Layer_XDC", "Layer_BWHHD_MD", "Layer_BWHHD_LY", "Layer_LYHHR_MD", "Layer_LYHHR_LY",
+			"Layer_DQSJ_MD", "Layer_DQSJ_LY", "Layer_SBLM_MD", "Layer_SBLM_LY", "Layer_FGS_MD", "Layer_FGS_LY",
+			"Layer_JH_MD", "Layer_JH_LY", "Layer_JYC_MD", "Layer_JYC_LY", "Layer_HDCB_MD", "Layer_HDCB_LY", "Layer_PX_MD",
+			"Layer_PX_LY", "Layer_QW_MD", "Layer_QW_LY", "Layer_TTH_MD", "Layer_TTH_LY", "Layer_BH_MD", "Layer_BH_LY",
+			"Layer_SongR_MD", "Layer_SongR_LY", "Layer_ShouR_MD", "Layer_ShouR_LY", "Layer_QR_MD", "Layer_QR_LY",
+			"Layer_YR_MD", "Layer_YR_LY", "Layer_BLB_MD", "Layer_BLB_LY", "Layer_HLB_MD", "Layer_HLB_LY", "Layer_MG_MD",
+			"Layer_MG_LY", "Layer_XYWB_MD", "Layer_XYWB_LY", "Layer_SG_MD", "Layer_SG_LY", "Layer_SM_MD", "Layer_SM_LY"
+		];
 		var layerarray;
 		var idxclass;
-		$(".item-select").change(function(){
+		$(".item-select").change(function () {
 			//查看当前选中项在地图上的点位
 			$(".default").remove();
 			$(".add-method").show();
 			$(".options-list .map-opts.on").trigger("click");
-			idxclass=$(".item-select option:selected").attr("class");
-			layerarray=LayerMap[`Layer_${idxclass}`].getLayers();
+			idxclass = $(".item-select option:selected").attr("class");
+			layerarray = LayerMap[`Layer_${idxclass}`].getLayers();
 			$(`.options-list .Layer_${idxclass}`).trigger("click");
 			//渲染表格
 			$(".table-options").remove();
-			var index=$(".item-select option:selected").index();
-			for(let i=0;i<typearray2[index].features.length;i++)
-			{
+			var index = textarray.indexOf(`Layer_${idxclass}`)
+			console.log(index);
+			for (let i = 0; i < typearray[index][1].features.length; i++) {
 				$(".data-table tr:last").after(`
 				<tr class="table-options">
-					<td class="table-options-name">${typearray2[index].features[i].properties.popTitle}</td>
-					<td class="table-options-id">${typearray2[index].features[i].id}</td>
-					<td class="table-options-description">${typearray2[index].features[i].properties.popupContent}</td>
+					<td class="table-options-name">${typearray[index][1].features[i].properties.popTitle}</td>
+					<td class="table-options-id">${typearray[index][1].features[i].id}</td>
+					<td class="table-options-description">${typearray[index][1].features[i].properties.popupContent}</td>
 					<td class="table-options-operation">
-						<a href="javascript:;" class="checkout" lid="${typearray2[index].features[i].id}">查看</a>
-						<a href="javascript:;" class="modify-btn" onclick="TGDialogS('modify_window'),show_modify_marker(${typearray2[index].features[i].id})" lid="${typearray2[index].features[i].id}">修改点位</a>
-						<a href="javascript:;" class="delete-btn" onclick="delmarker_old(${typearray2[index].features[i].id})" lid=${typearray2[index].features[i].id})">删除点位</a>
+						<a href="javascript:;" class="checkout" lid="${typearray[index][1].features[i].id}">查看</a>
+						<a href="javascript:;" class="modify-btn" onclick="TGDialogS('modify_window'),show_modify_marker(${typearray[index][1].features[i].id})" lid="${typearray[index][1].features[i].id}">修改点位</a>
+						<a href="javascript:;" class="delete-btn" onclick="delmarker_old(${typearray[index][1].features[i].id})" lid=${typearray[index][1].features[i].id})">删除点位</a>
 					</td>
 				</tr>
 				`)
 			}
 			//查看当前选中项在地图上的点位
-			$(".checkout").click(function(){
-				let index=$(this).attr("lid");
-				for(let i=0;i<layerarray.length;i++)
-				{
-					if(layerarray[i].feature.id == index)
-					{
-            const currentPoint = layerarray[i]
+			$(".checkout").click(function () {
+				let index = $(this).attr("lid");
+				for (let i = 0; i < layerarray.length; i++) {
+					if (layerarray[i].feature.id == index) {
+						const currentPoint = layerarray[i]
 						currentPoint.openPopup();
 						map.setView(currentPoint._latlng, 7)
 					}
 				}
-				
+
 			});
 			console.log(layerarray);
 		});
-		$(".add-method").change(function(){
+		$(".add-method").change(function () {
 			$(".add-panel").toggle();
 		});
-		$(".add-checkbox").change(function(){
-			if($(".add-checkbox").is(":checked")==true)
-			{
-				$(".item-select").attr("disabled",true);
+		$(".add-checkbox").change(function () {
+			if ($(".add-checkbox").is(":checked") == true) {
+				$(".item-select").attr("disabled", true);
 				$(".add-all-btn").toggle();
-			}
-			else
-			{
-				$(".item-select").attr("disabled",false);
+			} else {
+				$(".item-select").attr("disabled", false);
 				$(".add-all-btn").toggle();
 			}
 		});
-		var markerid=0;
-		var markerlist=[];
+		var markerid = 0;
+		var markerlist = [];
 		//在地图上打点函数
 		map.on('click', function (e) {
-			var popTitle=$(".table-options:eq(0) .table-options-name").text();
-			var popupContent=$(".table-options:eq(0) .table-options-description").text();
-			if($(".add-checkbox").is(":checked")==true)
-			{
-				let classTemp=$(".item-select option:selected").attr("class");
-				let index=textarray.indexOf(`Layer_${classTemp}`);
-				markerid=layerarray.length+1;
+			var popTitle = $(".table-options:eq(0) .table-options-name").text();
+			var popupContent = $(".table-options:eq(0) .table-options-description").text();
+			if ($(".add-checkbox").is(":checked") == true) {
+				let classTemp = $(".item-select option:selected").attr("class");
+				let index = textarray.indexOf(`Layer_${classTemp}`);
+				markerid = layerarray.length + 1;
 				var locationtype = {
 					"geometry": {
 						"type": "Point",
@@ -873,186 +874,285 @@
 					"id": `${markerid}`
 				};
 				markerlist.push(locationtype);
-				markerid=layerarray.length+1;
+				markerid = layerarray.length + 1;
 				//添加地图标记
-				let iconName=typearray[index][2];
-				let iconType=getIconInfo(iconName);
+				let iconName = typearray[index][2];
+				let iconType = getIconInfo(iconName);
 				var currentShowdow = iconType.prototype.options.shadowUrl
 				var doneShadowUrl = currentShowdow ? "./imgs/loc_find_new.png" : ""
-				var addicon=new iconType({
+				var addicon = new iconType({
 					iconUrl: `imgs/icon_${index}.png`,
 					shadowUrl: doneShadowUrl,
 				})
-				var marker = L.marker([e.latlng.lat, e.latlng.lng],{
-						alt:`${e.latlng.lng},${e.latlng.lat}`,
-						icon:addicon,
-						// draggable:true,
-					}).addTo(map);
+				var marker = L.marker([e.latlng.lat, e.latlng.lng], {
+					alt: `${e.latlng.lng},${e.latlng.lat}`,
+					icon: addicon,
+					// draggable:true,
+				}).addTo(map);
+				var position = marker.getLatLng();
+				$("#add-x").val(position.lat);
+				$("#add-y").val(position.lng);
+				marker.on('dragend', function (event) {
 					var position = marker.getLatLng();
 					$("#add-x").val(position.lat);
 					$("#add-y").val(position.lng);
-					marker.on('dragend', function (event) {
-						var position = marker.getLatLng();
-						$("#add-x").val(position.lat);
-						$("#add-y").val(position.lng);
-					});
+				});
 				marker.bindPopup(`<span class="add-title">${popTitle}</span>
 									<span class="add-des">${popupContent}</span>
 								<a href="javascript:;" class="marker-correct-btn" id="ad-btn" onclick="TGDialogS('add_window'),show_modify_marker(${layerarray.length+1})" lid="${markerid}">新增</a>
 								<a href="javascript:;" class="marker-del-btn" onclick="delmarker_add(${layerarray.length+1})">删除</a>`);
 				LayerMap[`Layer_${idxclass}`].addLayer(marker);
-				layerarray=LayerMap[`Layer_${idxclass}`].getLayers();
-				layerarray[markerid-1].feature=locationtype;
+				layerarray = LayerMap[`Layer_${idxclass}`].getLayers();
+				layerarray[markerid - 1].feature = locationtype;
 				console.log(markerlist);
 			}
 		});
 		//删除点位函数（新增，仅做DOM的修改）
-		function delmarker_add(id){
-			var checkid=id;
-			let check=confirm("你确定要删除点位么？新增点位的删除不会发送到数据库，该操作不可撤销！")
-			if(check==true)
-			{
-				for(let i=0;i<layerarray.length;i++)
-				{
-					if(layerarray[i].feature.id==checkid)
-					{
+		function delmarker_add(id) {
+			var checkid = id;
+			let check = confirm("你确定要删除点位么？新增点位的删除不会发送到数据库，该操作不可撤销！")
+			if (check == true) {
+				for (let i = 0; i < layerarray.length; i++) {
+					if (layerarray[i].feature.id == checkid) {
 						map.removeLayer(layerarray[i]);
 					}
 				}
-				for(let i=0;i<markerlist.length;i++)
-				{
-					if(markerlist[i].id==checkid)
-					{
-						markerlist.splice(i,1);
+				for (let i = 0; i < markerlist.length; i++) {
+					if (markerlist[i].id == checkid) {
+						markerlist.splice(i, 1);
 					}
 				}
-			}	
+			}
 		}
 		//删除点位函数（已有，对数据库进行修改）
-		function delmarker_old(id){
-			var checkid=id;
-			let check=confirm("你确定要删除点位么？该操作不可撤销！")
-			if(check==true)
-			{
-				for(let i=0;i<layerarray.length;i++)
-				{
-					if(layerarray[i].feature.id==checkid)
-					{
+		function delmarker_old(id) {
+			var checkid = id;
+			let check = confirm("你确定要删除点位么？该操作不可撤销！")
+			if (check == true) {
+				for (let i = 0; i < layerarray.length; i++) {
+					if (layerarray[i].feature.id == checkid) {
 						map.removeLayer(layerarray[i]);
 					}
 				}
-				let idx=textarray.indexOf(`Layer_${idxclass}`);
-				deleteMarker(idx,checkid);
+				let idx = textarray.indexOf(`Layer_${idxclass}`);
+				deleteMarker(idx, checkid);
 				$(`.table-options:eq(${id-1}) .table-options-operation`).html(`<span>已删除</span>`);
 			}
-			
+
 		}
 		//在弹窗中渲染数据
-		function show_modify_marker(id){
+		function show_modify_marker(id) {
 			$("#add-name").val($(".table-options:eq(0) .table-options-name").text());
 			$("#add-text").val($(".table-options:eq(0) .table-options-description").text());
-			$("#add-submit").attr("lid",id);
+			$("#add-submit").attr("lid", id);
 		}
 		//提交新增点位(单独提交)
-		var addlist=[];
-		$("#add-submit").click(function(){
-			let check=confirm("你确定要提交该新增点位么？")
-			if(check==true)
-			{
-				let idx=textarray.indexOf(`Layer_${idxclass}`);
-				let marker_idx=$("#add-submit").attr("lid");
-				for(let i=0;i<markerlist.length;i++)
-				{
-					if(marker_idx==markerlist[i].id)
-					{
-						markerlist[i].properties.popTitle=$("#add-name").val();
-						markerlist[i].properties.popupContent=$("#add-text").val();
+		var addlist = [];
+		$("#add-submit").click(function () {
+			let check = confirm("你确定要提交该新增点位么？")
+			if (check == true) {
+				let idx = textarray.indexOf(`Layer_${idxclass}`);
+				let marker_idx = $("#add-submit").attr("lid");
+				for (let i = 0; i < markerlist.length; i++) {
+					if (marker_idx == markerlist[i].id) {
+						markerlist[i].properties.popTitle = $("#add-name").val();
+						markerlist[i].properties.popupContent = $("#add-text").val();
 					}
-					var addmarker=markerlist[i]
+					var addmarker = markerlist[i]
 				}
 				addlist.push(addmarker);
-				addNewMarkers(idx,addlist);
-				addlist=[];
+				addNewMarkers(idx, addlist);
+				addlist = [];
 			}
 		});
 		//提交新增点位(批量提交)
-		$(".add-all-btn").click(function(){
-			let check=confirm("你确定要提交所有新增点位么？")
-			if(check==true)
-			{
-				let idx=textarray.indexOf(`Layer_${idxclass}`);
-				addNewMarkers(idx,markerlist);
+		$(".add-all-btn").click(function () {
+			let check = confirm("你确定要提交所有新增点位么？")
+			if (check == true) {
+				let idx = textarray.indexOf(`Layer_${idxclass}`);
+				addNewMarkers(idx, markerlist);
 			}
-			markerlist=[];
+			markerlist = [];
 		});
 		//渲染修改弹窗
-		function show_modify_marker(id)
-		{
-			for(let i=0;i<layerarray.length;i++)
-				{
-					if(layerarray[i].feature.id==id)
-					{
-						$("#modify-x").val(layerarray[i]._latlng.lat);
-						$("#modify-y").val(layerarray[i]._latlng.lng);
-						$("#modify-name").val(layerarray[i].feature.properties.popTitle);
-						$("#modify-text").val(layerarray[i].feature.properties.popupContent);
-					}
-				}
-			$("#modify-submit").attr("lid",id);
-		}
-		$("#modify-submit").click(function(){
-			let idx=textarray.indexOf(`Layer_${idxclass}`);
-			let marker_idx=$("#modify-submit").attr("lid");
-			for(let i=0;i<layerarray.length;i++)
-			{
-				if(layerarray[i].feature.id==marker_idx)
-				{
-					changedata=layerarray[i].feature;
+		function show_modify_marker(id) {
+			for (let i = 0; i < layerarray.length; i++) {
+				if (layerarray[i].feature.id == id) {
+					$("#modify-x").val(layerarray[i]._latlng.lat);
+					$("#modify-y").val(layerarray[i]._latlng.lng);
+					$("#modify-name").val(layerarray[i].feature.properties.popTitle);
+					$("#modify-text").val(layerarray[i].feature.properties.popupContent);
 				}
 			}
-			changedata.properties.popTitle=$("#modify-name").val();
-			changedata.properties.popupContent=$("#modify-text").val();
-			changedata.geometry.coordinates[0]=$("#modify-x").val();
-			changedata.geometry.coordinates[1]=$("#modify-y").val();
-			updateMarker(idx,changedata);
+			$("#modify-submit").attr("lid", id);
+		}
+		$("#modify-submit").click(function () {
+			let idx = textarray.indexOf(`Layer_${idxclass}`);
+			let marker_idx = $("#modify-submit").attr("lid");
+			for (let i = 0; i < layerarray.length; i++) {
+				if (layerarray[i].feature.id == marker_idx) {
+					changedata = layerarray[i].feature;
+				}
+			}
+			changedata.properties.popTitle = $("#modify-name").val();
+			changedata.properties.popupContent = $("#modify-text").val();
+			changedata.geometry.coordinates[0] = $("#modify-x").val();
+			changedata.geometry.coordinates[1] = $("#modify-y").val();
+			updateMarker(idx, changedata);
 		});
 	</script>
 
-<!-- zjj 2020/10/4 start-->
+	<!-- zjj 2020/10/4 start-->
 	<script type="text/javascript">
-		var typeJSON = {"2":"特产","3":"矿物","4":"怪物"};
-		var areJSON = {"b":"璃月"};
-		var monoJSON = {"1a":{"SJK_MD":"水晶矿-蒙德"}};
+		var typeJSON = {
+			"TC": "特产",
+			"KW": "矿物",
+			"GW": "怪物"
+		};
+		var areJSON = {
+			"LY": "璃月"
+		};
+		var monoJSON = {
+			"TX_MD": {
+				"FST": "风神瞳",
+				"DLK_MD": "地灵龛-蒙德",
+				"BX_MD": "宝箱-蒙德",
+			},
+			"TC_MD": {
+				"GGG": "钩钩果",
+				"DDL": "嘟嘟莲",
+				"LLM": "落落梅",
+				"SXLYH": "塞西莉亚花",
+				"MFMG": "慕风蘑菇",
+				"FCJ": "风车菊",
+				"PGYZ": "蒲公英籽",
+				"XDC": "小灯草",
+				"BWHHD_MD": "冰雾花花朵-蒙德",
+				"LYHHR_MD": "烈焰花花蕊-蒙德",
+				"DQSJ_MD": "电气水晶-蒙德",
+				"SBLM_MD": "撒币卢咪-蒙德",
+				"FGS_MD": "发光髓-蒙德",
+				"JH_MD": "晶核-蒙德",
+				"JYC_MD": "金鱼草-蒙德",
+				"HDCB_MD": "蝴蝶翅膀-蒙德",
+				"PX_MD": "螃蟹-蒙德",
+				"QW_MD": "青蛙-蒙德",
+				"TTH_MD": "甜甜花-蒙德",
+				"BH_MD": "薄荷-蒙德",
+				"SongR_MD": "松茸-蒙德",
+				"ShouR_MD": "兽肉-蒙德",
+				"QR_MD": "禽肉-蒙德",
+				"YR_MD": "鱼肉-蒙德",
+				"BLB_MD": "白萝卜-蒙德",
+				"HLB_MD": "胡萝卜-蒙德",
+				"MG_MD": "蘑菇-蒙德",
+				"XYWB_MD": "蜥蜴尾巴-蒙德",
+				"SG_MD": "松果-蒙德",
+				"SM_MD": "树莓-蒙德"
+			},
+			"KW_MD": {
+				"SJK_MD": "水晶矿-蒙德",
+				"BTK_MD": "白铁矿-蒙德"
+			},
+			"GW_MD": {
+				"YJSW_MD": "遗迹守卫-蒙德",
+				"DXQQR_MD": "大型丘丘人-蒙德",
+				"SYFS_MD": "深渊法师-蒙德",
+				"LYSS_MD": "雷莹术士-蒙德",
+				"DBT_MD": "盗宝团-蒙德",
+				"PPH_MD": "骗骗花-蒙德",
+				"XQD_MD": "先遣队-蒙德",
+				"SLM_MD": "史莱姆-蒙德",
+				"KFZH_MD": "狂风之核-蒙德"
+			},
+			"TX_LY": {
+				"YST": "岩神瞳",
+				"DLK_LY": "地灵龛-璃月",
+				"BX_LY": "宝箱-璃月"
+			},
+			"TC_LY": {
+				"JYJJ": "绝云椒椒",
+				"NSH": "霓裳花",
+				"LLBH": "琉璃百合",
+				"YPS": "夜泊石",
+				"SP": "石珀",
+				"LLD": "琉璃袋",
+				"QX": "清心",
+				"MW": "马尾",
+				"XL": "星螺",
+				"LP": "莲蓬",
+				"BWHHD_LY": "冰雾花花朵-璃月",
+				"LYHHR_LY": "烈焰花花蕊-璃月",
+				"DQSJ_LY": "电气水晶-璃月",
+				"SBLM_LY": "撒币卢咪-璃月",
+				"FGS_LY": "发光髓-璃月",
+				"JH_LY": "晶核-璃月",
+				"JYC_LY": "金鱼草-璃月",
+				"HDCB_LY": "蝴蝶翅膀-璃月",
+				"PX_LY": "螃蟹-璃月",
+				"QW_MD": "青蛙-璃月",
+				"TTH_LY": "甜甜花-璃月",
+				"BH_LY": "薄荷-璃月",
+				"SongR_LY": "松茸-璃月",
+				"ShouR_LY": "兽肉-璃月",
+				"QR_LY": "禽肉-璃月",
+				"YR_LY": "鱼肉-璃月",
+				"BLB_LY": "白萝卜-璃月",
+				"HLB_LY": "胡萝卜-璃月",
+				"MG_LY": "蘑菇-璃月",
+				"XYWB_LY": "蜥蜴尾巴-璃月",
+				"SG_LY": "松果-璃月",
+				"SM_LY": "树莓-璃月"
+			},
+			"KW_LY": {
+				"SJK_LY": "水晶矿-璃月",
+				"BTK_LY": "白铁矿-璃月",
+			},
+			"GW_LY": {
+				"YJSW_LY": "遗迹守卫-璃月",
+				"YJLZ_LY": "遗迹猎者-璃月",
+				"DXQQR_LY": "大型丘丘人-璃月",
+				"SYFS_LY": "深渊法师-璃月",
+				"ZWCLR_LY": "债务处理人-璃月",
+				"LYSS_LY": "雷莹术士-璃月",
+				"DBT_LY": "盗宝团-璃月",
+				"PPH_LY": "骗骗花-璃月",
+				"XQD_LY": "先遣队-璃月",
+				"YYLX_LY": "幼岩龙蜥-璃月",
+				"SLM_LY": "史莱姆-璃月",
+				"KFZH_LY": "狂风之核-璃月",
+			}
+		};
 		var type = document.getElementById("type");
-		for(temp in typeJSON){
-			type.add(new Option(typeJSON[temp],temp));
+		for (temp in typeJSON) {
+			type.add(new Option(typeJSON[temp], temp));
 		}
 
 		var are = document.getElementById("are");
-		for(temp in areJSON){
-			are.add(new Option(areJSON[temp],temp));
+		for (temp in areJSON) {
+			are.add(new Option(areJSON[temp], temp));
 		}
 
 		setMono()
-		
-		function setMono(){
-			var mono=document.getElementById('mono');
-			mono.length=1;
+
+		function setMono() {
+			var mono = document.getElementById('mono');
+			mono.length = 1;
 			var val1 = document.getElementById('type').value;
 			var val2 = document.getElementById('are').value;
-			var val = val1 + val2;
-			
-			var sonJSON=monoJSON[val];
-			for(temp in sonJSON){
-				var a = new Option(sonJSON[temp],temp)
+			var val = val1 +"_"+ val2;
+
+			var sonJSON = monoJSON[val];
+			for (temp in sonJSON) {
+				var a = new Option(sonJSON[temp], temp)
 				a.className = temp;
 				mono.add(a);
 			}
-		
-		}
 
+		}
 	</script>
-<!-- zjj 2020/10/4 end-->
+	<!-- zjj 2020/10/4 end-->
 
 </body>
+
 </html>
