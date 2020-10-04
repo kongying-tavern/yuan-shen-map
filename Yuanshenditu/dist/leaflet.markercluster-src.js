@@ -17,7 +17,7 @@
 var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 
 	options: {
-		maxClusterRadius: 28, //A cluster will cover at most this many pixels from its center
+		maxClusterRadius: 24, //A cluster will cover at most this many pixels from its center
 		iconCreateFunction: null,
 		clusterPane: L.Marker.prototype.options.pane,
 
@@ -88,11 +88,13 @@ var MarkerClusterGroup = L.MarkerClusterGroup = L.FeatureGroup.extend({
 					doneNum++;
 				}
 			}
+			let childCount=cluster.getChildCount();
+			let svgTipFill=(doneNum/childCount==1)?"00EBF4":"E6E6E6";
 			return L.divIcon({
-					html: '<b>' + doneNum + '/' + cluster.getChildCount() + '</b>' ,
-					className:"cluster-"+childClassName[1],
-					iconSize: [30+cluster.getChildCount()/2, 30+cluster.getChildCount()/2], // size of the icon
-					iconAnchor:[(30+cluster.getChildCount()/2)/2,(30+cluster.getChildCount()/2)/2+15]
+					html: '<svg class="clusterSvg" width="500px" height="602px" viewBox="0 0 500 602" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><title>loc_empty</title><defs><filter x="-2.9%" y="-7.3%" width="105.8%" height="114.6%" filterUnits="objectBoundingBox" id="filter-1"><feGaussianBlur stdDeviation="2" in="SourceGraphic"></feGaussianBlur></filter></defs><g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><ellipse id="椭圆形备份-28" fill-opacity="0.304797" fill="#000000" filter="url(#filter-1)" cx="250" cy="561" rx="104" ry="41"></ellipse><g id="聚合loc_empty" transform="translate(0.000000, -192.000000)"><path d="M80.4892622,272.514212 C126.897924,226.081047 192.094372,198.4578 263.339979,202.366075 C326.687754,205.840896 383.495162,233.893848 424.393579,277.164433 C465.061024,320.19065 490,378.259293 490,442.15716 C490,497.895388 471.02198,549.196422 439.18382,589.948036 C407.31516,630.738689 362.555651,660.952757 311.042132,674.470903 L311.042132,674.470903 L261.313072,733.818659 C260.73242,734.512516 260.090182,735.152415 259.394211,735.730531 C256.207951,738.377233 252.250546,739.481886 248.42803,739.128297 C244.605514,738.774709 240.917888,736.96288 238.271185,733.77662 L238.271185,733.77662 L189.074183,674.550301 C139.72648,661.571612 96.5965129,633.334801 65.0383548,595.188251 C33.2951275,556.817995 13.256946,508.427261 10.3637613,455.467941 C6.46924546,384.176835 34.0834423,318.944534 80.4892622,272.514212 Z" id="Stroke-1备份-2" stroke-opacity="0.403190559" stroke="#000000" stroke-width="20" fill="#FFFFFF"></path><path class="svgTip" d="M250,237 C363.770658,237 456,329.285289 456,443.124962 C456,542.227366 386.10434,624.994861 292.948613,644.763565 L250,696 L207.053382,644.763988 C113.896658,624.996042 44,542.228073 44,443.124962 C44,329.285289 136.229342,237 250,237 Z M250,259.013345 C148.379606,259.013345 66,341.442924 66,443.124962 C66,544.807 148.379606,627.236578 250,627.236578 C351.620394,627.236578 434,544.807 434,443.124962 C434,341.442924 351.620394,259.013345 250,259.013345 Z" id="形状结合备份-3" fill=#'+svgTipFill+'></path><circle id="donut-graph" class="svgCircle" transform="translate(693,194)rotate(90)" r="195" cy="443" cx="250" stroke-width="20" stroke="#00EBF4" stroke-linejoin="round" stroke-linecap="round" fill="none" stroke-dasharray="1230" stroke-dashoffset="'+(1230-((doneNum/childCount)*1230))+'" /></g></g></svg>'+'<b>' + doneNum + '/' + childCount + '</b>' +"<img class='clusterImg' src='./imgs/icon_"+childClassName[1]+".png'/>",
+					className:"clusterIcon",
+					iconSize: [30+childCount/3, (30+childCount/3)*1.2], // size of the icon
+					iconAnchor:[(30+childCount/3)/2,(30+childCount/3)*1.2*0.95]
 				});
 		}
 	},
