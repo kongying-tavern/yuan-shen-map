@@ -20,7 +20,9 @@
 			<span class="add-span">点位名称（不填为默认）：<input class="add-name-input" type="text"></span>
 			<span class="add-span">点位描述（不填为默认）：<input class="add-des-input" type="text"></span>
 		</div> -->
-		<select class="item-select">
+
+		<!-- zjj 2020/10/4 start-->
+		<!-- <select class="item-select">
 				<option class="default">请选择</option>
 				<option class="FST">风神瞳</option>
 				<option class="YST">岩神瞳</option>
@@ -115,7 +117,19 @@
 				<option class="SG_LY">松果-璃月</option>
 				<option class="SM_MD">树莓-蒙德</option>
 				<option class="SM_LY">树莓-璃月</option>
-		</select>
+		</select> -->
+
+		<select id="type" onchange="setMono()">
+			<option value="1" selected>特性</option>
+		<select>
+		<select id="are" onchange="setMono()">
+			<option value="a" selected>蒙德</option>
+		<select>
+		<select id="mono" class="item-select">
+			<option class="default">请选择</option>
+		<select>
+		<!-- zjj 2020/10/4 end-->
+
 		<table class="data-table">
 			<tr class="table-options-title">
 				<td class="table-options-name">名称</td>
@@ -1003,5 +1017,42 @@
 			updateMarker(idx,changedata);
 		});
 	</script>
+
+<!-- zjj 2020/10/4 start-->
+	<script type="text/javascript">
+		var typeJSON = {"2":"特产","3":"矿物","4":"怪物"};
+		var areJSON = {"b":"璃月"};
+		var monoJSON = {"1a":{"SJK_MD":"水晶矿-蒙德"}};
+		var type = document.getElementById("type");
+		for(temp in typeJSON){
+			type.add(new Option(typeJSON[temp],temp));
+		}
+
+		var are = document.getElementById("are");
+		for(temp in areJSON){
+			are.add(new Option(areJSON[temp],temp));
+		}
+
+		setMono()
+		
+		function setMono(){
+			var mono=document.getElementById('mono');
+			mono.length=1;
+			var val1 = document.getElementById('type').value;
+			var val2 = document.getElementById('are').value;
+			var val = val1 + val2;
+			
+			var sonJSON=monoJSON[val];
+			for(temp in sonJSON){
+				var a = new Option(sonJSON[temp],temp)
+				a.className = temp;
+				mono.add(a);
+			}
+		
+		}
+
+	</script>
+<!-- zjj 2020/10/4 end-->
+
 </body>
 </html>
