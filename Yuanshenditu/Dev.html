@@ -799,18 +799,20 @@
 		var idxclass;
 		$(".item-select").change(function () {
 			//查看当前选中项在地图上的点位
-			$(".default").remove();
+			// $(".default").remove();
 			$(".add-method").show();
 			$(".options-list .map-opts.on").trigger("click");
 			idxclass = $(".item-select option:selected").attr("class");
-			layerarray = LayerMap[`Layer_${idxclass}`].getLayers();
-			$(`.options-list .Layer_${idxclass}`).trigger("click");
-			//渲染表格
 			$(".table-options").remove();
-			var index = textarray.indexOf(`Layer_${idxclass}`)
-			console.log(index);
-			for (let i = 0; i < typearray[index][1].features.length; i++) {
-				$(".data-table tr:last").after(`
+			if (idxclass != "default") {
+				console.log(idxclass);
+				layerarray = LayerMap[`Layer_${idxclass}`].getLayers();
+				$(`.options-list .Layer_${idxclass}`).trigger("click");
+				//渲染表格
+				var index = textarray.indexOf(`Layer_${idxclass}`)
+				console.log(index);
+				for (let i = 0; i < typearray[index][1].features.length; i++) {
+					$(".data-table tr:last").after(`
 				<tr class="table-options">
 					<td class="table-options-name">${typearray[index][1].features[i].properties.popTitle}</td>
 					<td class="table-options-id">${typearray[index][1].features[i].id}</td>
@@ -822,6 +824,7 @@
 					</td>
 				</tr>
 				`)
+				}
 			}
 			//查看当前选中项在地图上的点位
 			$(".checkout").click(function () {
@@ -1007,7 +1010,9 @@
 		var typeJSON = {
 			"TC": "特产",
 			"KW": "矿物",
-			"GW": "怪物"
+			"GW": "怪物",
+			"SC": "食材",
+			"LJ": "炼金"
 		};
 		var areJSON = {
 			"LY": "璃月"
@@ -1027,28 +1032,6 @@
 				"FCJ": "风车菊",
 				"PGYZ": "蒲公英籽",
 				"XDC": "小灯草",
-				"BWHHD_MD": "冰雾花花朵-蒙德",
-				"LYHHR_MD": "烈焰花花蕊-蒙德",
-				"DQSJ_MD": "电气水晶-蒙德",
-				"SBLM_MD": "撒币卢咪-蒙德",
-				"FGS_MD": "发光髓-蒙德",
-				"JH_MD": "晶核-蒙德",
-				"JYC_MD": "金鱼草-蒙德",
-				"HDCB_MD": "蝴蝶翅膀-蒙德",
-				"PX_MD": "螃蟹-蒙德",
-				"QW_MD": "青蛙-蒙德",
-				"TTH_MD": "甜甜花-蒙德",
-				"BH_MD": "薄荷-蒙德",
-				"SongR_MD": "松茸-蒙德",
-				"ShouR_MD": "兽肉-蒙德",
-				"QR_MD": "禽肉-蒙德",
-				"YR_MD": "鱼肉-蒙德",
-				"BLB_MD": "白萝卜-蒙德",
-				"HLB_MD": "胡萝卜-蒙德",
-				"MG_MD": "蘑菇-蒙德",
-				"XYWB_MD": "蜥蜴尾巴-蒙德",
-				"SG_MD": "松果-蒙德",
-				"SM_MD": "树莓-蒙德"
 			},
 			"KW_MD": {
 				"SJK_MD": "水晶矿-蒙德",
@@ -1064,6 +1047,32 @@
 				"XQD_MD": "先遣队-蒙德",
 				"SLM_MD": "史莱姆-蒙德",
 				"KFZH_MD": "狂风之核-蒙德"
+			},
+			"SC_MD":{
+				"SongR_MD": "松茸-蒙德",
+				"PX_MD": "螃蟹-蒙德",
+				"ShouR_MD": "兽肉-蒙德",
+				"QR_MD": "禽肉-蒙德",
+				"YR_MD": "鱼肉-蒙德",
+				"BLB_MD": "白萝卜-蒙德",
+				"HLB_MD": "胡萝卜-蒙德",
+				"MG_MD": "蘑菇-蒙德",
+				"TTH_MD": "甜甜花-蒙德",
+				"JYC_MD": "金鱼草-蒙德",
+				"BH_MD": "薄荷-蒙德",
+				"SG_MD": "松果-蒙德",
+				"SM_MD": "树莓-蒙德"
+			},
+			"LJ_MD":{
+				"BWHHD_MD": "冰雾花花朵-蒙德",
+				"LYHHR_MD": "烈焰花花蕊-蒙德",
+				"DQSJ_MD": "电气水晶-蒙德",
+				"SBLM_MD": "撒币卢咪-蒙德",
+				"FGS_MD": "发光髓-蒙德",
+				"JH_MD": "晶核-蒙德",
+				"HDCB_MD": "蝴蝶翅膀-蒙德",
+				"QW_MD": "青蛙-蒙德",
+				"XYWB_MD": "蜥蜴尾巴-蒙德",
 			},
 			"TX_LY": {
 				"YST": "岩神瞳",
@@ -1081,28 +1090,6 @@
 				"MW": "马尾",
 				"XL": "星螺",
 				"LP": "莲蓬",
-				"BWHHD_LY": "冰雾花花朵-璃月",
-				"LYHHR_LY": "烈焰花花蕊-璃月",
-				"DQSJ_LY": "电气水晶-璃月",
-				"SBLM_LY": "撒币卢咪-璃月",
-				"FGS_LY": "发光髓-璃月",
-				"JH_LY": "晶核-璃月",
-				"JYC_LY": "金鱼草-璃月",
-				"HDCB_LY": "蝴蝶翅膀-璃月",
-				"PX_LY": "螃蟹-璃月",
-				"QW_MD": "青蛙-璃月",
-				"TTH_LY": "甜甜花-璃月",
-				"BH_LY": "薄荷-璃月",
-				"SongR_LY": "松茸-璃月",
-				"ShouR_LY": "兽肉-璃月",
-				"QR_LY": "禽肉-璃月",
-				"YR_LY": "鱼肉-璃月",
-				"BLB_LY": "白萝卜-璃月",
-				"HLB_LY": "胡萝卜-璃月",
-				"MG_LY": "蘑菇-璃月",
-				"XYWB_LY": "蜥蜴尾巴-璃月",
-				"SG_LY": "松果-璃月",
-				"SM_LY": "树莓-璃月"
 			},
 			"KW_LY": {
 				"SJK_LY": "水晶矿-璃月",
@@ -1121,6 +1108,32 @@
 				"YYLX_LY": "幼岩龙蜥-璃月",
 				"SLM_LY": "史莱姆-璃月",
 				"KFZH_LY": "狂风之核-璃月",
+			},
+			"SC_LY":{
+				"SongR_LY": "松茸-璃月",
+				"PX_LY": "螃蟹-璃月",
+				"ShouR_LY": "兽肉-璃月",
+				"QR_LY": "禽肉-璃月",
+				"YR_LY": "鱼肉-璃月",
+				"BLB_LY": "白萝卜-璃月",
+				"HLB_LY": "胡萝卜-璃月",
+				"MG_LY": "蘑菇-璃月",
+				"JYC_LY": "金鱼草-璃月",
+				"TTH_LY": "甜甜花-璃月",
+				"BH_LY": "薄荷-璃月",
+				"SG_LY": "松果-璃月",
+				"SM_LY": "树莓-璃月"
+			},
+			"LJ_LY":{
+				"BWHHD_LY": "冰雾花花朵-璃月",
+				"LYHHR_LY": "烈焰花花蕊-璃月",
+				"DQSJ_LY": "电气水晶-璃月",
+				"SBLM_LY": "撒币卢咪-璃月",
+				"FGS_LY": "发光髓-璃月",
+				"JH_LY": "晶核-璃月",
+				"HDCB_LY": "蝴蝶翅膀-璃月",
+				"QW_MD": "青蛙-璃月",
+				"XYWB_LY": "蜥蜴尾巴-璃月",
 			}
 		};
 		var type = document.getElementById("type");
@@ -1140,15 +1153,15 @@
 			mono.length = 1;
 			var val1 = document.getElementById('type').value;
 			var val2 = document.getElementById('are').value;
-			var val = val1 +"_"+ val2;
-
+			var val = val1 + "_" + val2;
 			var sonJSON = monoJSON[val];
 			for (temp in sonJSON) {
 				var a = new Option(sonJSON[temp], temp)
 				a.className = temp;
 				mono.add(a);
 			}
-
+			$(".options-list .map-opts.on").trigger("click");
+			$(".table-options").remove();
 		}
 	</script>
 	<!-- zjj 2020/10/4 end-->
