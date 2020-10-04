@@ -366,8 +366,9 @@ body,
     left: -77px;
     width: 95px;
     height: 82px;
-    background:url(../imgs/con_img/fold.png) no-repeat;
-    background-size: 100% 100%;
+    background-image:url(../imgs/con_img/fold.png);
+    background-repeat: no-repeat;
+    background-size: contain;
     z-index: 200;
 }
 .selector-list-containor
