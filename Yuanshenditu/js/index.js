@@ -78,24 +78,24 @@ var LayerMap = {
 	Layer_ZWCLR_LY: L.markerClusterGroup(),
 	Layer_SYFS_LY: L.markerClusterGroup(),
 	Layer_DXQQR_LY: L.markerClusterGroup(),
-	Layer_BX_MD:L.markerClusterGroup({
-		maxClusterRadius: function(e){
-			let radius=100;
-			if(e==4)radius=100;
-			else if(e==5)radius=80;
-			else if(e==6)radius=55;
-			else if(e==7)radius=25;
+	Layer_BX_MD: L.markerClusterGroup({
+		maxClusterRadius: function (e) {
+			let radius = 100;
+			if (e == 4) radius = 100;
+			else if (e == 5) radius = 80;
+			else if (e == 6) radius = 55;
+			else if (e == 7) radius = 25;
 			//console.log(radius);
 			return radius;
 		}
 	}),
-	Layer_BX_LY:L.markerClusterGroup({
-		maxClusterRadius: function(e){
-			let radius=100;
-			if(e==4)radius=100;
-			else if(e==5)radius=80;
-			else if(e==6)radius=55;
-			else if(e==7)radius=25;
+	Layer_BX_LY: L.markerClusterGroup({
+		maxClusterRadius: function (e) {
+			let radius = 100;
+			if (e == 4) radius = 100;
+			else if (e == 5) radius = 80;
+			else if (e == 6) radius = 55;
+			else if (e == 7) radius = 25;
 			//console.log(radius);
 			return radius;
 		}
@@ -298,7 +298,7 @@ function change() {
 				})
 			});
 			$(".myPopPicture").animate({
-				height: '312px'
+				height: '326px'
 			}, function () {
 				state = 1;
 			});
@@ -321,7 +321,7 @@ function onEachFeature(feature, layer) {
 	popupHtml += '<div class="myPopPicture">';
 	popupHtml += '<img src=comment_png/' + key + '.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">';
 	popupHtml += '</div>';
-	popupHtml += '<div class="' + switchClass + '" onclick="MarkPoint(this)" data-key="' + key + '"></div>';
+	popupHtml += '<div class="' + switchClass + '" onclick="MarkPoint(this)" data-key="' + key + '"><p class="switchOff">未完成</p><p class="switchOn">已完成</p><div class="switchButton"><div class="switchButtonIcon"><p>未完成</p></div></div></div>';
 	popupHtml += '<div class="tipcard"></div>'
 	popupHtml += '</div>';
 	layer.bindPopup(popupHtml);
@@ -450,11 +450,9 @@ function MarkPoint(element) {
 	var downShadow;
 	if (currentShowdow == "./imgs/loc_find.svg" || currentShowdow == "./imgs/loc_notfind.svg") {
 		downShadow = newValue ? "./imgs/loc_find.svg" : "./imgs/loc_notfind.svg"
-	}
-	else if(currentShowdow == "./imgs/loc_stonenot.svg" || currentShowdow == "./imgs/loc_stonefound.svg") {
+	} else if (currentShowdow == "./imgs/loc_stonenot.svg" || currentShowdow == "./imgs/loc_stonefound.svg") {
 		downShadow = newValue ? "./imgs/loc_stonefound.svg" : "./imgs/loc_stonenot.svg"
-	}
-	else if(currentShowdow == "./imgs/loc_find_black.svg" || currentShowdow == "./imgs/loc_notfind_black.svg") {
+	} else if (currentShowdow == "./imgs/loc_find_black.svg" || currentShowdow == "./imgs/loc_notfind_black.svg") {
 		downShadow = newValue ? "./imgs/loc_find_black.svg" : "./imgs/loc_notfind_black.svg"
 	}
 	var doneShadowUrl = currentShowdow ? downShadow : ""
@@ -467,10 +465,18 @@ function MarkPoint(element) {
 	if (newValue) {
 		that.addClass("myPopSwitchDone");
 		that.removeClass("myPopSwitchTodo");
-		closePop();
+		setTimeout(function () {
+			that.find(".switchButton p").html("已完成");
+		}, 100);
+		setTimeout(function () {
+			closePop();
+		}, 500);
 	} else {
 		that.addClass("myPopSwitchTodo");
 		that.removeClass("myPopSwitchDone");
+		setTimeout(function () {
+			that.find(".switchButton p").html("未完成");
+		}, 100);
 	}
 }
 
@@ -495,11 +501,9 @@ for (let i = 0; i < typearray.length; i++) {
 			var downShadow;
 			if (currentShowdow == "./imgs/loc_find.svg" || currentShowdow == "./imgs/loc_notfind.svg") {
 				downShadow = markedFlag ? "./imgs/loc_find.svg" : "./imgs/loc_notfind.svg"
-			}
-			else if(currentShowdow == "./imgs/loc_stonenot.svg" || currentShowdow == "./imgs/loc_stonefound.svg") {
+			} else if (currentShowdow == "./imgs/loc_stonenot.svg" || currentShowdow == "./imgs/loc_stonefound.svg") {
 				downShadow = markedFlag ? "./imgs/loc_stonefound.svg" : "./imgs/loc_stonenot.svg"
-			}
-			else if(currentShowdow == "./imgs/loc_find_black.svg" || currentShowdow == "./imgs/loc_notfind_black.svg") {
+			} else if (currentShowdow == "./imgs/loc_find_black.svg" || currentShowdow == "./imgs/loc_notfind_black.svg") {
 				downShadow = markedFlag ? "./imgs/loc_find_black.svg" : "./imgs/loc_notfind_black.svg"
 			}
 			var doneShadowUrl = currentShowdow ? downShadow : ""
@@ -566,7 +570,8 @@ map.on('popupopen', function (e) {
 	var className = marker.options.icon.options.className;
 	var key = className.substring(5, className.length);
 	var markedFlag = localStorage.getItem(key);
-	var switchClass = (!(localStorage.getItem(key))) ? "myPopSwitchTodo" : "myPopSwitchDone"
+	var switchClass = (!(localStorage.getItem(key))) ? "myPopSwitchTodo" : "myPopSwitchDone";
+	var switchText = (!(localStorage.getItem(key))) ? "未完成" : "已完成";
 	var popupHtml = '<div class="myPopContainer">';
 	popupHtml = '<div class="myPopTitle" >';
 	popupHtml += '<div class="myPopName" >' + marker.feature.properties.popTitle + marker.feature.id + '</div>';
@@ -577,7 +582,7 @@ map.on('popupopen', function (e) {
 	popupHtml += '<div class="myPopPicture">';
 	popupHtml += '<img src=comment_png/' + key + '.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">';
 	popupHtml += '</div>';
-	popupHtml += '<div class="' + switchClass + '" onclick="MarkPoint(this)" data-key="' + key + '"></div>';
+	popupHtml += '<div class="' + switchClass + '" onclick="MarkPoint(this)" data-key="' + key + '"><p class="switchOff">未完成</p><p class="switchOn">已完成</p><div class="switchButton"><div class="switchButtonIcon"><p>' + switchText + '</p></div></div></div>';
 	popupHtml += '<div class="tipcard"></div>'
 	popupHtml += '</div>';
 	marker.bindPopup(popupHtml);
