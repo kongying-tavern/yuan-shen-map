@@ -85,7 +85,7 @@ var LayerMap = {
 			else if(e==5)radius=80;
 			else if(e==6)radius=55;
 			else if(e==7)radius=25;
-			console.log(radius);
+			//console.log(radius);
 			return radius;
 		}
 	}),
@@ -96,7 +96,7 @@ var LayerMap = {
 			else if(e==5)radius=80;
 			else if(e==6)radius=55;
 			else if(e==7)radius=25;
-			console.log(radius);
+			//console.log(radius);
 			return radius;
 		}
 	}),
@@ -198,12 +198,12 @@ function getIconInfo(Name) {
 		case "TC": { //特产
 			var icon_base = L.Icon.extend({
 				options: {
-					shadowUrl: "./imgs/loc_notfind.svg",
-					iconSize: [18, 18], // size of the icon
+					shadowUrl: "./imgs/loc_notfind_black.svg",
+					iconSize: [16.5, 17], // size of the icon
 					shadowSize: [28, 28], // size of the shadow
-					iconAnchor: [8.8, 25], // point of the icon which will correspond to marker's location
+					iconAnchor: [8.2, 24.3], // point of the icon which will correspond to marker's location
 					shadowAnchor: [14, 28], // the same for the shadow
-					popupAnchor: [0, -25] // point from which the popup should open relative to the iconAnchor
+					popupAnchor: [0, -24.3] // point from which the popup should open relative to the iconAnchor
 				}
 			});
 			return icon_base;
@@ -211,12 +211,12 @@ function getIconInfo(Name) {
 		case "KW": { //矿物
 			var icon_base = L.Icon.extend({
 				options: {
-					shadowUrl: "./imgs/loc_notfind.svg",
+					shadowUrl: "./imgs/loc_stonenot.svg",
 					iconSize: [20, 20], // size of the icon
-					shadowSize: [28, 28], // size of the shadow
-					iconAnchor: [10, 26], // point of the icon which will correspond to marker's location
-					shadowAnchor: [14, 28], // the same for the shadow
-					popupAnchor: [0, -26] // point from which the popup should open relative to the iconAnchor
+					shadowSize: [34, 34], // size of the shadow
+					iconAnchor: [10, 28], // point of the icon which will correspond to marker's location
+					shadowAnchor: [17, 34], // the same for the shadow
+					popupAnchor: [0, -28] // point from which the popup should open relative to the iconAnchor
 				}
 			});
 			return icon_base;
@@ -447,7 +447,16 @@ function MarkPoint(element) {
 		var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".png";
 	}
 	var currentShowdow = currentIcon.prototype.options.shadowUrl
-	var downShadow = newValue ? "./imgs/loc_find.svg" : "./imgs/loc_notfind.svg"
+	var downShadow;
+	if (currentShowdow == "./imgs/loc_find.svg" || currentShowdow == "./imgs/loc_notfind.svg") {
+		downShadow = newValue ? "./imgs/loc_find.svg" : "./imgs/loc_notfind.svg"
+	}
+	else if(currentShowdow == "./imgs/loc_stonenot.svg" || currentShowdow == "./imgs/loc_stonefound.svg") {
+		downShadow = newValue ? "./imgs/loc_stonefound.svg" : "./imgs/loc_stonenot.svg"
+	}
+	else if(currentShowdow == "./imgs/loc_find_black.svg" || currentShowdow == "./imgs/loc_notfind_black.svg") {
+		downShadow = newValue ? "./imgs/loc_find_black.svg" : "./imgs/loc_notfind_black.svg"
+	}
 	var doneShadowUrl = currentShowdow ? downShadow : ""
 	var newIcon = new currentIcon({
 		className: "mark-" + key,
@@ -483,7 +492,16 @@ for (let i = 0; i < typearray.length; i++) {
 				var iconUrl = "./imgs/icon_" + i + doneUrl + ".png";
 			}
 			var currentShowdow = currentIcon.prototype.options.shadowUrl
-			var downShadow = markedFlag ? "./imgs/loc_find.svg" : "./imgs/loc_notfind.svg"
+			var downShadow;
+			if (currentShowdow == "./imgs/loc_find.svg" || currentShowdow == "./imgs/loc_notfind.svg") {
+				downShadow = markedFlag ? "./imgs/loc_find.svg" : "./imgs/loc_notfind.svg"
+			}
+			else if(currentShowdow == "./imgs/loc_stonenot.svg" || currentShowdow == "./imgs/loc_stonefound.svg") {
+				downShadow = markedFlag ? "./imgs/loc_stonefound.svg" : "./imgs/loc_stonenot.svg"
+			}
+			else if(currentShowdow == "./imgs/loc_find_black.svg" || currentShowdow == "./imgs/loc_notfind_black.svg") {
+				downShadow = markedFlag ? "./imgs/loc_find_black.svg" : "./imgs/loc_notfind_black.svg"
+			}
 			var doneShadowUrl = currentShowdow ? downShadow : ""
 			var marker = L.marker([latlng.lng, latlng.lat], {
 				icon: new currentIcon({

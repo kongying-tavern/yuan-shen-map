@@ -603,6 +603,10 @@ body,
     order: 1;
     margin: 17px auto;
 }
+
+.leaflet-shadow-pane .iconKW{
+    transform: rotate(45deg) ;
+}
 @media screen and (max-width: 750px) {
     .leaflet-popup-content-wrapper {
     transform-origin: 50% 100% 0;
