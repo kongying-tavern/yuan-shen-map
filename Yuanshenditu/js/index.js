@@ -458,6 +458,7 @@ function MarkPoint(element) {
 	if (newValue) {
 		that.addClass("myPopSwitchDone");
 		that.removeClass("myPopSwitchTodo");
+		closePop();
 	} else {
 		that.addClass("myPopSwitchTodo");
 		that.removeClass("myPopSwitchDone");
