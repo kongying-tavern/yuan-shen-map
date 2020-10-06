@@ -25,16 +25,16 @@
 		target="_blank">https://pan.baidu.com/s/1zVB1pxVuRztbnrYbkez40g </a>
 	</br>
 	提取码：KYJG
-	</br>您也可以加群下载离线更新包：1群765302904（已满）；2群853210278（未满）；3群932683801（已满）；4群1139510554（已满）；5群1149599151（未满）
+	</br>您也可以加群下载离线更新包：1群765302904（已满）；2群853210278（未满）；3群932683801（已满）；4群1139510554（已满）；5群1149599151（已满）
 	</br><button id="submitMarker">一键导出标记点位记录</button> 【使用说明】将导出数据的内容复制到离线版的导入框中，提交即可
 	</br>不能下载？<button id="submitMarker2">点击复制记录到剪切板</button>
 	</br>PS.在线地图中点击存档也可下载点位记录并记录到剪切板或用下方按钮跳转到上传点位记录页面
 	</br>
 	</br><button id="update">点击跳转到上传页面</button>
 	</br>
-	</br><button id="enterIndex">进入新版在线地图</button>
+	</br><button id="enterIndex">进入聚合版在线地图</button>
 	</br>
-	</br><button id="enterIndex2">进入旧版在线地图</button>
+	</br><button id="enterIndex2">进入无聚合版在线地图</button>
 </body>
 <script>
 	// 复制的方法
@@ -117,7 +117,7 @@
 	})
 	$("#enterIndex2").click(function () {
 		window.event.returnValue = false;
-		window.location.href = 'index3.html';
+		window.location.href = 'index_old.html';
 	})
 	$("#update").click(function () {
 		window.event.returnValue = false;
