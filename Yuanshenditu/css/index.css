@@ -538,9 +538,9 @@ body,
     background-size: contain;
     background-position: center bottom;
     width: 150px;
-    height: 52px;
+    height: 46px;
     left: 50%;
-    bottom: -35px;
+    bottom: -36px;
     pointer-events: none;
     margin-left: -75px;
 }
