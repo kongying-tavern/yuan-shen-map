@@ -165,6 +165,10 @@ var LayerMap = {
 	Layer_SG_LY: L.markerClusterGroup(),
 	Layer_SM_MD: L.markerClusterGroup(),
 	Layer_SM_LY: L.markerClusterGroup(),
+	Layer_QQR_MD: L.markerClusterGroup(),
+	Layer_QQR_LY: L.markerClusterGroup(),
+	Layer_QQSM_MD: L.markerClusterGroup(),
+	Layer_QQSM_LY: L.markerClusterGroup(),
 }
 
 //定义各个坐标使用的图标
@@ -308,23 +312,23 @@ function change() {
 
 //添加坐标点击信息
 function onEachFeature(feature, layer) {
-	var layerNumber = localStorage.getItem("layerNumber");
-	var key = layerNumber + "_" + feature.id;
-	var popupHtml = '<div class="myPopContainer">';
-	popupHtml = '<div class="myPopTitle" >';
-	popupHtml += '<div class="myPopName" >' + feature.properties.popTitle + feature.id + '</div>';
-	var switchClass = (!(localStorage.getItem(key))) ? "myPopSwitchTodo" : "myPopSwitchDone"
-	popupHtml += '</div>';
-	popupHtml += '<div class="myPopLine"></div>';
-	popupHtml += '<div class="myPopClose" onclick="closePop()"></div>';
-	popupHtml += '<div class="myPopComment"><span>' + feature.properties.popupContent + '</span><img class="Select" src=imgs/con_img/Select.png></div>';
-	popupHtml += '<div class="myPopPicture">';
-	popupHtml += '<img src=comment_png/' + key + '.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">';
-	popupHtml += '</div>';
-	popupHtml += '<div class="' + switchClass + '" onclick="MarkPoint(this)" data-key="' + key + '"><p class="switchOff">未完成</p><p class="switchOn">已完成</p><div class="switchButton"><div class="switchButtonIcon"><p>未完成</p></div></div></div>';
-	popupHtml += '<div class="tipcard"></div>'
-	popupHtml += '</div>';
-	layer.bindPopup(popupHtml);
+	// var layerNumber = localStorage.getItem("layerNumber");
+	// var key = layerNumber + "_" + feature.id;
+	// var popupHtml = '<div class="myPopContainer">';
+	// popupHtml = '<div class="myPopTitle" >';
+	// popupHtml += '<div class="myPopName" >' + feature.properties.popTitle + feature.id + '</div>';
+	// var switchClass = (!(localStorage.getItem(key))) ? "myPopSwitchTodo" : "myPopSwitchDone"
+	// popupHtml += '</div>';
+	// popupHtml += '<div class="myPopLine"></div>';
+	// popupHtml += '<div class="myPopClose" onclick="closePop()"></div>';
+	// popupHtml += '<div class="myPopComment"><span>' + feature.properties.popupContent + '</span><img class="Select" src=imgs/con_img/Select.png></div>';
+	// popupHtml += '<div class="myPopPicture">';
+	// popupHtml += '<img src=comment_png/' + key + '.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">';
+	// popupHtml += '</div>';
+	// popupHtml += '<div class="' + switchClass + '" onclick="MarkPoint(this)" data-key="' + key + '"><p class="switchOff">未完成</p><p class="switchOn">已完成</p><div class="switchButton"><div class="switchButtonIcon"><p>未完成</p></div></div></div>';
+	// popupHtml += '<div class="tipcard"></div>'
+	// popupHtml += '</div>';
+	layer.bindPopup();
 }
 
 function closePop() {
@@ -426,6 +430,10 @@ var typearray = [
 	[LayerMap["Layer_SG_LY"], JS_SG_LY, "TC"],
 	[LayerMap["Layer_SM_MD"], JS_SM_MD, "TC"],
 	[LayerMap["Layer_SM_LY"], JS_SM_LY, "TC"],
+	[LayerMap["Layer_QQR_MD"], JS_QQR_MD, "GW"],
+	[LayerMap["Layer_QQR_LY"], JS_QQR_LY, "GW"],
+	[LayerMap["Layer_QQSM_MD"], JS_QQSM_MD, "GW"],
+	[LayerMap["Layer_QQSM_LY"], JS_QQSM_LY, "GW"],
 ];
 
 //标记方法
@@ -570,20 +578,31 @@ map.on('popupopen', function (e) {
 	var className = marker.options.icon.options.className;
 	var key = className.substring(5, className.length);
 	var markedFlag = localStorage.getItem(key);
-	var switchClass = (!(localStorage.getItem(key))) ? "myPopSwitchTodo" : "myPopSwitchDone";
-	var switchText = (!(localStorage.getItem(key))) ? "未完成" : "已完成";
-	var popupHtml = '<div class="myPopContainer">';
-	popupHtml = '<div class="myPopTitle" >';
-	popupHtml += '<div class="myPopName" >' + marker.feature.properties.popTitle + marker.feature.id + '</div>';
-	popupHtml += '</div>';
-	popupHtml += '<div class="myPopLine"></div>';
-	popupHtml += '<div class="myPopClose" onclick="closePop()"></div>';
-	popupHtml += '<div class="myPopComment" onclick="change()"><span>' + marker.feature.properties.popupContent + '</span><img class="Select" src=imgs/con_img/Select.png></div>';
-	popupHtml += '<div class="myPopPicture">';
-	popupHtml += '<img src=comment_png/' + key + '.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">';
-	popupHtml += '</div>';
-	popupHtml += '<div class="' + switchClass + '" onclick="MarkPoint(this)" data-key="' + key + '"><p class="switchOff">未完成</p><p class="switchOn">已完成</p><div class="switchButton"><div class="switchButtonIcon"><p>' + switchText + '</p></div></div></div>';
-	popupHtml += '<div class="tipcard"></div>'
-	popupHtml += '</div>';
+	var switchClass = (!markedFlag) ? "myPopSwitchTodo" : "myPopSwitchDone";
+	var switchText = (!markedFlag) ? "未完成" : "已完成";
+	popupHtml = `
+	<div class="myPopContainer">
+		<div class="myPopTitle">
+			<div class="myPopName" >${marker.feature.properties.popTitle}${marker.feature.id}</div>
+		</div>
+		<div class="myPopLine"></div>
+		<div class="myPopClose" onclick="closePop()"></div>
+		<div class="myPopComment">${marker.feature.properties.popupContent}
+			<img class="Select" src=imgs/con_img/Select.png>
+		</div>
+		<div class="myPopPicture">
+			<img src=comment_png/${key}.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">
+		</div>
+		<div class="${switchClass}" onclick="MarkPoint(this)" data-key="${key}">
+			<p class="switchOff">未完成</p>
+			<p class="switchOn">已完成</p>
+			<div class="switchButton">
+				<div class="switchButtonIcon">
+					<p>${switchText}</p>
+				</div>
+			</div>
+		</div>
+		<div class="tipcard"></div>
+	</div>`
 	marker.bindPopup(popupHtml);
 });

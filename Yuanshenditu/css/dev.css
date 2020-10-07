@@ -95,16 +95,17 @@
 }
 .marker-correct-btn
 {
-    position: absolute;
-    right: 10px;
-    top: 115px;
+    
+    position: relative;
+    left: 125px;
+    top: 5px;
     font-size: 25px;
 }
 .marker-del-btn
 {
-    position: absolute;
-    right: 10px;
-    top: 73px;
+    position: relative;
+    left: 125px;
+    top: 5px;
     font-size: 24px;
 }
 .add-panel
@@ -132,6 +133,7 @@
 }
 .add-title,.add-des
 {
+    display: block;
     font-size: 24px;
 }
 .modify-submit-btn

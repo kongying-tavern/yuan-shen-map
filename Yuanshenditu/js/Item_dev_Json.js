@@ -96,6 +96,11 @@ var JS_SG_MD = JSON.parse(JSON.stringify(JS_Item));
 var JS_SG_LY = JSON.parse(JSON.stringify(JS_Item));
 var JS_SM_MD = JSON.parse(JSON.stringify(JS_Item));
 var JS_SM_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_QQR_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_QQR_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_QQSM_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_QQSM_LY = JSON.parse(JSON.stringify(JS_Item));
+
 
 var JS_array = [
     JS_FST,
@@ -191,6 +196,10 @@ var JS_array = [
     JS_SG_LY,
     JS_SM_MD,
     JS_SM_LY,
+    JS_QQR_MD,
+    JS_QQR_LY,
+    JS_QQSM_MD,
+    JS_QQSM_LY,
 ];
 
 let url = 'http://yuanshen.site:8848/marker/queryAll'

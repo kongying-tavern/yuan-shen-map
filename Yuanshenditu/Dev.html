@@ -9,6 +9,8 @@
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="css/dev.css">
+	<link rel="stylesheet" href="dist/MarkerCluster.css" />
+	<link rel="stylesheet" href="dist/MarkerCluster.Default.css" />
 	<script>
 		var _hmt = _hmt || [];
 		(function () {
@@ -486,6 +488,18 @@
 				<span class="Layer_SM_LY map-opts" area="LY" itemtype="TX">
 					<div class="img-border"><img src="imgs/icon_92.png" class="map-opts-icon" alt="icon"></div>树莓-璃月
 				</span>
+				<span class="Layer_QQR_MD map-opts" area="MD" itemtype="GW">
+					<div class="img-border"><img src="imgs/icon_93.png" class="map-opts-icon" alt="icon"></div>丘丘人-蒙德
+				</span>
+				<span class="Layer_QQR_LY map-opts" area="LY" itemtype="GW">
+					<div class="img-border"><img src="imgs/icon_94.png" class="map-opts-icon" alt="icon"></div>丘丘人-璃月
+				</span>
+				<span class="Layer_QQSM_MD map-opts" area="MD" itemtype="GW">
+					<div class="img-border"><img src="imgs/icon_95.png" class="map-opts-icon" alt="icon"></div>丘丘萨满-蒙德
+				</span>
+				<span class="Layer_QQSM_LY map-opts" area="LY" itemtype="GW">
+					<div class="img-border"><img src="imgs/icon_96.png" class="map-opts-icon" alt="icon"></div>丘丘萨满-璃月
+				</span>
 			</div>
 		</div>
 
@@ -550,9 +564,11 @@
 	</div>
 	<script src="js/jquery-3.5.1.min.js"></script>
 	<script src="leaflet/leaflet.js"></script>
+	<script src="dist/leaflet.markercluster-src_old.js"></script>
 	<!-- <script src="js/Item_Json.js"></script> -->
 	<script src="js/Item_dev_Json.js"></script>
 	<script src="js/Dev_functions.js"></script>
+	<script src="js/index.js"></script>
 	<script src="js/Item_dev.js"></script>
 	<script src="js/milo.js"></script>
 	<script>
@@ -574,6 +590,8 @@
 				Dialog.hide();
 			});
 		}
+		$(".area-list-li-containor").hide();
+		$(".area-list-containor").show();
 	</script>
 	<script>
 		$(".area-list-li-containor").hide();
@@ -802,7 +820,8 @@
 			"Layer_PX_LY", "Layer_QW_MD", "Layer_QW_LY", "Layer_TTH_MD", "Layer_TTH_LY", "Layer_BH_MD", "Layer_BH_LY",
 			"Layer_SongR_MD", "Layer_SongR_LY", "Layer_ShouR_MD", "Layer_ShouR_LY", "Layer_QR_MD", "Layer_QR_LY",
 			"Layer_YR_MD", "Layer_YR_LY", "Layer_BLB_MD", "Layer_BLB_LY", "Layer_HLB_MD", "Layer_HLB_LY", "Layer_MG_MD",
-			"Layer_MG_LY", "Layer_XYWB_MD", "Layer_XYWB_LY", "Layer_SG_MD", "Layer_SG_LY", "Layer_SM_MD", "Layer_SM_LY"
+			"Layer_MG_LY", "Layer_XYWB_MD", "Layer_XYWB_LY", "Layer_SG_MD", "Layer_SG_LY", "Layer_SM_MD", "Layer_SM_LY",
+			"Layer_QQR_MD", "Layer_QQR_LY", "Layer_QQSM_MD", "Layer_QQSM_LY"
 		];
 		var layerarray;
 		var idxclass;
@@ -1055,9 +1074,11 @@
 				"PPH_MD": "骗骗花-蒙德",
 				"XQD_MD": "先遣队-蒙德",
 				"SLM_MD": "史莱姆-蒙德",
-				"KFZH_MD": "狂风之核-蒙德"
+				"KFZH_MD": "狂风之核-蒙德",
+				"QQR_MD":"丘丘人-蒙德",
+				"QQSM_MD":"丘丘萨满-蒙德"
 			},
-			"SC_MD":{
+			"SC_MD": {
 				"SongR_MD": "松茸-蒙德",
 				"PX_MD": "螃蟹-蒙德",
 				"ShouR_MD": "兽肉-蒙德",
@@ -1072,7 +1093,7 @@
 				"SG_MD": "松果-蒙德",
 				"SM_MD": "树莓-蒙德"
 			},
-			"LJ_MD":{
+			"LJ_MD": {
 				"BWHHD_MD": "冰雾花花朵-蒙德",
 				"LYHHR_MD": "烈焰花花蕊-蒙德",
 				"DQSJ_MD": "电气水晶-蒙德",
@@ -1117,8 +1138,10 @@
 				"YYLX_LY": "幼岩龙蜥-璃月",
 				"SLM_LY": "史莱姆-璃月",
 				"KFZH_LY": "狂风之核-璃月",
+				"QQR_LY":"丘丘人-蒙德",
+				"QQSM_LY":"丘丘萨满-蒙德"
 			},
-			"SC_LY":{
+			"SC_LY": {
 				"SongR_LY": "松茸-璃月",
 				"PX_LY": "螃蟹-璃月",
 				"ShouR_LY": "兽肉-璃月",
@@ -1133,7 +1156,7 @@
 				"SG_LY": "松果-璃月",
 				"SM_LY": "树莓-璃月"
 			},
-			"LJ_LY":{
+			"LJ_LY": {
 				"BWHHD_LY": "冰雾花花朵-璃月",
 				"LYHHR_LY": "烈焰花花蕊-璃月",
 				"DQSJ_LY": "电气水晶-璃月",
