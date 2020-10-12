@@ -1,0 +1,14 @@
+{
+  "name": "Yuanshenditu",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^10.1.3",
+    "electron-packager": "^15.1.0"
+  },
+  "scripts": {
+    "start": "electron .",
+    "publish": "electron-packager ./ --all"
+  }
+}
