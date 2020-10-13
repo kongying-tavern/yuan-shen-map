@@ -2,6 +2,7 @@
 <html>
 
 <head>
+	<meta name="baidu_union_verify" content="50113a1916bc6375d27b9699c721c4da">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 	<title>原神地图</title>
 	<meta charset="utf-8">
@@ -493,13 +494,9 @@
 			//下载保存数据并复制到剪切板
 			$(".save-btn").click(function () {
 				var markedLog = []
-				for (var i = 0; i < 29; i++) {
-					for (var j = 1; j < 1200; j++) {
-						var key = i + "_" + j
-						if (localStorage.getItem(key)) {
-							markedLog.push(key)
-						}
-					}
+				for (var i = 0; i < localStorage.length; i++) {
+					var key = localStorage.key(i); //获取本地存储的Key
+					if (localStorage.getItem(key)) markedLog.push(key); //所有value
 				}
 				var eleLink = document.createElement('a');
 				eleLink.download = 'markers.json';
@@ -510,16 +507,7 @@
 				eleLink.click();
 				document.body.removeChild(eleLink);
 
-				var markedLog1 = []
-				for (var i = 0; i < 29; i++) {
-					for (var j = 1; j < 1200; j++) {
-						var key = i + "_" + j
-						if (localStorage.getItem(key)) {
-							markedLog1.push(key)
-						}
-					}
-				}
-				toolresult = JSON.stringify(markedLog1);
+				toolresult = JSON.stringify(markedLog);
 				var texts = toolresult
 				copyText(texts, function () {
 					alert('复制成功 \n复制内容' + texts)
