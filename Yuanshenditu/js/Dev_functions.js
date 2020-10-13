@@ -27,7 +27,7 @@ function downloadJson(fileName) {
 */
 function addNewMarkers(layerId,markerList) {
 	var beginId = 0;
-	var url = 'http://yuanshen.site:8848/marker/addNewMarkers'
+	var url = 'http://ddns.minemc.top:8848/marker/addNewMarkers'
     var data = {
         layerId: layerId,
         markerList: markerList
@@ -62,7 +62,7 @@ function addNewMarkers(layerId,markerList) {
 */
 function updateMarker(layerId,markerInfo) {
 	var flag = false;
-	var url = 'http://yuanshen.site:8848/marker/updateMarker'
+	var url = 'http://ddns.minemc.top:8848/marker/updateMarker'
     var data = {
         layerId: layerId,
         markerInfo: markerInfo
@@ -93,7 +93,7 @@ function updateMarker(layerId,markerInfo) {
 */
 function deleteMarker(layerId,markerId) {
 	var flag = false;
-	var url = 'http://yuanshen.site:8848/marker/deleteMarker'
+	var url = 'http://ddns.minemc.top:8848/marker/deleteMarker'
     var data = {
         layerId: layerId,
         markerId: markerId

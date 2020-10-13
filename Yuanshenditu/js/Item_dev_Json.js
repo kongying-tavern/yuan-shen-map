@@ -202,7 +202,7 @@ var JS_array = [
     JS_QQSM_LY,
 ];
 
-let url = 'http://yuanshen.site:8848/marker/queryAll'
+let url = 'http://ddns.minemc.top:8848/marker/queryAll'
 let success = function (res) {
     for (var i = 0; i < res.data.list.length; i++) {
         var item = res.data.list[i];
