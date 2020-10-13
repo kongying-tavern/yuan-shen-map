@@ -54,7 +54,7 @@
 		var markedLog = []
 		for (var i = 0; i < localStorage.length; i++) {
 			var key = localStorage.key(i); //获取本地存储的Key
-			if (localStorage.getItem(key)) markedLog.push(key); //所有value
+			if (localStorage.getItem(key) == 1) markedLog.push(key); //所有value
 		}
 		var eleLink = document.createElement('a');
 		eleLink.download = 'markers.json';
@@ -70,7 +70,7 @@
 		var markedLog = []
 		for (var i = 0; i < localStorage.length; i++) {
 			var key = localStorage.key(i); //获取本地存储的Key
-			if (localStorage.getItem(key)) markedLog.push(key); //所有value
+			if (localStorage.getItem(key) == 1) markedLog.push(key); //所有value
 		}
 		toolresult = JSON.stringify(markedLog);
 		var texts = toolresult

@@ -496,7 +496,7 @@
 				var markedLog = []
 				for (var i = 0; i < localStorage.length; i++) {
 					var key = localStorage.key(i); //获取本地存储的Key
-					if (localStorage.getItem(key)) markedLog.push(key); //所有value
+					if (localStorage.getItem(key)==1) markedLog.push(key); //所有value
 				}
 				var eleLink = document.createElement('a');
 				eleLink.download = 'markers.json';
@@ -510,7 +510,7 @@
 				toolresult = JSON.stringify(markedLog);
 				var texts = toolresult
 				copyText(texts, function () {
-					alert('复制成功 \n复制内容' + texts)
+					alert('复制成功 \n复制内容:' + texts + '\n如果您在当前地图上有标记数据但是这里显示"[]",请与管理员联系恢复您的数据QQ790489566')
 				})
 				console.log(toolresult);
 			})
