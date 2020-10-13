@@ -26,8 +26,8 @@
 	</br>
 	提取码：KYJG
 	</br>您也可以加群下载离线更新包：1群765302904（已满）；2群853210278（已满）；3群932683801（已满）；4群1139510554（已满）；5群1149599151（未满），若均已满，各群密码均为123456
-	</br><button id="submitMarker">一键导出标记点位记录</button> 【使用说明】将导出数据的内容复制到离线版的导入框中，提交即可
-	</br>不能下载？<button id="submitMarker2">点击复制记录到剪切板</button>
+	</br><button id="submitMarker">一键复制并下载标记点位记录</button> 【使用说明】将导出数据的内容复制到离线版的导入框中，提交即可
+	</br>
 	</br>PS.在线地图中点击存档也可下载点位记录并记录到剪切板或用下方按钮跳转到上传点位记录页面
 	</br>
 	</br><button id="update">点击跳转到上传页面</button>
@@ -64,6 +64,13 @@
 		document.body.appendChild(eleLink);
 		eleLink.click();
 		document.body.removeChild(eleLink);
+
+		toolresult = JSON.stringify(markedLog);
+		var texts = toolresult
+		copyText(texts, function () {
+			alert('复制成功 \n复制内容:' + texts + '\n如果您在当前地图上有标记数据但是这里显示"[]",请与管理员联系恢复您的数据QQ790489566')
+		})
+		console.log(toolresult);
 	})
 
 	$("#submitMarker2").click(function () {
@@ -75,7 +82,7 @@
 		toolresult = JSON.stringify(markedLog);
 		var texts = toolresult
 		copyText(texts, function () {
-			alert('复制成功 \n复制内容' + texts)
+			alert('复制成功 \n复制内容:' + texts + '\n如果您在当前地图上有标记数据但是这里显示"[]",请与管理员联系恢复您的数据QQ790489566')
 		})
 		console.log(toolresult);
 	})
