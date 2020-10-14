@@ -716,6 +716,13 @@ body,
     transform: rotate(45deg);
 }
 
+.zanzhu{
+    font-family: font;
+    margin-top: 3px;
+    font-size: 22px;
+    color: #2B4153;
+}
+
 @media screen and (max-width: 750px) {
     .leaflet-popup-content-wrapper {
         transform-origin: 50% 100% 0;
