@@ -375,6 +375,7 @@
 	<script src="dist/leaflet.markercluster-src.js"></script>
 	<script src="js/Item_Json.js"></script>
 	<script src="js/index.js"></script>
+	<script src="js/gitFunctions.js"></script>
 	<script>
 		$(".area-list-li-containor").hide();
 		$(".area-list-containor").show();
@@ -477,9 +478,8 @@
 		$(document).ready(function () {
 			$(".con-type-label:first").trigger("click");
 			$(".reg_log_link").click(function () {
-				alert("即将开放,敬请期待！");
+				getToken();
 			})
-
 			// 复制的方法
 			function copyText(text, callback) { // text: 要复制的内容， callback: 回调
 				var tag = document.createElement('input');
@@ -499,7 +499,7 @@
 				var markedLog = []
 				for (var i = 0; i < localStorage.length; i++) {
 					var key = localStorage.key(i); //获取本地存储的Key
-					if (localStorage.getItem(key)==1) markedLog.push(key); //所有value
+					if (localStorage.getItem(key) == 1) markedLog.push(key); //所有value
 				}
 				var eleLink = document.createElement('a');
 				eleLink.download = 'markers.json';
