@@ -383,12 +383,6 @@
 		//筛选函数
 		var i_type = "ALL";
 		var area_idx = "MD";
-
-		if (getToken()) {
-			console.log("在线模式 token: " + tokenPara)
-		} else {
-			console.log("离线模式")
-		}
 		function filter() {
 			if (i_type == "ALL") {
 				for (let i = 0; i < $(".options-list .map-opts").length; i++) {
@@ -482,6 +476,11 @@
 		});
 		//初始化筛选器功能
 		$(document).ready(function () {
+			if (getToken()) {
+				console.log("在线模式 token: " + tokenPara)
+			} else {
+				console.log("离线模式")
+			}
 			$(".con-type-label:first").trigger("click");
 			$(".reg_log_link").click(function () {
 				jumpLogin();
@@ -505,7 +504,7 @@
 			}
 
 			//下载保存数据并复制到剪切板
-			$(".save-btn").click(function () {
+			function localSave(){
 				var markedLog = []
 				for (var i = 0; i < localStorage.length; i++) {
 					var key = localStorage.key(i); //获取本地存储的Key
@@ -526,6 +525,10 @@
 					alert('复制成功 \n复制内容:' + texts + '\n如果您在当前地图上有标记数据但是这里显示"[]",请与管理员联系恢复您的数据QQ790489566')
 				})
 				console.log(toolresult);
+			}
+			//存储
+			$(".save-btn").click(function () {
+				upLoadSaveData(localSave);
 			})
 
 			//单机跳转

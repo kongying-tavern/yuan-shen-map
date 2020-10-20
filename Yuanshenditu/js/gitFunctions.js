@@ -36,8 +36,10 @@ function getToken() {
  * tokenPara 正确 调用上传存档
  *
  * 不正确 跳转登录 / 本地存档
+ * 
+ * @param  {function} localSave
  */
-function upLoadSaveData() {
+function upLoadSaveData(localSave) {
   if (tokenPara !== undefined && tokenPara !== "") {
     var fileName = window.prompt("请输入存档名");
     console.log(fileName);
@@ -46,8 +48,8 @@ function upLoadSaveData() {
     if (window.confirm("使用云存档必须登录, 要立刻登录吗?")) {
       jumpLogin();
     } else {
-      //TODO : 调用本地存档
-      console.log("用户取消操作");
+    //调用本地存档
+      localSave();
     }
   }
 }
