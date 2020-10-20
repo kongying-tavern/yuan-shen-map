@@ -374,8 +374,9 @@
 	<script src="leaflet/leaflet.js"></script>
 	<script src="dist/leaflet.markercluster-src.js"></script>
 	<script src="js/Item_Json.js"></script>
-	<script src="js/index.js"></script>
 	<script src="js/gitFunctions.js"></script>
+	<script src="js/index.js"></script>
+
 	<script>
 		$(".area-list-li-containor").hide();
 		$(".area-list-containor").show();
@@ -383,6 +384,11 @@
 		var i_type = "ALL";
 		var area_idx = "MD";
 
+		if (getToken()) {
+			console.log("在线模式 token: " + tokenPara)
+		} else {
+			console.log("离线模式")
+		}
 		function filter() {
 			if (i_type == "ALL") {
 				for (let i = 0; i < $(".options-list .map-opts").length; i++) {
@@ -478,8 +484,12 @@
 		$(document).ready(function () {
 			$(".con-type-label:first").trigger("click");
 			$(".reg_log_link").click(function () {
-				getToken();
+				jumpLogin();
 			})
+			// function createIssue(issueName, issueContent, issueLabels) {
+			// 	console.log("clicked openIssue" + issueLabels);
+			// 	createIssue(issueName, issueContent, null);
+			// }
 			// 复制的方法
 			function copyText(text, callback) { // text: 要复制的内容， callback: 回调
 				var tag = document.createElement('input');

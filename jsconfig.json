@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "checkJs": true
+  },
+  "include": ["Yuanshenditu/js/*"],
+  "exclude": ["node_modules", "**/node_modules/*"],
+  "typeAcquisition": {
+    "include": ["jquery", "leaflet", "geojson"]
+  }
+}

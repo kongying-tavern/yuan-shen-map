@@ -1,32 +1,60 @@
-/*
-  http://ddns.minemc.top:8848/auth/auth/
-  点击登录，跳到gitee授权界面的方法，写在按钮的href中。
+//@ts-check
+/**
+ * @typedef {Array} user_fileNames 用户存档名的列表,喜欢啥填啥，如['uid1','小号','各种号']
+ * @typedef {Array} user_fileContents 存档对应的标记值，如[['1_1','26_1'],['1_2','26_2'],['27_1','27_12','27_13']]
+ * @typedef {Array} user_fileIds 暂时不知道这是啥
+ */
 
-/*
-	获取用户存档列表
-	用户的access_token在session中
-	调用后，fileNames参数会填入用户存档名的列表,原神uid，如['uid1','uid2','uid3']
-	fileContents参数会填入上述存档对应的标记值，如[['1_1','26_1'],['1_2','26_2'],['27_1','27_12','27_13']]
-*/
+/** @type {Array.<string>} */ var user_fileNames = [];
+/** @type {Array.<string>} */ var user_fileContents = [];
+/** @type {Array.<string>} */ var user_fileIds = [];
 
-var user_fileNames = [];
-var user_fileContents = [];
-var user_fileIds = [];
-var tokenPara;
+/** @type {string} 用户 token 参数*/ var tokenPara;
 
+/**跳转到登录 */
+function jumpLogin() {
+  window.open("http://ddns.minemc.top:8848/auth/auth/");
+}
+/**
+ * 获取 token
+ *
+ * true : 写入 tokenPara
+ *
+ * false: 跳转登录 / 使用本地离线
+ *
+ * @returns {true | false}
+ */
 function getToken() {
   if (window.location.search !== undefined && window.location.search !== "") {
     tokenPara = GetQueryString("access_token");
-    console.log("token: " + tokenPara);
-    var fileName = window.prompt("请输入原神UID");
-    console.log(fileName)
+    return true;
+  } else {
+    return false;
+  }
+}
+/**
+ * tokenPara 正确 调用上传存档
+ *
+ * 不正确 跳转登录 / 本地存档
+ */
+function upLoadSaveData() {
+  if (tokenPara !== undefined && tokenPara !== "") {
+    var fileName = window.prompt("请输入存档名");
+    console.log(fileName);
     addNewFile(fileName);
   } else {
-    // alert("no token found.");
-    window.open('http://ddns.minemc.top:8848/auth/auth/');
+    if (window.confirm("使用云存档必须登录, 要立刻登录吗?")) {
+      jumpLogin();
+    } else {
+      //TODO : 调用本地存档
+      console.log("用户取消操作");
+    }
   }
 }
 
+/**
+ * 内部函数 禁止外调
+ */
 function GetQueryString(name) {
   var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
 
@@ -59,6 +87,10 @@ function GetQueryString(name) {
 //   }
 // }
 
+/**
+ * 云端获取文件列表
+ *
+ */
 function getFileList() {
   var url = "http://ddns.minemc.top:8848/file/getFileList";
   var access_token = "";
@@ -92,11 +124,13 @@ function getFileList() {
   });
 }
 
-/*
-	上传存档
-	fileName 当前需要上传的存档名
-*/
-
+/**
+ *上传存档
+ *
+ *@param fileName {string} 当前需要上传的存档名
+ *
+ * tips: 上传完成会调用 getFileList() 同步数据
+ */
 function addNewFile(fileName) {
   var markersData = [];
   for (var i = 0; i < localStorage.length; i++) {
@@ -194,12 +228,12 @@ function deleteFile(number) {
   });
 }
 
-/*
-	添加issue
-	issueName 提交的issue标题，可以为资源名，如蒙德宝箱164
-	issueContent issue的具体内容
-	issueLabels issue的标签逗号隔开 如 "宝箱,错点"
-*/
+/**
+ * 添加issue
+ * @param issueName {string} 提交的issue标题，可以为资源名，如蒙德宝箱164
+ * @param issueContent {string | string[]}issue的具体内容
+ * @param issueLabels {string | string[]} issue的标签逗号隔开 如 "宝箱,错点"
+ */
 function createIssue(issueName, issueContent, issueLabels) {
   var url = "http://ddns.minemc.top:8848/file/createIssue";
   var data = {
@@ -212,7 +246,6 @@ function createIssue(issueName, issueContent, issueLabels) {
     if (res === "login") {
       alert("未登录gitee账号或者登录已过期！");
     } else {
-      //把存档的值存储(请根据实际情况修改这部分)
       alert("提交成功！");
     }
   };
