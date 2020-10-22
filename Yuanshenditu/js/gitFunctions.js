@@ -5,15 +5,19 @@
  * @typedef {Array} user_fileIds 暂时不知道这是啥
  */
 
-/** @type {Array.<string>} */ var user_fileNames = [];
-/** @type {Array.<string>} */ var user_fileContents = [];
-/** @type {Array.<string>} */ var user_fileIds = [];
+/** @type {Array.<string>} */
+var user_fileNames = [];
+/** @type {Array.<string>} */
+var user_fileContents = [];
+/** @type {Array.<string>} */
+var user_fileIds = [];
 
-/** @type {string} 用户 token 参数*/ var tokenPara;
+/** @type {string} 用户 token 参数*/
+var tokenPara;
 
 /**跳转到登录 */
 function jumpLogin() {
-  window.open("http://ddns.minemc.top:8848/auth/auth/");
+  window.open("https://minemc.top:8848/auth/auth/");
 }
 /**
  * 获取 token
@@ -25,11 +29,25 @@ function jumpLogin() {
  * @returns {true | false}
  */
 function getToken() {
-  if (window.location.search !== undefined && window.location.search !== "") {
-    tokenPara = GetQueryString("access_token");
+  if (getCookie("gitee_Token") != "notfound") {
+    tokenPara = getCookie("gitee_Token");
     return true;
   } else {
     return false;
+  }
+}
+
+/**
+ * 根据地址 token 判定登录跳转
+ *
+ * true : 写入 cookie 并跳转
+ *
+ */
+function Login() {
+  if (window.location.search !== undefined && window.location.search !== "") {
+    let tempTokenPara = GetQueryString("access_token");
+    setCookie("gitee_Token", tempTokenPara, 1);
+    //return window.location.href = "https://yuanshen.site";
   }
 }
 /**
@@ -42,13 +60,15 @@ function getToken() {
 function upLoadSaveData(localSave) {
   if (tokenPara !== undefined && tokenPara !== "") {
     var fileName = window.prompt("请输入存档名");
-    console.log(fileName);
-    addNewFile(fileName);
+    if (fileName) {
+      console.log(fileName);
+      addNewFile(fileName);
+    }
   } else {
     if (window.confirm("使用云存档必须登录, 要立刻登录吗?")) {
       jumpLogin();
     } else {
-    //调用本地存档
+      //调用本地存档
       localSave();
     }
   }
@@ -94,7 +114,7 @@ function GetQueryString(name) {
  *
  */
 function getFileList() {
-  var url = "http://ddns.minemc.top:8848/file/getFileList";
+  var url = "https://minemc.top:8848/file/getFileList";
   var access_token = "";
 
   if (tokenPara !== null) {
@@ -137,6 +157,7 @@ function addNewFile(fileName) {
   var markersData = [];
   for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i); //获取本地存储的Key
+    // @ts-ignore
     if (localStorage.getItem(key) == 1) markersData.push(key); //所有value
   }
   var success = function (res) {
@@ -162,7 +183,7 @@ function addNewFile(fileName) {
   let err = function (msg) {
     alert(msg);
   };
-  var url = "http://ddns.minemc.top:8848/file/addNewFile";
+  var url = "https://minemc.top:8848/file/addNewFile";
   var data = {
     access_token: tokenPara,
     fileName: fileName,
@@ -200,9 +221,10 @@ function deleteFile(number) {
   var markersData = [];
   for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i); //获取本地存储的Key
+    // @ts-ignore
     if (localStorage.getItem(key) == 1) markersData.push(key); //所有value
   }
-  var url = "http://ddns.minemc.top:8848/file/deleteFile";
+  var url = "https://minemc.top:8848/file/deleteFile";
   var data = {
     access_token: tokenPara,
     fileId: user_fileIds[number],
@@ -237,7 +259,7 @@ function deleteFile(number) {
  * @param issueLabels {string | string[]} issue的标签逗号隔开 如 "宝箱,错点"
  */
 function createIssue(issueName, issueContent, issueLabels) {
-  var url = "http://ddns.minemc.top:8848/file/createIssue";
+  var url = "https://minemc.top:8848/file/createIssue";
   var data = {
     access_token: tokenPara,
     issueName: issueName,
@@ -268,7 +290,7 @@ function createIssue(issueName, issueContent, issueLabels) {
 	上传base64文件：未测试
 */
 function uploadBase64(filePath, fileName, imgBase64) {
-  var url = "http://ddns.minemc.top:8848/upload/uploadBase64";
+  var url = "https://minemc.top:8848/upload/uploadBase64";
   var data = {
     filePath: filePath,
     fileName: fileName,

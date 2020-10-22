@@ -13,7 +13,10 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" href="dist/MarkerCluster.css" />
 	<link rel="stylesheet" href="dist/MarkerCluster.Default.css" />
+	<script src="js/Cookie.js"></script>
+	<script src="js/gitFunctions.js"></script>
 	<script>
+		Login();
 		var _hmt = _hmt || [];
 		(function () {
 			var hm = document.createElement("script");
@@ -33,7 +36,7 @@
 		<a href="javascript:;" class="fold-btn hd">fold</a>
 		<div class="person-div">
 			<a href="javascript:;" class="reg_log_link hd">登录/注册</a>
-			<a href="https://azz.net/YuanShenDiTu" target="_bal" class="zanzhu">捐助我们</a>
+			<a href="https://afdian.net/@yuanshenditu" target="_bal" class="zanzhu">捐助我们</a>
 			<a href="javascript:;" class="save-btn disable hd">存档</a>
 		</div>
 		<div class="topLine"></div>
@@ -371,10 +374,11 @@
 		<a href="http://beian.miit.gov.cn" target="_bal" class="beian">蜀ICP备2020028219号</a>
 	</div>
 	<script src="js/jquery-3.5.1.min.js"></script>
+
 	<script src="leaflet/leaflet.js"></script>
 	<script src="dist/leaflet.markercluster-src.js"></script>
 	<script src="js/Item_Json.js"></script>
-	<script src="js/gitFunctions.js"></script>
+
 	<script src="js/index.js"></script>
 
 	<script>
@@ -383,6 +387,7 @@
 		//筛选函数
 		var i_type = "ALL";
 		var area_idx = "MD";
+
 		function filter() {
 			if (i_type == "ALL") {
 				for (let i = 0; i < $(".options-list .map-opts").length; i++) {
@@ -504,7 +509,7 @@
 			}
 
 			//下载保存数据并复制到剪切板
-			function localSave(){
+			function localSave() {
 				var markedLog = []
 				for (var i = 0; i < localStorage.length; i++) {
 					var key = localStorage.key(i); //获取本地存储的Key
