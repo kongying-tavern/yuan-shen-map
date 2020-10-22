@@ -1,3 +1,4 @@
+//@ts-check
 //初始化地图
 t = L.latLngBounds([0, 0], [-66.5, 90]);
 var map = L.map("map", {
@@ -334,6 +335,10 @@ function onEachFeature(feature, layer) {
 function closePop() {
 	$(".leaflet-popup-close-button")[0].click();
 }
+function openIssue() {
+	alert("clicked openIssue");
+	createIssue("issueName", "issueContent", "null") 
+}
 
 //定义分类的数组，分别对应 物品层，物品Json名，物品icon类型，新增时在对应数组后增加对象即可
 var typearray = [
@@ -586,6 +591,7 @@ map.on('popupopen', function (e) {
 			<div class="myPopName" >${marker.feature.properties.popTitle}${marker.feature.id}</div>
 		</div>
 		<div class="myPopLine"></div>
+		<div class="myPopIssue" onclick="openIssue()">反馈<img class="myPopIssueIcon" src=imgs/con_img/popIssue.png></div>
 		<div class="myPopClose" onclick="closePop()"></div>
 		<div class="myPopComment">${marker.feature.properties.popupContent}
 			<img class="Select" src=imgs/con_img/Select.png>

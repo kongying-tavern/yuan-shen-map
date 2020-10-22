@@ -589,6 +589,25 @@ body,
     pointer-events: auto;
 }
 
+.myPopIssue {
+    position: absolute !important;
+    right: 50px !important;
+    top: 15px !important;
+    font-size: 20px;
+    font-weight: bold;
+    width: 80px;
+    height: 30px;
+    cursor: pointer;
+}
+.myPopIssueIcon {
+    display: inline-block;
+    position: absolute;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
 .myPopClose {
     position: absolute !important;
     right: 20px !important;
