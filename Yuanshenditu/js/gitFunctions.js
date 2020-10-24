@@ -31,6 +31,7 @@ function jumpLogin() {
 function getToken() {
   if (getCookie("gitee_Token") != "notfound") {
     tokenPara = getCookie("gitee_Token");
+    getFileList();
     return true;
   } else {
     return false;
@@ -62,7 +63,7 @@ function upLoadSaveData(localSave) {
     var fileName = window.prompt("请输入存档名");
     if (fileName) {
       console.log(fileName);
-      addNewFile(fileName);
+      checkFile(fileName);
     }
   } else {
     if (window.confirm("使用云存档必须登录, 要立刻登录吗?")) {
@@ -127,6 +128,7 @@ function getFileList() {
     if (res.data === "login") {
       alert("未登录gitee账号或者登录已过期！");
     } else {
+      console.log(res);
       user_fileNames = res.data.fileNames;
       user_fileContents = res.data.fileContents;
       user_fileIds = res.data.fileIds;
@@ -147,6 +149,32 @@ function getFileList() {
     contentType: "application/json",
     success: success,
   });
+}
+
+/**
+ *判断存档是修改还是新增
+ *
+ *@param fileName {string} 当前需要上传的存档名
+ *
+ * tips: 上传完成会调用 getFileList() 同步数据
+ */
+function checkFile(fileName) {
+  let isUpdate = false;
+  let fileIndex = 0;
+  for (let name of user_fileNames) {
+    console.log(name)
+    if (name == fileName) {
+      var fileID = user_fileIds[fileIndex];
+      isUpdate = true;
+      break;
+    }
+    fileIndex++;
+  }
+  if (isUpdate) {
+    updateFile(fileName, fileID);
+  } else {
+    addNewFile(fileName);
+  }
 }
 
 /**
@@ -202,6 +230,47 @@ function addNewFile(fileName) {
   });
 }
 
+/**
+ *修改存档
+ *@param fileName {string} 当前需要修改的存档名
+ *@param fileID {string} 当前需要修改的存档ID
+ *修改会丢失之前的存档，如需要请加备份提示
+ */
+function updateFile(fileName, fileID) {
+  var markersData = [];
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i); //获取本地存储的Key
+    // @ts-ignore
+    if (localStorage.getItem(key) == 1) markersData.push(key); //所有value
+  }
+  var success = function (res) {
+    if (res === "login") {
+      alert("未登录gitee账号或者登录已过期！");
+    } else {
+      console.log(res);
+      alert("保存成功！");
+      getFileList();
+    }
+  };
+  let err = function (msg) {
+    console.log(msg);
+  };
+  var markersJsonData ={content: JSON.stringify(markersData)};
+  console.log(JSON.stringify(markersJsonData));
+  var url = "/giteegist/" + fileID;
+  var data = '{"access_token": "'+tokenPara+'","files": {"'+fileName+'": '+JSON.stringify(markersJsonData)+'}}';
+  $.ajax({
+    async: false,
+    type: "PATCH",
+    url: url,
+    data: JSON.stringify(JSON.parse(data)),
+    contentType: "application/json",
+    success: success,
+    error: err,
+  });
+
+}
+
 /*
 	导入存档
 	不需要调后台，因为查过了，number传入当前需要导入的存档在数组中的序号
@@ -209,6 +278,7 @@ function addNewFile(fileName) {
 */
 function loadFile(number) {
   localStorage.clear();
+  // @ts-ignore
   var markerLogArr = user_fileContents(number);
   for (var i = 0; i < markerLogArr.length; i++) {
     localStorage.setItem(markerLogArr[i], "1");
