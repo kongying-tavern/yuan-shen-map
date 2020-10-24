@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .saveContent {
+            position: relative;
+            width: 473px;
+            height: 488px;
+            background: #FFFFFF;
+            border: 1px solid #000000;
+        }
+
+        .saveTitle {
+            position: absolute;
+            width: 473px;
+            height: 67px;
+            left: 0px;
+            top: 0px;
+            line-height: 67px;
+            border-bottom: 1px solid #000000;
+            box-sizing: border-box;
+        }
+
+        .saveClose {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: 23px;
+            top: 25px;
+            cursor: pointer;
+            background: url("saveClose.svg") no-repeat;
+            background-size: contain;
+        }
+
+        .userID {
+            /* UserID: NanJi2020 */
+            position: absolute;
+            width: 206px;
+            height: 48px;
+            left: 19px;
+            top: calc(50% - 48px/2 + 0.5px);
+            font-family: Microsoft YaHei UI;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 22px;
+            line-height: 48px;
+            display: flex;
+            align-items: center;
+            /* Label Color / Light / Primary */
+            color: #000000;
+        }
+
+        .currentUserTitle {
+            /* 当前使用： */
+            position: absolute;
+            width: 98px;
+            height: 48px;
+            left: calc(50% - 98px/2 - 168.5px);
+            top: calc(50% - 166.5px);
+            font-family: Microsoft YaHei UI;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 48px;
+            display: flex;
+            align-items: center;
+            /* Label Color / Light / Primary */
+            color: #000000;
+        }
+
+        .currentUserName {
+            /* 2.南极的小号* */
+            position: absolute;
+            width: 180px;
+            height: 48px;
+            left: 152px;
+            top: calc(50% - 166.5px);
+            font-family: Microsoft YaHei UI;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 24px;
+            line-height: 48px;
+            display: flex;
+            align-items: center;
+            /* Label Color / Light / Primary */
+            color: #000000;
+        }
+
+        .saveUpdate {
+            position: absolute;
+            width: 103px;
+            height: 48px;
+            left: 354px;
+            top: 80px;
+            border: 1px solid #000000;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .saveUpdateText {
+            position: absolute;
+            width: 52px;
+            height: 34px;
+            left: 26px;
+            top: calc(50% - 34px/2);
+            font-family: Microsoft YaHei UI;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 13px;
+            line-height: 17px;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            /* Label Color / Light / Primary */
+            color: #000000;
+        }
+
+        .saveTableContent {
+            position: absolute;
+            width: 454px;
+            height: 336px;
+            left: 10px;
+            top: 141px;
+            border: 1px solid #000000;
+            box-sizing: border-box;
+        }
+
+        th {
+            font-family: Microsoft YaHei UI;
+            font-style: normal;
+            font-weight: normal;
+            height: 38px;
+            font-size: 14px;
+            line-height: 38px;
+            align-items: center;
+            color: #4F4F4F;
+        }
+
+        td {
+            text-align: center;
+            vertical-align: center;
+        }
+
+        .saveTableState {
+            width: 40px;
+            height: 40px;
+            background: url("NoSelected.svg") no-repeat;
+        }
+
+        .tb1 {
+            padding-left: 18px;
+            width: 40px;
+        }
+
+        .tb2 {
+            padding-left: 11px;
+            width: 28px;
+        }
+
+        .tb3 {
+            padding-left: 15px;
+            width: 139px;
+        }
+
+        .tb4 {
+            padding-left: 15px;
+            width: 121px;
+        }
+
+        .tb5 {
+            padding-left: 15px;
+            width: 41px;
+            padding-right: 5px;
+        }
+
+        td.tb2 {
+            font-family: Microsoft YaHei UI;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 22px;
+            line-height: 28px;
+        }
+
+        td.tb3 {
+            font-family: Microsoft YaHei UI;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        td.tb4 {
+            font-family: Microsoft YaHei UI;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        td.tb5 {
+            font-family: Microsoft YaHei UI;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        .saveTableNameContent {
+            width: 139px;
+            height: 33px;
+            background: #FFFFFF;
+            border: 1px solid #000000;
+            box-sizing: border-box;
+        }
+
+        .saveTableName {
+            position: absolute;
+            width: 94px;
+            line-height: 31px;
+        }
+
+        .saveTableEdit {
+            position: relative;
+            top: 0px;
+            left: 93px;
+            width: 45px;
+            height: 31px;
+            line-height: 33px;
+            border-left: 1px solid #000000;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+
+        .tra {
+            height: 48px;
+        }
+
+        .trb {
+            height: 48px;
+            background: #00000015;
+        }
+
+        table {
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        .saveTabelDel {
+            position: relative;
+            width: 41px;
+            height: 33px;
+            line-height: 33px;
+            background: #FFFFFF;
+            border: 1px solid #000000;
+            box-sizing: border-box;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="saveContent">
+        <div class="saveTitle">
+            <div class="saveClose"></div>
+            <div class="userID">UserID: NanJi2020</div>
+        </div>
+        <div class="currentUserTitle">当前使用：</div>
+        <div class="currentUserName">2.南极的小号*</div>
+        <div class="saveUpdate">
+            <div class="saveUpdateText">本存档 上传到云</div>
+        </div>
+        <div class="saveTableContent">
+            <table class="saveTable">
+                <tr>
+                    <th class="tb1">状态</th>
+                    <th class="tb2">编号</th>
+                    <th class="tb3">备注名</th>
+                    <th class="tb4">最后保存的时间</th>
+                    <th class="tb5">操作</th>
+                </tr>
+                <tr class="trb">
+                    <td class="tb1">
+                        <div class="saveTableState"></div>
+                    </td>
+                    <td class="tb2">1</td>
+                    <td class="tb3">
+                        <div class="saveTableNameContent">
+                            <div class="saveTableName">南极的大号</div>
+                            <div class="saveTableEdit">EDIT</div>
+                        </div>
+                    </td>
+                    <td class="tb4">20001020 20:10</td>
+                    <td class="tb5">
+                        <div class="saveTabelDel">DEL</div>
+                    </td>
+                </tr>
+                <tr class="tra">
+                    <td class="tb1">
+                        <div class="saveTableState"></div>
+                    </td>
+                    <td class="tb2">1</td>
+                    <td class="tb3">
+                        <div class="saveTableNameContent">
+                            <div class="saveTableName">南极的大号</div>
+                            <div class="saveTableEdit">EDIT</div>
+                        </div>
+                    </td>
+                    <td class="tb4">20001020 20:10</td>
+                    <td class="tb5">
+                        <div class="saveTabelDel">DEL</div>
+                    </td>
+                </tr>
+                <tr class="trb">
+                    <td class="tb1">
+                        <div class="saveTableState"></div>
+                    </td>
+                    <td class="tb2">1</td>
+                    <td class="tb3">
+                        <div class="saveTableNameContent">
+                            <div class="saveTableName">南极的大号</div>
+                            <div class="saveTableEdit">EDIT</div>
+                        </div>
+                    </td>
+                    <td class="tb4">20001020 20:10</td>
+                    <td class="tb5">
+                        <div class="saveTabelDel">DEL</div>
+                    </td>
+                </tr>
+                <tr class="tra">
+                    <td class="tb1">
+                        <div class="saveTableState"></div>
+                    </td>
+                    <td class="tb2">1</td>
+                    <td class="tb3">
+                        <div class="saveTableNameContent">
+                            <div class="saveTableName">南极的大号</div>
+                            <div class="saveTableEdit">EDIT</div>
+                        </div>
+                    </td>
+                    <td class="tb4">20001020 20:10</td>
+                    <td class="tb5">
+                        <div class="saveTabelDel">DEL</div>
+                    </td>
+                </tr>
+                <tr class="trb">
+                    <td class="tb1">
+                        <div class="saveTableState"></div>
+                    </td>
+                    <td class="tb2">1</td>
+                    <td class="tb3">
+                        <div class="saveTableNameContent">
+                            <div class="saveTableName">南极的大号</div>
+                            <div class="saveTableEdit">EDIT</div>
+                        </div>
+                    </td>
+                    <td class="tb4">20001020 20:10</td>
+                    <td class="tb5">
+                        <div class="saveTabelDel">DEL</div>
+                    </td>
+                </tr>
+                <tr class="tra">
+                    <td class="tb1">
+                        <div class="saveTableState"></div>
+                    </td>
+                    <td class="tb2">1</td>
+                    <td class="tb3">
+                        <div class="saveTableNameContent">
+                            <div class="saveTableName">南极的大号</div>
+                            <div class="saveTableEdit">EDIT</div>
+                        </div>
+                    </td>
+                    <td class="tb4">20001020 20:10</td>
+                    <td class="tb5">
+                        <div class="saveTabelDel">DEL</div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        $(".saveClose").click(function () {
+            window.parent.postMessage("saveClose", '*');
+        });
+        $(".saveUpdateText").click(function () {
+            window.parent.postMessage("upLoad", '*');
+        });
+    </script>
+</body>
+
+</html>

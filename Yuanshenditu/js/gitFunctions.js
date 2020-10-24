@@ -17,7 +17,7 @@ var tokenPara;
 
 /**跳转到登录 */
 function jumpLogin() {
-  window.open("https://minemc.top:8848/auth/auth/");
+  window.open("/database/auth/auth/");
 }
 /**
  * 获取 token
@@ -114,7 +114,7 @@ function GetQueryString(name) {
  *
  */
 function getFileList() {
-  var url = "https://minemc.top:8848/file/getFileList";
+  var url = "/database/file/getFileList";
   var access_token = "";
 
   if (tokenPara !== null) {
@@ -131,6 +131,9 @@ function getFileList() {
       user_fileContents = res.data.fileContents;
       user_fileIds = res.data.fileIds;
       alert("同步完成");
+      console.log(user_fileNames);
+      console.log(user_fileContents);
+      console.log(user_fileIds);
     }
   };
   let err = function (msg) {
@@ -183,7 +186,7 @@ function addNewFile(fileName) {
   let err = function (msg) {
     alert(msg);
   };
-  var url = "https://minemc.top:8848/file/addNewFile";
+  var url = "/database/file/addNewFile";
   var data = {
     access_token: tokenPara,
     fileName: fileName,
@@ -224,7 +227,7 @@ function deleteFile(number) {
     // @ts-ignore
     if (localStorage.getItem(key) == 1) markersData.push(key); //所有value
   }
-  var url = "https://minemc.top:8848/file/deleteFile";
+  var url = "/database/file/deleteFile";
   var data = {
     access_token: tokenPara,
     fileId: user_fileIds[number],
@@ -259,7 +262,7 @@ function deleteFile(number) {
  * @param issueLabels {string | string[]} issue的标签逗号隔开 如 "宝箱,错点"
  */
 function createIssue(issueName, issueContent, issueLabels) {
-  var url = "https://minemc.top:8848/file/createIssue";
+  var url = "/database/file/createIssue";
   var data = {
     access_token: tokenPara,
     issueName: issueName,
@@ -290,7 +293,7 @@ function createIssue(issueName, issueContent, issueLabels) {
 	上传base64文件：未测试
 */
 function uploadBase64(filePath, fileName, imgBase64) {
-  var url = "https://minemc.top:8848/upload/uploadBase64";
+  var url = "/database/upload/uploadBase64";
   var data = {
     filePath: filePath,
     fileName: fileName,
