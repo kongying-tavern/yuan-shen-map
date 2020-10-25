@@ -319,7 +319,7 @@
     </div>
     <script>
         window.onload = function () {
-            window.parent.Login();
+            window.parent.getToken();
         }
         $(".saveClose").click(function () {
             window.parent.postMessage("saveClose", '*');

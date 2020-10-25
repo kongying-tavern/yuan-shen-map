@@ -51,7 +51,7 @@ function Login() {
   if (window.location.search !== undefined && window.location.search !== "") {
     let tempTokenPara = GetQueryString("access_token");
     setCookie("gitee_Token", tempTokenPara, 1);
-    //return window.location.href = "https://yuanshen.site";
+    return window.location.href = "https://yuanshen.site/Beta/index.html";
   }
 }
 /**
