@@ -16,7 +16,6 @@
 	<script src="js/Cookie.js"></script>
 	<script src="js/gitFunctions.js"></script>
 	<script>
-		Login();
 		var _hmt = _hmt || [];
 		(function () {
 			var hm = document.createElement("script");
@@ -28,6 +27,7 @@
 </head>
 
 <body>
+	<iframe src="/Beta/Save/pop.html" class="savePop"></iframe>
 	<div id='map'></div>
 	<div class="danjixiazai"></div>
 	<!-- 筛选器 -->
@@ -532,8 +532,20 @@
 				console.log(toolresult);
 			}
 			//存储
+			$(".savePop").hide();
 			$(".save-btn").click(function () {
-				upLoadSaveData(localSave);
+				$(".savePop").show();
+				//upLoadSaveData(localSave);
+			})
+
+			window.addEventListener('message', function (e) {
+				var data = e.data;
+				console.log(data);
+				if (data == "saveClose") {
+					$(".savePop").hide();
+				} else if (data == "upLoad") {
+					upLoadSaveData(localSave);
+				}
 			})
 
 			//单机跳转

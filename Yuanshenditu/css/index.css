@@ -9,28 +9,28 @@ body,
     height: 100%;
 }
 
-        .savePop {
-z-index: 4000;
-position: absolute;
-            display: block;
-            width: 475px;
-            height: 490px;
-            border-width: 0px;
-            border-style: inset;
-            border-color: initial;
-            border-image: initial;
-            transform-origin: 0% 0% 0;
-            transform: scale(0.75);
-            -webkit-transform: scale(0.75);
-            /*兼容-webkit-引擎浏览器*/
-            -moz-transform: scale(0.75);
-            /*兼容-moz-引擎浏览器*/
-            left:calc(50% - 475px/2);
-top:calc(50% - 490px/2);
-        }
+.savePop {
+    z-index: 4000;
+    position: absolute;
+    display: block;
+    width: 475px;
+    height: 490px;
+    border-width: 0px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+    transform-origin: 0% 0% 0;
+    transform: scale(0.75);
+    -webkit-transform: scale(0.75);
+    /*兼容-webkit-引擎浏览器*/
+    -moz-transform: scale(0.75);
+    /*兼容-moz-引擎浏览器*/
+    left: calc(50% - 475px/2);
+    top: calc(50% - 490px/2);
+}
 
 .savePop.disable {
-display: none;
+    display: none;
 }
 
 .leaflet-control-layers-expanded {
@@ -486,7 +486,7 @@ display: none;
     line-height: 100%;
     color: #4B5368;
     order: 0;
-    margin:  2px 0;
+    margin: 2px 0;
 }
 
 .myPopLine {
@@ -623,6 +623,7 @@ display: none;
     height: 30px;
     cursor: pointer;
 }
+
 .myPopIssueIcon {
     display: inline-block;
     position: absolute;
@@ -666,10 +667,10 @@ display: none;
     margin: 17px auto;
 }
 
-.switchOff{
+.switchOff {
     position: absolute;
     width: 80px;
-    letter-spacing:4px;
+    letter-spacing: 4px;
     font-family: font;
     font-size: 16px;
     font-weight: bold;
@@ -679,10 +680,10 @@ display: none;
     left: 50px;
 }
 
-.switchOn{
+.switchOn {
     position: absolute;
     width: 80px;
-    letter-spacing:4px;
+    letter-spacing: 4px;
     font-family: font;
     font-size: 16px;
     font-weight: bold;
@@ -692,7 +693,7 @@ display: none;
     right: 25px;
 }
 
-.myPopSwitchTodo .switchButton{
+.myPopSwitchTodo .switchButton {
     position: relative;
     width: 151px;
     height: 30px;
@@ -701,11 +702,11 @@ display: none;
     border: 2px solid #A69678;
     top: 3px;
     left: 3px;
-    transition-property: left,background-color,border;
-    transition-duration: 0.5s, 0.5s,0.5s;
+    transition-property: left, background-color, border;
+    transition-duration: 0.5s, 0.5s, 0.5s;
 }
 
-.myPopSwitchDone .switchButton{
+.myPopSwitchDone .switchButton {
     position: relative;
     width: 151px;
     height: 30px;
@@ -714,11 +715,11 @@ display: none;
     border: 2px solid #21707F;
     top: 3px;
     left: 153px;
-    transition-property: left,background-color,border;
-    transition-duration: 0.5s, 0.5s,0.5s;
+    transition-property: left, background-color, border;
+    transition-duration: 0.5s, 0.5s, 0.5s;
 }
 
-.myPopSwitchTodo .switchButtonIcon{
+.myPopSwitchTodo .switchButtonIcon {
     position: relative;
     width: 16px;
     height: 16px;
@@ -730,7 +731,7 @@ display: none;
     transition-duration: 0.5s;
 }
 
-.myPopSwitchDone .switchButtonIcon{
+.myPopSwitchDone .switchButtonIcon {
     position: relative;
     width: 16px;
     height: 16px;
@@ -742,10 +743,10 @@ display: none;
     transition-duration: 0.5s;
 }
 
-.switchButtonIcon p{
+.switchButtonIcon p {
     position: absolute;
     width: 80px;
-    letter-spacing:4px;
+    letter-spacing: 4px;
     font-family: font;
     font-size: 16px;
     font-weight: bold;
@@ -759,7 +760,7 @@ display: none;
     transform: rotate(45deg);
 }
 
-.zanzhu{
+.zanzhu {
     font-family: font;
     margin-top: 3px;
     font-size: 22px;

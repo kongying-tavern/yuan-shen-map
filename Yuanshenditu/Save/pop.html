@@ -102,6 +102,11 @@
             border: 1px solid #000000;
             box-sizing: border-box;
             cursor: pointer;
+            opacity: 1;
+        }
+
+        .saveUpdate.none {
+            opacity: 0.3;
         }
 
         .saveUpdateText {
@@ -152,6 +157,11 @@
             width: 40px;
             height: 40px;
             background: url("NoSelected.svg") no-repeat;
+            cursor: pointer;
+        }
+
+        .saveTableState.sync {
+            background: url("Selected.svg") no-repeat;
         }
 
         .tb1 {
@@ -218,24 +228,26 @@
             background: #FFFFFF;
             border: 1px solid #000000;
             box-sizing: border-box;
+            cursor: pointer;
         }
 
         .saveTableName {
-            position: absolute;
+            position: relative;
+            display: inline;
             width: 94px;
             line-height: 31px;
         }
 
         .saveTableEdit {
             position: relative;
+            float: right;
             top: 0px;
-            left: 93px;
+            right: 0px;
             width: 45px;
             height: 31px;
             line-height: 33px;
             border-left: 1px solid #000000;
             box-sizing: border-box;
-            cursor: pointer;
         }
 
         .tra {
@@ -262,6 +274,16 @@
             box-sizing: border-box;
             cursor: pointer;
         }
+
+        .saveTableDiv {
+            height: 293px;
+            overflow: scroll;
+        }
+
+        .saveTableDiv::-webkit-scrollbar {
+            /*隐藏滚轮*/
+            display: none;
+        }
     </style>
 </head>
 
@@ -277,7 +299,7 @@
             <div class="saveUpdateText">本存档 上传到云</div>
         </div>
         <div class="saveTableContent">
-            <table class="saveTable">
+            <table class="saveTableTH">
                 <tr>
                     <th class="tb1">状态</th>
                     <th class="tb2">编号</th>
@@ -285,112 +307,120 @@
                     <th class="tb4">最后保存的时间</th>
                     <th class="tb5">操作</th>
                 </tr>
-                <tr class="trb">
-                    <td class="tb1">
-                        <div class="saveTableState"></div>
-                    </td>
-                    <td class="tb2">1</td>
-                    <td class="tb3">
-                        <div class="saveTableNameContent">
-                            <div class="saveTableName">南极的大号</div>
-                            <div class="saveTableEdit">EDIT</div>
-                        </div>
-                    </td>
-                    <td class="tb4">20001020 20:10</td>
-                    <td class="tb5">
-                        <div class="saveTabelDel">DEL</div>
-                    </td>
-                </tr>
-                <tr class="tra">
-                    <td class="tb1">
-                        <div class="saveTableState"></div>
-                    </td>
-                    <td class="tb2">1</td>
-                    <td class="tb3">
-                        <div class="saveTableNameContent">
-                            <div class="saveTableName">南极的大号</div>
-                            <div class="saveTableEdit">EDIT</div>
-                        </div>
-                    </td>
-                    <td class="tb4">20001020 20:10</td>
-                    <td class="tb5">
-                        <div class="saveTabelDel">DEL</div>
-                    </td>
-                </tr>
-                <tr class="trb">
-                    <td class="tb1">
-                        <div class="saveTableState"></div>
-                    </td>
-                    <td class="tb2">1</td>
-                    <td class="tb3">
-                        <div class="saveTableNameContent">
-                            <div class="saveTableName">南极的大号</div>
-                            <div class="saveTableEdit">EDIT</div>
-                        </div>
-                    </td>
-                    <td class="tb4">20001020 20:10</td>
-                    <td class="tb5">
-                        <div class="saveTabelDel">DEL</div>
-                    </td>
-                </tr>
-                <tr class="tra">
-                    <td class="tb1">
-                        <div class="saveTableState"></div>
-                    </td>
-                    <td class="tb2">1</td>
-                    <td class="tb3">
-                        <div class="saveTableNameContent">
-                            <div class="saveTableName">南极的大号</div>
-                            <div class="saveTableEdit">EDIT</div>
-                        </div>
-                    </td>
-                    <td class="tb4">20001020 20:10</td>
-                    <td class="tb5">
-                        <div class="saveTabelDel">DEL</div>
-                    </td>
-                </tr>
-                <tr class="trb">
-                    <td class="tb1">
-                        <div class="saveTableState"></div>
-                    </td>
-                    <td class="tb2">1</td>
-                    <td class="tb3">
-                        <div class="saveTableNameContent">
-                            <div class="saveTableName">南极的大号</div>
-                            <div class="saveTableEdit">EDIT</div>
-                        </div>
-                    </td>
-                    <td class="tb4">20001020 20:10</td>
-                    <td class="tb5">
-                        <div class="saveTabelDel">DEL</div>
-                    </td>
-                </tr>
-                <tr class="tra">
-                    <td class="tb1">
-                        <div class="saveTableState"></div>
-                    </td>
-                    <td class="tb2">1</td>
-                    <td class="tb3">
-                        <div class="saveTableNameContent">
-                            <div class="saveTableName">南极的大号</div>
-                            <div class="saveTableEdit">EDIT</div>
-                        </div>
-                    </td>
-                    <td class="tb4">20001020 20:10</td>
-                    <td class="tb5">
-                        <div class="saveTabelDel">DEL</div>
-                    </td>
-                </tr>
             </table>
+            <div class="saveTableDiv">
+                <table class="saveTable">
+                    <tr>
+                        <p style="text-align: center;margin: auto; line-height: 270px;font-size: 50px;">读取中。。。</p>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
     <script>
+        window.onload = function () {
+            window.parent.Login();
+        }
         $(".saveClose").click(function () {
             window.parent.postMessage("saveClose", '*');
         });
-        $(".saveUpdateText").click(function () {
-            window.parent.postMessage("upLoad", '*');
-        });
+        // $(".saveUpdateText").click(function () {
+        //     window.parent.postMessage("upLoad", '*');
+        // });
+        function saveTableEdit(element) {
+            var that = $(element);
+            var fileID = that.attr("data");
+            window.parent.updateGistDescription(fileID);
+        }
+
+        function saveTabelDel(element) {
+            var that = $(element);
+            var fileID = that.attr("data");
+            window.parent.deleteGistFile(fileID);
+        }
+
+        function saveLoad(element) {
+            var that = $(element);
+            var file = that.attr("data");
+            var fileID = file.split(",")[0];
+            var fileLastUpdateTime = file.split(",")[1];
+            window.parent.loadGistFile(fileID, fileLastUpdateTime);
+        }
+
+        function saveTabelNew(element) {
+            var that = $(element);
+            var sync = that.attr("data");
+            window.parent.addGistFile(sync);
+        }
+        window.addEventListener("message", function (event) {
+            if (event.data.message == "refreshGistList") {
+                $("p").remove();
+                $(".saveTable tr").remove();
+                $(".saveUpdate").unbind();//取消上传按钮事件绑定
+                $(".userID").html("userID: "+event.data.userName);
+                var Sync = false;
+                for (let fileIndex in event.data.files) {
+                    let fileIndexTemp = Number(fileIndex) + 1;
+                    var trClass = (fileIndex % 2 == 0) ? "trb" : "tra";
+                    let file = event.data.files[fileIndex];
+                    let saveTableStateClass = "saveTableState";
+                    if (localStorage.getItem("lastUpdateTime") == file.lastUpdateTime && localStorage.getItem(
+                            "lastUpdateID") == file.id) {
+                        Sync = true;
+                        saveTableStateClass = "saveTableState sync";
+                        $(".currentUserName").html(fileIndexTemp + "." + file.description);
+                        $(".saveUpdate").unbind();//取消上传按钮事件绑定
+                        $(".saveUpdate").click(function () {
+                            window.parent.updateGistFile(file.id);
+                        })
+                    }
+                    var savePopHtml = `
+                    <tr class=${trClass}>
+                    <td class="tb1">
+                        <div class="${saveTableStateClass}" onclick="saveLoad(this)" data="${file.id},${file.lastUpdateTime}"></div>
+                    </td>
+                    <td class="tb2">${fileIndexTemp}</td>
+                    <td class="tb3">
+                        <div class="saveTableNameContent" onclick="saveTableEdit(this)" data="${file.id}">
+                            <div class="saveTableName">${file.description}</div>
+                            <div class="saveTableEdit">EDIT</div>
+                        </div>
+                    </td>
+                    <td class="tb4">${file.lastUpdateTime}</td>
+                    <td class="tb5">
+                        <div class="saveTabelDel" onclick="saveTabelDel(this)" data="${file.id}">DEL</div>
+                    </td>
+                </tr>
+                    `
+                    $(".saveTable").append(savePopHtml);
+                }
+                var trC = (trClass == "tra") ? "trb" : "tra";
+                var savePopHtml = `
+                    <tr class=${trC}>
+                    <td class="tb1" style="opacity: 0;">
+                        <div class="saveTableStateClass" style="opacity: 0;"></div>
+                    </td>
+                    <td class="tb2" style="opacity: 0;">0</td>
+                    <td class="tb3">
+                        <div class="saveTableNameContent">
+                            <div class="saveTableName" onclick="saveTabelNew(this)" data="${Sync}">+ 新建存档</div>
+                        </div>
+                    </td>
+                    <td class="tb4" style="opacity: 0;"></td>
+                    <td class="tb5" style="opacity: 0;">
+                        <div class="saveTabelDel">DEL</div>
+                    </td>
+                </tr>
+                    `
+                $(".saveTable").append(savePopHtml);
+                if (Sync == false) {
+                    $(".currentUserName").html("未选择云存档");
+                    $(".saveUpdate").click(function () {
+                        window.parent.addGistFile("false");
+                    })
+                }
+            }
+        }, false)
     </script>
 </body>
 
