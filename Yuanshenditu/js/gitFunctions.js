@@ -280,7 +280,6 @@ function getGistList() {
             window.frames[0].postMessage({
               message: "refreshGistList",
               files: user_files,
-              //userName: res[0].owner.name
             }, '*')
           }
         }
@@ -289,7 +288,6 @@ function getGistList() {
         window.frames[0].postMessage({
           message: "refreshGistList",
           files: user_files,
-          userName: res[0].owner.name
         }, '*')
       }
       if (IDSync && TimeSync) {
