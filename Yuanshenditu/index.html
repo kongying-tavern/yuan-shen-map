@@ -489,7 +489,17 @@
 			}
 			$(".con-type-label:first").trigger("click");
 			$(".reg_log_link").click(function () {
-				jumpLogin();
+				if (getToken()) {
+					if (window.confirm("确定要注销账户吗?")) {
+						removeCookie("gitee_Token"); //清空登录缓存
+						tokenPara = null; //清空登录缓存
+						canOpenSave = false; //不可打开存档框
+						$(".savePop").hide(); //关闭存档框
+						alert("注销成功！");
+					}
+				} else {
+					jumpLogin();
+				}
 			})
 			// function createIssue(issueName, issueContent, issueLabels) {
 			// 	console.log("clicked openIssue" + issueLabels);
@@ -535,7 +545,14 @@
 			//存储
 			$(".savePop").hide();
 			$(".save-btn").click(function () {
-				$(".savePop").show();
+				if (getToken() == false) {
+					if (window.confirm("使用云存档必须登录, 要立刻登录吗?")) {
+						jumpLogin();
+					}
+				} else if (canOpenSave) {
+					getGitUser();
+					$(".savePop").show();
+				}
 				//upLoadSaveData(localSave);
 			})
 

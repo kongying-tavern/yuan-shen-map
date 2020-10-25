@@ -18,10 +18,20 @@ var user_files = [];
 /** @type {string} 用户 token 参数*/
 var tokenPara;
 
+/** @type {boolean} 首次检测同步确认*/
+var confirmSync = true;
+
+/** @type {boolean} 同步检测*/
+var isSync = false;
+
+/** @type {boolean} 是否可开存档框*/
+var canOpenSave = false;
+
 /**跳转到登录 */
 function jumpLogin() {
-  window.open("/database/auth/auth/");
+  window.location.href = "/database/auth/auth/";
 }
+
 /**
  * 获取 token
  *
@@ -48,6 +58,7 @@ function getToken() {
  *
  */
 function Login() {
+  confirmSync = true;
   if (window.location.search !== undefined && window.location.search !== "") {
     let tempTokenPara = GetQueryString("access_token");
     setCookie("gitee_Token", tempTokenPara, 1);
@@ -175,52 +186,128 @@ function formatDate(date) {
 }
 
 /**
+ * giteeGist获取用户信息
+ *
+ */
+function getGitUser() {
+  var access_token = "";
+  var success = function (res) {
+    window.frames[0].postMessage({
+      message: "refreshUser",
+      userName: res.name
+    }, '*')
+  }
+  if (tokenPara != null) {
+    access_token = tokenPara;
+    var url = "/giteeuser/?access_token=" + access_token;
+    $.ajax({
+      async: true,
+      type: "GET",
+      url: url,
+      contentType: "application/json",
+      success: success,
+    });
+  }
+}
+
+/**
  * giteeGist获取文件列表
  *
  */
 function getGistList() {
   var access_token = "";
-  if (tokenPara !== null) {
+  if (tokenPara != null) {
     access_token = tokenPara;
-  }
-  var url = "/giteegist/?access_token=" + access_token;
-  var success = function (res) {
-    user_files = [];
-    console.log(res);
-    for (let obj of res) {
-      let currentKey = Object.keys(obj.files)[0];
-      if (currentKey == "Data_KYJG") {
-        var currentData = obj.files[Object.keys(obj.files)[0]].content;
-        //console.log(currentData);
-        var lastUpdateTime = formatDate(new Date(obj.updated_at));
-        //console.log(formatDate(lastUpdateTime));
-        var description = obj.description;
-        //console.log(description);
-        var id = obj.id;
-        //console.log(id);
-        var tempFile = {
-          id: id,
-          description: description,
-          lastUpdateTime: lastUpdateTime,
-          data: currentData
+    var url = "/giteegist/?access_token=" + access_token;
+    var err = function (res) {
+      removeCookie("gitee_Token"); //清空登录缓存
+      tokenPara = null; //清空登录缓存
+      canOpenSave = false; //不可打开存档框
+      $(".savePop").hide(); //关闭存档框
+      if (res.status == 401) {
+        var msg = "登录失效，请点击确定重新登录";
+        if (confirm(msg) == true) {
+          jumpLogin();
         }
-        user_files.push(tempFile);
       }
     }
-    console.log(user_files);
-    window.frames[0].postMessage({
-      message: "refreshGistList",
-      files: user_files,
-      userName: res[0].owner.name
-    }, '*')
-  };
-  $.ajax({
-    async: true,
-    type: "GET",
-    url: url,
-    contentType: "application/json",
-    success: success,
-  });
+    var success = function (res) {
+      canOpenSave = true;
+      var currentID = localStorage.getItem("lastUpdateID");
+      var currentTime = localStorage.getItem("lastUpdateTime");
+      var IDSync = false;
+      var TimeSync = false;
+      user_files = [];
+      console.log(res);
+      for (let obj of res) {
+        let currentKey = Object.keys(obj.files)[0];
+        if (currentKey == "Data_KYJG") {
+          var currentData = obj.files[Object.keys(obj.files)[0]].content;
+          //console.log(currentData);
+          var lastUpdateTime = formatDate(new Date(obj.updated_at));
+          //console.log(formatDate(lastUpdateTime));
+          var description = obj.description;
+          //console.log(description);
+          var id = obj.id;
+          //console.log(id);
+          var tempFile = {
+            id: id,
+            description: description,
+            lastUpdateTime: lastUpdateTime,
+            data: currentData
+          }
+          user_files.push(tempFile);
+          if (currentID == id) {
+            IDSync = true;
+            var tempLastUpdateTime = lastUpdateTime;
+            if (currentTime == lastUpdateTime) {
+              TimeSync = true;
+            }
+          }
+        }
+      }
+      if (IDSync && !TimeSync && confirmSync) {
+        confirmSync = false;
+        var msg = "检测到您的存档与云端存储时间不一致，要同步云端存档吗（点击确定同步云端存档）";
+        if (confirm(msg) == true) {
+          loadGistFile(currentID, tempLastUpdateTime);
+        } else {
+          var msg = "要上传当前存档到云端吗（点击确定上传存档到云端并同步）";
+          if (confirm(msg) == true) {
+            updateGistFile(currentID);
+          } else {
+            console.log(user_files);
+            window.frames[0].postMessage({
+              message: "refreshGistList",
+              files: user_files,
+              //userName: res[0].owner.name
+            }, '*')
+          }
+        }
+      } else {
+        //console.log(user_files);
+        window.frames[0].postMessage({
+          message: "refreshGistList",
+          files: user_files,
+          userName: res[0].owner.name
+        }, '*')
+      }
+      if (IDSync && TimeSync) {
+        isSync = true;
+      } else {
+        isSync = false;
+      }
+      freshMarkerLayer();
+    };
+    $.ajax({
+      async: true,
+      type: "GET",
+      url: url,
+      contentType: "application/json",
+      success: success,
+      error: err,
+    });
+  }
 }
 
 /**
@@ -233,11 +320,10 @@ function getGistList() {
 function updateLocalData(fileID) {
   var url = "/giteegist/" + fileID + "?access_token=" + tokenPara;
   var success = function (res) {
-    console.log(res);
+    //console.log(res);
     var lastUpdateTime = formatDate(new Date(res.updated_at));
     localStorage.setItem("lastUpdateTime", lastUpdateTime);
     localStorage.setItem("lastUpdateID", fileID);
-    alert("保存成功！");
     getGistList();
   };
   $.ajax({
@@ -265,6 +351,7 @@ function updateGistFile(fileID) {
   }
   var success = function (res) {
     updateLocalData(fileID);
+    alert("保存成功！");
   };
   let err = function (msg) {
     console.log(msg);
@@ -272,7 +359,7 @@ function updateGistFile(fileID) {
   var markersJsonData = {
     content: JSON.stringify(markersData)
   };
-  console.log(JSON.stringify(markersJsonData));
+  //console.log(JSON.stringify(markersJsonData));
   var url = "/giteegist/" + fileID;
   var fileName = "Data_KYJG";
   var data = '{"access_token": "' + tokenPara + '","files": {"' + fileName + '": ' + JSON.stringify(markersJsonData) + '}}';
@@ -288,15 +375,59 @@ function updateGistFile(fileID) {
 }
 
 /**
- *新建存档 by giteeGist
+ *自动上传存档 by giteeGist
  *
- *@param sync {string} 当前上传的存档是否需要直接传入本地存档
+ *
+ * tips: 上传完成会调用 getGistList() 同步数据
+ */
+function autoUpdateGistFile() {
+  var fileID = localStorage.getItem("lastUpdateID")
+  var markersData = [];
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i); //获取本地存储的Key
+    // @ts-ignore
+    if (localStorage.getItem(key) == 1) markersData.push(key); //所有value
+  }
+  var success = function (res) {
+    updateLocalData(fileID);
+  };
+  let err = function (msg) {
+    console.log(msg);
+  };
+  var markersJsonData = {
+    content: JSON.stringify(markersData)
+  };
+  //console.log(JSON.stringify(markersJsonData));
+  var url = "/giteegist/" + fileID;
+  var fileName = "Data_KYJG";
+  var data = '{"access_token": "' + tokenPara + '","files": {"' + fileName + '": ' + JSON.stringify(markersJsonData) + '}}';
+  $.ajax({
+    async: false,
+    type: "PATCH",
+    url: url,
+    data: JSON.stringify(JSON.parse(data)),
+    contentType: "application/json",
+    success: success,
+    error: err,
+  });
+}
+
+function checkAutoUpdate() {
+  if (isSync) {
+    autoUpdateGistFile();
+  } else {
+    console.log("未选择同步存档，未能自动同步");
+  }
+}
+setInterval("checkAutoUpdate()", 60000);
+/**
+ *新建存档 by giteeGist
  * 
  * tips: 新建完成会调用 getGistList() 同步数据
  */
-function addGistFile(sync) {
+function addGistFile() {
   var markersData = [];
-  if (sync == "false") {
+  if (isSync == false) {
     for (var i = 0; i < localStorage.length; i++) {
       var key = localStorage.key(i); //获取本地存储的Key
       // @ts-ignore
@@ -309,13 +440,18 @@ function addGistFile(sync) {
   var description = window.prompt("请输入存档名");
   if (description) {
     var success = function (res) {
+      if (isSync == false) {
+        var lastUpdateTime = formatDate(new Date(res.updated_at));
+        localStorage.setItem("lastUpdateTime", lastUpdateTime);
+        localStorage.setItem("lastUpdateID", res.id);
+      }
       alert("新建完成");
       getGistList();
     };
     var url = "/giteegist/";
     var fileName = "Data_KYJG";
     var data = '{"access_token": "' + tokenPara + '","description":"' + description + '","files": {"' + fileName + '": ' + JSON.stringify(markersJsonData) + '}}';
-    console.log(JSON.stringify(JSON.parse(data)));
+    //console.log(JSON.stringify(JSON.parse(data)));
     $.ajax({
       async: false,
       type: "POST",
@@ -335,10 +471,10 @@ function addGistFile(sync) {
  * tips: 修改完成会调用 getGistList() 同步数据
  */
 function updateGistDescription(fileID) {
-  var description = window.prompt("请输入存档名");
+  var description = window.prompt("（修改存档名）请输入存档名");
   if (description) {
     var success = function (res) {
-      console.log(res);
+      //console.log(res);
       if (res.id == fileID) {
         let lastUpdateTime = formatDate(new Date(res.updated_at));
         localStorage.setItem("lastUpdateTime", lastUpdateTime);
@@ -375,7 +511,7 @@ function deleteGistFile(fileID) {
   var msg = "存档删除后不可恢复，您确定要删除这个存档吗？";
   if (confirm(msg) == true) {
     var success = function (res) {
-      console.log(res);
+      //console.log(res);
       alert("删除完成！");
       getGistList();
     };
@@ -398,24 +534,38 @@ function deleteGistFile(fileID) {
  *加载存档 by giteeGis
  *
  *@param fileID {string} 需要加载的存档ID
- *
+ *@param fileLastUpdateTime {string} 需要加载的存档更新时间
+ * 
  * tips: 删除完成会调用 getGistList() 同步数据
  * 导入会丢失现在存档，如需要请加备份提示
  * 
  */
 function loadGistFile(fileID, fileLastUpdateTime) {
-  for (let file of user_files) {
-    if (file.id == fileID) {
-      localStorage.clear();
-      // @ts-ignore
-      var markerLogArr = eval(file.data);
-      for (var i = 0; i < markerLogArr.length; i++) {
-        localStorage.setItem(markerLogArr[i], "1");
+  var markersData = [];
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i); //获取本地存储的Key
+    // @ts-ignore
+    if (localStorage.getItem(key) == 1) markersData.push(key); //所有value
+  }
+  if (isSync == false && markersData.length >= 1) {
+    var msg = "您本地存有数据且未处于同步状态，为防止数据丢失，请点击确定新建存档";
+    if (confirm(msg) == true) {
+      addGistFile();
+    }
+  } else {
+    for (let file of user_files) {
+      if (file.id == fileID) {
+        localStorage.clear();
+        // @ts-ignore
+        var markerLogArr = eval(file.data);
+        for (var i = 0; i < markerLogArr.length; i++) {
+          localStorage.setItem(markerLogArr[i], "1");
+        }
+        localStorage.setItem("lastUpdateTime", fileLastUpdateTime);
+        localStorage.setItem("lastUpdateID", fileID);
+        alert("导入该存档成功!");
+        getGistList();
       }
-      localStorage.setItem("lastUpdateTime", fileLastUpdateTime);
-      localStorage.setItem("lastUpdateID", fileID);
-      alert("导入该存档成功!");
-      getGistList();
     }
   }
 }

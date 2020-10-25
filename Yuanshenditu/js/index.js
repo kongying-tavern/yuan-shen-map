@@ -335,9 +335,10 @@ function onEachFeature(feature, layer) {
 function closePop() {
 	$(".leaflet-popup-close-button")[0].click();
 }
+
 function openIssue() {
 	alert("clicked openIssue");
-	createIssue("issueName", "issueContent", "null") 
+	createIssue("issueName", "issueContent", "null")
 }
 
 //定义分类的数组，分别对应 物品层，物品Json名，物品icon类型，新增时在对应数组后增加对象即可
@@ -494,46 +495,51 @@ function MarkPoint(element) {
 }
 
 //初始化各个坐标
-for (let i = 0; i < typearray.length; i++) {
-	localStorage.setItem("layerNumber", i);
-	var currentIcon = getIconInfo(typearray[i][2]);
-	L.geoJSON(typearray[i][1], {
-		pointToLayer: function (feature, latlng) {
-			var key = i + "_" + feature.id;
-			var markedFlag = false;
-			if (localStorage.getItem(key)) {
-				markedFlag = true;
-			}
-			var doneUrl = markedFlag ? "_done" : ""
-			if (i == 0 || i == 1) {
-				var iconUrl = "./imgs/icon_" + i + doneUrl + ".svg";
-			} else {
-				var iconUrl = "./imgs/icon_" + i + doneUrl + ".png";
-			}
-			var currentShowdow = currentIcon.prototype.options.shadowUrl
-			var downShadow;
-			if (currentShowdow == "./imgs/loc_find.svg" || currentShowdow == "./imgs/loc_notfind.svg") {
-				downShadow = markedFlag ? "./imgs/loc_find.svg" : "./imgs/loc_notfind.svg"
-			} else if (currentShowdow == "./imgs/loc_stonenot.svg" || currentShowdow == "./imgs/loc_stonefound.svg") {
-				downShadow = markedFlag ? "./imgs/loc_stonefound.svg" : "./imgs/loc_stonenot.svg"
-			} else if (currentShowdow == "./imgs/loc_find_black.svg" || currentShowdow == "./imgs/loc_notfind_black.svg") {
-				downShadow = markedFlag ? "./imgs/loc_find_black.svg" : "./imgs/loc_notfind_black.svg"
-			}
-			var doneShadowUrl = currentShowdow ? downShadow : ""
-			var marker = L.marker([latlng.lng, latlng.lat], {
-				icon: new currentIcon({
-					className: "mark-" + i + "_" + `${feature.id}`,
-					iconUrl: iconUrl,
-					shadowUrl: doneShadowUrl,
-				}),
-				alt: `${latlng.lng},${latlng.lat}`
-			}, );
-			markers[key] = marker;
-			return marker.addTo(typearray[i][0]);
-		},
-		onEachFeature: onEachFeature
-	})
-};
+function freshMarkerLayer() {
+	for (let i = 0; i < typearray.length; i++) {
+		localStorage.setItem("layerNumber", i);
+		typearray[i][0].clearLayers();
+		var currentIcon = getIconInfo(typearray[i][2]);
+		L.geoJSON(typearray[i][1], {
+			pointToLayer: function (feature, latlng) {
+				var key = i + "_" + feature.id;
+				var markedFlag = false;
+				if (localStorage.getItem(key)) {
+					markedFlag = true;
+				}
+				var doneUrl = markedFlag ? "_done" : ""
+				if (i == 0 || i == 1) {
+					var iconUrl = "./imgs/icon_" + i + doneUrl + ".svg";
+				} else {
+					var iconUrl = "./imgs/icon_" + i + doneUrl + ".png";
+				}
+				var currentShowdow = currentIcon.prototype.options.shadowUrl
+				var downShadow;
+				if (currentShowdow == "./imgs/loc_find.svg" || currentShowdow == "./imgs/loc_notfind.svg") {
+					downShadow = markedFlag ? "./imgs/loc_find.svg" : "./imgs/loc_notfind.svg"
+				} else if (currentShowdow == "./imgs/loc_stonenot.svg" || currentShowdow == "./imgs/loc_stonefound.svg") {
+					downShadow = markedFlag ? "./imgs/loc_stonefound.svg" : "./imgs/loc_stonenot.svg"
+				} else if (currentShowdow == "./imgs/loc_find_black.svg" || currentShowdow == "./imgs/loc_notfind_black.svg") {
+					downShadow = markedFlag ? "./imgs/loc_find_black.svg" : "./imgs/loc_notfind_black.svg"
+				}
+				var doneShadowUrl = currentShowdow ? downShadow : ""
+				var marker = L.marker([latlng.lng, latlng.lat], {
+					icon: new currentIcon({
+						className: "mark-" + i + "_" + `${feature.id}`,
+						iconUrl: iconUrl,
+						shadowUrl: doneShadowUrl,
+					}),
+					alt: `${latlng.lng},${latlng.lat}`
+				}, );
+				markers[key] = marker;
+				return marker.addTo(typearray[i][0]);
+			},
+			onEachFeature: onEachFeature
+		})
+	};
+}
+
+freshMarkerLayer();
 
 function dealIcon(target, key) {
 

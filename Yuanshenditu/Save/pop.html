@@ -7,6 +7,7 @@
     <style>
         body {
             margin: 0;
+            cursor: default;
         }
 
         .saveContent {
@@ -318,9 +319,11 @@
         </div>
     </div>
     <script>
-        window.onload = function () {
-            window.parent.getToken();
-        }
+        // window.onload = function () {
+        //     if (isInit == false) {
+        //         window.parent.getToken();
+        //     }
+        // }
         $(".saveClose").click(function () {
             window.parent.postMessage("saveClose", '*');
         });
@@ -347,29 +350,29 @@
             window.parent.loadGistFile(fileID, fileLastUpdateTime);
         }
 
-        function saveTabelNew(element) {
-            var that = $(element);
-            var sync = that.attr("data");
-            window.parent.addGistFile(sync);
+        function saveTabelNew() {
+            window.parent.addGistFile();
         }
         window.addEventListener("message", function (event) {
             if (event.data.message == "refreshGistList") {
+                $(".currentUserName").html("未选择云存档");
+                $(".saveUpdate").unbind(); //取消上传按钮事件绑定
+                $(".saveUpdate").click(function () {
+                    window.parent.addGistFile();
+                })
                 $("p").remove();
                 $(".saveTable tr").remove();
-                $(".saveUpdate").unbind();//取消上传按钮事件绑定
-                $(".userID").html("userID: "+event.data.userName);
-                var Sync = false;
                 for (let fileIndex in event.data.files) {
-                    let fileIndexTemp = Number(fileIndex) + 1;
-                    var trClass = (fileIndex % 2 == 0) ? "trb" : "tra";
+                    let fileIndexTemp = event.data.files.length - Number(fileIndex);
+                    let trClass = (fileIndexTemp % 2 == 0) ? "tra" : "trb";
                     let file = event.data.files[fileIndex];
                     let saveTableStateClass = "saveTableState";
                     if (localStorage.getItem("lastUpdateTime") == file.lastUpdateTime && localStorage.getItem(
                             "lastUpdateID") == file.id) {
-                        Sync = true;
                         saveTableStateClass = "saveTableState sync";
                         $(".currentUserName").html(fileIndexTemp + "." + file.description);
-                        $(".saveUpdate").unbind();//取消上传按钮事件绑定
+                        $(".saveUpdate").unbind(); //取消上传按钮事件绑定
+                        console.log("取消上传按钮事件绑定");
                         $(".saveUpdate").click(function () {
                             window.parent.updateGistFile(file.id);
                         })
@@ -392,9 +395,9 @@
                     </td>
                 </tr>
                     `
-                    $(".saveTable").append(savePopHtml);
+                    $(".saveTable").prepend(savePopHtml);
                 }
-                var trC = (trClass == "tra") ? "trb" : "tra";
+                var trC = (event.data.files.length % 2 == 0) ? "trb" : "tra";
                 var savePopHtml = `
                     <tr class=${trC}>
                     <td class="tb1" style="opacity: 0;">
@@ -403,7 +406,7 @@
                     <td class="tb2" style="opacity: 0;">0</td>
                     <td class="tb3">
                         <div class="saveTableNameContent">
-                            <div class="saveTableName" onclick="saveTabelNew(this)" data="${Sync}">+ 新建存档</div>
+                            <div class="saveTableName" onclick="saveTabelNew()">+ 新建存档</div>
                         </div>
                     </td>
                     <td class="tb4" style="opacity: 0;"></td>
@@ -413,12 +416,8 @@
                 </tr>
                     `
                 $(".saveTable").append(savePopHtml);
-                if (Sync == false) {
-                    $(".currentUserName").html("未选择云存档");
-                    $(".saveUpdate").click(function () {
-                        window.parent.addGistFile("false");
-                    })
-                }
+            } else if (event.data.message == "refreshUser") {
+                $(".userID").html("userID: " + event.data.userName);
             }
         }, false)
     </script>
