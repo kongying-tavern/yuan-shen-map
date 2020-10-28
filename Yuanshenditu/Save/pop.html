@@ -388,7 +388,7 @@
                             window.parent.updateGistFile(file.id);
                         })
                     }
-                    
+                    if (parent.user_files.length >= 6) {action_btn = "DEL"}
                     var savePopHtml = `
                     <tr class=${trClass}>
                     <td class="tb1">
