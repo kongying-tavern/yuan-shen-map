@@ -24,6 +24,9 @@ var confirmSync = true;
 /** @type {boolean} 同步检测*/
 var isSync = false;
 
+/** @type {boolean} 同步检测*/
+var isCopy = false;
+
 /** @type {boolean} 是否可开存档框*/
 var canOpenSave = false;
 
@@ -423,9 +426,9 @@ setInterval("checkAutoUpdate()", 60000);
  * 
  * tips: 新建完成会调用 getGistList() 同步数据
  */
-function addGistFile() {
+function addGistFile(_default = '', cb) {
   var markersData = [];
-  if (isSync == false) {
+  if (isSync == false || isCopy === true) {
     for (var i = 0; i < localStorage.length; i++) {
       var key = localStorage.key(i); //获取本地存储的Key
       // @ts-ignore
@@ -435,7 +438,7 @@ function addGistFile() {
   var markersJsonData = {
     content: JSON.stringify(markersData)
   };
-  var description = window.prompt("请输入存档名");
+  var description = window.prompt("请输入存档名", _default);
   if (description) {
     var success = function (res) {
       if (isSync == false) {
@@ -443,7 +446,8 @@ function addGistFile() {
         localStorage.setItem("lastUpdateTime", lastUpdateTime);
         localStorage.setItem("lastUpdateID", res.id);
       }
-      alert("新建完成");
+      alert( isCopy ? '复制完成': '新建完成');
+      cb(res)
       getGistList();
     };
     var url = "/giteegist/";
@@ -458,6 +462,8 @@ function addGistFile() {
       contentType: "application/json",
       success: success,
     });
+  } else {
+    isCopy = false
   }
 }
 
