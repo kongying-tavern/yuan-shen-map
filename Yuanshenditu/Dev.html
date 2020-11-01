@@ -516,6 +516,10 @@
 			<div style="width: 100%;height: 1px;"></div>
 			<div class="options-div">
 				<label class="form-options">
+					<span>点位编号：</span>
+					<strong id="modify-id" ></strong>
+				</label>
+				<label class="form-options">
 					<span>点位名称：</span>
 					<input type="text" class="modify-window-input" id="modify-name">
 				</label>
@@ -578,7 +582,7 @@
 				Dialog.show({
 					id: e,
 					bgcolor: '#000', //弹出“遮罩”的颜色，格式为"#FF6600"，可修改，默认为"#fff"
-					opacity: 50 //弹出“遮罩”的透明度，格式为｛10-100｝，可选
+					opacity: 10 //弹出“遮罩”的透明度，格式为｛10-100｝，可选
 				});
 			});
 		}
@@ -1012,6 +1016,10 @@
 					$("#modify-y").val(layerarray[i]._latlng.lng);
 					$("#modify-name").val(layerarray[i].feature.properties.popTitle);
 					$("#modify-text").val(layerarray[i].feature.properties.popupContent);
+					$("#modify-id").text(layerarray[i].feature.id);
+					layerarray[i].openPopup()
+					map.setView(layerarray[i]._latlng, 5)
+					
 				}
 			}
 			$("#modify-submit").attr("lid", id);

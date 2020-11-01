@@ -155,3 +155,8 @@
     position: sticky;
     top: 0;
 }
+#modify_window {
+    left: 2% !important;
+    top: calc(35% + 250px) !important;
+    margin-left: 0 !important;
+}
