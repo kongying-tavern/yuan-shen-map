@@ -31,7 +31,7 @@ body,
     border-style: inset;
     border-color: initial;
     border-image: initial;
-    transform-origin: 0% 0% 0;
+    transform-origin: 50% 50% 0;
     transform: scale(0.75);
     -webkit-transform: scale(0.75);
     /*兼容-webkit-引擎浏览器*/
