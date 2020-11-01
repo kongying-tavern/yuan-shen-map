@@ -453,6 +453,7 @@ function MarkPoint(element) {
 	var oldValue = localStorage.getItem(key);
 	var newValue = !oldValue;
 	localStorage.setItem(key, newValue ? "1" : "");
+	localStorage.setItem("NetSync", "false");
 
 	var doneUrl = newValue ? "_done" : ""
 	if (layerNumber == 0 || layerNumber == 1) {

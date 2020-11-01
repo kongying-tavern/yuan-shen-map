@@ -9,6 +9,18 @@ body,
     height: 100%;
 }
 
+.loading{
+    z-index: 4000;
+    display: block;
+    position: absolute;
+    background: url("../imgs/Loading.gif") no-repeat;
+    width: 92px;
+    height: 32px;
+    right: 20px;
+    bottom: 30px;
+    pointer-events: none;
+}
+
 .savePop {
     z-index: 4000;
     position: absolute;
