@@ -556,7 +556,7 @@ function addGistFile(_default = '', cb) {
         localStorage.setItem("NetSync", "true");
       }
       alert(isCopy ? '复制完成' : '新建完成');
-      cb(res)
+      cb && cb(res)
       getGistList();
     };
     var err = function (res) {
