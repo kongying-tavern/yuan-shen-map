@@ -32,7 +32,8 @@ var canOpenSave = false;
 
 /**跳转到登录 */
 function jumpLogin() {
-  window.location.href = "/database/auth/auth/";
+  //window.location.href = "/database/auth/auth/";
+  window.location.href = "https://gitee.com/oauth/authorize?client_id=3ffe859147c8a1e0dd42d3ffb2fa4b24e9e2f92f07450931edbe17e88f7adce5&redirect_uri=https%3A%2F%2Fyuanshen.site%2Flogin.html&response_type=code"
 }
 
 /**
@@ -350,12 +351,17 @@ function updateGistFile(fileID) {
     // @ts-ignore
     if (localStorage.getItem(key) == 1) markersData.push(key); //所有value
   }
-  var success = function (res) {
+  var success = function (msg,code,head) {
+    console.log(msg);
+    console.log(code);
+    console.log(head);
     updateLocalData(fileID);
     alert("保存成功！");
   };
-  let err = function (msg) {
+  let err = function (msg,code,head) {
     console.log(msg);
+    console.log(code);
+    console.log(head);
   };
   var markersJsonData = {
     content: JSON.stringify(markersData)
