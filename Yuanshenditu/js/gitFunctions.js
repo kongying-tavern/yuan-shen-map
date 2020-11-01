@@ -513,7 +513,8 @@ function checkAutoUpdate() {
       if (isSync) {
         autoUpdateGistFile();
       } else {
-        //console.log("未选择同步存档，未能自动同步");
+        $(".loading").hide();
+        console.log("未选择同步存档，未能自动同步");
       }
     };
     $.ajax({
