@@ -700,6 +700,15 @@
 				event.preventDefault();
 			});
 		}
+		$("body").click(function (){
+			$(".savePop").hide();
+		});
+		$(".save-btn").click(function (event){
+			event.stopPropagation();
+		});
+		$(".savePop").click(function (event){
+			event.stopPropagation();
+		});
 	</script>
 </body>
 

@@ -548,6 +548,7 @@ function addGistFile(_default = '', cb) {
   if (description) {
     var success = function (res) {
       if (isSync == false) {
+        confirmSync = true;
         var lastUpdateTime = formatDate(new Date(res.updated_at));
         localStorage.setItem("lastUpdateTime", lastUpdateTime);
         localStorage.setItem("lastUpdateID", res.id);
@@ -599,7 +600,7 @@ function updateGistDescription(fileID) {
   if (description) {
     var success = function (res) {
       //console.log(res);
-      if (res.id == fileID) {
+      if (res.id == localStorage.getItem("lastUpdateID")) {
         let lastUpdateTime = formatDate(new Date(res.updated_at));
         localStorage.setItem("lastUpdateTime", lastUpdateTime);
       }
