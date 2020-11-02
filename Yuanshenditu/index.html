@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -51,6 +51,8 @@
 		<button class="issue-btn-confirm">确认提交</button>
 		<button class="issue-btn-cancel">取消提交</button>
 	</div>
+	<iframe src="/Beta/Save/pop.html" class="savePop" style="display: none;"></iframe>
+	<div class="loading" style="display: none;"></div>
 	<div id='map'></div>
 	<div class="danjixiazai"></div>
 	<!-- 筛选器 -->
@@ -725,6 +727,15 @@
 				event.preventDefault();
 			});
 		}
+		$("body").click(function (){
+			$(".savePop").hide();
+		});
+		$(".save-btn").click(function (event){
+			event.stopPropagation();
+		});
+		$(".savePop").click(function (event){
+			event.stopPropagation();
+		});
 	</script>
 </body>
 

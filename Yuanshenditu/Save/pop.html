@@ -276,6 +276,12 @@
             cursor: pointer;
         }
 
+        .saveTabelDel.disable {
+            cursor: default;
+            pointer-events: none;
+            opacity: 0.3;
+        }
+
         .saveTableDiv {
             height: 293px;
             overflow: scroll;
@@ -292,10 +298,10 @@
     <div class="saveContent">
         <div class="saveTitle">
             <div class="saveClose"></div>
-            <div class="userID">UserID: NanJi2020</div>
+            <div class="userID">UserID: Loading...</div>
         </div>
         <div class="currentUserTitle">当前使用：</div>
-        <div class="currentUserName">2.南极的小号*</div>
+        <div class="currentUserName">Loading...</div>
         <div class="saveUpdate">
             <div class="saveUpdateText">本存档 上传到云</div>
         </div>
@@ -341,15 +347,17 @@
             var fileID = that.attr("data");
             window.parent.deleteGistFile(fileID);
         }
+
         function copyData(element) {
             var that = $(element);
             var fileID = that.attr("data");
             window.parent.isCopy = true
             const seletedRow = parent.user_files.find(i => i.id === fileID)
-            window.parent.addGistFile(seletedRow.description + '副本',(res) => {
+            window.parent.addGistFile(seletedRow.description + '副本', (res) => {
                 window.parent.isCopy = false
             });
         }
+
         function saveLoad(element) {
             var that = $(element);
             var file = that.attr("data");
@@ -375,20 +383,28 @@
                     let trClass = (fileIndexTemp % 2 == 0) ? "tra" : "trb";
                     let file = event.data.files[fileIndex];
                     let saveTableStateClass = "saveTableState";
-                    let action_btn = "DEL"
+                    let action_btn = "DEL";
+                    var saveTabelDelClass = "saveTabelDel";
 
                     if (localStorage.getItem("lastUpdateTime") == file.lastUpdateTime && localStorage.getItem(
                             "lastUpdateID") == file.id) {
                         action_btn = "COPY"
                         saveTableStateClass = "saveTableState sync";
-                        $(".currentUserName").html(fileIndexTemp + "." + file.description);
+                        var NetSync = localStorage.getItem("NetSync");
+                        if (NetSync == "true") {
+                            $(".currentUserName").html(fileIndexTemp + "." + file.description);
+                        } else {
+                            $(".currentUserName").html("*" + fileIndexTemp + "." + file.description);
+                        }
                         $(".saveUpdate").unbind(); //取消上传按钮事件绑定
                         console.log("取消上传按钮事件绑定");
                         $(".saveUpdate").click(function () {
                             window.parent.updateGistFile(file.id);
                         })
+                        if (event.data.files.length >= 6) {
+                            var saveTabelDelClass = "saveTabelDel disable";
+                        }
                     }
-                    if (parent.user_files.length >= 6) {action_btn = "DEL"}
                     var savePopHtml = `
                     <tr class=${trClass}>
                     <td class="tb1">
@@ -403,14 +419,14 @@
                     </td>
                     <td class="tb4">${file.lastUpdateTime}</td>
                     <td class="tb5">
-                        <div class="saveTabelDel" onclick="${action_btn === 'COPY' ? 'copyData' : 'saveTabelDel'}(this)" data="${file.id}">${action_btn}</div>
+                        <div class="${saveTabelDelClass}" onclick="${action_btn === 'COPY' ? 'copyData' : 'saveTabelDel'}(this)" data="${file.id}">${action_btn}</div>
                     </td>
                 </tr>
                     `
                     $(".saveTable").prepend(savePopHtml);
                 }
                 var trC = (event.data.files.length % 2 == 0) ? "trb" : "tra";
-                var savePopHtml =  `
+                var savePopHtml = `
                     <tr class=${trC}>
                     <td class="tb1" style="opacity: 0;">
                         <div class="saveTableStateClass" style="opacity: 0;"></div>
@@ -427,7 +443,9 @@
                     </td>
                 </tr>
                     `
-                window.parent.user_files.length <=6 && $(".saveTable").append(savePopHtml);
+                if (event.data.files.length < 6) {
+                    $(".saveTable").append(savePopHtml);
+                }
             } else if (event.data.message == "refreshUser") {
                 $(".userID").html("userID: " + event.data.userName);
             }

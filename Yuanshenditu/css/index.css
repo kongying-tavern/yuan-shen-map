@@ -9,6 +9,18 @@ body,
     height: 100%;
 }
 
+.loading{
+    z-index: 4000;
+    display: block;
+    position: absolute;
+    background: url("../imgs/Loading.gif") no-repeat;
+    width: 92px;
+    height: 32px;
+    right: 20px;
+    bottom: 30px;
+    pointer-events: none;
+}
+
 .savePop {
     z-index: 4000;
     position: absolute;
@@ -19,7 +31,7 @@ body,
     border-style: inset;
     border-color: initial;
     border-image: initial;
-    transform-origin: 0% 0% 0;
+    transform-origin: 50% 50% 0;
     transform: scale(0.75);
     -webkit-transform: scale(0.75);
     /*兼容-webkit-引擎浏览器*/
