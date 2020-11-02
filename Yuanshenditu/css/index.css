@@ -633,6 +633,19 @@ body,
     cursor: pointer;
 }
 
+.issue-table
+{
+    z-index: 9997;
+    position: fixed;
+    top: 20%;
+    left: 2%;
+    width: 350px;
+    height: 200px;
+    border-radius: 14px;
+    background: #F0E9E2;
+    padding: 14px;
+}
+
 .myPopClose {
     position: absolute !important;
     right: 20px !important;

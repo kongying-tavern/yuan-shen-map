@@ -337,8 +337,26 @@ function closePop() {
 }
 
 function openIssue() {
-	alert("clicked openIssue");
-	createIssue("issueName", "issueContent", "null")
+	//alert("clicked openIssue");
+	$(".issue-table").show();
+	var issueName = $(".myPopName").text()
+	var issueLabel = null;
+	$(".issue-name").text(issueName);
+	$(".issue-btn-confirm").click(function () {	
+		if($("input[type='checkbox']").is(':checked')&&(!$("#issue-select-type-null").is(":checked"))){
+			//TODO: 这么写是错的。进入if-else地狱。先对付用。
+			if ($('#issue-cbox1').prop('checked') && $('#issue-cbox2').prop('checked')) {
+				issueLabel = "点位错误,图片错误"
+			} else if ($('#issue-cbox1').prop('checked')) {
+				issueLabel = "点位错误"
+			}else {
+				issueLabel = "图片错误"
+			}
+			createIssue(issueName, "巴巴托斯快速反馈系统 V1.0", issueLabel)
+		}else{
+			alert("你必须选择正确的选项才能提交");
+		}
+	});
 }
 
 //定义分类的数组，分别对应 物品层，物品Json名，物品icon类型，新增时在对应数组后增加对象即可

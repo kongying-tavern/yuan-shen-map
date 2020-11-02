@@ -29,6 +29,28 @@
 
 <body>
 	<iframe src="/Beta/Save/pop.html" class="savePop"></iframe>
+	<div class="issue-table">
+		<h1 class="issue-table-title">巴巴托斯快速反馈系统 V1.0</h1>
+		<p>你要反馈的问题是：</p>
+		<h2 class="issue-name" id="issue-name">指定点位</h2>
+		<label for="issue-select-type">选择出现的问题：</label>
+		<select name="问题类别" id="issue-select-type">
+			<option id="issue-select-type-null" value="">--选择问题类别--</option>
+			<option value="宝箱">宝箱</option>
+			<option value="神瞳">神瞳</option>
+			<option value="其他采集物">其他采集物</option>
+		</select>
+		<p>
+			<input type="checkbox" id="issue-cbox1" value="checkbox_1">
+			<label for="cbox1">点位问题（位置错误、不存在此点位）</label>
+		</p>
+		<p>
+			<input type="checkbox" id="issue-cbox2" value="checkbox_2">
+			<label for="cbox2">图片问题（图片缺失、图片错误）</label>
+		</p>
+		<button class="issue-btn-confirm">确认提交</button>
+		<button class="issue-btn-cancel">取消提交</button>
+	</div>
 	<div id='map'></div>
 	<div class="danjixiazai"></div>
 	<!-- 筛选器 -->
@@ -385,6 +407,10 @@
 	<script>
 		$(".area-list-li-containor").hide();
 		$(".area-list-containor").show();
+		$(".issue-table").hide();
+		$(".issue-btn-cancel").click(function () {
+			$(".issue-table").hide();
+		});
 		//筛选函数
 		var i_type = "ALL";
 		var area_idx = "MD";
