@@ -510,15 +510,16 @@
 	<div class="bottom-beian">
 		<a href="http://beian.miit.gov.cn" target="_bal" class="beian">蜀ICP备2020028219号</a>
 	</div>
+	<div class="dialog" id="cropper_window" style="display: none;">
+		<div class="dia-cro">
+			<iframe id="cropper_iframe" src="" style="width:100%;height:100%;"></iframe>
+		</div>
+	</div>
 	<!-- 修改点位的弹窗 -->
 	<div class="dialog" id="modify_window" style="display: none;">
 		<div class="dia-con">
 			<div style="width: 100%;height: 1px;"></div>
 			<div class="options-div">
-				<label class="form-options">
-					<span>点位编号：</span>
-					<strong id="modify-id" ></strong>
-				</label>
 				<label class="form-options">
 					<span>点位名称：</span>
 					<input type="text" class="modify-window-input" id="modify-name">
@@ -534,6 +535,13 @@
 				<label class="form-options">
 					<span>y坐标（不需要手动修改）：</span>
 					<input type="text" class="modify-window-input" readonly="readonly" id="modify-y">
+				</label>
+				<label class="form-options">
+					<span>图片 ：</span>
+					<a class="cropper_a" href="javascript:;" data-did="modify_window" data-num="0" onclick="cropperDivOpen(this)">图片剪切设置</a> | 
+					<a href="javascript:;" onclick="clearCropper(this)">清除图片</a>
+					<input id="modify-cropper" style="display:none;" />
+					<img src="" class="cropperImg"/>
 				</label>
 				<input type="button" class="modify-submit-btn" id="modify-submit" value="提交" lid="0">
 			</div>
@@ -561,6 +569,13 @@
 					<span>y坐标（不需要手动修改）：</span>
 					<input type="text" class="modify-window-input" readonly="readonly" id="add-y">
 				</label>
+				<label class="form-options">
+					<span>图片 ：</span>
+					<a class="cropper_a" href="javascript:;" data-did="add_window" data-num="0" onclick="cropperDivOpen(this)">图片剪切设置</a> | 
+					<a href="javascript:;" onclick="clearCropper(this)">清除图片</a>
+					<input id="add-cropper" style="display:none;" />
+					<img src="" class="cropperImg"/>
+				</label>
 				<input type="button" class="modify-submit-btn" id="add-submit" lid="0" value="提交">
 			</div>
 		</div>
@@ -582,7 +597,7 @@
 				Dialog.show({
 					id: e,
 					bgcolor: '#000', //弹出“遮罩”的颜色，格式为"#FF6600"，可修改，默认为"#fff"
-					opacity: 10 //弹出“遮罩”的透明度，格式为｛10-100｝，可选
+					opacity: 50 //弹出“遮罩”的透明度，格式为｛10-100｝，可选
 				});
 			});
 		}
@@ -933,7 +948,7 @@
 				});
 				marker.bindPopup(`<span class="add-title">${popTitle}</span>
 									<span class="add-des">${popupContent}</span>
-								<a href="javascript:;" class="marker-correct-btn" id="ad-btn" onclick="TGDialogS('add_window'),show_modify_marker(${layerarray.length+1})" lid="${markerid}">新增</a>
+								<a href="javascript:;" class="marker-correct-btn" id="ad-btn" onclick="TGDialogS('add_window'),show_modify_markeradd(${layerarray.length+1})" lid="${markerid}">新增</a>
 								<a href="javascript:;" class="marker-del-btn" onclick="delmarker_add(${layerarray.length+1})">删除</a>`);
 				LayerMap[`Layer_${idxclass}`].addLayer(marker);
 				layerarray = LayerMap[`Layer_${idxclass}`].getLayers();
@@ -969,16 +984,20 @@
 					}
 				}
 				let idx = textarray.indexOf(`Layer_${idxclass}`);
-				deleteMarker(idx, checkid);
+				//deleteMarker(idx, checkid);
 				$(`.table-options:eq(${id-1}) .table-options-operation`).html(`<span>已删除</span>`);
 			}
 
 		}
 		//在弹窗中渲染数据
-		function show_modify_marker(id) {
+		function show_modify_markeradd(id) {
+			$('#add_window').find('.cropperImg').hide();
+			$('#add_window').find('.cropperImg').attr('src','');
+			
 			$("#add-name").val($(".table-options:eq(0) .table-options-name").text());
 			$("#add-text").val($(".table-options:eq(0) .table-options-description").text());
 			$("#add-submit").attr("lid", id);
+			$("#add_window").find('.cropper_a').data("num", id);
 		}
 		//提交新增点位(单独提交)
 		var addlist = [];
@@ -991,11 +1010,14 @@
 					if (marker_idx == markerlist[i].id) {
 						markerlist[i].properties.popTitle = $("#add-name").val();
 						markerlist[i].properties.popupContent = $("#add-text").val();
+						markerlist[i].properties.popImage = $("#add-cropper").val();
 					}
 					var addmarker = markerlist[i]
 				}
+				
 				addlist.push(addmarker);
-				addNewMarkers(idx, addlist);
+				console.log(addmarker);
+				//addNewMarkers(idx, addlist);
 				addlist = [];
 			}
 		});
@@ -1004,40 +1026,140 @@
 			let check = confirm("你确定要提交所有新增点位么？")
 			if (check == true) {
 				let idx = textarray.indexOf(`Layer_${idxclass}`);
-				addNewMarkers(idx, markerlist);
+				//addNewMarkers(idx, markerlist);
 			}
 			markerlist = [];
 		});
 		//渲染修改弹窗
 		function show_modify_marker(id) {
+			$('#modify_window').find('.cropperImg').attr('src','');
+			let className,imgUrl;
 			for (let i = 0; i < layerarray.length; i++) {
 				if (layerarray[i].feature.id == id) {
+					className = layerarray[i].options.icon.options.className;
+					imgUrl = layerarray[i].feature.properties.popImage;
 					$("#modify-x").val(layerarray[i]._latlng.lat);
 					$("#modify-y").val(layerarray[i]._latlng.lng);
 					$("#modify-name").val(layerarray[i].feature.properties.popTitle);
 					$("#modify-text").val(layerarray[i].feature.properties.popupContent);
-					$("#modify-id").text(layerarray[i].feature.id);
-					layerarray[i].openPopup()
-					map.setView(layerarray[i]._latlng, 5)
-					
 				}
 			}
+			
+			if(className){
+				imgUrl = (imgUrl && imgUrl != '-1') ? imgUrl :  `comment_png/${className.substring(5, className.length)}.jpg`;
+				$('#modify_window').find('.cropperImg').attr('src',imgUrl);
+				$('#modify_window').find('.cropperImg').show();
+			}
 			$("#modify-submit").attr("lid", id);
+			$("#modify_window").find('.cropper_a').data("num", id);
 		}
 		$("#modify-submit").click(function () {
 			let idx = textarray.indexOf(`Layer_${idxclass}`);
 			let marker_idx = $("#modify-submit").attr("lid");
+			let className = '';
 			for (let i = 0; i < layerarray.length; i++) {
 				if (layerarray[i].feature.id == marker_idx) {
 					changedata = layerarray[i].feature;
+					className = layerarray[i].options.icon.options.className;
 				}
 			}
 			changedata.properties.popTitle = $("#modify-name").val();
+			changedata.properties.popImage = $('#modify-cropper').val();
 			changedata.properties.popupContent = $("#modify-text").val();
 			changedata.geometry.coordinates[0] = $("#modify-x").val();
 			changedata.geometry.coordinates[1] = $("#modify-y").val();
-			updateMarker(idx, changedata);
+			console.log(changedata);
+			if($('.myPopContainer').find('.myPopPicture').length > 0){
+				let imgUrl = changedata.properties.popImage;
+				imgUrl = (imgUrl && imgUrl != -1) ? imgUrl : `comment_png/${className.substring(5, className.length)}.jpg`;
+				$('.myPopComment,.myPopPicture').removeClass('disable');
+				$('.myPopComment').css({'cursor': 'pointer'});
+				$('.myPopContainer>.myPopPicture').find('img').attr('src',imgUrl);
+			}
+			debugger
+			//updateMarker(idx, changedata);
 		});
+		
+		function cropperDivOpen(obj){
+			var cro_data = {};
+			var _this = $(obj);
+			var prev_div_id = _this.data('did');
+			var num = _this.data('num');
+			var key;
+			
+			if(prev_div_id == 'modify_window'){
+				cro_data['modify-name'] = $("#modify-name").val();
+				cro_data['modify-cropper'] = $("#modify-cropper").val();
+				cro_data['modify-text'] = $("#modify-text").val();
+				cro_data['modify-x'] = $("#modify-x").val();
+				cro_data['modify-y'] = $("#modify-y").val();
+        	}else if(prev_div_id == 'add_window'){
+        		cro_data['add-name'] = $("#add-name").val();
+				cro_data['add-cropper'] = $("#add-cropper").val();
+				cro_data['add-text'] = $("#add-text").val();
+				cro_data['add-x'] = $("#add-x").val();
+				cro_data['add-y'] = $("#add-y").val();
+        	}
+			
+			for (let i = 0; i < layerarray.length; i++) {
+				if (layerarray[i].feature.id == num) {
+					key = layerarray[i].options.icon.options.className;
+				}
+			}
+			key = key ? key.substring(5, key.length) : '';
+			
+			TGDialogS('cropper_window');
+			$("#cropper_iframe").attr('src','js/cropper/cropper.html');
+			$("#cropper_iframe")[0].onload = function(){
+				var _src = $("#cropper_iframe").attr('src');
+				if(_src == '')return;
+				$("#cropper_iframe")[0].contentWindow.setData({
+					imgurl:`../../comment_png/${key}.jpg`,
+					width:256,
+			        height:256,
+			        closeFun :function(){
+			        	cropperDivClose(prev_div_id,cro_data,num);
+			        },
+			        callBackFun:function(data){
+			        	cropperDivClose(prev_div_id,cro_data,num);
+			        	var $croDiv;
+			        	if(prev_div_id == 'modify_window'){
+			        		$croDiv = $('#modify-cropper');
+			        	}else if(prev_div_id == 'add_window'){
+			        		$croDiv = $('#add-cropper');
+			        	}
+			        	var b64 = (data ? data.base64 : '');
+			        	$croDiv.val(b64);
+			        	$croDiv.next().attr('src',b64).show();
+			        }
+				});
+			}
+			
+		}
+		$('.cropperImg').on('error',function(){
+			$(this).css('display','none');
+		})
+		function clearCropper(obj){
+			if(confirm('是否清除这个图片?')){
+		        $(obj).next().val('-1');
+		        $(obj).next().next().css('display','none');
+		    }
+		}
+		function cropperDivClose(id,data,num){
+			TGDialogS(id);
+			
+			for(let key in data){
+				$("#"+key).val(data[key]);
+			}
+			if(id == 'modify_window'){
+				$("#modify-submit").attr("lid", num);
+				$("#modify_window").find('.cropper_a').data("num", num);
+        	}else if(id == 'add_window'){
+        		$("#add-submit").attr("lid", num);
+    			$("#add_window").find('.cropper_a').data("num", num);
+        	}
+			
+		}
 	</script>
 
 	<!-- zjj 2020/10/4 start-->

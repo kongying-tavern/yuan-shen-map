@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="JavaScript image cropper.">
+  <meta name="author" content="Chen Fengyuan">
+  <title>Cropper.js</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="cropper.min.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+<body>
+  <!--[if lt IE 9]>
+  <div class="alert alert-warning alert-dismissible fade show m-0 rounded-0" role="alert">
+    You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <![endif]-->
+
+  <!-- Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- <h3>Demo:</h3> -->
+        <div class="docs-demo">
+          <div class="img-container">
+            
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" id="actions">
+      <div class="col-md-12 docs-buttons">
+        <!-- <h3>Toolbar:</h3> -->
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="move" title="Move">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.setDragMode(&quot;move&quot;)">
+              移动
+            </span>
+          </button>
+          <button type="button" class="btn btn-primary" data-method="setDragMode" data-option="crop" title="Crop">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.setDragMode(&quot;crop&quot;)">
+              裁剪
+            </span>
+          </button>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(0.1)">
+              放大
+            </span>
+          </button>
+          <button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.zoom(-0.1)">
+              缩小
+            </span>
+          </button>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" data-method="move" data-option="-10" data-second-option="0" title="Move Left">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.move(-10, 0)">
+              左移
+            </span>
+          </button>
+          <button type="button" class="btn btn-primary" data-method="move" data-option="10" data-second-option="0" title="Move Right">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.move(10, 0)">
+              右移
+            </span>
+          </button>
+          <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="-10" title="Move Up">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.move(0, -10)">
+              上移
+            </span>
+          </button>
+          <button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="10" title="Move Down">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.move(0, 10)">
+              下移
+            </span>
+          </button>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(-45)">
+              左旋45°
+            </span>
+          </button>
+          <button type="button" class="btn btn-primary" data-method="rotate" data-option="45" title="Rotate Right">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.rotate(45)">
+              右旋45°
+            </span>
+          </button>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" data-method="scaleX" data-option="-1" title="Flip Horizontal">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.scaleX(-1)">
+              水平镜像
+            </span>
+          </button>
+          <button type="button" class="btn btn-primary" data-method="scaleY" data-option="-1" title="Flip Vertical">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.scaleY(-1)">
+              垂直镜像
+            </span>
+          </button>
+        </div>
+
+        <div class="btn-group">
+          <button type="button" class="btn btn-primary" data-method="reset" title="Reset">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.reset()">
+              重置
+            </span>
+          </button>
+          <label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">
+            <input type="file" class="sr-only" id="inputImage" name="file" accept="image/*">
+            <span class="docs-tooltip" data-toggle="tooltip" title="Import image with Blob URLs">
+              选择图片
+            </span>
+          </label>
+          <!-- <button type="button" class="btn btn-primary" data-method="destroy" title="Destroy">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.destroy()">
+              <span class="fa fa-power-off"></span>
+            </span>
+          </button> -->
+        </div>
+
+        <div class="btn-group btn-group-crop">
+          <button type="button" class="btn btn-success" data-method="getCroppedCanvas" data-option="{ &quot;width&quot;: 256, &quot;height&quot;: 256 }">
+            <span class="docs-tooltip" data-toggle="tooltip" title="cropper.getCroppedCanvas({ width；:256 height: 256 })">
+              获取图片
+            </span>
+          </button>
+          <button type="button" class="btn btn-danger digCloseBtn" >
+            关闭
+          </button>
+        </div>
+
+        <!-- Show the cropped image in modal -->
+        <div class="modal fade docs-cropped" id="getCroppedCanvasModal" role="dialog" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="getCroppedCanvasTitle">剪裁</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body"></div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary modal_x" data-dismiss="modal">取消</button>
+                <a class="btn btn-primary" id="im_upload" href="javascript:void(0);" >保存并关闭</a>
+                <a class="btn btn-primary" id="download" href="javascript:void(0);" download="cropped.jpg" style="display:none;">保存</a>
+              </div>
+            </div>
+          </div>
+        </div><!-- /.modal -->
+
+      </div><!-- /.docs-buttons -->
+
+      <div class="col-md-3 docs-toggles" style="display: none;">
+        <!-- <h3>Toggles:</h3> -->
+        <div class="btn-group d-flex flex-nowrap" data-toggle="buttons">
+          <label class="btn btn-primary active">
+            <input type="radio" class="sr-only" id="aspectRatio1" name="aspectRatio" value="1.7777777777777777">
+            <span class="docs-tooltip" data-toggle="tooltip" title="aspectRatio: 16 / 9">
+              16:9
+            </span>
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" class="sr-only" id="aspectRatio2" name="aspectRatio" value="1.3333333333333333">
+            <span class="docs-tooltip" data-toggle="tooltip" title="aspectRatio: 4 / 3">
+              4:3
+            </span>
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" class="sr-only" id="aspectRatio3" name="aspectRatio" value="1">
+            <span class="docs-tooltip" data-toggle="tooltip" title="aspectRatio: 1 / 1">
+              1:1
+            </span>
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" class="sr-only" id="aspectRatio4" name="aspectRatio" value="0.6666666666666666">
+            <span class="docs-tooltip" data-toggle="tooltip" title="aspectRatio: 2 / 3">
+              2:3
+            </span>
+          </label>
+          <label class="btn btn-primary">
+            <input type="radio" class="sr-only" id="aspectRatio5" name="aspectRatio" value="NaN">
+            <span class="docs-tooltip" data-toggle="tooltip" title="aspectRatio: NaN">
+              Free
+            </span>
+          </label>
+        </div>
+
+      </div><!-- /.docs-toggles -->
+    </div>
+  </div>
+
+
+  <!-- Scripts -->
+  <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+  <script src="cropper.js"></script>
+  <script src="main.js"></script>
+  <script type="text/javascript">
+  var _setData,iflag = true;;
+  function setData(data){
+	  var $img = $(`<img id="image" src="${data.imgurl || 'pig.jpg'}" alt="Picture">`)
+    $img.on("load",function(){
+    	if(iflag){
+    		iflag = false;
+    		openCropper(data);
+    	}
+    });
+	  $img.on("error",function(){
+	    	$('#image').attr('src','pig.jpg');
+	    });
+	  $('.img-container').append($img)
+    _setData = data;
+  }
+    var options;
+    //setInterval(function(){$('.sImg').trigger('click');},3000);
+    function sendImg(data){
+      options = data;
+    }
+    $('#im_upload').click(function(){
+      //parent.layui.layim.sendImg(options || -1);
+      $('.modal_x').trigger('click');
+      _setData.callBackFun(options);
+    });
+     $('.digCloseBtn').click(function(){
+    	window.parent.document.getElementById('cropper_iframe').src = '';
+    	_setData.closeFun();
+    }); 
+    function dataURLtoFile(dataurl) {//将base64转换为文件
+        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+        while(n--){
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new File([u8arr],'image.jpg', {type:mime});
+    }
+    function createImg(){
+      $('.sImg').trigger('click');
+      $('.xlImg').trigger('click');
+    }
+  </script>
+  
+  
+
+</body>
+</html>
