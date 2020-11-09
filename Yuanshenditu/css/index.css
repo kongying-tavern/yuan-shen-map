@@ -752,3 +752,10 @@ body,
         /*兼容-moz-引擎浏览器*/
     }
 }
+.time-wrapper {
+    font-size: 18px;
+    padding: 0 17px;   
+    font-weight: bold;
+    margin-top: 10px;
+
+}

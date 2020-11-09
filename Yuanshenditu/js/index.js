@@ -452,7 +452,8 @@ function MarkPoint(element) {
 	var oldValue = localStorage.getItem(key);
 	var newValue = !oldValue;
 	localStorage.setItem(key, newValue ? "1" : "");
-
+	localStorage.setItem('done_time_' + key, newValue ? Date.now().toString() : '');
+	
 	var doneUrl = newValue ? "_done" : ""
 	if (layerNumber == 0 || layerNumber == 1) {
 		var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".svg";
@@ -490,6 +491,9 @@ function MarkPoint(element) {
 		setTimeout(function () {
 			that.find(".switchButton p").html("未完成");
 		}, 100);
+		setTimeout(function () {
+			closePop();
+		}, 500);
 	}
 }
 
@@ -576,7 +580,7 @@ function dealIcon(target, key) {
 // L.control.layers(null, overlays, {
 // 	collapsed: false,
 // }).addTo(map);
-
+let timer
 map.on('popupopen', function (e) {
 	state = 1;
 	var marker = e.popup._source;
@@ -585,7 +589,10 @@ map.on('popupopen', function (e) {
 	var markedFlag = localStorage.getItem(key);
 	var switchClass = (!markedFlag) ? "myPopSwitchTodo" : "myPopSwitchDone";
 	var switchText = (!markedFlag) ? "未完成" : "已完成";
-	popupHtml = `
+	const timeValue = localStorage.getItem('done_time_' + key)
+	let creatTIme = timeValue && new Date(Number(timeValue))
+	
+	var popupHtml = `
 	<div class="myPopContainer">
 		<div class="myPopTitle">
 			<div class="myPopName" >${marker.feature.properties.popTitle}${marker.feature.id}</div>
@@ -596,6 +603,7 @@ map.on('popupopen', function (e) {
 		<div class="myPopComment">${marker.feature.properties.popupContent}
 			<img class="Select" src=imgs/con_img/Select.png>
 		</div>
+		<div class="time-wrapper"><span id="time"></span></div>
 		<div class="myPopPicture">
 			<img src=comment_png/${key}.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">
 		</div>
@@ -609,6 +617,26 @@ map.on('popupopen', function (e) {
 			</div>
 		</div>
 		<div class="tipcard"></div>
+		
 	</div>`
+	if (creatTIme) {
+		let endTime = new Date(creatTIme.setHours(creatTIme.getHours() + 24 ))
+		timer = setInterval(() => {
+			let mss = endTime - new Date()
+			var  hours = parseInt(String((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+			var  minutes = parseInt(String((mss % (1000 * 60 * 60)) / (1000 * 60)));
+			var  seconds = parseInt(String((mss % (1000 * 60)) / 1000));
+			$(".myPopContainer #time ").text(`倒计时：${hours}:${minutes}:${seconds}`)
+		},500)
+	}
+	
 	marker.bindPopup(popupHtml);
 });
+
+
+map.on('popupclose', function () {
+	if (timer) {
+		clearInterval(timer)
+		timer = undefined
+	}
+})
