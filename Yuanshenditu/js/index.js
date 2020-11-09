@@ -455,6 +455,7 @@ function MarkPoint(element) {
 	const now = new Date()
 	localStorage.setItem(
 		'done_time_' + key,
+		// todo: 每个种类的材料刷新间隔不一样，需要一个表来映射。
 		 newValue ? JSON.stringify({
 			 stat: now.toString(),
 			 end:  new Date(now.setSeconds(now.getSeconds() + 5 )).toString()
@@ -661,7 +662,7 @@ function updatePointTime () {
 					localStorage.setItem(baseKey, '')
 					localStorage.setItem(key, '')
 					closePop();
-					// todo 
+					// todo 计时结束 marker icon 修改回初始状态
 					// markers[item.key].setIcon(???)
 				}
 				acc.push(isAfterEndTime)
