@@ -275,8 +275,8 @@ function getGistList() {
         confirmSync = false;
         var msg = "检测到您的存档与云端存储时间不一致，要同步云端存档吗（点击确定同步云端存档）";
         if (confirm(msg) == true) {
-          confirmSync = true;
           loadGistFile(currentID, tempLastUpdateTime);
+          confirmSync = true;
         } else {
           var msg = "要上传当前存档到云端吗（点击确定上传存档到云端并同步）";
           if (confirm(msg) == true) {
@@ -482,8 +482,8 @@ function checkAutoUpdate() {
         confirmSync = false;
         var msg = "检测到您的存档与云端存储时间不一致，要同步云端存档吗（点击确定同步云端存档）";
         if (confirm(msg) == true) {
-          confirmSync = true;
           loadGistFile(currentID, tempLastUpdateTime);
+          confirmSync = true;
         } else {
           var msg = "要上传当前存档到云端吗（点击确定上传存档到云端并同步）";
           if (confirm(msg) == true) {
@@ -673,7 +673,7 @@ function loadGistFile(fileID, fileLastUpdateTime) {
     // @ts-ignore
     if (localStorage.getItem(key) == 1) markersData.push(key); //所有value
   }
-  if (isSync == false && markersData.length >= 1) {
+  if (isSync == false && markersData.length >= 1 && confirmSync==true) {
     var msg = "您本地存有数据且未处于同步状态，为防止数据丢失，请点击确定新建存档";
     if (confirm(msg) == true) {
       addGistFile();
