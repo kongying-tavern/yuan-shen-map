@@ -654,20 +654,17 @@ function updatePointTime () {
 		let store = Object.keys(localStorage).reduce((acc, key) => {
 			if (key.includes("done_time_") && localStorage.getItem(key)) {
 				const value = JSON.parse(localStorage.getItem(key))
-				const item = {
-					key: key.replace("done_time_", ''),
-					timeKey: key,
-					value,
-					isAfterEndTime: new Date(value.end).getTime() - Date.now() <= 0 
-				}
-				if (item.isAfterEndTime) {
-					localStorage.setItem(item.key, '')
-					localStorage.setItem(item.timeKey, '')
+				const baseKey = key.replace("done_time_", '')
+				const	isAfterEndTime = new Date(value.end).getTime() - Date.now() <= 0 
+				
+				if (isAfterEndTime) {
+					localStorage.setItem(baseKey, '')
+					localStorage.setItem(key, '')
 					closePop();
 					// todo 
 					// markers[item.key].setIcon(???)
 				}
-				acc.push(item.isAfterEndTime)
+				acc.push(isAfterEndTime)
 			}
 			return acc
 		}, [])
