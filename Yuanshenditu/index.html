@@ -37,7 +37,7 @@
 		<img class="Background" src="imgs/con_img/Content.png">
 		<a href="javascript:;" class="fold-btn hd">fold</a>
 		<div class="person-div">
-			<a href="javascript:;" class="reg_log_link hd">登录/注册</a>
+			<div href="javascript:;" class="reg_log_link login-info"></div>
 			<a href="https://afdian.net/@yuanshenditu" target="_bal" class="zanzhu">捐助我们</a>
 			<a href="javascript:;" class="save-btn disable hd">存档</a>
 		</div>
@@ -497,6 +497,7 @@
 						canOpenSave = false; //不可打开存档框
 						$(".savePop").hide(); //关闭存档框
 						alert("注销成功！");
+						location.reload()
 					}
 				} else {
 					jumpLogin();
@@ -551,7 +552,7 @@
 						jumpLogin();
 					}
 				} else if (canOpenSave) {
-					getGitUser();
+
 					$(".savePop").show();
 				}
 				//upLoadSaveData(localSave);
@@ -699,6 +700,22 @@
 			document.addEventListener('gesturestart', function (event) {
 				event.preventDefault();
 			});
+		
+				if (getCookie("gitee_Token") != "notfound") {
+					$(".login-info")
+				.removeClass('reg_log_link').text("加载中...")
+			  getGitUser(function(res) {
+				localStorage.setItem("user", JSON.stringify(res))
+				console.log('res', res)
+				$(".login-info")
+				.removeClass('reg_log_link')
+				.html(`
+				<div class="avatar-wrapper">
+					<img width="50" height="50" src="${res.avatar_url}" />
+					<div style="margin-left: 10px">${res.name}</div>
+				</div>`)
+			} )
+		}
 		}
 		$("body").click(function (){
 			$(".savePop").hide();

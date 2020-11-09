@@ -193,9 +193,11 @@ function formatDate(date) {
  * giteeGist获取用户信息
  *
  */
-function getGitUser() {
+function getGitUser(cb) {
   var access_token = "";
   var success = function (res) {
+    console.log('res', res)
+    cb && cb(res)
     window.frames[0].postMessage({
       message: "refreshUser",
       userName: res.name
