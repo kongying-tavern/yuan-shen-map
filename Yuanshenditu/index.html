@@ -28,6 +28,8 @@
 </head>
 
 <body>
+	<iframe src="/Beta/Save/pop.html" class="savePop" style="display: none;"></iframe>
+	<div class="loading" style="display: none;"></div>
 	<div id='map'></div>
 	<div class="danjixiazai"></div>
 	<!-- 筛选器 -->
@@ -488,7 +490,17 @@
 			}
 			$(".con-type-label:first").trigger("click");
 			$(".reg_log_link").click(function () {
-				jumpLogin();
+				if (getToken()) {
+					if (window.confirm("确定要注销账户吗?")) {
+						removeCookie("gitee_Token"); //清空登录缓存
+						tokenPara = null; //清空登录缓存
+						canOpenSave = false; //不可打开存档框
+						$(".savePop").hide(); //关闭存档框
+						alert("注销成功！");
+					}
+				} else {
+					jumpLogin();
+				}
 			})
 			// function createIssue(issueName, issueContent, issueLabels) {
 			// 	console.log("clicked openIssue" + issueLabels);
@@ -532,8 +544,27 @@
 				console.log(toolresult);
 			}
 			//存储
+			$(".savePop").hide();
 			$(".save-btn").click(function () {
-				upLoadSaveData(localSave);
+				if (getToken() == false) {
+					if (window.confirm("使用云存档必须登录, 要立刻登录吗?")) {
+						jumpLogin();
+					}
+				} else if (canOpenSave) {
+					getGitUser();
+					$(".savePop").show();
+				}
+				//upLoadSaveData(localSave);
+			})
+
+			window.addEventListener('message', function (e) {
+				var data = e.data;
+				console.log(data);
+				if (data == "saveClose") {
+					$(".savePop").hide();
+				} else if (data == "upLoad") {
+					upLoadSaveData(localSave);
+				}
 			})
 
 			//单机跳转
@@ -669,6 +700,15 @@
 				event.preventDefault();
 			});
 		}
+		$("body").click(function (){
+			$(".savePop").hide();
+		});
+		$(".save-btn").click(function (event){
+			event.stopPropagation();
+		});
+		$(".savePop").click(function (event){
+			event.stopPropagation();
+		});
 	</script>
 </body>
 
