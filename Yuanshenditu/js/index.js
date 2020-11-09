@@ -718,7 +718,7 @@ function updatePointTime () {
 					});
 
 					markers[baseKey].setIcon(newIcon)
-					closePop();
+					markers[baseKey].closePopup()					
 				}
 				acc.push(isAfterEndTime)
 			}
