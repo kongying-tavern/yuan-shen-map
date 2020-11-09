@@ -485,7 +485,7 @@ function MarkPoint(element) {
 			'done_time_' + key,
 			 newValue ? JSON.stringify({
 				 stat: now.toString(),
-				 end:  new Date(now.setHours(now.getHours() + MonosTime[typearray[layerNumber][3]]  )).toString(),
+				 end:  new Date(now.setSeconds(now.getSeconds() +  5 )).toString(),
 				 layerNumber
 				}) : ''
 		);
@@ -695,7 +695,34 @@ function updatePointTime () {
 					localStorage.setItem(key, '')
 					closePop();
 					// todo 计时结束 marker icon 修改回初始状态
-					// markers[item.key].setIcon(???)
+
+					console.log("close");
+					var currentIcon = getIconInfo(layer[2]);
+					var layerNumber = baseKey.split('_')[0];
+					var newValue = false;
+					var doneUrl = newValue ? "_done" : ""
+					if (layerNumber == 0 || layerNumber == 1) {
+						var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".svg";
+					} else {
+						var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".png";
+					}
+					var currentShowdow = currentIcon.prototype.options.shadowUrl
+					var downShadow;
+					if (currentShowdow == "./imgs/loc_find.svg" || currentShowdow == "./imgs/loc_notfind.svg") {
+						downShadow = newValue ? "./imgs/loc_find.svg" : "./imgs/loc_notfind.svg"
+					} else if (currentShowdow == "./imgs/loc_stonenot.svg" || currentShowdow == "./imgs/loc_stonefound.svg") {
+						downShadow = newValue ? "./imgs/loc_stonefound.svg" : "./imgs/loc_stonenot.svg"
+					} else if (currentShowdow == "./imgs/loc_find_black.svg" || currentShowdow == "./imgs/loc_notfind_black.svg") {
+						downShadow = newValue ? "./imgs/loc_find_black.svg" : "./imgs/loc_notfind_black.svg"
+					}
+					var doneShadowUrl = currentShowdow ? downShadow : ""
+					var newIcon = new currentIcon({
+						className: "mark-" + key,
+						iconUrl: iconUrl,
+						shadowUrl: doneShadowUrl,
+					});
+
+					markers[baseKey].setIcon(newIcon)
 				}
 				acc.push(isAfterEndTime)
 			}
