@@ -452,7 +452,14 @@ function MarkPoint(element) {
 	var oldValue = localStorage.getItem(key);
 	var newValue = !oldValue;
 	localStorage.setItem(key, newValue ? "1" : "");
-	localStorage.setItem('done_time_' + key, newValue ? Date.now().toString() : '');
+	const now = new Date()
+	localStorage.setItem(
+		'done_time_' + key,
+		 newValue ? JSON.stringify({
+			 stat: now.toString(),
+			 end:  new Date(now.setSeconds(now.getSeconds() + 5 )).toString()
+			}) : ''
+		 );
 	
 	var doneUrl = newValue ? "_done" : ""
 	if (layerNumber == 0 || layerNumber == 1) {
@@ -590,7 +597,6 @@ map.on('popupopen', function (e) {
 	var switchClass = (!markedFlag) ? "myPopSwitchTodo" : "myPopSwitchDone";
 	var switchText = (!markedFlag) ? "未完成" : "已完成";
 	const timeValue = localStorage.getItem('done_time_' + key)
-	let creatTIme = timeValue && new Date(Number(timeValue))
 	
 	var popupHtml = `
 	<div class="myPopContainer">
@@ -619,14 +625,15 @@ map.on('popupopen', function (e) {
 		<div class="tipcard"></div>
 		
 	</div>`
-	if (creatTIme) {
-		let endTime = new Date(creatTIme.setHours(creatTIme.getHours() + 24 ))
+	if (timeValue) {
+		const {start, end} = JSON.parse(timeValue)
+		let endTime = new Date(end)
 		timer = setInterval(() => {
-			let mss = endTime - new Date()
+			let mss = endTime.getTime() - new Date().getTime()
 			var  hours = parseInt(String((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
 			var  minutes = parseInt(String((mss % (1000 * 60 * 60)) / (1000 * 60)));
 			var  seconds = parseInt(String((mss % (1000 * 60)) / 1000));
-			$(".myPopContainer #time ").text(`倒计时：${hours}:${minutes}:${seconds}`)
+			$(".myPopContainer #time ").text(seconds >=0 ? `倒计时：${hours}:${minutes}:${seconds}`: '')
 		},500)
 	}
 	
@@ -640,3 +647,33 @@ map.on('popupclose', function () {
 		timer = undefined
 	}
 })
+
+function updatePointTime () {
+
+	setInterval(() => {
+		let store = Object.keys(localStorage).reduce((acc, key) => {
+			if (key.includes("done_time_") && localStorage.getItem(key)) {
+				const value = JSON.parse(localStorage.getItem(key))
+				const item = {
+					key: key.replace("done_time_", ''),
+					timeKey: key,
+					value,
+					isAfterEndTime: new Date(value.end).getTime() - Date.now() <= 0 
+				}
+				if (item.isAfterEndTime) {
+					localStorage.setItem(item.key, '')
+					localStorage.setItem(item.timeKey, '')
+					closePop();
+					// todo 
+					// markers[item.key].setIcon(???)
+				}
+				acc.push(item.isAfterEndTime)
+			}
+			return acc
+		}, [])
+		console.log('store', store)
+	}, 500)
+}
+
+
+updatePointTime()
