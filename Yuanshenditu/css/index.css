@@ -796,3 +796,13 @@ body,
     margin-top: 10px;
 
 }
+
+.avatar-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-wrapper img {
+    border-radius: 50%;
+}
