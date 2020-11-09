@@ -53,8 +53,8 @@ map.addLayer(L.tileLayer.t());
 // map.addLayer(L.tileLayer.t1());
 //各个坐标的分类类别的初始化
 var LayerMap = {
-	Layer_FST: L.layerGroup(),
-	Layer_YST: L.layerGroup(),
+	Layer_FST: L.markerClusterGroup({maxClusterRadius:0}),
+	Layer_YST: L.markerClusterGroup({maxClusterRadius:0}),
 	Layer_DLK_MD: L.markerClusterGroup(),
 	Layer_DLK_LY: L.markerClusterGroup(),
 	Layer_JYJJ: L.markerClusterGroup(),
@@ -486,15 +486,15 @@ function MarkPoint(element) {
 		const now = new Date()
 		localStorage.setItem(
 			'done_time_' + key,
-			 newValue ? JSON.stringify({
-				 stat: now.toString(),
-				 end:  new Date(now.setHours(now.getHours() +  MonosTime[typearray[layerNumber][3]] )).toString(),
-				 layerNumber
-				}) : ''
+			newValue ? JSON.stringify({
+				stat: now.toString(),
+				end: new Date(now.setHours(now.getHours() + MonosTime[typearray[layerNumber][3]])).toString(),
+				layerNumber
+			}) : ''
 		);
 	}
-	
-	
+
+
 	var doneUrl = newValue ? "_done" : ""
 	if (layerNumber == 0 || layerNumber == 1) {
 		var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".svg";
@@ -536,7 +536,7 @@ function MarkPoint(element) {
 }
 
 //初始化各个坐标
-function freshMarkerLayer() {
+function InitMarkerLayer() {
 	for (let i = 0; i < typearray.length; i++) {
 		localStorage.setItem("layerNumber", i);
 		typearray[i][0].clearLayers();
@@ -580,7 +580,47 @@ function freshMarkerLayer() {
 	};
 }
 
-freshMarkerLayer();
+InitMarkerLayer();
+
+function freshMarkerLayer() {
+	for (let i = 0; i < typearray.length; i++) {
+		localStorage.setItem("layerNumber", i);
+		var currentIcon = getIconInfo(typearray[i][2]);
+		L.geoJSON(typearray[i][1], {
+			pointToLayer: function (feature, latlng) {
+				var key = i + "_" + feature.id;
+				var markedFlag = false;
+				if (localStorage.getItem(key)) {
+					markedFlag = true;
+				}
+				var doneUrl = markedFlag ? "_done" : ""
+				if (i == 0 || i == 1) {
+					var iconUrl = "./imgs/icon_" + i + doneUrl + ".svg";
+				} else {
+					var iconUrl = "./imgs/icon_" + i + doneUrl + ".png";
+				}
+				var currentShowdow = currentIcon.prototype.options.shadowUrl
+				var downShadow;
+				if (currentShowdow == "./imgs/loc_find.svg" || currentShowdow == "./imgs/loc_notfind.svg") {
+					downShadow = markedFlag ? "./imgs/loc_find.svg" : "./imgs/loc_notfind.svg"
+				} else if (currentShowdow == "./imgs/loc_stonenot.svg" || currentShowdow == "./imgs/loc_stonefound.svg") {
+					downShadow = markedFlag ? "./imgs/loc_stonefound.svg" : "./imgs/loc_stonenot.svg"
+				} else if (currentShowdow == "./imgs/loc_find_black.svg" || currentShowdow == "./imgs/loc_notfind_black.svg") {
+					downShadow = markedFlag ? "./imgs/loc_find_black.svg" : "./imgs/loc_notfind_black.svg"
+				}
+				var doneShadowUrl = currentShowdow ? downShadow : ""
+				var newIcon = new currentIcon({
+					className: "mark-" + key,
+					iconUrl: iconUrl,
+					shadowUrl: doneShadowUrl,
+				});
+				markers[key].setIcon(newIcon);
+				markers[key].refreshIconOptions(newIcon,true);
+			},
+			onEachFeature: onEachFeature
+		})
+	};
+}
 
 function dealIcon(target, key) {
 
@@ -634,7 +674,7 @@ map.on('popupopen', function (e) {
 	var switchClass = (!markedFlag) ? "myPopSwitchTodo" : "myPopSwitchDone";
 	var switchText = (!markedFlag) ? "未完成" : "已完成";
 	const timeValue = localStorage.getItem('done_time_' + key)
-	
+
 	var popupHtml = `
 	<div class="myPopContainer">
 		<div class="myPopTitle">
@@ -663,17 +703,20 @@ map.on('popupopen', function (e) {
 		
 	</div>`
 	if (timeValue) {
-		const {start, end} = JSON.parse(timeValue)
+		const {
+			start,
+			end
+		} = JSON.parse(timeValue)
 		let endTime = new Date(end)
 		timer = setInterval(() => {
 			let mss = endTime.getTime() - new Date().getTime()
-			var  hours = parseInt(String((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
-			var  minutes = parseInt(String((mss % (1000 * 60 * 60)) / (1000 * 60)));
-			var  seconds = parseInt(String((mss % (1000 * 60)) / 1000));
-			$(".myPopContainer #time ").text(seconds >=0 ? `刷新时间：${hours}:${minutes}:${seconds}`: '')
-		},500)
+			var hours = parseInt(String((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+			var minutes = parseInt(String((mss % (1000 * 60 * 60)) / (1000 * 60)));
+			var seconds = parseInt(String((mss % (1000 * 60)) / 1000));
+			$(".myPopContainer #time ").text(seconds >= 0 ? `刷新时间：${hours}:${minutes}:${seconds}` : '')
+		}, 500)
 	}
-	
+
 	marker.bindPopup(popupHtml);
 });
 
@@ -685,14 +728,14 @@ map.on('popupclose', function () {
 	}
 })
 
-function updatePointTime () {
+function updatePointTime() {
 
 	setInterval(() => {
 		let store = Object.keys(localStorage).reduce((acc, key) => {
 			if (key.includes("done_time_") && localStorage.getItem(key)) {
 				const value = JSON.parse(localStorage.getItem(key))
 				const baseKey = key.replace("done_time_", '')
-				const	isAfterEndTime = new Date(value.end).getTime() - Date.now() <= 0 
+				const isAfterEndTime = new Date(value.end).getTime() - Date.now() <= 0
 				const layer = typearray[value.layerNumber]
 				//console.log('layer', layer[3])
 				if (isAfterEndTime) {
@@ -723,7 +766,7 @@ function updatePointTime () {
 					});
 
 					markers[baseKey].setIcon(newIcon)
-					markers[baseKey].closePopup()					
+					markers[baseKey].closePopup()
 				}
 				acc.push(isAfterEndTime)
 			}

@@ -307,7 +307,7 @@ function getGistList() {
       freshMarkerLayer();
     };
     $.ajax({
-      async: true,
+      async: false,
       type: "GET",
       url: url,
       contentType: "application/json",
