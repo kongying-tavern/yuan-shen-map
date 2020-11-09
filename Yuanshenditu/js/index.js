@@ -485,7 +485,7 @@ function MarkPoint(element) {
 			'done_time_' + key,
 			 newValue ? JSON.stringify({
 				 stat: now.toString(),
-				 end:  new Date(now.setSeconds(now.getSeconds() +  5 )).toString(),
+				 end:  new Date(now.setHours(now.getHours() +  MonosTime[typearray[layerNumber][3]] )).toString(),
 				 layerNumber
 				}) : ''
 		);
@@ -520,19 +520,16 @@ function MarkPoint(element) {
 		setTimeout(function () {
 			that.find(".switchButton p").html("已完成");
 		}, 100);
-		setTimeout(function () {
-			closePop();
-		}, 500);
 	} else {
 		that.addClass("myPopSwitchTodo");
 		that.removeClass("myPopSwitchDone");
 		setTimeout(function () {
 			that.find(".switchButton p").html("未完成");
 		}, 100);
-		setTimeout(function () {
-			closePop();
-		}, 500);
 	}
+	setTimeout(function () {
+		markers[key].closePopup();
+	}, 500);
 }
 
 //初始化各个坐标
@@ -665,7 +662,7 @@ map.on('popupopen', function (e) {
 			var  hours = parseInt(String((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
 			var  minutes = parseInt(String((mss % (1000 * 60 * 60)) / (1000 * 60)));
 			var  seconds = parseInt(String((mss % (1000 * 60)) / 1000));
-			$(".myPopContainer #time ").text(seconds >=0 ? `倒计时：${hours}:${minutes}:${seconds}`: '')
+			$(".myPopContainer #time ").text(seconds >=0 ? `刷新时间：${hours}:${minutes}:${seconds}`: '')
 		},500)
 	}
 	
@@ -689,13 +686,13 @@ function updatePointTime () {
 				const baseKey = key.replace("done_time_", '')
 				const	isAfterEndTime = new Date(value.end).getTime() - Date.now() <= 0 
 				const layer = typearray[value.layerNumber]
-				console.log('layer', layer[3])
+				//console.log('layer', layer[3])
 				if (isAfterEndTime) {
 					localStorage.setItem(baseKey, '')
 					localStorage.setItem(key, '')
 					// todo 计时结束 marker icon 修改回初始状态
 
-					console.log("close");
+					//console.log("close");
 					let currentIcon = getIconInfo(layer[2]);
 
 					let newValue = false;
