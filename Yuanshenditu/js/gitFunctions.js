@@ -880,12 +880,20 @@ function deleteFile(number) {
  * @param issueLabels {string | string[]} issue的标签逗号隔开 如 "宝箱,错点"
  */
 function createIssue(issueName, issueContent, issueLabels) {
-  var url = "/database/file/createIssue";
+  // var url = "/database/file/createIssue";
+  // var data = {
+  //   access_token: tokenPara,
+  //   issueName: issueName,
+  //   issueContent: issueContent,
+  //   issueLabels: issueLabels,
+  // };
+  var url = "https://gitee.com/api/v5/repos/SecondLAB_peaceshi/issues";
   var data = {
     access_token: tokenPara,
-    issueName: issueName,
-    issueContent: issueContent,
-    issueLabels: issueLabels,
+    repo:"yuan-shen-map",
+    title: issueName,
+    body: issueContent,
+    labels: issueLabels,
   };
   var success = function (res) {
     if (res === "login") {
