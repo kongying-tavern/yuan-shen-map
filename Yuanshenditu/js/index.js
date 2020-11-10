@@ -710,10 +710,11 @@ map.on('popupopen', function (e) {
 		let endTime = new Date(end)
 		timer = setInterval(() => {
 			let mss = endTime.getTime() - new Date().getTime()
+			var day = parseInt(String((mss / (1000 * 60 * 60 * 24) )))
 			var hours = parseInt(String((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
 			var minutes = parseInt(String((mss % (1000 * 60 * 60)) / (1000 * 60)));
 			var seconds = parseInt(String((mss % (1000 * 60)) / 1000));
-			$(".myPopContainer #time ").text(seconds >= 0 ? `刷新时间：${hours}:${minutes}:${seconds}` : '')
+			$(".myPopContainer #time ").text(seconds >= 0 ? `刷新时间：${day}天, ${hours}:${minutes}:${seconds}` : '')
 		}, 500)
 	}
 
