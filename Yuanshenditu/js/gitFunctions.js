@@ -27,13 +27,36 @@ var isSync = false;
 /** @type {boolean} 同步检测*/
 var isCopy = false;
 
+/** @type {boolean} 同步检测*/
+var isFirstLogin = true;
+
 /** @type {boolean} 是否可开存档框*/
 var canOpenSave = false;
+
+/*app客户端数组*/
+var array_Client = [
+  ["3ffe859147c8a1e0dd42d3ffb2fa4b24e9e2f92f07450931edbe17e88f7adce5", "529b2e91c921a24f44e0199a9beee7e4967df6933eadcd30274c8a762103905b"],
+  ["9b0a30db936b5955e86c57a9b3f0d3ceb30ecad3b5ae695878e1dcda41eb7d27", "b4c8f122ac1f1ea79ea4b4f54cb8534a1d0ea575612be49c40dd05ea33b38972"],
+  ["7cb3db1eaa7962a93b0b2a033f1f27a7e28211df7eb487991f1f1b645362bf80", "3dc0c790c80c40fc700d3bd5012dd67a0f53f74b8368ca82b748e6c2775d1e65"],
+  ["4a8595fec766c4229c464802be433cdb5b62d30c92187ffde9819649ed127573", "e04356469c96e40b284cf9cec4dd1f4113c926f900d0269b8a329bd1020f5472"],
+  ["62d814c349d83e19882d12dd74cd3d5dc64046a566ae5243ace78992cb57b1a8", "79d964f925102d44542481a9eb002a49b92d8cce142f825c049365cc3b62e099"],
+  ["c5406b11f6d4cbc4d8b1ee77727921601edea8f13086aa4cc0b188a18597af36", "5bf8074d4c53855d484126f02a020b0d05588dc6be9a0e45d22d11c060998d82"],
+  ["debac29d81445898233149cbc74511900ce443fc8199f21de1fbc93ee74f024d", "25314360438a06cb4fecf7e1d587c1575544302e829212b478554708ea7b054f"],
+  ["8d8f8ddf44cb7c26c2edf94ef49e61ba9fff81d61d1009102e1b80ffa73e0fe6", "2ee96cbf06f0c69572c397c8549ebba5a6c7f2d2a4984dc1c943d95f028dc1e2"],
+  ["dcd3cf0c1191e272517d2eb4db0ad76f844a248e2b43e4a8d720162b35fad717", "2aac05598b4d2453a6b4f8c19aadb6ed9913469b547689247cf5756bc2f30815"],
+  ["ab142a5b65c557a94efdff7aaefbb4091ea489735e40cea74d03105ea1ec99ff", "231d9899b17ce161d9807d7d6cbc377d1e44c48bf205523c506cfbdd47278cb5"]
+];
 
 /**跳转到登录 */
 function jumpLogin() {
   //window.location.href = "/database/auth/auth/";
-  window.location.href = "https://gitee.com/oauth/authorize?client_id=3ffe859147c8a1e0dd42d3ffb2fa4b24e9e2f92f07450931edbe17e88f7adce5&redirect_uri=https%3A%2F%2Fyuanshen.site%2Flogin.html&response_type=code"
+  if (getCookie("arrayClient") == "notfound") {
+    var x = new Date(new Date(new Date().toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1);
+    document.cookie = "arrayClient=" + array_Client + "; path=/; expires=" + x; //设置cookie
+  }
+  var client = array_Client[Math.floor((Math.random() * array_Client.length))]
+  setCookie("currentClient", client);
+  window.location.href = "https://gitee.com/oauth/authorize?client_id=" + client[0] + "&redirect_uri=https%3A%2F%2Fyuanshen.site%2Flogin.html&response_type=code"
 }
 
 /**
@@ -47,8 +70,16 @@ function jumpLogin() {
  */
 function getToken() {
   if (getCookie("gitee_Token") != "notfound") {
-    tokenPara = getCookie("gitee_Token");
-    getGistList();
+    if (isFirstLogin) {
+      isFirstLogin = false;
+      tokenPara = getCookie("gitee_Token");
+      getGistList();
+    } else {
+      window.frames[0].postMessage({
+        message: "refreshGistList",
+        files: user_files,
+      }, '*')
+    }
     return true;
   } else {
     return false;
@@ -63,10 +94,11 @@ function getToken() {
  */
 function Login() {
   confirmSync = true;
+  isFirstLogin = true;
   if (window.location.search !== undefined && window.location.search !== "") {
     let tempTokenPara = GetQueryString("access_token");
     setCookie("gitee_Token", tempTokenPara, 1);
-    return window.location.href = "https://yuanshen.site/Beta/index.html";
+    //return window.location.href = "https://yuanshen.site/Beta/index.html";
   }
 }
 /**
@@ -230,7 +262,25 @@ function getGistList() {
       tokenPara = null; //清空登录缓存
       canOpenSave = false; //不可打开存档框
       $(".savePop").hide(); //关闭存档框
-      if (res.status == 401) {
+      //console.log(res);
+      if (res.status == 401 && res.responseJSON.message == "401 Unauthorized: Application has exceeded the rate limit") {
+        var msg = "当前客户端连接已超额，请点击确定自动分配其他客户端重新登录";
+        if (confirm(msg) == true) {
+          let currentClient = getCookie("currentClient").split(",");
+          let currentClients = getCookie("arrayClient").split(",");
+          if (currentClients.length > 1) {
+            let index = currentClients.indexOf(currentClient[0]);
+            currentClients.splice(index, 1);
+            let index2 = currentClients.indexOf(currentClient[1]);
+            currentClients.splice(index2, 1);
+            var x = new Date(new Date(new Date().toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1);
+            document.cookie = "arrayClient=" + currentClients + "; path=/; expires=" + x; //设置cookie
+            jumpLogin();
+          } else {
+            alert("当前所有客户端连接数均已超额，请联系管理员添加客户端QQ790489566");
+          }
+        }
+      } else if (res.status == 401) {
         var msg = "登录失效，请点击确定重新登录";
         if (confirm(msg) == true) {
           jumpLogin();
@@ -325,7 +375,7 @@ function getGistList() {
  *
  * tips: 上传完成会调用 getGistList() 同步数据
  */
-function updateLocalData(fileID) {
+function updateLocalData(fileID,cb) {
   var url = "/giteegist/" + fileID + "?access_token=" + tokenPara;
   var success = function (res) {
     //console.log(res);
@@ -333,6 +383,9 @@ function updateLocalData(fileID) {
     localStorage.setItem("lastUpdateTime", lastUpdateTime);
     localStorage.setItem("lastUpdateID", fileID);
     localStorage.setItem("NetSync", "true");
+    if(cb){
+      alert("保存成功！")
+    }
     getGistList();
   };
   $.ajax({
@@ -353,82 +406,6 @@ function updateLocalData(fileID) {
  */
 function updateGistFile(fileID) {
   $(".loading").show();
-  var markersData = [];
-  for (var i = 0; i < localStorage.length; i++) {
-    var key = localStorage.key(i); //获取本地存储的Key
-    // @ts-ignore
-    if (localStorage.getItem(key) == 1) markersData.push(key); //所有value
-  }
-  var success = function (msg, code, head) {
-    //console.log(msg);
-    //console.log(code);
-    //console.log(head);
-    updateLocalData(fileID);
-    alert("保存成功！");
-  };
-  let err = function (msg, code, head) {
-    //console.log(msg);
-    //console.log(code);
-    //console.log(head);
-  };
-  var markersJsonData = {
-    content: JSON.stringify(markersData)
-  };
-  //console.log(JSON.stringify(markersJsonData));
-  var url = "/giteegist/" + fileID;
-  var fileName = "Data_KYJG";
-  var data = '{"access_token": "' + tokenPara + '","files": {"' + fileName + '": ' + JSON.stringify(markersJsonData) + '}}';
-  $.ajax({
-    async: false,
-    type: "PATCH",
-    url: url,
-    data: JSON.stringify(JSON.parse(data)),
-    contentType: "application/json",
-    success: success,
-    error: err,
-  });
-}
-
-/**
- *自动上传存档 by giteeGist
- *
- *
- * tips: 上传完成会调用 getGistList() 同步数据
- */
-function autoUpdateGistFile() {
-  var fileID = localStorage.getItem("lastUpdateID")
-  var markersData = [];
-  for (var i = 0; i < localStorage.length; i++) {
-    var key = localStorage.key(i); //获取本地存储的Key
-    // @ts-ignore
-    if (localStorage.getItem(key) == 1) markersData.push(key); //所有value
-  }
-  var success = function (res) {
-    updateLocalData(fileID);
-  };
-  let err = function (msg) {
-    //console.log(msg);
-  };
-  var markersJsonData = {
-    content: JSON.stringify(markersData)
-  };
-  //console.log(JSON.stringify(markersJsonData));
-  var url = "/giteegist/" + fileID;
-  var fileName = "Data_KYJG";
-  var data = '{"access_token": "' + tokenPara + '","files": {"' + fileName + '": ' + JSON.stringify(markersJsonData) + '}}';
-  $.ajax({
-    async: false,
-    type: "PATCH",
-    url: url,
-    data: JSON.stringify(JSON.parse(data)),
-    contentType: "application/json",
-    success: success,
-    error: err,
-  });
-}
-
-function checkAutoUpdate() {
-  $(".loading").show();
   var access_token = "";
   if (tokenPara != null) {
     access_token = tokenPara;
@@ -438,7 +415,24 @@ function checkAutoUpdate() {
       tokenPara = null; //清空登录缓存
       canOpenSave = false; //不可打开存档框
       $(".savePop").hide(); //关闭存档框
-      if (res.status == 401) {
+      if (res.status == 401 && res.responseJSON.message == "401 Unauthorized: Application has exceeded the rate limit") {
+        var msg = "当前客户端连接已超额，请点击确定自动分配其他客户端重新登录";
+        if (confirm(msg) == true) {
+          let currentClient = getCookie("currentClient").split(",");
+          let currentClients = getCookie("arrayClient").split(",");
+          if (currentClients.length > 1) {
+            let index = currentClients.indexOf(currentClient[0]);
+            currentClients.splice(index, 1);
+            let index2 = currentClients.indexOf(currentClient[1]);
+            currentClients.splice(index2, 1);
+            var x = new Date(new Date(new Date().toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1);
+            document.cookie = "arrayClient=" + currentClients + "; path=/; expires=" + x; //设置cookie
+            jumpLogin();
+          } else {
+            alert("当前所有客户端连接数均已超额，请联系管理员添加客户端QQ790489566");
+          }
+        }
+      } else if (res.status == 401) {
         var msg = "登录失效，请点击确定重新登录";
         if (confirm(msg) == true) {
           jumpLogin();
@@ -511,16 +505,18 @@ function checkAutoUpdate() {
       } else {
         isSync = false;
       }
-      freshMarkerLayer();
-      if (isSync) {
-        autoUpdateGistFile();
+      if (isSync && (localStorage.getItem("NetSync") == "false")) {
+        autoUpdateGistFile(true);
+      } else if (isSync) {
+        $(".loading").hide();
+        alert("当前存档已是最新");
       } else {
         $(".loading").hide();
         console.log("未选择同步存档，未能自动同步");
       }
     };
     $.ajax({
-      async: true,
+      async: false,
       type: "GET",
       url: url,
       contentType: "application/json",
@@ -528,8 +524,211 @@ function checkAutoUpdate() {
       error: err,
     });
   }
+
+
+  /*$(".loading").show();
+  var markersData = [];
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i); //获取本地存储的Key
+    // @ts-ignore
+    if (localStorage.getItem(key) == 1) markersData.push(key); //所有value
+  }
+  var success = function (msg, code, head) {
+    //console.log(msg);
+    //console.log(code);
+    //console.log(head);
+    updateLocalData(fileID);
+    alert("保存成功！");
+  };
+  let err = function (msg, code, head) {
+    //console.log(msg);
+    //console.log(code);
+    //console.log(head);
+  };
+  var markersJsonData = {
+    content: JSON.stringify(markersData)
+  };
+  //console.log(JSON.stringify(markersJsonData));
+  var url = "/giteegist/" + fileID;
+  var fileName = "Data_KYJG";
+  var data = '{"access_token": "' + tokenPara + '","files": {"' + fileName + '": ' + JSON.stringify(markersJsonData) + '}}';
+  $.ajax({
+    async: false,
+    type: "PATCH",
+    url: url,
+    data: JSON.stringify(JSON.parse(data)),
+    contentType: "application/json",
+    success: success,
+    error: err,
+  });*/
 }
-setInterval("checkAutoUpdate()", 60000);
+
+/**
+ *自动上传存档 by giteeGist
+ *
+ *
+ * tips: 上传完成会调用 getGistList() 同步数据
+ */
+function autoUpdateGistFile(cb=false) {
+  var fileID = localStorage.getItem("lastUpdateID")
+  var markersData = [];
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i); //获取本地存储的Key
+    // @ts-ignore
+    if (localStorage.getItem(key) == 1) markersData.push(key); //所有value
+  }
+  var success = function (res) {
+    updateLocalData(fileID,cb);
+  };
+  let err = function (msg) {
+    //console.log(msg);
+  };
+  var markersJsonData = {
+    content: JSON.stringify(markersData)
+  };
+  //console.log(JSON.stringify(markersJsonData));
+  var url = "/giteegist/" + fileID;
+  var fileName = "Data_KYJG";
+  var data = '{"access_token": "' + tokenPara + '","files": {"' + fileName + '": ' + JSON.stringify(markersJsonData) + '}}';
+  $.ajax({
+    async: false,
+    type: "PATCH",
+    url: url,
+    data: JSON.stringify(JSON.parse(data)),
+    contentType: "application/json",
+    success: success,
+    error: err,
+  });
+}
+
+function checkAutoUpdate() {
+  if (localStorage.getItem("NetSync") == "false") {
+    $(".loading").show();
+    var access_token = "";
+    if (tokenPara != null) {
+      access_token = tokenPara;
+      var url = "/giteegist/?access_token=" + access_token;
+      var err = function (res) {
+        removeCookie("gitee_Token"); //清空登录缓存
+        tokenPara = null; //清空登录缓存
+        canOpenSave = false; //不可打开存档框
+        $(".savePop").hide(); //关闭存档框
+        if (res.status == 401 && res.responseJSON.message == "401 Unauthorized: Application has exceeded the rate limit") {
+          var msg = "当前客户端连接已超额，请点击确定自动分配其他客户端重新登录";
+          if (confirm(msg) == true) {
+            let currentClient = getCookie("currentClient").split(",");
+            let currentClients = getCookie("arrayClient").split(",");
+            if (currentClients.length > 1) {
+              let index = currentClients.indexOf(currentClient[0]);
+              currentClients.splice(index, 1);
+              let index2 = currentClients.indexOf(currentClient[1]);
+              currentClients.splice(index2, 1);
+              var x = new Date(new Date(new Date().toLocaleDateString()).getTime() + 24 * 60 * 60 * 1000 - 1);
+              document.cookie = "arrayClient=" + currentClients + "; path=/; expires=" + x; //设置cookie
+              jumpLogin();
+            } else {
+              alert("当前所有客户端连接数均已超额，请联系管理员添加客户端QQ790489566");
+            }
+          }
+        } else if (res.status == 401) {
+          var msg = "登录失效，请点击确定重新登录";
+          if (confirm(msg) == true) {
+            jumpLogin();
+          }
+        }
+      }
+      var success = function (res) {
+        canOpenSave = true;
+        var currentID = localStorage.getItem("lastUpdateID");
+        var currentTime = localStorage.getItem("lastUpdateTime");
+        var IDSync = false;
+        var TimeSync = false;
+        user_files = [];
+        //console.log(res);
+        for (let obj of res) {
+          let currentKey = Object.keys(obj.files)[0];
+          if (currentKey == "Data_KYJG") {
+            var currentData = obj.files[Object.keys(obj.files)[0]].content;
+            //console.log(currentData);
+            var lastUpdateTime = formatDate(new Date(obj.updated_at));
+            //console.log(formatDate(lastUpdateTime));
+            var description = obj.description;
+            //console.log(description);
+            var id = obj.id;
+            //console.log(id);
+            var tempFile = {
+              id: id,
+              description: description,
+              lastUpdateTime: lastUpdateTime,
+              data: currentData
+            }
+            user_files.push(tempFile);
+            if (currentID == id) {
+              IDSync = true;
+              var tempLastUpdateTime = lastUpdateTime;
+              if (currentTime == lastUpdateTime) {
+                TimeSync = true;
+              }
+            }
+          }
+        }
+        if (IDSync && !TimeSync && confirmSync) {
+          confirmSync = false;
+          var msg = "检测到您的存档与云端存储时间不一致，要同步云端存档吗（点击确定同步云端存档）";
+          if (confirm(msg) == true) {
+            loadGistFile(currentID, tempLastUpdateTime);
+            confirmSync = true;
+          } else {
+            var msg = "要上传当前存档到云端吗（点击确定上传存档到云端并同步）";
+            if (confirm(msg) == true) {
+              confirmSync = true;
+              updateGistFile(currentID);
+            } else {
+              //console.log(user_files);
+              window.frames[0].postMessage({
+                message: "refreshGistList",
+                files: user_files,
+              }, '*')
+            }
+          }
+        } else {
+          //console.log(user_files);
+          window.frames[0].postMessage({
+            message: "refreshGistList",
+            files: user_files,
+          }, '*')
+        }
+        if (IDSync && TimeSync) {
+          isSync = true;
+        } else {
+          isSync = false;
+        }
+        freshMarkerLayer();
+        if (isSync) {
+          autoUpdateGistFile();
+        } else {
+          $(".loading").hide();
+          console.log("未选择同步存档，未能自动同步");
+        }
+      };
+      $.ajax({
+        async: true,
+        type: "GET",
+        url: url,
+        contentType: "application/json",
+        success: success,
+        error: err,
+      });
+    }
+    else{
+      $(".loading").hide();
+    }
+  }
+  else{
+    console.log("地图数据无变化，没有进行自动同步");
+  }
+}
+setInterval("checkAutoUpdate()", 300000);
 /**
  *新建存档 by giteeGist
  * 

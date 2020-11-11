@@ -466,7 +466,11 @@ const MonosTime = {
 	JYJJ: 48,
 	YPS: 48,
 	LP: 48,
-	DDL: 48
+	DDL: 48,
+	SJK_LY: 72,
+	SJK_MD: 72,
+	BTK_MD: 48,
+	BTK_LY: 48
 }
 //标记方法
 var markers = {};
@@ -766,8 +770,9 @@ function updatePointTime() {
 						shadowUrl: doneShadowUrl,
 					});
 
-					markers[baseKey].setIcon(newIcon)
-					markers[baseKey].closePopup()
+					markers[baseKey].setIcon(newIcon);
+					markers[baseKey].closePopup();
+					localStorage.setItem("NetSync", "false");
 				}
 				acc.push(isAfterEndTime)
 			}
