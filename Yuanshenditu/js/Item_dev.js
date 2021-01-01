@@ -580,6 +580,8 @@ map.on('popupopen', function (e) {
 	var markedFlag = localStorage.getItem(key);
 	var switchClass = (!markedFlag) ? "myPopSwitchTodo" : "myPopSwitchDone";
 	var switchText = (!markedFlag) ? "未完成" : "已完成";
+	var imgSrc = marker.feature.properties.popImage;
+	imgSrc = (imgSrc && imgSrc != -1) ? imgSrc : `comment_png/${key}.jpg`;
 	popupHtml = `
 			<div class="myPopContainer">
 				<div class="myPopTitle">
@@ -591,7 +593,7 @@ map.on('popupopen', function (e) {
 					<img class="Select" src=imgs/con_img/Select.png>
 				</div>
 				<div class="myPopPicture">
-					<img src=comment_png/${key}.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">
+					<img src=${imgSrc} onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">
 				</div>
 				<a href="javascript:;" class="marker-correct-btn" onclick="TGDialogS('modify_window'),show_modify_marker(${marker.feature.id})" lid="${marker.feature.id}">修改</a>
 				<a href="javascript:;" class="marker-del-btn" onclick="delmarker_old(${marker.feature.id})">删除</a>
