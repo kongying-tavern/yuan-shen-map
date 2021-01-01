@@ -4,6 +4,7 @@
 <head>
 	<meta name="keywords" content="原神, 原神地图, 原神攻略, 原神宝箱位置" />
 	<meta name="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
+	<meta name="baidu_union_verify" content="50113a1916bc6375d27b9699c721c4da">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
 	<title>原神地图</title>
 	<meta charset="utf-8">
@@ -12,7 +13,10 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" href="dist/MarkerCluster.css" />
 	<link rel="stylesheet" href="dist/MarkerCluster.Default.css" />
+	<script src="js/Cookie.js"></script>
+	<script src="js/gitFunctions.js"></script>
 	<script>
+		Login();
 		var _hmt = _hmt || [];
 		(function () {
 			var hm = document.createElement("script");
@@ -24,6 +28,8 @@
 </head>
 
 <body>
+	<iframe src="/Save/pop.html" class="savePop" style="display: none;"></iframe>
+	<div class="loading" style="display: none;"></div>
 	<div id='map'></div>
 	<div class="danjixiazai"></div>
 	<!-- 筛选器 -->
@@ -31,8 +37,8 @@
 		<img class="Background" src="imgs/con_img/Content.png">
 		<a href="javascript:;" class="fold-btn hd">fold</a>
 		<div class="person-div">
-			<a href="javascript:;" class="reg_log_link hd">登录/注册</a>
-			<a href="https://azz.net/YuanShenDiTu" target="_bal" class="zanzhu">捐助我们</a>
+			<div href="javascript:;" class="reg_log_link login-info"></div>
+			<a href="https://afdian.net/@yuanshenditu" target="_bal" class="zanzhu">捐助我们</a>
 			<a href="javascript:;" class="save-btn disable hd">存档</a>
 		</div>
 		<div class="topLine"></div>
@@ -156,8 +162,14 @@
 				<span class="Layer_SYFS_LY map-opts" area="LY" itemtype="GW">
 					<div class="img-border"><img src="imgs/icon_24.png" class="map-opts-icon" alt="icon"></div>深渊法师-璃月
 				</span>
+				<span class="Layer_LYSS_MD map-opts" area="MD" itemtype="GW">
+					<div class="img-border"><img src="imgs/icon_22.png" class="map-opts-icon" alt="icon"></div>雷莹术士-蒙德
+				</span>
 				<span class="Layer_LYSS_LY map-opts" area="LY" itemtype="GW">
 					<div class="img-border"><img src="imgs/icon_22.png" class="map-opts-icon" alt="icon"></div>雷莹术士-璃月
+				</span>
+				<span class="Layer_ZWCLR_MD map-opts" area="MD" itemtype="GW">
+					<div class="img-border"><img src="imgs/icon_23.png" class="map-opts-icon" alt="icon"></div>债务处理人-蒙德
 				</span>
 				<span class="Layer_ZWCLR_LY map-opts" area="LY" itemtype="GW">
 					<div class="img-border"><img src="imgs/icon_23.png" class="map-opts-icon" alt="icon"></div>债务处理人-璃月
@@ -198,16 +210,19 @@
 				<span class="Layer_DXQQR_MD map-opts" area="MD" itemtype="GW">
 					<div class="img-border"><img src="imgs/icon_30.png" class="map-opts-icon" alt="icon"></div>大型丘丘人-蒙德
 				</span>
+				<span class="Layer_SLM_MD map-opts" area="MD" itemtype="GW">
+					<div class="img-border"><img src="imgs/icon_40.png" class="map-opts-icon" alt="icon"></div>史莱姆-蒙德
+				</span>
 				<span class="Layer_SLM_LY map-opts" area="LY" itemtype="GW">
 					<div class="img-border"><img src="imgs/icon_41.png" class="map-opts-icon" alt="icon"></div>史莱姆-璃月
 				</span>
 				<span class="Layer_QX map-opts" area="LY" itemtype="TC">
 					<div class="img-border"><img src="imgs/icon_44.png" class="map-opts-icon" alt="icon"></div>清心
 				</span>
-				<span class="Layer_MW map-opts" area="LY" itemtype="TC">
+				<span class="Layer_MW map-opts" area="LY" itemtype="LJ">
 					<div class="img-border"><img src="imgs/icon_45.png" class="map-opts-icon" alt="icon"></div>马尾
 				</span>
-				<span class="Layer_LP map-opts" area="LY" itemtype="TC">
+				<span class="Layer_LP map-opts" area="LY" itemtype="SC">
 					<div class="img-border"><img src="imgs/icon_46.png" class="map-opts-icon" alt="icon"></div>莲蓬
 				</span>
 				<span class="Layer_XL map-opts" area="LY" itemtype="TC">
@@ -237,27 +252,27 @@
 				<!-- <span class="Layer_SBLM_MD map-opts" area="MD" itemtype="TX">
 					<div class="img-border"><img src="imgs/icon_55.png" class="map-opts-icon" alt="icon"></div>撒币卢咪-蒙德
 				</span> -->
-				<!-- <span class="Layer_SBLM_LY map-opts" area="LY" itemtype="TX">
+				<span class="Layer_SBLM_LY map-opts" area="LY" itemtype="LJ">
 					<div class="img-border"><img src="imgs/icon_56.png" class="map-opts-icon" alt="icon"></div>撒币卢咪-璃月
-				</span> -->
+				</span>
 				<!-- <span class="Layer_FGS_MD map-opts" area="MD" itemtype="TX">
 					<div class="img-border"><img src="imgs/icon_57.png" class="map-opts-icon" alt="icon"></div>发光髓-蒙德
 				</span> -->
 				<!-- <span class="Layer_FGS_LY map-opts" area="LY" itemtype="TX">
 					<div class="img-border"><img src="imgs/icon_58.png" class="map-opts-icon" alt="icon"></div>发光髓-璃月
 				</span> -->
-				<!-- <span class="Layer_JH_MD map-opts" area="MD" itemtype="TX">
+				<span class="Layer_JH_MD map-opts" area="MD" itemtype="LJ">
 					<div class="img-border"><img src="imgs/icon_59.png" class="map-opts-icon" alt="icon"></div>晶核-蒙德
-				</span> -->
-				<!-- <span class="Layer_JH_LY map-opts" area="LY" itemtype="TX">
+				</span>
+				<span class="Layer_JH_LY map-opts" area="LY" itemtype="LJ">
 					<div class="img-border"><img src="imgs/icon_60.png" class="map-opts-icon" alt="icon"></div>晶核-璃月
-				</span> -->
-				<!-- <span class="Layer_JYC_MD map-opts" area="MD" itemtype="TX">
+				</span>
+				<span class="Layer_JYC_MD map-opts" area="MD" itemtype="SC">
 					<div class="img-border"><img src="imgs/icon_61.png" class="map-opts-icon" alt="icon"></div>金鱼草-蒙德
-				</span> -->
-				<!-- <span class="Layer_JYC_LY map-opts" area="LY" itemtype="TX">
+				</span>
+				<span class="Layer_JYC_LY map-opts" area="LY" itemtype="SC">
 					<div class="img-border"><img src="imgs/icon_62.png" class="map-opts-icon" alt="icon"></div>金鱼草-璃月
-				</span> -->
+				</span>
 				<!-- <span class="Layer_HDCB_MD map-opts" area="MD" itemtype="TX">
 					<div class="img-border"><img src="imgs/icon_63.png" class="map-opts-icon" alt="icon"></div>蝴蝶翅膀-蒙德
 				</span> -->
@@ -312,16 +327,16 @@
 				<span class="Layer_YR_LY map-opts" area="LY" itemtype="SC">
 					<div class="img-border"><img src="imgs/icon_80.png" class="map-opts-icon" alt="icon"></div>鱼肉-璃月
 				</span>
-				<!-- <span class="Layer_BLB_MD map-opts" area="MD" itemtype="TX">
+				<span class="Layer_BLB_MD map-opts" area="MD" itemtype="SC">
 					<div class="img-border"><img src="imgs/icon_81.png" class="map-opts-icon" alt="icon"></div>白萝卜-蒙德
-				</span> -->
-				<!-- <span class="Layer_BLB_LY map-opts" area="LY" itemtype="TX">
+				</span>
+				<!-- <span class="Layer_BLB_LY map-opts" area="LY" itemtype="SC">
 					<div class="img-border"><img src="imgs/icon_82.png" class="map-opts-icon" alt="icon"></div>白萝卜-璃月
 				</span> -->
-				<!-- <span class="Layer_HLB_MD map-opts" area="MD" itemtype="TX">
+				<span class="Layer_HLB_MD map-opts" area="MD" itemtype="SC">
 					<div class="img-border"><img src="imgs/icon_83.png" class="map-opts-icon" alt="icon"></div>胡萝卜-蒙德
-				</span> -->
-				<!-- <span class="Layer_HLB_LY map-opts" area="LY" itemtype="TX">
+				</span>
+				<!-- <span class="Layer_HLB_LY map-opts" area="LY" itemtype="SC">
 					<div class="img-border"><img src="imgs/icon_84.png" class="map-opts-icon" alt="icon"></div>胡萝卜-璃月
 				</span> -->
 				<!-- <span class="Layer_MG_MD map-opts" area="MD" itemtype="TX">
@@ -354,11 +369,119 @@
 				<!-- <span class="Layer_QQR_LY map-opts" area="LY" itemtype="GW">
 					<div class="img-border"><img src="imgs/icon_94.png" class="map-opts-icon" alt="icon"></div>丘丘人-璃月
 				</span> -->
-				<!-- <span class="Layer_QQSM_MD map-opts" area="MD" itemtype="GW">
+				<span class="Layer_QQSM_MD map-opts" area="MD" itemtype="GW">
 					<div class="img-border"><img src="imgs/icon_95.png" class="map-opts-icon" alt="icon"></div>丘丘萨满-蒙德
-				</span> -->
-				<!-- <span class="Layer_QQSM_LY map-opts" area="LY" itemtype="GW">
+				</span>
+				<span class="Layer_QQSM_LY map-opts" area="LY" itemtype="GW">
 					<div class="img-border"><img src="imgs/icon_96.png" class="map-opts-icon" alt="icon"></div>丘丘萨满-璃月
+				</span>
+				<span class="Layer_DWQ_MD map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_97.png" class="map-opts-icon" alt="icon"></div>大伟丘-蒙德
+				</span>
+				<span class="Layer_DWQ_LY map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_98.png" class="map-opts-icon" alt="icon"></div>大伟丘-璃月
+				</span>
+				<span class="Layer_JG_LY map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_99.png" class="map-opts-icon" alt="icon"></div>景观-蒙德
+				</span>
+				<span class="Layer_JG_MD map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_100.png" class="map-opts-icon" alt="icon"></div>景观-璃月
+				</span>
+				<!-- <span class="Layer_MJK_MD map-opts" area="MD" itemtype="KW">
+					<div class="img-border"><img src="imgs/icon_101.png" class="map-opts-icon" alt="icon"></div>魔晶矿-蒙德
+				</span> -->
+				<!-- <span class="Layer_MJK_LY map-opts" area="LY" itemtype="KW">
+					<div class="img-border"><img src="imgs/icon_102.png" class="map-opts-icon" alt="icon"></div>魔晶矿-璃月
+				</span> -->
+				<span class="Layer_S_LY map-opts" area="LY" itemtype="SC">
+					<div class="img-border"><img src="imgs/icon_103.png" class="map-opts-icon" alt="icon"></div>笋
+				</span>
+				<span class="Layer_NQ_LY map-opts" area="LY" itemtype="LJ">
+					<div class="img-border"><img src="imgs/icon_104.png" class="map-opts-icon" alt="icon"></div>鳅鳅宝玉
+				</span>
+				<!-- <span class="Layer_YSSP_LY map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_105.png" class="map-opts-icon" alt="icon"></div>陨星碎片-蒙德
+				</span> -->
+				<!-- <span class="Layer_YSSP_MD map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_106.png" class="map-opts-icon" alt="icon"></div>陨星碎片-璃月
+				</span> -->
+				<!-- <span class="Layer_RLG_LY map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_107.png" class="map-opts-icon" alt="icon"></div>日落果-蒙德
+				</span> -->
+				<!-- <span class="Layer_RLG_MD map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_108.png" class="map-opts-icon" alt="icon"></div>日落果-璃月
+				</span> -->
+				<!-- <span class="Layer_PG_MD map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_109.png" class="map-opts-icon" alt="icon"></div>苹果-蒙德
+				</span> -->
+				<!-- <span class="Layer_PG_LY map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_110.png" class="map-opts-icon" alt="icon"></div>苹果-璃月
+				</span> -->
+				<span class="Layer_FHYS map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_111.png" class="map-opts-icon" alt="icon"></div>绯红玉髓
+				</span>
+				<span class="Layer_LXR_MD map-opts" area="MD" itemtype="SC">
+					<div class="img-border"><img src="imgs/icon_112.png" class="map-opts-icon" alt="icon"></div>冷鲜肉
+				</span>
+				<!-- <span class="Layer_SJ_MD map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_113.png" class="map-opts-icon" alt="icon"></div>书籍-蒙德
+				</span> -->
+				<!-- <span class="Layer_SJ_LY map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_114.png" class="map-opts-icon" alt="icon"></div>书籍-璃月
+				</span> -->
+				<!-- <span class="Layer_SJRW_MD map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_115.png" class="map-opts-icon" alt="icon"></div>世界任务-蒙德
+				</span> -->
+				<!-- <span class="Layer_SJRW_LY map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_116.png" class="map-opts-icon" alt="icon"></div>世界任务-璃月
+				</span> -->
+				<!-- <span class="Layer_SYWD_MD map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_117.png" class="map-opts-icon" alt="icon"></div>圣遗物点-蒙德
+				</span> -->
+				<span class="Layer_SYWD_LY map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_118.png" class="map-opts-icon" alt="icon"></div>圣遗物点-璃月
+				</span>
+				<!-- <span class="Layer_KDCD_MD map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_119.png" class="map-opts-icon" alt="icon"></div>矿调查点-蒙德
+				</span> -->
+				<!-- <span class="Layer_KDCD_LY map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_120.png" class="map-opts-icon" alt="icon"></div>矿调查点-璃月
+				</span> -->
+				<!-- <span class="Layer_QD_MD map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_121.png" class="map-opts-icon" alt="icon"></div>禽蛋-蒙德
+				</span> -->
+				<!-- <span class="Layer_QD_LY map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_122.png" class="map-opts-icon" alt="icon"></div>禽蛋-璃月
+				</span> -->
+				<!-- <span class="Layer_YZY map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_123.png" class="map-opts-icon" alt="icon"></div>岩之印
+				</span> -->
+				<span class="Layer_XYKS map-opts" area="MD" itemtype="KW">
+					<div class="img-border"><img src="imgs/icon_124.png" class="map-opts-icon" alt="icon"></div>星银矿石
+				</span>
+				<!-- <span class="Layer_SX_MD map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_125.png" class="map-opts-icon" alt="icon"></div>七天神像-蒙德
+				</span> -->
+				<!-- <span class="Layer_SX_LY map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_126.png" class="map-opts-icon" alt="icon"></div>七天神像-璃月
+				</span> -->
+				<!-- <span class="Layer_CSD_MD map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_127.png" class="map-opts-icon" alt="icon"></div>传送锚点-蒙德
+				</span> -->
+				<!-- <span class="Layer_CSD_LY map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_128.png" class="map-opts-icon" alt="icon"></div>传送锚点-璃月
+				</span> -->
+				<!-- <span class="Layer_MJ_MD map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_129.png" class="map-opts-icon" alt="icon"></div>秘境-蒙德
+				</span> -->
+				<!-- <span class="Layer_MJ_LY map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_130.png" class="map-opts-icon" alt="icon"></div>秘境-璃月
+				</span> -->
+				<!-- <span class="Layer_FB_MD map-opts" area="MD" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_131.png" class="map-opts-icon" alt="icon"></div>副本-蒙德
+				</span> -->
+				<!-- <span class="Layer_FB_LY map-opts" area="LY" itemtype="TX">
+					<div class="img-border"><img src="imgs/icon_132.png" class="map-opts-icon" alt="icon"></div>副本-璃月
 				</span> -->
 			</div>
 		</div>
@@ -370,10 +493,13 @@
 		<a href="http://beian.miit.gov.cn" target="_bal" class="beian">蜀ICP备2020028219号</a>
 	</div>
 	<script src="js/jquery-3.5.1.min.js"></script>
+
 	<script src="leaflet/leaflet.js"></script>
 	<script src="dist/leaflet.markercluster-src_old.js"></script>
 	<script src="js/Item_Json.js"></script>
+
 	<script src="js/index.js"></script>
+
 	<script>
 		$(".area-list-li-containor").hide();
 		$(".area-list-containor").show();
@@ -474,11 +600,30 @@
 		});
 		//初始化筛选器功能
 		$(document).ready(function () {
+			if (getToken()) {
+				console.log("在线模式 token: " + tokenPara)
+			} else {
+				console.log("离线模式")
+			}
 			$(".con-type-label:first").trigger("click");
 			$(".reg_log_link").click(function () {
-				alert("即将开放,敬请期待！");
+				if (getToken()) {
+					if (window.confirm("确定要注销账户吗?")) {
+						removeCookie("gitee_Token"); //清空登录缓存
+						tokenPara = null; //清空登录缓存
+						canOpenSave = false; //不可打开存档框
+						$(".savePop").hide(); //关闭存档框
+						alert("注销成功！");
+						location.reload()
+					}
+				} else {
+					jumpLogin();
+				}
 			})
-
+			// function createIssue(issueName, issueContent, issueLabels) {
+			// 	console.log("clicked openIssue" + issueLabels);
+			// 	createIssue(issueName, issueContent, null);
+			// }
 			// 复制的方法
 			function copyText(text, callback) { // text: 要复制的内容， callback: 回调
 				var tag = document.createElement('input');
@@ -494,11 +639,11 @@
 			}
 
 			//下载保存数据并复制到剪切板
-			$(".save-btn").click(function () {
+			function localSave() {
 				var markedLog = []
 				for (var i = 0; i < localStorage.length; i++) {
 					var key = localStorage.key(i); //获取本地存储的Key
-					if (localStorage.getItem(key)==1) markedLog.push(key); //所有value
+					if (localStorage.getItem(key) == 1) markedLog.push(key); //所有value
 				}
 				var eleLink = document.createElement('a');
 				eleLink.download = 'markers.json';
@@ -515,6 +660,29 @@
 					alert('复制成功 \n复制内容:' + texts + '\n如果您在当前地图上有标记数据但是这里显示"[]",请与管理员联系恢复您的数据QQ790489566')
 				})
 				console.log(toolresult);
+			}
+			//存储
+			$(".savePop").hide();
+			$(".save-btn").click(function () {
+				if (getToken() == false) {
+					if (window.confirm("使用云存档必须登录, 要立刻登录吗?")) {
+						jumpLogin();
+					}
+				} else if (canOpenSave) {
+
+					$(".savePop").show();
+				}
+				//upLoadSaveData(localSave);
+			})
+
+			window.addEventListener('message', function (e) {
+				var data = e.data;
+				console.log(data);
+				if (data == "saveClose") {
+					$(".savePop").hide();
+				} else if (data == "upLoad") {
+					upLoadSaveData(localSave);
+				}
 			})
 
 			//单机跳转
@@ -649,7 +817,32 @@
 			document.addEventListener('gesturestart', function (event) {
 				event.preventDefault();
 			});
+		
+				if (getCookie("gitee_Token") != "notfound") {
+					$(".login-info")
+				.removeClass('reg_log_link').text("加载中...")
+			  getGitUser(function(res) {
+				localStorage.setItem("user", JSON.stringify(res))
+				console.log('res', res)
+				$(".login-info")
+				.removeClass('reg_log_link')
+				.html(`
+				<div class="avatar-wrapper">
+					<img width="50" height="50" src="${res.avatar_url}" />
+					<div style="margin-left: 10px">${res.name}</div>
+				</div>`)
+			} )
 		}
+		}
+		$("body").click(function (){
+			$(".savePop").hide();
+		});
+		$(".save-btn").click(function (event){
+			event.stopPropagation();
+		});
+		$(".savePop").click(function (event){
+			event.stopPropagation();
+		});
 	</script>
 </body>
 

@@ -9,6 +9,10 @@ body,
     height: 100%;
 }
 
+#cropper_window{
+    
+}
+
 .leaflet-control-layers-expanded {
     padding: 0px;
     margin: 0px;
