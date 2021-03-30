@@ -17,7 +17,7 @@ body,
     z-index: 4000;
     display: block;
     position: absolute;
-    background-image: url("../imgs/con_img/switch_on.png");
+    background-image: url("../imgs/con_img/switch_on_en.png");
     background-size: contain;
     width: 170px;
     height: 30px;
@@ -119,7 +119,7 @@ body,
     position: absolute;
     top: 5px;
     left: 50px;
-    background: url(../imgs/con_img/danjixiazai.png) no-repeat center top;
+    background: url(../imgs/con_img/danjixiazai_en.png) no-repeat center top;
     background-size: contain;
     width: 170px;
     height: 64px;
@@ -151,15 +151,15 @@ body,
 }
 
 .reg_log_link {
-    width: 153px;
+    width: 168px;
     height: 50px;
-    background: url(../imgs/con_img/log_reg.png) no-repeat;
+    background: url(../imgs/con_img/log_reg_en.png) no-repeat;
 }
 
 .save-btn {
     width: 40px;
     height: 50px;
-    background: url(../imgs/con_img/save.png) no-repeat;
+    background: url(../imgs/con_img/save_en.png) no-repeat;
     z-index: 200;
 }
 
@@ -865,13 +865,52 @@ body,
 .avatar-wrapper img {
     border-radius: 50%;
 }
-.enindex-btn
+.Layer_MJK_LY,.Layer_MJK_MD,.Layer_SBLM_LY,.Layer_LYHHR_MD,.Layer_LYHHR_LY,.Layer_BWHHD_LY,.Layer_BWHHD_MD
 {
-    z-index: 9999;
+    font-size: 20px !important;
+    text-indent: 45px !important;
+}
+.cover
+{
+    width: 100%;
+    height: 1px;
+}
+.info_window
+{
+    position: relative;
+    width: 500px;
+    height: 300px;
+    background: #fff;
+}
+.info_title
+{
+    width: 100%;
+    margin: 10px auto 20px;
+    text-align: center;
+    font-size: 30px;
+}
+.info_window .close_btn
+{
     position: absolute;
+    bottom: 20px;
+    left: 200px;
     display: block;
-    left: 57px;
-    top: 65px;
-    color:#191970;
-    font-weight: bold;
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    background:#6495ED;
+}
+.info_window p
+{
+    width: 90%;
+    margin: 0 auto 5px;
+    text-indent: 16px;
+}
+.infodiv
+{
+    width: 100%;
+    height: 150px;
+    overflow:hidden scroll;
 }
