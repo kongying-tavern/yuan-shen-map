@@ -24,7 +24,7 @@ L.TileLayer.T = L.TileLayer.extend({
 	getTileUrl: function (coords) {
 		x = coords.x
 		y = coords.y
-		return 'tiles_test/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
+		return 'https://yuanshen.site/tiles_test/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
 	},
 	reuseTiles: true
 });
@@ -845,7 +845,7 @@ map.on('popupopen', function (e) {
 		</div>
 		<div class="time-wrapper"><span id="time"></span></div>
 		<div class="myPopPicture">
-			<img src=comment_png/${key}.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">
+			<img src=https://yuanshen.site/comment_png/${key}.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">
 		</div>
 		<div class="${switchClass}" onclick="MarkPoint(this)" data-key="${key}">
 			<p class="switchOff">未完成</p>
