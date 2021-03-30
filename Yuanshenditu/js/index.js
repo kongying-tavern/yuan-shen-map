@@ -53,8 +53,12 @@ map.addLayer(L.tileLayer.t());
 // map.addLayer(L.tileLayer.t1());
 //各个坐标的分类类别的初始化
 var LayerMap = {
-	Layer_FST: L.markerClusterGroup({maxClusterRadius:0}),
-	Layer_YST: L.markerClusterGroup({maxClusterRadius:0}),
+	Layer_FST: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_YST: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
 	Layer_DLK_MD: L.markerClusterGroup(),
 	Layer_DLK_LY: L.markerClusterGroup(),
 	Layer_JYJJ: L.markerClusterGroup(),
@@ -170,6 +174,72 @@ var LayerMap = {
 	Layer_QQR_LY: L.markerClusterGroup(),
 	Layer_QQSM_MD: L.markerClusterGroup(),
 	Layer_QQSM_LY: L.markerClusterGroup(),
+	Layer_DWQ_MD: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_DWQ_LY: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_JG_MD: L.markerClusterGroup(),
+	Layer_JG_LY: L.markerClusterGroup(),
+	Layer_MJK_MD: L.markerClusterGroup(),
+	Layer_MJK_LY: L.markerClusterGroup(),
+	Layer_S_LY: L.markerClusterGroup(),
+	Layer_NQ_LY: L.markerClusterGroup(),
+	Layer_YSSP_MD: L.markerClusterGroup(),
+	Layer_YSSP_LY: L.markerClusterGroup(),
+	Layer_RLG_MD: L.markerClusterGroup(),
+	Layer_RLG_LY: L.markerClusterGroup(),
+	Layer_PG_MD: L.markerClusterGroup(),
+	Layer_PG_LY: L.markerClusterGroup(),
+	Layer_FHYS: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_LXR_MD: L.markerClusterGroup(),
+	Layer_SJ_MD: L.markerClusterGroup(),
+	Layer_SJ_LY: L.markerClusterGroup(),
+	Layer_SJRW_MD: L.markerClusterGroup(),
+	Layer_SJRW_LY: L.markerClusterGroup(),
+	Layer_SYWD_MD: L.markerClusterGroup(),
+	Layer_SYWD_LY: L.markerClusterGroup(),
+	Layer_KDCD_MD: L.markerClusterGroup(),
+	Layer_KDCD_LY: L.markerClusterGroup(),
+	Layer_QD_MD: L.markerClusterGroup(),
+	Layer_QD_LY: L.markerClusterGroup(),
+	Layer_YZY: L.markerClusterGroup(),
+	Layer_XYKS: L.markerClusterGroup(),
+	Layer_SX_MD: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_SX_LY: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_CSD_MD: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_CSD_LY: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_MJ_MD: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_MJ_LY: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_FB_MD: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_FB_LY: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_ZWCLR_MD: L.markerClusterGroup(),
+	Layer_QQRSS_MD: L.markerClusterGroup(),
+	Layer_QQRSS_LY: L.markerClusterGroup(),
+	Layer_TFWT_MD: L.markerClusterGroup(),
+	Layer_TFWT_LY: L.markerClusterGroup(),
+	Layer_ShiP_MD: L.markerClusterGroup(),
+	Layer_ShiP_LY: L.markerClusterGroup(),
+	Layer_YLX_LY: L.markerClusterGroup(),
 }
 
 //定义各个坐标使用的图标
@@ -255,12 +325,48 @@ function getIconInfo(Name) {
 		case "BX": { // 宝箱
 			var icon_base = L.Icon.extend({
 				options: {
-					shadowUrl: "./imgs/loc_notfind.svg",
-					iconSize: [16.5, 17], // size of the icon
-					shadowSize: [28, 28], // size of the shadow
-					iconAnchor: [8.2, 24.3], // point of the icon which will correspond to marker's location
-					shadowAnchor: [14, 28], // the same for the shadow
-					popupAnchor: [0, -24.3] // point from which the popup should open relative to the iconAnchor
+					shadowUrl: "./imgs/loc_stonenot.svg",
+					iconSize: [22, 22], // size of the icon
+					shadowSize: [24, 24], // size of the shadow
+					iconAnchor: [11, 24], // point of the icon which will correspond to marker's location
+					shadowAnchor: [12, 24], // the same for the shadow    
+					popupAnchor: [0, -22] // point from which the popup should open relative to the iconAnchor
+				}
+			});
+			return icon_base;
+		}
+		case "CSD": { // 传送点
+			var icon_base = L.Icon.extend({
+				options: {
+					iconSize: [23, 33], // size of the icon
+					shadowSize: [24, 24], // size of the shadow
+					iconAnchor: [11.5, 16.5], // point of the icon which will correspond to marker's location
+					shadowAnchor: [12, 24], // the same for the shadow    
+					popupAnchor: [0, -16.5] // point from which the popup should open relative to the iconAnchor
+				}
+			});
+			return icon_base;
+		}
+		case "SX": { // 神像
+			var icon_base = L.Icon.extend({
+				options: {
+					iconSize: [30, 43], // size of the icon
+					shadowSize: [24, 24], // size of the shadow
+					iconAnchor: [15, 21.5], // point of the icon which will correspond to marker's location
+					shadowAnchor: [12, 24], // the same for the shadow    
+					popupAnchor: [0, -21.5] // point from which the popup should open relative to the iconAnchor
+				}
+			});
+			return icon_base;
+		}
+		case "FBMJ": { // 副本、秘境
+			var icon_base = L.Icon.extend({
+				options: {
+					iconSize: [33, 33], // size of the icon
+					shadowSize: [24, 24], // size of the shadow
+					iconAnchor: [16.5, 16.5], // point of the icon which will correspond to marker's location
+					shadowAnchor: [12, 24], // the same for the shadow    
+					popupAnchor: [0, -16.5] // point from which the popup should open relative to the iconAnchor
 				}
 			});
 			return icon_base;
@@ -436,10 +542,54 @@ var typearray = [
 	[LayerMap["Layer_SG_LY"], JS_SG_LY, "TC", 'SG_LY'],
 	[LayerMap["Layer_SM_MD"], JS_SM_MD, "TC", 'SM_MD'],
 	[LayerMap["Layer_SM_LY"], JS_SM_LY, "TC", 'SM_LY'],
-	[LayerMap["Layer_QQR_MD"], JS_QQR_MD, "GW", 'QQR_MD'],
-	[LayerMap["Layer_QQR_LY"], JS_QQR_LY, "GW", 'QQR_LY'],
-	[LayerMap["Layer_QQSM_MD"], JS_QQSM_MD, "GW", 'QQSM_MD'],
-	[LayerMap["Layer_QQSM_LY"], JS_QQSM_LY, "GW", 'QQSM_LY'],
+	[LayerMap["Layer_QQR_MD"], JS_QQR_MD, "PTG", 'QQR_MD'],
+	[LayerMap["Layer_QQR_LY"], JS_QQR_LY, "PTG", 'QQR_LY'],
+	[LayerMap["Layer_QQSM_MD"], JS_QQSM_MD, "PTG", 'QQSM_MD'],
+	[LayerMap["Layer_QQSM_LY"], JS_QQSM_LY, "PTG", 'QQSM_LY'],
+	[LayerMap["Layer_DWQ_MD"], JS_DWQ_MD, "JYG", 'DWQ_MD'],
+	[LayerMap["Layer_DWQ_LY"], JS_DWQ_LY, "JYG", 'DWQ_LY'],
+	[LayerMap["Layer_JG_MD"], JS_JG_MD, "TC", 'JG_MD'],
+	[LayerMap["Layer_JG_LY"], JS_JG_LY, "TC", 'JG_LY'],
+	[LayerMap["Layer_MJK_MD"], JS_MJK_MD, "KW", 'MJK_MD'],
+	[LayerMap["Layer_MJK_LY"], JS_MJK_LY, "KW", 'MJK_LY'],
+	[LayerMap["Layer_S_LY"], JS_S_LY, "TC", 'S_LY'],
+	[LayerMap["Layer_NQ_LY"], JS_NQ_LY, "TC", 'NQ_LY'],
+	[LayerMap["Layer_YSSP_MD"], JS_YSSP_MD, "TC", 'YSSP_MD'],
+	[LayerMap["Layer_YSSP_LY"], JS_YSSP_LY, "TC", 'YSSP_LY'],
+	[LayerMap["Layer_RLG_MD"], JS_RLG_MD, "TC", 'RLG_MD'],
+	[LayerMap["Layer_RLG_LY"], JS_RLG_LY, "TC", 'RLG_LY'],
+	[LayerMap["Layer_PG_MD"], JS_PG_MD, "TC", 'PG_MD'],
+	[LayerMap["Layer_PG_LY"], JS_PG_LY, "TC", 'PG_LY'],
+	[LayerMap["Layer_FHYS"], JS_FHYS, "ST", 'FHYS'],
+	[LayerMap["Layer_LXR_MD"], JS_LXR_MD, "TC", 'LXR_MD'],
+	[LayerMap["Layer_SJ_MD"], JS_SJ_MD, "TC", 'SJ_MD'],
+	[LayerMap["Layer_SJ_LY"], JS_SJ_LY, "TC", 'SJ_LY'],
+	[LayerMap["Layer_SJRW_MD"], JS_SJRW_MD, "TC", 'SJRW_MD'],
+	[LayerMap["Layer_SJRW_LY"], JS_SJRW_LY, "TC", 'SJRW_LY'],
+	[LayerMap["Layer_SYWD_MD"], JS_SYWD_MD, "TC", 'SYWD_MD'],
+	[LayerMap["Layer_SYWD_LY"], JS_SYWD_LY, "TC", 'SYWD_LY'],
+	[LayerMap["Layer_KDCD_MD"], JS_KDCD_MD, "TC", 'KDCD_MD'],
+	[LayerMap["Layer_KDCD_LY"], JS_KDCD_LY, "TC", 'KDCD_LY'],
+	[LayerMap["Layer_QD_MD"], JS_QD_MD, "TC", 'QD_MD'],
+	[LayerMap["Layer_QD_LY"], JS_QD_LY, "TC", 'QD_LY'],
+	[LayerMap["Layer_YZY"], JS_YZY, "TC", 'YZY'],
+	[LayerMap["Layer_XYKS"], JS_XYKS, "TC", 'XYKS'],
+	[LayerMap["Layer_SX_MD"], JS_SX_MD, "SX", 'SX_MD'],
+	[LayerMap["Layer_SX_LY"], JS_SX_LY, "SX", 'SX_LY'],
+	[LayerMap["Layer_CSD_MD"], JS_CSD_MD, "CSD", 'CSD_MD'],
+	[LayerMap["Layer_CSD_LY"], JS_CSD_LY, "CSD", 'CSD_LY'],
+	[LayerMap["Layer_MJ_MD"], JS_MJ_MD, "FBMJ", 'MJ_MD'],
+	[LayerMap["Layer_MJ_LY"], JS_MJ_LY, "FBMJ", 'MJ_LY'],
+	[LayerMap["Layer_FB_MD"], JS_FB_MD, "FBMJ", 'FB_MD'],
+	[LayerMap["Layer_FB_LY"], JS_FB_LY, "FBMJ", 'FB_LY'],
+	[LayerMap["Layer_ZWCLR_MD"], JS_ZWCLR_MD, "PTG", 'ZWCLR_MD'],
+	[LayerMap["Layer_QQRSS_MD"], JS_QQRSS_MD, "PTG", 'JS_QQRSS_MD'],
+	[LayerMap["Layer_QQRSS_LY"], JS_QQRSS_LY, "PTG", 'JS_QQRSS_LY'],
+	[LayerMap["Layer_TFWT_MD"], JS_TFWT_MD, "TC", 'JS_TFWT_MD'],
+	[LayerMap["Layer_TFWT_LY"], JS_TFWT_LY, "TC", 'JS_TFWT_LY'],
+	[LayerMap["Layer_ShiP_MD"], JS_ShiP_MD, "TC", 'JS_ShiP_MD'],
+	[LayerMap["Layer_ShiP_LY"], JS_ShiP_LY, "TC", 'JS_ShiP_LY'],
+	[LayerMap["Layer_YLX_LY"], JS_YLX_LY, "PTG", 'JS_YLX_LY'],
 ];
 const MonosTime = {
 	LLD: 48,
@@ -470,7 +620,9 @@ const MonosTime = {
 	SJK_LY: 72,
 	SJK_MD: 72,
 	BTK_MD: 48,
-	BTK_LY: 48
+	BTK_LY: 48,
+	DWQ_MD: 12,
+	DWQ_LY: 12
 }
 //标记方法
 var markers = {};
@@ -500,7 +652,7 @@ function MarkPoint(element) {
 
 
 	var doneUrl = newValue ? "_done" : ""
-	if (layerNumber == 0 || layerNumber == 1) {
+	if (layerNumber == 0 || layerNumber == 1 || layerNumber == 26 || layerNumber == 27 || layerNumber == 111) {
 		var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".svg";
 	} else {
 		var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".png";
@@ -553,7 +705,7 @@ function InitMarkerLayer() {
 					markedFlag = true;
 				}
 				var doneUrl = markedFlag ? "_done" : ""
-				if (i == 0 || i == 1) {
+				if (i == 0 || i == 1 || i == 26 || i == 27 || i == 111) {
 					var iconUrl = "./imgs/icon_" + i + doneUrl + ".svg";
 				} else {
 					var iconUrl = "./imgs/icon_" + i + doneUrl + ".png";
@@ -598,7 +750,7 @@ function freshMarkerLayer() {
 					markedFlag = true;
 				}
 				var doneUrl = markedFlag ? "_done" : ""
-				if (i == 0 || i == 1) {
+				if (i == 0 || i == 1 || i == 26 || i == 27 || i == 111) {
 					var iconUrl = "./imgs/icon_" + i + doneUrl + ".svg";
 				} else {
 					var iconUrl = "./imgs/icon_" + i + doneUrl + ".png";
@@ -619,12 +771,13 @@ function freshMarkerLayer() {
 					shadowUrl: doneShadowUrl,
 				});
 				markers[key].setIcon(newIcon);
-				markers[key].refreshIconOptions(newIcon,true);
+				markers[key].refreshIconOptions(newIcon, true);
 			},
 			onEachFeature: onEachFeature
 		})
 	};
 }
+
 
 function dealIcon(target, key) {
 
@@ -687,7 +840,7 @@ map.on('popupopen', function (e) {
 		<div class="myPopLine"></div>
 		<div class="myPopIssue" onclick="openIssue()">反馈<img class="myPopIssueIcon" src=imgs/con_img/popIssue.png></div>
 		<div class="myPopClose" onclick="closePop()"></div>
-		<div class="myPopComment">${marker.feature.properties.popupContent}
+		<div class="myPopComment" onclick="change()">${marker.feature.properties.popupContent}
 			<img class="Select" src=imgs/con_img/Select.png>
 		</div>
 		<div class="time-wrapper"><span id="time"></span></div>
@@ -714,7 +867,7 @@ map.on('popupopen', function (e) {
 		let endTime = new Date(end)
 		timer = setInterval(() => {
 			let mss = endTime.getTime() - new Date().getTime()
-			var day = parseInt(String((mss / (1000 * 60 * 60 * 24) )))
+			var day = parseInt(String((mss / (1000 * 60 * 60 * 24))))
 			var hours = parseInt(String((mss % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
 			var minutes = parseInt(String((mss % (1000 * 60 * 60)) / (1000 * 60)));
 			var seconds = parseInt(String((mss % (1000 * 60)) / 1000));
@@ -782,5 +935,8 @@ function updatePointTime() {
 	}, 500)
 }
 
+$(".myPopComment").click(function (event) {
+	change();
+})
 
 updatePointTime()

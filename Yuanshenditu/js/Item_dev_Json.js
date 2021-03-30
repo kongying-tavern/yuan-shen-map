@@ -100,7 +100,42 @@ var JS_QQR_MD = JSON.parse(JSON.stringify(JS_Item));
 var JS_QQR_LY = JSON.parse(JSON.stringify(JS_Item));
 var JS_QQSM_MD = JSON.parse(JSON.stringify(JS_Item));
 var JS_QQSM_LY = JSON.parse(JSON.stringify(JS_Item));
-
+var JS_DWQ_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_DWQ_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_JG_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_JG_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_MJK_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_MJK_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_S_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_NQ_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_YSSP_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_YSSP_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_RLG_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_RLG_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_PG_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_PG_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_FHYS = JSON.parse(JSON.stringify(JS_Item));
+var JS_LXR_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_SJ_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_SJ_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_SJRW_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_SJRW_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_SYWD_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_SYWD_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_KDCD_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_KDCD_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_QD_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_QD_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_YZY = JSON.parse(JSON.stringify(JS_Item));
+var JS_XYKS = JSON.parse(JSON.stringify(JS_Item));
+var JS_SX_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_SX_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_CSD_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_CSD_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_MJ_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_MJ_LY = JSON.parse(JSON.stringify(JS_Item));
+var JS_FB_MD = JSON.parse(JSON.stringify(JS_Item));
+var JS_FB_LY = JSON.parse(JSON.stringify(JS_Item));
 
 var JS_array = [
     JS_FST,
@@ -200,10 +235,47 @@ var JS_array = [
     JS_QQR_LY,
     JS_QQSM_MD,
     JS_QQSM_LY,
+    JS_DWQ_MD,
+    JS_DWQ_LY,
+    JS_JG_MD,
+    JS_JG_LY,
+    JS_MJK_MD,
+    JS_MJK_LY,
+    JS_S_LY,
+    JS_NQ_LY,
+    JS_YSSP_MD,
+    JS_YSSP_LY,
+    JS_RLG_MD,
+    JS_RLG_LY,
+    JS_PG_MD,
+    JS_PG_LY,
+    JS_FHYS,
+    JS_LXR_MD,
+    JS_SJ_MD,
+    JS_SJ_LY,
+    JS_SJRW_MD,
+    JS_SJRW_LY,
+    JS_SYWD_MD,
+    JS_SYWD_LY,
+    JS_KDCD_MD,
+    JS_KDCD_LY,
+    JS_QD_MD,
+    JS_QD_LY,
+    JS_YZY,
+    JS_XYKS,
+    JS_SX_MD,
+    JS_SX_LY,
+    JS_CSD_MD,
+    JS_CSD_LY,
+    JS_MJ_MD,
+    JS_MJ_LY,
+    JS_FB_MD,
+    JS_FB_LY,
 ];
 
-let url = 'http://ddns.minemc.top:8848/marker/queryAll'
+let url = 'http://minemc.top:8848/marker/queryAll'
 let success = function (res) {
+    console.log(res);
     for (var i = 0; i < res.data.list.length; i++) {
         var item = res.data.list[i];
         var markerX = item.xy.split(',')[0];

@@ -333,7 +333,7 @@ function getGistList() {
           var msg = "要上传当前存档到云端吗（点击确定上传存档到云端并同步）";
           if (confirm(msg) == true) {
             confirmSync = true;
-            updateGistFile(currentID);
+            autoUpdateGistFile();
           } else {
             //console.log(user_files);
             window.frames[0].postMessage({
@@ -484,7 +484,7 @@ function updateGistFile(fileID) {
           var msg = "要上传当前存档到云端吗（点击确定上传存档到云端并同步）";
           if (confirm(msg) == true) {
             confirmSync = true;
-            updateGistFile(currentID);
+            autoUpdateGistFile();
           } else {
             //console.log(user_files);
             window.frames[0].postMessage({
@@ -682,7 +682,7 @@ function checkAutoUpdate() {
             var msg = "要上传当前存档到云端吗（点击确定上传存档到云端并同步）";
             if (confirm(msg) == true) {
               confirmSync = true;
-              updateGistFile(currentID);
+              autoUpdateGistFile();
             } else {
               //console.log(user_files);
               window.frames[0].postMessage({

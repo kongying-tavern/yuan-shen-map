@@ -9,6 +9,61 @@ body,
     height: 100%;
 }
 
+.myPopIssue{
+        display: none;
+}
+
+.switch_FB{
+    z-index: 4000;
+    display: block;
+    position: absolute;
+    background-image: url("../imgs/con_img/switch_on.png");
+    background-size: contain;
+    width: 170px;
+    height: 30px;
+    left: 20px;
+    bottom: 30px;
+    cursor: pointer;
+}
+
+.genshin_pub{
+    z-index: 4000;
+    display: block;
+    position: absolute;
+    background: url("../imgs/genshin_pub.png") no-repeat;
+    width: 190px;
+    height: 50px;
+    right: 20px;
+    bottom: 30px;
+    cursor: pointer;
+}
+
+.genshin_art{
+    z-index: 4000;
+    display: block;
+    position: absolute;
+    background: url("../imgs/genshin_art.png") no-repeat;
+    width: 190px;
+    height: 50px;
+    right: 20px;
+    bottom: 90px;
+    cursor: pointer;
+}
+
+.YQLJ{
+    display: block;
+    margin: auto;
+    width: 190px;
+    height: 50px;
+}
+
+.YQLJ2{
+    display: block;
+    margin: auto;
+    width: 190px;
+    height: 50px;
+}
+
 .loading{
     z-index: 4000;
     display: block;
@@ -62,12 +117,12 @@ body,
 .danjixiazai {
     display: block;
     position: absolute;
-    top: 0;
-    left: 10vw;
+    top: 5px;
+    left: 50px;
     background: url(../imgs/con_img/danjixiazai.png) no-repeat center top;
     background-size: contain;
-    width: 50vw;
-    height: 50px;
+    width: 170px;
+    height: 64px;
     z-index: 999;
     cursor: pointer;
 }
@@ -89,6 +144,10 @@ body,
     justify-content: space-between;
     align-items: center;
     z-index: 200;
+}
+
+.login-info {
+    cursor: pointer;
 }
 
 .reg_log_link {
@@ -516,7 +575,7 @@ body,
     position: relative;
     width: 100%;
     margin: 14px 0 0 0;
-    padding: 0 17px;
+    padding: 0 37px 0 17px;
     font-family: font;
     font-style: normal;
     font-weight: bold;
