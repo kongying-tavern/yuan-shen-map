@@ -13,9 +13,9 @@ var map = L.map("map", {
 	attributionControl: false,
 	zoomControl: false
 });
-// L.control.attribution({
-// 	prefix: "<a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank'>使用说明/米游社空荧酒馆</a>"
-// }).addTo(map);
+L.control.attribution({
+	prefix: "<a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank'>(Chinese hoyolab)Made By Kongying Tavern</a>"
+}).addTo(map);
 L.control.zoom({
 	zoomInTitle: '+',
 	zoomOutTitle: '-'
