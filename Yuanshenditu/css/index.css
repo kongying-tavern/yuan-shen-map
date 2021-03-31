@@ -875,3 +875,15 @@ body,
     color:#191970;
     font-weight: bold;
 }
+@media screen and (max-width: 400px) {
+    .enindex-btn {
+        z-index: 9999;
+        position: absolute;
+        display: block;
+        left: 35px;
+        top: 35px;
+        color: #191970;
+        font-weight: bold;
+        font-size: 12px;
+    }
+}
