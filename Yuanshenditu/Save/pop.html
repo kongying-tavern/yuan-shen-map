@@ -298,27 +298,27 @@
     <div class="saveContent">
         <div class="saveTitle">
             <div class="saveClose"></div>
-            <div class="userID">UserID: Loading...</div>
+            <div class="userID">UserID: 読み込み中...</div>
         </div>
-        <div class="currentUserTitle">当前使用：</div>
-        <div class="currentUserName">Loading...</div>
+        <div class="currentUserTitle">現在使用中：</div>
+        <div class="currentUserName">読み込み中...</div>
         <div class="saveUpdate">
-            <div class="saveUpdateText">本存档 上传到云</div>
+            <div class="saveUpdateText">このアーカイブはクラウドにアップロードされます</div>
         </div>
         <div class="saveTableContent">
             <table class="saveTableTH">
                 <tr>
-                    <th class="tb1">状态</th>
-                    <th class="tb2">编号</th>
-                    <th class="tb3">备注名</th>
-                    <th class="tb4">最后保存的时间</th>
-                    <th class="tb5">操作</th>
+                    <th class="tb1">ありさま</th>
+                    <th class="tb2">シリアルナンバー</th>
+                    <th class="tb3">ノートの名前</th>
+                    <th class="tb4">最後の節約時間</th>
+                    <th class="tb5">オペレーティング</th>
                 </tr>
             </table>
             <div class="saveTableDiv">
                 <table class="saveTable">
                     <tr>
-                        <p style="text-align: center;margin: auto; line-height: 270px;font-size: 50px;">读取中。。。</p>
+                        <p style="text-align: center;margin: auto; line-height: 270px;font-size: 50px;">読み込み中。。。</p>
                     </tr>
                 </table>
             </div>
@@ -371,7 +371,7 @@
         }
         window.addEventListener("message", function (event) {
             if (event.data.message == "refreshGistList") {
-                $(".currentUserName").html("未选择云存档");
+                $(".currentUserName").html("クラウドアーカイブが選択されていません");
                 $(".saveUpdate").unbind(); //取消上传按钮事件绑定
                 $(".saveUpdate").click(function () {
                     window.parent.addGistFile();
@@ -434,7 +434,7 @@
                     <td class="tb2" style="opacity: 0;">0</td>
                     <td class="tb3">
                         <div class="saveTableNameContent">
-                            <div class="saveTableName" onclick="saveTabelNew()">+ 新建存档</div>
+                            <div class="saveTableName" onclick="saveTabelNew()">+ 新しいアーカイブ</div>
                         </div>
                     </td>
                     <td class="tb4" style="opacity: 0;"></td>

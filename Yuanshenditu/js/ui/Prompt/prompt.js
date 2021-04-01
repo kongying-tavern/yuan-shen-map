@@ -27,6 +27,7 @@ class Prompt extends Template {
       }, this.automaticHidden);
     }
   }
+  
   reader() {
     document.body.appendChild(
       this.promptView({
