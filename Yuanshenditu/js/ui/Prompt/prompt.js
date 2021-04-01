@@ -11,21 +11,17 @@ class Prompt extends Template {
     this.radius = options.radius || "20";
     this.version = options.version || "1.0.0";
     this.about = options.about || "中国の「空荧酒馆チーム」プロデュース";
-    this.lastEditTime = options.lastEditTime || "";
+    this.lastEditTime = options.lastEditTime || new Date().getFullYear()+"."+new Date().getMonth()+"."+new Date().getDay();
     this.reader();
     this.bindEvent();
     this.show();
+    this.autoHide();
   }
 
   bindEvent() {
     this.myPromptIcon.addEventListener("click", this.hide.bind(this), false);
     this.myPrompt.addEventListener("click", this.show.bind(this), false);
     this.myInner.addEventListener("click", (e) => e.stopPropagation(), false);
-    if (Object.prototype.toString.call(this.automaticHidden) === "[object Number]") {
-      const timer = setTimeout(() => {
-        this.hide();
-      }, this.automaticHidden);
-    }
   }
   
   reader() {
@@ -44,10 +40,21 @@ class Prompt extends Template {
     this.myPrompt = document.querySelector(".prompt");
     this.myPromptIcon = document.querySelector(".prompt-close-btn");
     this.myInner = this.myPrompt.querySelector(".prompt-inner");
+    this.myMask = document.querySelector(".prompt-mask");
   }
 
   static create(options = {}) {
     return new Prompt(options);
+  }
+
+  autoHide(){
+    if (Object.prototype.toString.call(this.automaticHidden) === "[object Number]") {
+      const timer = setTimeout(() => {
+        this.hide();
+      }, this.automaticHidden);
+      return;
+    }
+    throw new TypeError("This automaticHidden is Number");
   }
 
   show() {

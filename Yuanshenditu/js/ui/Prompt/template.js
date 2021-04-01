@@ -1,12 +1,11 @@
 // @ts-nocheck
 class Template {
   promptView(options) {
-		let result = {};
     const { title, content, background, radius, version, lastEditTime, about } = options;
     const myPrompt = document.createElement("div");
     myPrompt.className = "prompt prompt-hide";
     myPrompt.innerHTML = `
-						<div class="prompt-mask"></div>
+						<div class="prompt-mask" style="background: ${background}"></div>
 						<div class="prompt-inner" style="border-radius:${radius}px;transform: none;">
 							<span class="prompt-close-btn" role="button" title="サイドバーを閉じます">
 								<i class="prompt-close-icon" >

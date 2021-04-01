@@ -1,6 +1,6 @@
 ﻿<!--
  * @Author       : zengjia@stelulo.com
- * @LastEditTime : 2021-04-01 6:09 PM
+ * @LastEditTime : 2021-04-01 8:40 PM
 -->
 
 <!DOCTYPE html>
@@ -30,7 +30,6 @@
 	<meta property="og:locale" content="ja-jp" />
 	<link rel="shortcut icon" href="imgs/logo.ico" type="image/x-icon" />
 	<link rel="apple-touch-icon" href="imgs/logo.ico" sizes="120x120" />
-	<!-- <link rel="stylesheet" href="./css/global.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="leaflet/leaflet.css">
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/index_jp.css">
@@ -86,7 +85,7 @@
 </head>
 
 <body>
-	<iframe src="/Save/pop.html" class="savePop" style="display: none;"></iframe>
+	<iframe src="./Save/pop_jp.html" class="savePop" style="display: none;"></iframe>
 	<!-- <div class="genshin_pub"><a href="https://genshin.pub/" target="_bal" class="YQLJ"></a></div>
 	<div class="genshin_art"><a href="https://genshin.art/" target="_bal" class="YQLJ2"></a></div> -->
 	<div class="switch_FB"></div>
@@ -99,7 +98,7 @@
 		<a href="javascript:;" class="fold-btn hd" title="サイドバーを閉じます">fold</a>
 		<div class="person-div">
 			<div href="javascript:;" id="reg_log_link" class="reg_log_link login-info"></div>
-			<a href="https://www.paypal.me/yuanshenditu" target="_bal" class="zanzhu">私たちを助ける</a>
+			<a href="https://www.paypal.me/yuanshenditu" target="_bal" class="zanzhu">スポンサー</a>
 			<a href="javascript:;" class="save-btn disable hd">save</a>
 		</div>
 		<div class="topLine"></div>
@@ -583,9 +582,18 @@
 	<script src="js/index2_jp.js"></script>
 	<script type="module">
 		import Prompt from './js/ui/Prompt/prompt.js';
-		new Prompt({
-			title: "123123"
-		})
+		window.defenseVersion = '1.0.0(beta)';
+		// 只有版本与localStorage有变化时弹出
+		if (localStorage.getItem("defenseVersion") !== window.defenseVersion) {
+			let p1 = new Prompt({
+				title: "デフォルトタイトル",
+				lastEditTime: "2020.4.1",
+				version: window.defenseVersion,
+				about: "中国の「空荧酒馆チーム」プロデュース",
+				content: "2020.4.1<br/>誤った記述の日本語訳を修正します"
+			});
+			localStorage.setItem("defenseVersion", window.defenseVersion);
+		} 	
 	</script>
 	<script>
 		const AdminMailStr = 'メールに連絡する: 790489566@qq.com';
