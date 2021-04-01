@@ -1,6 +1,6 @@
 ﻿<!--
  * @Author       : zengjia@stelulo.com
- * @LastEditTime : 2021-03-31 7:58 PM
+ * @LastEditTime : 2021-04-01 5:03 PM
 -->
 
 <!DOCTYPE html>
@@ -36,6 +36,7 @@
 	<link rel="stylesheet" type="text/css" href="css/index_jp.css">
 	<link rel="stylesheet" href="dist/MarkerCluster.css" />
 	<link rel="stylesheet" href="dist/MarkerCluster.Default.css" />
+	<link rel="stylesheet" href="./js/ui/Prompt/style/prompt.css">
 	<script src="js/Cookie.js"></script>
 	<script src="js/gitFunctions.js"></script>
 	<script>
@@ -712,7 +713,12 @@
 	<script src="js/Item_Json.js"></script>
 
 	<script src="js/index2_jp.js"></script>
-
+	<script type="module">
+		import Prompt from './js/ui/Prompt/prompt.js';
+		new Prompt({
+			title: "123123"
+		})
+	</script>
 	<script>
 		const AdminMailStr = 'メールに連絡する: 790489566@qq.com';
 
