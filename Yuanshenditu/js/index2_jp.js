@@ -844,13 +844,13 @@ function MarkPoint(element) {
 		that.addClass("myPopSwitchDone");
 		that.removeClass("myPopSwitchTodo");
 		setTimeout(function () {
-			that.find(".switchButton p").html("終了しました");
+			that.find(".switchButton p").html("完成した");
 		}, 100);
 	} else {
 		that.addClass("myPopSwitchTodo");
 		that.removeClass("myPopSwitchDone");
 		setTimeout(function () {
-			that.find(".switchButton p").html("まだ完成してない");
+			that.find(".switchButton p").html("未完成");
 		}, 100);
 	}
 	setTimeout(function () {
@@ -1004,7 +1004,7 @@ map.on('popupopen', function (e) {
 	var key = className.substring(5, className.length);
 	var markedFlag = localStorage.getItem(key);
 	var switchClass = (!markedFlag) ? "myPopSwitchTodo" : "myPopSwitchDone";
-	var switchText = !markedFlag ? "まだ完成してない" : "終了しました";
+	var switchText = !markedFlag ? "未完成" : "完成した";
 	const timeValue = localStorage.getItem('done_time_' + key)
 
 	var popupHtml = `
@@ -1023,8 +1023,8 @@ map.on('popupopen', function (e) {
 			<img src=https://yuanshen.site/comment_png/${key}.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">
 		</div>
 		<div class="${switchClass}" onclick="MarkPoint(this)" data-key="${key}">
-			<p class="switchOff"></p>
-			<p class="switchOn">終了しました</p>
+			<p class="switchOff">未完成</p>
+			<p class="switchOn">完成した</p>
 			<div class="switchButton">
 				<div class="switchButtonIcon">
 					<p>${switchText}</p>

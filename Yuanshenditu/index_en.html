@@ -728,7 +728,7 @@
 			$(".savePop").hide();
 			$(".save-btn").click(function () {
 				if (getToken() == false) {
-					if (window.confirm("使用云存档必须登录, 要立刻登录吗?")) {
+					if (window.confirm("You have to log in before uploading your save to cloud,Do you want to log in rightnow?")) {
 						jumpLogin();
 					}
 				} else if (canOpenSave) {
