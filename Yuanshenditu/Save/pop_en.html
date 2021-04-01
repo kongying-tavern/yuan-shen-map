@@ -43,7 +43,7 @@
         .userID {
             /* UserID: NanJi2020 */
             position: absolute;
-            width: 100%;
+            width: 70%;
             height: 48px;
             left: 19px;
             top: calc(50% - 48px/2 + 0.5px);
@@ -296,8 +296,8 @@
 <body>
     <div class="saveContent">
         <div class="saveTitle">
-            <div class="saveClose"></div>
             <div class="userID">userID: BlackLotusccw</div>
+            <div class="saveClose"></div>
         </div>
         <div class="currentUserTitle">Save in use：</div>
         <div class="currentUserName">Loading...</div>
@@ -352,7 +352,7 @@
             var fileID = that.attr("data");
             window.parent.isCopy = true
             const seletedRow = parent.user_files.find(i => i.id === fileID)
-            window.parent.addGistFile(seletedRow.description + '副本', (res) => {
+            window.parent.addGistFile(seletedRow.description + 'Copy', (res) => {
                 window.parent.isCopy = false
             });
         }
@@ -370,7 +370,7 @@
         }
         window.addEventListener("message", function (event) {
             if (event.data.message == "refreshGistList") {
-                $(".currentUserName").html("未选择云存档");
+                $(".currentUserName").html("Not selected");
                 $(".saveUpdate").unbind(); //取消上传按钮事件绑定
                 $(".saveUpdate").click(function () {
                     window.parent.addGistFile();
@@ -433,7 +433,7 @@
                     <td class="tb2" style="opacity: 0;">0</td>
                     <td class="tb3">
                         <div class="saveTableNameContent">
-                            <div class="saveTableName" onclick="saveTabelNew()">+ 新建存档</div>
+                            <div class="saveTableName" onclick="saveTabelNew()">+ NewSave</div>
                         </div>
                     </td>
                     <td class="tb4" style="opacity: 0;"></td>
