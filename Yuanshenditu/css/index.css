@@ -1,6 +1,6 @@
 @font-face {
     font-family: font;
-    src: url(hywh_thin.ttf);
+    src: url(hywh_thin2.ttf);
 }
 
 html,
@@ -557,7 +557,7 @@ body,
     line-height: 100%;
     color: #4B5368;
     order: 0;
-    margin: 2px 0;
+    margin: 2px 50px 2px 0;
 }
 
 .myPopLine {
