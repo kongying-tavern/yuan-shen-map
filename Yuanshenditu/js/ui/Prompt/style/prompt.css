@@ -1,0 +1,142 @@
+@charset "utf-8";
+@media screen and (max-width: 600px) {
+  .prompt-inner {
+    width: 90% !important;
+    left: 5% !important;
+  }
+}
+.prompt {
+  z-index: 99999999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+.prompt-inner {
+  display: block;
+  position: absolute;
+  z-index: 9999999999999999999999;
+  width: 600px;
+  height: 500px;
+  top: calc(50% - 250px);
+  left: calc(50% - 300px);
+  background-color: #fafafa;
+  font-size: small;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 10px 20px;
+  transition: 0.25s;
+}
+
+.prompt-close-btn {
+  z-index: inherit;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+
+.prompt-close-icon {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 20px;
+  right: 20px;
+  transition: 0.25s;
+}
+
+.prompt-close-icon::before,
+.prompt-close-icon::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: 100%;
+  top: 50%;
+  left: 0;
+  margin-top: -1px;
+  background-color: rgb(180, 180, 180);
+  transition: 0.25s;
+}
+
+.prompt-close-btn:hover > .prompt-close-icon::before,
+.prompt-close-btn:hover > .prompt-close-icon::after {
+  background-color: #4fc08d;
+}
+
+.prompt-close-icon::before {
+  transform: rotate(45deg);
+}
+
+.prompt-close-icon::after {
+  transform: rotate(-45deg);
+}
+
+.prompt-title {
+  position: relative;
+  top: 60px;
+  left: calc(50% - 117.5px);
+  width: 235px;
+  height: 55px;
+  text-align: center;
+  line-height: 55px;
+  font-size: 1.8em;
+  color: #212121;
+  transition: all 0.3s;
+}
+
+.prompt-content {
+  position: relative;
+  width: 80%;
+  left: 10%;
+  top: 65px;
+  text-align: center;
+}
+
+.prompt-content p {
+  display: block;
+  transition: 0.2s;
+  margin-block-end: 1em;
+  margin-block-start: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  transform-origin: 50% -50%;
+}
+
+.prompt-content-version {
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.prompt-content-about {
+  font-size: 12px;
+  transform-origin: 50% -50%;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.prompt-content-main {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  text-align: left;
+  height: 220px;
+  margin: 0 auto;
+  font-size: 11px;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 18px;
+  overflow: auto;
+}
+
+.prompt-content-main-lastedittime > time {
+  color: rgba(0, 0, 0, 0.9);
+  background: transparent;
+}
+
+.prompt-hide {
+  transform: translateY(-3000px);
+}
+
+.prompt-show {
+  transform: none;
+}
