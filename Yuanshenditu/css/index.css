@@ -875,6 +875,16 @@ body,
     color:#191970;
     font-weight: bold;
 }
+.jpindex-btn
+{
+    z-index: 9999;
+    position: absolute;
+    display: block;
+    left: 57px;
+    top: 85px;
+    color:#191970;
+    font-weight: bold;
+}
 @media screen and (max-width: 400px) {
     .enindex-btn {
         z-index: 9999;
@@ -882,6 +892,16 @@ body,
         display: block;
         left: 35px;
         top: 35px;
+        color: #191970;
+        font-weight: bold;
+        font-size: 12px;
+    }
+    .jpindex-btn {
+        z-index: 9999;
+        position: absolute;
+        display: block;
+        left: 35px;
+        top: 55px;
         color: #191970;
         font-weight: bold;
         font-size: 12px;

@@ -1,6 +1,6 @@
 ﻿<!--
  * @Author       : zengjia@stelulo.com
- * @LastEditTime : 2021-04-04 12:39 PM
+ * @LastEditTime : 2021-03-31 7:58 PM
 -->
 
 <!DOCTYPE html>
@@ -30,12 +30,12 @@
 	<meta property="og:locale" content="ja-jp" />
 	<link rel="shortcut icon" href="imgs/logo.ico" type="image/x-icon" />
 	<link rel="apple-touch-icon" href="imgs/logo.ico" sizes="120x120" />
+	<!-- <link rel="stylesheet" href="./css/global.min.css"> -->
 	<link rel="stylesheet" type="text/css" href="leaflet/leaflet.css">
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/index_jp.css">
 	<link rel="stylesheet" href="dist/MarkerCluster.css" />
 	<link rel="stylesheet" href="dist/MarkerCluster.Default.css" />
-	<link rel="stylesheet" href="./js/ui/Prompt/style/prompt.css">
 	<script src="js/Cookie.js"></script>
 	<script src="js/gitFunctions.js"></script>
 	<script>
@@ -217,7 +217,7 @@
 </head>
 
 <body>
-	<iframe src="./Save/pop_jp.html" class="savePop" style="display: none;"></iframe>
+	<iframe src="/Save/pop.html" class="savePop" style="display: none;"></iframe>
 	<!-- <div class="genshin_pub"><a href="https://genshin.pub/" target="_bal" class="YQLJ"></a></div>
 	<div class="genshin_art"><a href="https://genshin.art/" target="_bal" class="YQLJ2"></a></div> -->
 	<div class="switch_FB"></div>
@@ -709,49 +709,10 @@
 
 	<script src="leaflet/leaflet.js"></script>
 	<script src="dist/leaflet.markercluster-src.js"></script>
-	<script src="js/Item_Json.js"></script>
+	<script src="js/Item_Json_jp.js"></script>
 
 	<script src="js/index2_jp.js"></script>
-	<script type="module">
-		import { Prompt } from './js/ui/index.js';
-		window.defenseVersion = '1.0.0(beta)';
-		const updateLog = 
-		[
-			{
-				type: '增加',
-				date: "2020.4.4",
-				text: "インターフェース翻訳をアップロードします",
-				author: ""
-			},
-			{
-				type: '优化',
-				date: "2020.4.4",
-				text: "バウンス表示ロジックを最適化する",
-				author:""
-			},
-			{
-				type: "改进",
-				date: "2020.4.1",
-				text: "誤訳を修正する",
-				author: ""
-			},
-		];
-		// 只有版本与localStorage有变化时弹出
-		if (localStorage.getItem("defenseVersion") !== window.defenseVersion || true) {
-			let p1 = new Prompt({
-				title: "デフォルトタイトル",
-				type: "log",
-				lastEditTime: "2020.4.4",
-				version: window.defenseVersion,
-				about: "中国の「空荧酒馆チーム」プロデュース",
-				//content: "2020.4.1<br/>誤った記述の日本語訳を修正します",
-				content: updateLog
-				///imgTitle: "//www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg"
-			});
-			p1.show();
-			localStorage.setItem("defenseVersion", window.defenseVersion);
-		} 	
-	</script>
+
 	<script>
 		const AdminMailStr = 'メールに連絡する: 790489566@qq.com';
 
