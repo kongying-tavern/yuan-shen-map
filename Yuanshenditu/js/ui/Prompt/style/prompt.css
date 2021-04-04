@@ -1,12 +1,17 @@
-@charset "utf-8";
-
+@charset "UTF-8";
 @media screen and (max-width: 600px) {
-  .prompt-inner{
+  .prompt-inner {
     width: 90% !important;
     left: 5% !important;
   }
 }
-.prompt-mask {
+
+.prompt {
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.prompt .prompt-mask {
   z-index: 99999999;
   position: fixed;
   top: 0;
@@ -15,7 +20,62 @@
   height: 100vh;
 }
 
-.prompt-inner {
+.prompt .prompt-hide {
+  -webkit-transform: rotate3d(1, 1, 0, 90deg) !important;
+          transform: rotate3d(1, 1, 0, 90deg) !important;
+  opacity: 0;
+}
+
+.prompt .prompt-show {
+  opacity: 1;
+  -webkit-transition: come 0.25s !important;
+  transition: come 0.25s !important;
+}
+
+@-webkit-keyframes come {
+  0% {
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+            transform: rotate3d(1, 1, 0, 0deg);
+  }
+  33% {
+    -webkit-transform: rotate3d(1, 1, 0, 20deg);
+            transform: rotate3d(1, 1, 0, 20deg);
+  }
+  66% {
+    -webkit-transform: rotate3d(1, 1, 0, -20deg);
+            transform: rotate3d(1, 1, 0, -20deg);
+  }
+  100% {
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+            transform: rotate3d(1, 1, 0, 0deg);
+  }
+}
+
+@keyframes come {
+  0% {
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+            transform: rotate3d(1, 1, 0, 0deg);
+  }
+  33% {
+    -webkit-transform: rotate3d(1, 1, 0, 20deg);
+            transform: rotate3d(1, 1, 0, 20deg);
+  }
+  66% {
+    -webkit-transform: rotate3d(1, 1, 0, -20deg);
+            transform: rotate3d(1, 1, 0, -20deg);
+  }
+  100% {
+    -webkit-transform: rotate3d(1, 1, 0, 0deg);
+            transform: rotate3d(1, 1, 0, 0deg);
+  }
+}
+
+.prompt .prompt-close-btn-hover {
+  -webkit-transform: rotate3d(1, 1, 0, 8deg);
+          transform: rotate3d(1, 1, 0, 8deg);
+}
+
+.prompt .prompt-inner {
   display: block;
   position: absolute;
   z-index: 9999999999999999999999;
@@ -24,14 +84,15 @@
   top: calc(50% - 250px);
   left: calc(50% - 300px);
   background-color: #fafafa;
-  font-size: small;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.05) 0 10px 20px;
-  transition: 0.25s;
+  -webkit-box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
 }
 
-.prompt-close-btn {
+.prompt .prompt-inner .prompt-close-btn {
   z-index: inherit;
   position: absolute;
   top: 20px;
@@ -41,17 +102,32 @@
   cursor: pointer;
 }
 
-.prompt-close-icon {
+.prompt .prompt-inner .prompt-close-btn:hover > .prompt-close-icon::before,
+.prompt .prompt-inner .prompt-close-btn:hover > .prompt-close-icon::after {
+  background-color: #52c41a;
+}
+
+.prompt .prompt-inner .prompt-close-btn .prompt-close-icon {
   position: absolute;
   width: 20px;
   height: 20px;
   top: 20px;
   right: 20px;
-  transition: 0.25s;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
 }
 
-.prompt-close-icon::before,
-.prompt-close-icon::after {
+.prompt .prompt-inner .prompt-close-btn .prompt-close-icon::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.prompt .prompt-inner .prompt-close-btn .prompt-close-icon::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.prompt .prompt-inner .prompt-close-btn .prompt-close-icon::before, .prompt .prompt-inner .prompt-close-btn .prompt-close-icon::after {
   content: "";
   position: absolute;
   height: 2px;
@@ -59,37 +135,27 @@
   top: 50%;
   left: 0;
   margin-top: -1px;
-  background-color: rgb(180, 180, 180);
-  transition: 0.25s;
+  background-color: #b4b4b4;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
 }
 
-.prompt-close-btn:hover > .prompt-close-icon::before,
-.prompt-close-btn:hover > .prompt-close-icon::after {
-  background-color: #4fc08d;
-}
-
-.prompt-close-icon::before {
-  transform: rotate(45deg);
-}
-
-.prompt-close-icon::after {
-  transform: rotate(-45deg);
-}
-
-.prompt-title {
+.prompt .prompt-inner .prompt-title {
   position: relative;
   top: 60px;
   left: calc(50% - 117.5px);
   width: 235px;
-  height: 55px;
   text-align: center;
+  font-size: 1.52em;
+  color: rgba(0, 0, 0, 0.65);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  height: 55px;
   line-height: 55px;
-  font-size: 1.8em;
-  color: #212121;
-  transition: all 0.3s;
 }
 
-.prompt-content {
+.prompt .prompt-inner .prompt-content,
+.prompt .prompt-inner .prompt-title {
   position: relative;
   width: 80%;
   left: 10%;
@@ -97,47 +163,127 @@
   text-align: center;
 }
 
-.prompt-content p {
+.prompt .prompt-inner .prompt-content, .prompt .prompt-inner p {
   display: block;
-  transition: 0.2s;
-  margin-block-end: 1em;
-  margin-block-start: 1em;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-  transform-origin: 50% -50%;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  -webkit-margin-after: 1em;
+          margin-block-end: 1em;
+  -webkit-margin-before: 1em;
+          margin-block-start: 1em;
+  -webkit-margin-start: 0;
+          margin-inline-start: 0;
+  -webkit-margin-end: 0;
+          margin-inline-end: 0;
+  -webkit-transform-origin: 50% -50%;
+          transform-origin: 50% -50%;
+  font-family: "SourceHanSansCN", "\u601d\u6e90\u9ed1\u4f53", "Microsoft YaHei", "\u5fae\u8f6f\u96c5\u9ed1", "Helvetica Neue", Helvetica, Arial, sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun;
 }
 
-.prompt-content-version {
+.prompt .prompt-inner .prompt-content .prompt-content-version,
+.prompt .prompt-inner .prompt-content .prompt-content-about, .prompt .prompt-inner p .prompt-content-version,
+.prompt .prompt-inner p .prompt-content-about {
+  -webkit-transform-origin: 50% -50%;
+          transform-origin: 50% -50%;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.prompt .prompt-inner .prompt-content .prompt-content-version, .prompt .prompt-inner p .prompt-content-version {
+  color: rgba(0, 0, 0, 0.45);
   font-size: 11px;
-  color: rgba(0, 0, 0, 0.5);
 }
 
-.prompt-content-about {
+.prompt .prompt-inner .prompt-content .prompt-content-about, .prompt .prompt-inner p .prompt-content-about {
+  color: rgba(0, 0, 0, 0.65);
   font-size: 12px;
-  transform-origin: 50% -50%;
-  color: rgba(0, 0, 0, 0.8);
 }
 
-.prompt-content-main {
+.prompt .prompt-inner .prompt-content-main {
+  z-index: 99999;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   text-align: left;
   height: 220px;
   margin: 0 auto;
   font-size: 11px;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.65);
   line-height: 18px;
   overflow: auto;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
 }
 
-.prompt-content-main-lastedittime > time {
-  color: rgba(0, 0, 0, 0.9);
+.prompt .prompt-inner .prompt-content-main::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.prompt .prompt-inner .prompt-content-main::-webkit-scrollbar-corner {
+  background: none;
+}
+
+.prompt .prompt-inner .prompt-content-main::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border: 3px solid transparent;
+  background-clip: padding-box;
+  border-radius: 5px;
+}
+
+.prompt .prompt-inner .prompt-content-main::-webkit-scrollbar-track {
+  opacity: 0;
+}
+
+.prompt .prompt-inner .prompt-content-main::-webkit-scrollbar-thumb:hover {
+  background-color: #686868;
+  outline-offset: -1px;
+}
+
+.prompt .prompt-inner .prompt-content-main .prompt-content-main-lastedittime > time {
   background: transparent;
 }
 
-.prompt-hide {
-  transform: translateY(-3000px);
+.prompt .prompt-inner .prompt-content-main .update-tag {
+  position: relative;
+  padding: 0 3px;
+  margin-left: 12px;
+  margin-right: 5px;
+  border-radius: 2px;
+  color: white;
 }
 
-.prompt-show {
-  transform: none;
+.prompt .prompt-inner .prompt-content-main .update-tag.optimize {
+  background-color: #c5a88b;
 }
+
+.prompt .prompt-inner .prompt-content-main .update-tag.optimize::after {
+  content: '修复';
+}
+
+.prompt .prompt-inner .prompt-content-main .update-tag.add {
+  background-color: #80b43c;
+}
+
+.prompt .prompt-inner .prompt-content-main .update-tag.add::after {
+  content: '新增';
+}
+
+.prompt .prompt-inner .prompt-content-main .update-tag.improve {
+  background-color: #9bc5c8;
+}
+
+.prompt .prompt-inner .prompt-content-main .update-tag.improve::after {
+  content: '改进';
+}
+
+.prompt .prompt-inner .prompt-content-main .update-log {
+  color: rgba(0, 0, 0, 0.65);
+  line-height: 22px;
+  text-align: left;
+}
+
+.prompt .prompt-inner .expanded {
+  -webkit-transform: scale(0.8) translateY(-50px);
+          transform: scale(0.8) translateY(-50px);
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+}
+/*# sourceMappingURL=prompt.css.map */

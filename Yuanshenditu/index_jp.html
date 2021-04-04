@@ -1,6 +1,6 @@
 ﻿<!--
  * @Author       : zengjia@stelulo.com
- * @LastEditTime : 2021-04-01 8:40 PM
+ * @LastEditTime : 2021-04-04 12:35 PM
 -->
 
 <!DOCTYPE html>
@@ -581,17 +581,42 @@
 
 	<script src="js/index2_jp.js"></script>
 	<script type="module">
-		import Prompt from './js/ui/Prompt/prompt.js';
+		import { Prompt } from './js/ui/index.js';
 		window.defenseVersion = '1.0.0(beta)';
+		const updateLog = 
+		[
+			{
+				type: '增加',
+				date: "2020.4.4",
+				text: "インターフェース翻訳をアップロードします",
+				author: ""
+			},
+			{
+				type: '优化',
+				date: "2020.4.4",
+				text: "バウンス表示ロジックを最適化する",
+				author:""
+			},
+			{
+				type: "改进",
+				date: "2020.4.1",
+				text: "誤訳を修正する",
+				author: ""
+			},
+		];
 		// 只有版本与localStorage有变化时弹出
-		if (localStorage.getItem("defenseVersion") !== window.defenseVersion) {
+		if (localStorage.getItem("defenseVersion") !== window.defenseVersion || true) {
 			let p1 = new Prompt({
 				title: "デフォルトタイトル",
-				lastEditTime: "2020.4.1",
+				type: "log",
+				lastEditTime: "2020.4.4",
 				version: window.defenseVersion,
 				about: "中国の「空荧酒馆チーム」プロデュース",
-				content: "2020.4.1<br/>誤った記述の日本語訳を修正します"
+				//content: "2020.4.1<br/>誤った記述の日本語訳を修正します",
+				content: updateLog
+				///imgTitle: "//www.gstatic.com/images/branding/googlelogo/svg/googlelogo_clr_74x24px.svg"
 			});
+			p1.show();
 			localStorage.setItem("defenseVersion", window.defenseVersion);
 		} 	
 	</script>
