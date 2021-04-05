@@ -1,38 +1,48 @@
 // @ts-nocheck
+// 
 import Template from "./template.js";
-import DEFAULT_OPTIONS from "./typing.js";
 
-/**
- * todo:
- *  - 拆分log模式
- *  - i8n
- */
+const DEFAULT_OPTIONS = {
+  title: "デフォルトタイトル",
+  getContainer: document.body,
+  type: "simple",
+  imgTitle: false,
+  content: "null",
+  textAlign: "left",
+  FrostedGlass: "0",
+  duration: false,
+  maskBackground: "rgba(0,0,0,.3)",
+  radius: "20",
+  version: "1.0.0",
+  about: "中国の「空荧酒馆チーム」プロデュース",
+  lastEditTime: new Date().getFullYear() + "." + new Date().getMonth() + "." + new Date().getDay(),
+};
+
 class Prompt extends Template {
   constructor(options) {
     super();
     const _options = Prompt.mergeOptions(options);
     this.title = _options.title; // 标题
-    this.type = _options.type;
     this.getContainer = _options.getContainer; // 配置渲染节点的输出位置
     this.imgTitle = _options.imgTitle;
     this.content = _options.content;
     this.textAlign = _options.textAlign;
     this.duration = _options.duration; // 自动关闭的延时，单位秒。设为 0 时不自动关闭
     this.maskBackground = _options.maskBackground;
+    this.FrostedGlass = _options.FrostedGlass;
     this.radius = _options.radius;
     this.version = _options.version;
     this.about = _options.about;
     this.lastEditTime = _options.lastEditTime;
+    this.oldScrollTop = 0;
     this.reader();
     this.bindEvent();
-    this.oldScrollTop = 0;
   }
 
   static mergeOptions(options) {
     this.defaultOptions = {
       title: DEFAULT_OPTIONS.title,
       getContainer: DEFAULT_OPTIONS.getContainer,
-      type: DEFAULT_OPTIONS.type,
       duration: DEFAULT_OPTIONS.duration,
       FrostedGlass: DEFAULT_OPTIONS.FrostedGlass,
       textAlign: DEFAULT_OPTIONS.textAlign,
@@ -40,7 +50,7 @@ class Prompt extends Template {
       maskBackground: DEFAULT_OPTIONS.maskBackground,
       radius: DEFAULT_OPTIONS.radius,
       version: DEFAULT_OPTIONS.version,
-      lastEditTime: this.lastEditTime,
+      lastEditTime: DEFAULT_OPTIONS.lastEditTime,
       about: DEFAULT_OPTIONS.about,
       imgTitle: DEFAULT_OPTIONS.imgTitle,
     };
@@ -64,17 +74,15 @@ class Prompt extends Template {
       (e) => this.myInner.classList.remove("prompt-close-btn-hover"),
       false
     );
-    if (this.type === "log") {
-      this.myMainContent.addEventListener("scroll", throttle(this.autoShowContent.bind(this), 150), false);
-      this.myMainContent.focus();
-    }
+    this.myMainContent.addEventListener("scroll", throttle(this.autoShowContent.bind(this), 150), false);
+    // @ts-ignore
+    this.myMainContent.focus();
   }
 
   reader() {
     this.getContainer.appendChild(
       this.promptView({
         title: this.title,
-        type: this.type,
         FrostedGlass: this.FrostedGlass,
         textAlign: this.textAlign,
         content: this.content,
@@ -84,7 +92,6 @@ class Prompt extends Template {
         lastEditTime: this.lastEditTime,
         about: this.about,
         imgTitle: this.imgTitle,
-        isFrostedGlass: this.isFrostedGlass,
       })
     );
 
@@ -95,35 +102,36 @@ class Prompt extends Template {
     this.myMainContent = document.querySelector(".prompt-content-main");
     this.myPromptTitle = document.querySelector(".prompt-title");
     this.myPromptInfo = this.myPrompt.querySelector(".prompt-content-info");
+    this.myPromptMask = document.querySelector(".prompt-mask");
   }
 
   static create(options = {}) {
     return new Prompt(options);
   }
 
-  static log(options = {}) {
-    
-  }
-
-  autoHide(callback) {
+  autoHide(callback,...args) {
     if (this.duration) {
       const timer = setTimeout(() => {
         this.hide();
+        if (callback) callback(...args);
       }, this.duration * 1000);
       return;
-    }
-    callback();
+    }    
   }
 
-  show(options = {}) { 
-    this.myPrompt.style.display = "black";
+  show(content) {
+    this.myPrompt.style.display = "block";
     this.myInner.classList.remove("prompt-hide");
     this.myInner.classList.add("prompt-show");
+    this.myInner.style.transform = "";
+    this.myPromptMask.style.opacity = "1";
   }
 
-  hide() {
+  hide(content) {
+    this.myPromptMask.style.opacity = "0";
     this.myInner.classList.add("prompt-hide");
     this.myInner.classList.remove("prompt-show");
+    this.myInner.style.transform = "rotate3d(1,1,0,90deg)";
     setTimeout(() => {
       this.myPrompt.style.display = "none";
     }, 256);
@@ -131,7 +139,7 @@ class Prompt extends Template {
 
   autoShowContent(e) {
     if (e.target.scrollTop >= this.oldScrollTop) {
-      this.myMainContent.style.marginTop = "-100px";
+      this.myMainContent.style.marginTop = "-100px";  
       this.myMainContent.style.height = "320px";
       this.myPromptInfo.style.opacity = 0;
       this.myPromptTitle.classList.add("expanded");

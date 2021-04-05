@@ -45,7 +45,9 @@ $animation-transition: all .25s;  // 动画过度属性
     left: 0;
     width: 100vw;
     height: 100vh;
+    transition: opacity .25s linear;
   }
+
   .prompt-hide { // 退出动画
       transform: rotate3d(1, 1, 0, 90deg)!important;
       opacity: 0;
@@ -53,25 +55,10 @@ $animation-transition: all .25s;  // 动画过度属性
 
   .prompt-show{ // 出场动画
     opacity: 1;
-    transition: come .25s!important;
-  }
-
-  @keyframes come{
-    0%{
-      transform: rotate3d(1, 1, 0, 0deg);
-    }
-    33%{
-      transform: rotate3d(1, 1, 0, 20deg);
-    }
-    66%{
-      transform: rotate3d(1, 1, 0, -20deg);
-    }
-    100%{
-      transform: rotate3d(1, 1, 0, 0deg);
-    }
   }
   .prompt-close-btn-hover {
-      transform: rotate3d(1, 1, 0, 8deg);
+      transform: rotate3d(1, 1, 0, 7deg);
+      transition: all .5s!important;
   }
   .prompt-inner {
     display: block;
@@ -238,7 +225,7 @@ $animation-transition: all .25s;  // 动画过度属性
       }
 
       .update-tag.optimize::after {
-        content: '修复';
+        content: '修正';
       }
 
       .update-tag.add {
@@ -246,7 +233,7 @@ $animation-transition: all .25s;  // 动画过度属性
       }
 
       .update-tag.add::after {
-        content: '新增';
+        content: '新たに';
       }
 
       .update-tag.improve {

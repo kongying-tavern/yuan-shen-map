@@ -12,39 +12,10 @@ class Template {
       about,
       textAlign,
       imgTitle,
-      type,
     } = options;
     // if(title && imgTitle) throw new TypeError("Only one of title and imgTitle can be selected");
     const myPrompt = document.createElement("div");
-    myPrompt.className = "prompt prompt-hide";
-    let contentStr = "";
-    switch (type) {
-      case "simple": // 精简模式
-        contentStr = content;
-        break;
-      case "log": // 日志模式
-        contentStr = `
-            <div class="prompt-content-info">
-              <p class="prompt-content-version">
-                ${version}
-              </p>
-							<p class="prompt-content-about">
-								${about}
-							</p>
-            </div>
-						<div class="prompt-content-main">
-							<P class="prompt-content-main-lastedittime">
-								最終更新時間: <time>${lastEditTime}</time>
-							</p>
-							<div class="update-log">
-								${this.logView(content)}
-							</div>
-						</div>
-				`;
-        break;
-      default:
-        contentStr = content;
-    }
+    myPrompt.className = "prompt";
     myPrompt.innerHTML = `
 						<div class="prompt-mask" style="background: ${maskBackground};backdrop-filter: blur(${FrostedGlass || 0}px);"></div>
 						<div class="prompt-inner" style="border-radius:${radius}px;text-align: ${textAlign}">
@@ -64,8 +35,23 @@ class Template {
 									${title}
 								</h2>
 							</div>
-							<div class="prompt-content" id="${type === "log" ? "prompt-log" : ""}">
-								${contentStr}
+							<div class="prompt-content" id="prompt-content">
+                <div class="prompt-content-info">
+                  <p class="prompt-content-version">
+                    ${version}
+                  </p>
+                  <p class="prompt-content-about">
+                    ${about}
+                  </p>
+                </div>
+                <div class="prompt-content-main">
+                  <P class="prompt-content-main-lastedittime">
+                    最終更新時間: <time>${lastEditTime}</time>
+                  </p>
+                  <div class="update-log">
+                    ${this.logView(content)}
+                  </div>
+                </div>
 							</div>
 						</div>
 					`;
@@ -75,6 +61,7 @@ class Template {
   logView(arr) {
     let log = [];
     let result = "";
+    if(typeof arr === "string") return arr;
     if (arr.length <= 0) throw new TypeError("Log mode requires at least one argument!");
     arr.forEach((val, index) => {
       let type =
@@ -83,7 +70,7 @@ class Template {
         val: `
 							<time class="update-date">${val.date}</time>
 							<br>
-							<span class="update-tag ${type}"></span>${val.text}${val.author}
+							<span class="update-tag ${type}"></span>${val.text}${val.author?val.author:""}
 							<br>
 						`,
         date: val.date,

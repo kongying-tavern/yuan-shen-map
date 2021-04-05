@@ -18,6 +18,8 @@
   left: 0;
   width: 100vw;
   height: 100vh;
+  -webkit-transition: opacity .25s linear;
+  transition: opacity .25s linear;
 }
 
 .prompt .prompt-hide {
@@ -28,51 +30,13 @@
 
 .prompt .prompt-show {
   opacity: 1;
-  -webkit-transition: come 0.25s !important;
-  transition: come 0.25s !important;
-}
-
-@-webkit-keyframes come {
-  0% {
-    -webkit-transform: rotate3d(1, 1, 0, 0deg);
-            transform: rotate3d(1, 1, 0, 0deg);
-  }
-  33% {
-    -webkit-transform: rotate3d(1, 1, 0, 20deg);
-            transform: rotate3d(1, 1, 0, 20deg);
-  }
-  66% {
-    -webkit-transform: rotate3d(1, 1, 0, -20deg);
-            transform: rotate3d(1, 1, 0, -20deg);
-  }
-  100% {
-    -webkit-transform: rotate3d(1, 1, 0, 0deg);
-            transform: rotate3d(1, 1, 0, 0deg);
-  }
-}
-
-@keyframes come {
-  0% {
-    -webkit-transform: rotate3d(1, 1, 0, 0deg);
-            transform: rotate3d(1, 1, 0, 0deg);
-  }
-  33% {
-    -webkit-transform: rotate3d(1, 1, 0, 20deg);
-            transform: rotate3d(1, 1, 0, 20deg);
-  }
-  66% {
-    -webkit-transform: rotate3d(1, 1, 0, -20deg);
-            transform: rotate3d(1, 1, 0, -20deg);
-  }
-  100% {
-    -webkit-transform: rotate3d(1, 1, 0, 0deg);
-            transform: rotate3d(1, 1, 0, 0deg);
-  }
 }
 
 .prompt .prompt-close-btn-hover {
-  -webkit-transform: rotate3d(1, 1, 0, 8deg);
-          transform: rotate3d(1, 1, 0, 8deg);
+  -webkit-transform: rotate3d(1, 1, 0, 7deg);
+          transform: rotate3d(1, 1, 0, 7deg);
+  -webkit-transition: all 0.5s !important;
+  transition: all 0.5s !important;
 }
 
 .prompt .prompt-inner {
@@ -255,7 +219,7 @@
 }
 
 .prompt .prompt-inner .prompt-content-main .update-tag.optimize::after {
-  content: '修复';
+  content: '修正';
 }
 
 .prompt .prompt-inner .prompt-content-main .update-tag.add {
@@ -263,7 +227,7 @@
 }
 
 .prompt .prompt-inner .prompt-content-main .update-tag.add::after {
-  content: '新增';
+  content: '新たに';
 }
 
 .prompt .prompt-inner .prompt-content-main .update-tag.improve {
