@@ -1,6 +1,6 @@
 ﻿<!--
  * @Author       : zengjia@stelulo.com
- * @LastEditTime : 2021-04-01 5:03 PM
+ * @LastEditTime : 2021-04-05 2:19 PM
 -->
 
 <!DOCTYPE html>
@@ -21,16 +21,15 @@
 	<meta name="google" value="notranslate">
 	<meta name='keywords' content='原神地図,原神マップ,米游社空荧酒馆,原神,資源攻略,Genshin,Genshin Impact Map' />
 	<meta name='description' content='「米游社空荧酒馆」が作成した原神全資源攻略マップ' />
-	<meta property="og:url" content="https://yuanshen.site/" />
+	<meta property="og:url" content="https://yuanshen.site/index_jp.html" />
 	<meta property="og:title" content="原神地図" />
 	<meta property="og:site_name" content="原神地図" />
 	<meta property="og:description" content="「米游社空荧酒馆」が作成した原神全資源攻略マップ" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="" />
 	<meta property="og:locale" content="ja-jp" />
-	<link rel="shortcut icon" href="imgs/logo.ico" type="image/x-icon" />
-	<link rel="apple-touch-icon" href="imgs/logo.ico" sizes="120x120" />
-	<!-- <link rel="stylesheet" href="./css/global.min.css"> -->
+	<link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
+	<link rel="apple-touch-icon" href="https://yuanshen.site/favicon.ico" sizes="120x120" />
 	<link rel="stylesheet" type="text/css" href="leaflet/leaflet.css">
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/index_jp.css">
@@ -51,174 +50,10 @@
 			s.parentNode.insertBefore(hm, s);
 		})();
 	</script>
-	<style>
-		/* .body,
-		.control-containor {
-			font-family: 游ゴシック体, YuGothic, "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-			font-weight: 500;
-		} */
-
-		.new-version {
-			z-index: 9999;
-			position: absolute;
-			display: block;
-			width: auto;
-			height: 150px;
-			left: 57px;
-			top: 65px;
-			color: rgba(25, 25, 112, .7);
-			font-weight: bold;
-		}
-
-		.new-version>a {
-			position: relative;
-			transition: all .3s cubic-bezier(.645, .045, .355, 1);
-			font-size: 1.2em;
-			left: 0;
-			top: 0;
-		}
-
-		.new-version>a:hover {
-			color: rgba(25, 25, 112, 1);
-		}
-		.prompt {
-			z-index: 99999999;
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100vw;
-			height: 100vh;
-		}
-
-		.prompt-inner {
-			display: block;
-			position: absolute;
-			z-index: 9999999999999999999999;
-			width: 600px;
-			height: 500px;
-			top: calc(50% - 250px);
-			left: calc(50% - 300px);
-			background-color: #fafafa;
-			font-size: small;
-			border-radius: 20px;
-			overflow: hidden;
-			box-shadow: rgba(0, 0, 0, 0.05) 0 10px 20px;
-			transition: .25s;
-		}
-
-		.prompt-close-btn {
-			z-index: inherit;
-			position: absolute;
-			top: 20px;
-			right: 20px;
-			width: 60px;
-			height: 60px;
-			cursor: pointer;
-		}
-
-		.prompt-close-icon {
-			position: absolute;
-			width: 20px;
-			height: 20px;
-			top: 20px;
-			right: 20px;
-			transition: .25s;
-		}
-
-		.prompt-close-icon::before,
-		.prompt-close-icon::after {
-			content: '';
-			position: absolute;
-			height: 2px;
-			width: 100%;
-			top: 50%;
-			left: 0;
-			margin-top: -1px;
-			background-color: rgb(180, 180, 180);
-			transition: .25s;
-		}
-		.prompt-close-btn:hover > .prompt-close-icon::before, .prompt-close-btn:hover >  .prompt-close-icon::after {
-			background-color: #4fc08d;
-		}
-
-	
-		.prompt-close-icon::before {
-			transform: rotate(45deg);
-		}
-
-		.prompt-close-icon::after {
-			transform: rotate(-45deg);
-		}
-
-		.prompt-title {
-			position: relative;
-			top: 60px;
-			left: calc(50% - 117.5px);
-			width: 235px;
-			height: 55px;
-			text-align: center;
-			line-height: 55px;
-			font-size: 1.8em;
-			color: #212121;
-			transition: all .3s;
-		}
-
-		.prompt-content {
-			position: relative;
-			width: 80%;
-			left: 10%;
-			top: 65px;
-			text-align: center;
-		}
-
-		.prompt-content p {
-			display: block;
-			transition: .2s;
-			margin-block-end: 1em;
-			margin-block-start: 1em;
-			margin-inline-start: 0;
-			margin-inline-end: 0;
-			transform-origin: 50% -50%;
-		}
-
-		.prompt-content-version {
-			font-size: 11px;
-			color: rgba(0, 0, 0, .5);
-		}
-
-		.prompt-content-about {
-			font-size: 12px;
-			transform-origin: 50% -50%;
-			color:rgba(0, 0, 0, .8)
-		}
-
-		.prompt-content-main {
-			border-top: 1px solid rgba(0, 0, 0, .05);
-			text-align: left;
-			height: 220px;
-			margin: 0 auto;
-			font-size: 11px;
-			color:rgba(0, 0, 0, .8);
-			line-height: 18px;
-			overflow: auto;
-		}
-
-		.prompt-content-main-lastedittime>time{
-			color:rgba(0, 0, 0, .9);
-			background: transparent
-		}
-		
-		.prompt-hide{
-			transform: translateY(-3000px);
-		}
-		.prompt-show{
-			transform: none;
-		}
-	</style>
 </head>
 
 <body>
-	<iframe src="/Save/pop.html" class="savePop" style="display: none;"></iframe>
+	<iframe src="./Save/pop_jp.html" class="savePop" style="display: none;"></iframe>
 	<!-- <div class="genshin_pub"><a href="https://genshin.pub/" target="_bal" class="YQLJ"></a></div>
 	<div class="genshin_art"><a href="https://genshin.art/" target="_bal" class="YQLJ2"></a></div> -->
 	<div class="switch_FB"></div>
@@ -720,20 +555,42 @@
 
 	<script src="js/index2_jp.js"></script>
 	<script type="module">
-		import Prompt from './js/ui/Prompt/prompt.js';
-		new Prompt({
-			title: "123123"
-		})
+		import { Prompt } from './js/ui/index.js';
+		window.defenseVersion = '1.0.2(beta)';
+		const updateLog = 
+		[
+			{
+				type: '增加',
+				date: "2020.4.4",
+				text: "インターフェース翻訳をアップロードします",
+			},
+			{
+				type: '优化',
+				date: "2020.4.4",
+				text: "バウンス表示ロジックを最適化する",
+			},
+			{
+				type: "改进",
+				date: "2020.4.1",
+				text: "誤訳を修正する",
+			},
+		];
+		// 只有版本与localStorage有变化时弹出
+		if (localStorage.getItem("defenseVersion") !== window.defenseVersion) {
+			let p1 = new Prompt({
+				title: "デフォルトタイトル",
+				lastEditTime: "2020.4.4",
+				version: window.defenseVersion,
+				about: "中国の「空荧酒馆チーム」プロデュース",
+				//content: "2020.4.1<br/>誤った記述の日本語訳を修正します",
+				content: updateLog
+			});
+			p1.show();
+			localStorage.setItem("defenseVersion", window.defenseVersion);
+		} 	
 	</script>
 	<script>
 		const AdminMailStr = 'メールに連絡する: 790489566@qq.com';
-
-		/**
-		 * @description: 侧边栏日语适配
-		 * @param string
-		 * @return null
-		 * @date 2020-3-31
-		 */
 		 ; (doc => {
 			function switchTitlePrompt(ele) {
 				const btn = doc.querySelector(ele);
@@ -750,122 +607,7 @@
 					}
 				}, false);
 			}
-			/**
-			 * @description: 提示框
-			 * @param {标题: string, 内容: string,  自动消失: number, 背景: string / frosted-glass(毛玻璃), 圆角: number ,版本: string,最后更新时间: string}
-			 * @return null
-			 */
-			class Prompt {
-				constructor(options = {}) {
-					this.title = options.title || "デフォルトタイトル";
-					this.content = options.content || "null";
-					this.automaticHidden = options.automaticHidden || false;
-					this.background = options.background || "transparent";
-					this.radius = options.radius || "20";
-					this.version = options.version || "1.0.0";
-					this.about = options.about || "中国の「空荧酒馆チーム」プロデュース";
-					this.lastEditTime = options.lastEditTime || "";
-					this.reader();
-					this.bindEvent();
-					this.show();
-				}
-				template(options = {}) {
-					const { title, content, background, radius, version, lastEditTime,about } = options;
-					const myPrompt = document.createElement("div");
-					myPrompt.className = "prompt prompt-hide";
-					// 前景处理
-					switch (background) {
-						case "frosted-glass": // 毛玻璃
-							myPrompt.style.backgroundColor = "rgba(255, 255, 255, .7)";
-							myPrompt.style.backdropFilter = "saturate(160%) blur(20px)";
-							myPrompt.style.transition = "background-color .5s cubic-bezier(.28, .11, .32, 1)";
-							break;
-						default:
-							myPrompt.style.background = `${background}`;
-							break;
-					}
-					myPrompt.innerHTML = `
-						<div class="prompt-inner" style="border-radius:${radius}px;transform: none;">
-							<span class="prompt-close-btn" role="button" title="サイドバーを閉じます">
-								<i class="prompt-close-icon" >
-									
-								</i>
-							</span>
-							<div class="prompt-title">
-								<h2>${title}</h2>
-							</div>
-							<div class="prompt-content">
-								<p class="prompt-content-version">${version}</p>
-								<p class="prompt-content-about">
-									${about}
-								</p>
-								<div class="prompt-content-main">
-									<P class="prompt-content-main-lastedittime">
-										最終更新時間: <time>${lastEditTime}</time>
-									</p>
-									${content}
-								</div>
-							</div>
-						</div>
-					`
-					return myPrompt;
-				}
-
-				bindEvent() {
-					this.myPromptIcon.addEventListener("click", this.hide.bind(this), false);
-					this.myPromptIcon.addEventListener("mouseover", () => {
-						this.myInner.style.transform = "rotate3d(1, 1, 0, 5deg)";
-					},false);
-					this.myPromptIcon.addEventListener("mouseout", () => {
-						this.myInner.style.transform = "none";
-					}, false);
-					this.myPrompt.addEventListener("click", this.show.bind(this), false);
-					this.myInner.addEventListener("click", (e) => e.stopPropagation(), false);
-					if (Object.prototype.toString.call(this.automaticHidden) === "[object Number]") {
-						const timer = setTimeout(() => {
-							this.hide()
-						}, this.automaticHidden)
-					}
-				};
-
-				reader() {
-					document.body.appendChild(this.template({
-						title: this.title,
-						content: this.content,
-						background: this.background,
-						radius: this.radius,
-						version: this.version,
-						lastEditTime: this.lastEditTime,
-						about: this.about
-					}))
-
-					this.myPrompt = document.querySelector(".prompt");
-					this.myPromptIcon = document.querySelector(".prompt-close-btn");
-					this.myInner = this.myPrompt.querySelector(".prompt-inner");
-				}
-
-				static create(options = {}) {
-					return new Template(options);
-				}
-
-				show() {
-					this.myPrompt.className = "prompt prompt-show";
-					this.myInner.style.transform = "none";
-				}
-
-				hide() {
-					this.myPrompt.className = "prompt prompt-hide";
-					this.myInner.style.transform = "rotate3d(1,1,0,90deg)";
-				}
-			}
-
-			let p1 = new Prompt({
-				lastEditTime: "2021.4.1",
-				version: "1.0.0(beta)",
-				content: "2020.4.1<br>&emsp;誤った記述の日本語訳を修正します"
-			});
-		
-		})(document);
+		 })(document);
 	</script>
 	<script>
 		// const AdminMailStr = 'メールに連絡する: 790489566@qq.com';

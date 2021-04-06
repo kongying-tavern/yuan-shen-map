@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <script src="./pop_files/jquery-3.5.1.min.js.下载"></script>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="../js/jquery-3.5.1.min.js"></script>
     <style>
         body {
             margin: 0;
@@ -10,7 +12,7 @@
 
         .saveContent {
             position: relative;
-            width: 473px;
+            width: 493px;
             height: 488px;
             background: #FFFFFF;
             border: 1px solid #000000;
@@ -41,7 +43,7 @@
         .userID {
             /* UserID: NanJi2020 */
             position: absolute;
-            width: 206px;
+            width: 210px;
             height: 48px;
             left: 19px;
             top: calc(50% - 48px/2 + 0.5px);
@@ -128,7 +130,7 @@
 
         .saveTableContent {
             position: absolute;
-            width: 454px;
+            width: 474px;
             height: 336px;
             left: 10px;
             top: 141px;
@@ -165,7 +167,7 @@
 
         .tb1 {
             padding-left: 18px;
-            width: 40px;
+            width: 60px;
         }
 
         .tb2 {
@@ -296,29 +298,29 @@
     <div class="saveContent">
         <div class="saveTitle">
             <div class="saveClose"></div>
-            <div class="userID">UserID: Loading...</div>
+            <div class="userID">UserID: 読み込み中...</div>
         </div>
-        <div class="currentUserTitle">当前使用：</div>
-        <div class="currentUserName">Loading...</div>
+        <div class="currentUserTitle">現在使用：</div>
+        <div class="currentUserName">読み込み中...</div>
         <div class="saveUpdate">
-            <div class="saveUpdateText">本存档 上传到云</div>
+            <div class="saveUpdateText">アップロード</div>
         </div>
         <div class="saveTableContent">
             <table class="saveTableTH">
-                <tbody><tr>
-                    <th class="tb1">状态</th>
-                    <th class="tb2">编号</th>
-                    <th class="tb3">备注名</th>
-                    <th class="tb4">最后保存的时间</th>
-                    <th class="tb5">操作</th>
+                <tr>
+                    <th class="tb1">て形いる</th>
+                    <th class="tb2">番号</th>
+                    <th class="tb3">ふちゅう</th>
+                    <th class="tb4">最後の節約時間</th>
+                    <th class="tb5">設定</th>
                 </tr>
-            </tbody></table>
+            </table>
             <div class="saveTableDiv">
-                <p style="text-align: center;margin: auto; line-height: 270px;font-size: 50px;">读取中。。。</p><table class="saveTable">
-                    <tbody><tr>
-                        
+                <table class="saveTable">
+                    <tr>
+                        <p style="text-align: center;margin: auto; line-height: 270px;font-size: 50px;">読み込み中。。。</p>
                     </tr>
-                </tbody></table>
+                </table>
             </div>
         </div>
     </div>
@@ -369,7 +371,7 @@
         }
         window.addEventListener("message", function (event) {
             if (event.data.message == "refreshGistList") {
-                $(".currentUserName").html("未选择云存档");
+                $(".currentUserName").html("クラウドアーカイブが選択されていません");
                 $(".saveUpdate").unbind(); //取消上传按钮事件绑定
                 $(".saveUpdate").click(function () {
                     window.parent.addGistFile();
@@ -432,7 +434,7 @@
                     <td class="tb2" style="opacity: 0;">0</td>
                     <td class="tb3">
                         <div class="saveTableNameContent">
-                            <div class="saveTableName" onclick="saveTabelNew()">+ 新建存档</div>
+                            <div class="saveTableName" onclick="saveTabelNew()">+ 新しいアーカイブ</div>
                         </div>
                     </td>
                     <td class="tb4" style="opacity: 0;"></td>
@@ -449,6 +451,6 @@
             }
         }, false)
     </script>
+</body>
 
-
-</body></html>
+</html>
