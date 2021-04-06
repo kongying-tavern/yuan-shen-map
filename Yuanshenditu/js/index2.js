@@ -24,7 +24,7 @@ L.TileLayer.T = L.TileLayer.extend({
 	getTileUrl: function (coords) {
 		x = coords.x
 		y = coords.y
-		return 'https://yuanshen.site/tiles_test/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
+		return 'tiles_test/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
 	},
 	reuseTiles: true
 });
@@ -240,6 +240,8 @@ var LayerMap = {
 	Layer_ShiP_MD: L.markerClusterGroup(),
 	Layer_ShiP_LY: L.markerClusterGroup(),
 	Layer_YLX_LY: L.markerClusterGroup(),
+	Layer_TK_MD: L.markerClusterGroup(),
+	Layer_TK_LY: L.markerClusterGroup(),
 }
 
 //定义各个坐标使用的图标
@@ -590,6 +592,8 @@ var typearray = [
 	[LayerMap["Layer_ShiP_MD"], JS_ShiP_MD, "TC", 'JS_ShiP_MD'],
 	[LayerMap["Layer_ShiP_LY"], JS_ShiP_LY, "TC", 'JS_ShiP_LY'],
 	[LayerMap["Layer_YLX_LY"], JS_YLX_LY, "PTG", 'JS_YLX_LY'],
+	[LayerMap["Layer_TK_MD"], JS_TK_MD, "KW", 'TK_MD'],
+	[LayerMap["Layer_TK_LY"], JS_TK_LY, "KW", 'TK_LY'],
 ];
 const MonosTime = {
 	LLD: 48,
@@ -622,7 +626,9 @@ const MonosTime = {
 	BTK_MD: 48,
 	BTK_LY: 48,
 	DWQ_MD: 12,
-	DWQ_LY: 12
+	DWQ_LY: 12,
+	TK_MD: 24,
+	TK_LY: 24
 }
 //标记方法
 var markers = {};
@@ -845,7 +851,7 @@ map.on('popupopen', function (e) {
 		</div>
 		<div class="time-wrapper"><span id="time"></span></div>
 		<div class="myPopPicture">
-			<img src=https://yuanshen.site/comment_png/${key}.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">
+			<img src=comment_png/${key}.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">
 		</div>
 		<div class="${switchClass}" onclick="MarkPoint(this)" data-key="${key}">
 			<p class="switchOff">未完成</p>

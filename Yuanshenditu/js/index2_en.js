@@ -240,6 +240,8 @@ var LayerMap = {
 	Layer_ShiP_MD: L.markerClusterGroup(),
 	Layer_ShiP_LY: L.markerClusterGroup(),
 	Layer_YLX_LY: L.markerClusterGroup(),
+	Layer_TK_MD: L.markerClusterGroup(),
+	Layer_TK_LY: L.markerClusterGroup(),
 }
 
 //定义各个坐标使用的图标
@@ -590,6 +592,8 @@ var typearray = [
 	[LayerMap["Layer_ShiP_MD"], JS_ShiP_MD, "TC", 'JS_ShiP_MD'],
 	[LayerMap["Layer_ShiP_LY"], JS_ShiP_LY, "TC", 'JS_ShiP_LY'],
 	[LayerMap["Layer_YLX_LY"], JS_YLX_LY, "PTG", 'JS_YLX_LY'],
+	[LayerMap["Layer_TK_MD"], JS_TK_MD, "KW", 'TK_MD'],
+	[LayerMap["Layer_TK_LY"], JS_TK_LY, "KW", 'TK_LY'],
 ];
 const MonosTime = {
 	LLD: 48,
