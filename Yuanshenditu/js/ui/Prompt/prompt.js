@@ -1,11 +1,10 @@
 // @ts-nocheck
-// 
+//
 import Template from "./template.js";
 
 const DEFAULT_OPTIONS = {
   title: "デフォルトタイトル",
   getContainer: document.body,
-  type: "simple",
   imgTitle: false,
   content: "null",
   textAlign: "left",
@@ -74,9 +73,7 @@ class Prompt extends Template {
       (e) => this.myInner.classList.remove("prompt-close-btn-hover"),
       false
     );
-    this.myMainContent.addEventListener("scroll", throttle(this.autoShowContent.bind(this), 150), false);
-    // @ts-ignore
-    this.myMainContent.focus();
+    this.myMainContent.addEventListener("scroll", throttle(this.autoShowContent.bind(this), 100), false);
   }
 
   reader() {
@@ -109,14 +106,14 @@ class Prompt extends Template {
     return new Prompt(options);
   }
 
-  autoHide(callback,...args) {
+  autoHide(callback, ...args) {
     if (this.duration) {
       const timer = setTimeout(() => {
         this.hide();
         if (callback) callback(...args);
       }, this.duration * 1000);
       return;
-    }    
+    }
   }
 
   show(content) {
@@ -138,20 +135,25 @@ class Prompt extends Template {
   }
 
   autoShowContent(e) {
-    if (e.target.scrollTop >= this.oldScrollTop) {
-      this.myMainContent.style.marginTop = "-100px";  
+    const upward = () => {
+      this.myMainContent.style.marginTop = "-100px";
       this.myMainContent.style.height = "320px";
       this.myPromptInfo.style.opacity = 0;
       this.myPromptTitle.classList.add("expanded");
       this.myPromptInfo.classList.add("expanded");
-    } else {
+    };
+    const down = () => {
       this.myMainContent.style.marginTop = "0";
       this.myMainContent.style.height = "220px";
       this.myPromptInfo.style.opacity = 1;
       this.myPromptTitle.classList.remove("expanded");
       this.myPromptInfo.classList.remove("expanded");
-    }
-    this.oldScrollTop = e.target.scrollTop;
+    };
+    const ele = e.target;
+    if (ele.scrollTop + ele.clientHeight == ele.scrollHeight) return; // 阻止到最低下时鬼畜
+    if (ele.scrollHeight <= 350) return; // 阻止低高度时鬼畜
+    ele.scrollTop > this.oldScrollTop ? upward() : down();
+    this.oldScrollTop = ele.scrollTop;
   }
 }
 
