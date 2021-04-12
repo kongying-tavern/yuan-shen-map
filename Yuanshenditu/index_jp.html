@@ -1,6 +1,6 @@
 ﻿<!--
  * @Author       : zengjia@stelulo.com
- * @LastEditTime : 2021-04-11 4:11 PM
+ * @LastEditTime : 2021-04-12 3:07 PM
 -->
 
 <!DOCTYPE html>
@@ -55,7 +55,8 @@
 	<meta itemprop="description" content="「米游社空荧酒馆」が作成した原神全資源攻略マップ" />
 	<meta itemprop="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
 	<!-- Other Open Graph -->
-
+	<link rel="alternate" href="https://yuanshen.site/index_en.html" hreflang="en-US" />
+	<link rel="alternate" href="https://yuanshen.site/" hreflang="zh-Hans" />
 	<link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
 	<link rel="apple-touch-icon" href="https://yuanshen.site/favicon.ico" sizes="120x120" />
 	<link rel="canonical" href="https://yuanshen.site/index_jp.html" />
@@ -589,9 +590,9 @@
 	<script type="module">
 		import { Prompt } from './js/ui/index.js';
 		; ((doc, win) => {
-			const isDevelopmentMode = doc.domain !== "yuanshen.site";
-			console.log('isDevelopmentMode: ', isDevelopmentMode);
+			window.isDevelopmentMode = doc.domain !== "yuanshen.site";
 			window.defenseVersion = '1.0.4(beta)';
+			console.log('isDevelopmentMode: ', isDevelopmentMode);
 			const updateLog =
 				[
 					{
@@ -630,7 +631,7 @@
 			});
 			isDevelopmentMode && console.log("P1: ", p1);
 			// 只有版本与localStorage不同时弹出
-			if (localStorage.getItem("defenseVersion") !== window.defenseVersion || isDevelopmentMode) {
+			if (localStorage.getItem("defenseVersion") !== window.defenseVersion || isDevelopmentMode) {			
 				p1.show();
 				localStorage.setItem("defenseVersion", window.defenseVersion);
 			}

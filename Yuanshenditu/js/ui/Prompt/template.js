@@ -16,6 +16,7 @@ class Template {
     // if(title && imgTitle) throw new TypeError("Only one of title and imgTitle can be selected");
     const myPrompt = document.createElement("div");
     myPrompt.className = "prompt";
+    myPrompt.style.display = "none";
     myPrompt.innerHTML = `
 						<div class="prompt-mask" style="background: ${maskBackground};backdrop-filter: blur(${FrostedGlass || 0}px);"></div>
 						<div class="prompt-inner" style="border-radius:${radius}px;text-align: ${textAlign}">
