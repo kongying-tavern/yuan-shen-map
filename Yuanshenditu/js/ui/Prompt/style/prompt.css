@@ -141,7 +141,7 @@
           margin-inline-end: 0;
   -webkit-transform-origin: 50% -50%;
           transform-origin: 50% -50%;
-  font-family: "SourceHanSansCN", "\u601d\u6e90\u9ed1\u4f53", "Microsoft YaHei", "\u5fae\u8f6f\u96c5\u9ed1", "Helvetica Neue", Helvetica, Arial, sans-serif, -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun;
+  font-family: "Microsoft Yahei",sans-serif;
 }
 
 .prompt .prompt-inner .prompt-content .prompt-content-version,
@@ -162,16 +162,21 @@
   font-size: 12px;
 }
 
+.prompt .prompt-inner .prompt-content-main.left {
+  height: 350px !important;
+}
+
 .prompt .prompt-inner .prompt-content-main {
   z-index: 99999;
   border-top: 1px solid rgba(0, 0, 0, 0.05);
   text-align: left;
+  width: 100%;
   height: 220px;
   margin: 0 auto;
   font-size: 11px;
   color: rgba(0, 0, 0, 0.65);
   line-height: 18px;
-  overflow: auto;
+  overflow-y: auto;
   -webkit-transition: all 0.25s;
   transition: all 0.25s;
 }
@@ -203,6 +208,43 @@
 
 .prompt .prompt-inner .prompt-content-main .prompt-content-main-lastedittime > time {
   background: transparent;
+}
+
+.prompt .prompt-inner .prompt-content-main ul {
+  width: 100%;
+}
+
+.prompt .prompt-inner .prompt-content-main ul > li {
+  cursor: pointer;
+  width: 100%;
+  padding: 10px 18px;
+  font-size: 14px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: rgba(22, 22, 22, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.prompt .prompt-inner .prompt-content-main ul > li a {
+  position: absolute;
+  display: inline-block;
+  left: 105px;
+  width: calc(100% - 105px);
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media screen and (max-width: 600px) {
+  .prompt .prompt-inner .prompt-content-main ul > li a {
+    left: 95px;
+  }
+}
+
+.prompt .prompt-inner .prompt-content-main ul > li:hover {
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 .prompt .prompt-inner .prompt-content-main .update-tag {

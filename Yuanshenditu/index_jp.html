@@ -1,10 +1,10 @@
 ﻿<!--
  * @Author       : zengjia@stelulo.com
- * @LastEditTime : 2021-04-05 2:19 PM
+ * @LastEditTime : 2021-04-11 4:11 PM
 -->
 
 <!DOCTYPE html>
-<html lang="JA-JP" dir="ltr">
+<html lang="JP" dir="ltr">
 
 <head>
 	<meta charset='UTF-8'>
@@ -13,23 +13,52 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
 	<meta name="renderer" content="webkit" />
 	<meta name="force-rendering" content="webkit" />
-	<meta name="theme-color" content="#ffffff" />
-	<meta name="msappdivcation-navbutton-color" content="#ffffff" />
+	<meta name="theme-color" content="#fafafa" />
+	<meta name="msappdivcation-navbutton-color" content="#fafafa" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="lack-translucent" />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="google" value="notranslate">
 	<meta name='keywords' content='原神地図,原神マップ,米游社空荧酒馆,原神,資源攻略,Genshin,Genshin Impact Map' />
 	<meta name='description' content='「米游社空荧酒馆」が作成した原神全資源攻略マップ' />
+	<!-- Facebook Open Graph -->
+	<meta property="fb:app_id" content="3340670332825887" />
 	<meta property="og:url" content="https://yuanshen.site/index_jp.html" />
 	<meta property="og:title" content="原神地図" />
-	<meta property="og:site_name" content="原神地図" />
+	<meta property="og:site_name" content="Genshin Impact Map" />
 	<meta property="og:description" content="「米游社空荧酒馆」が作成した原神全資源攻略マップ" />
 	<meta property="og:type" content="website" />
-	<meta property="og:image" content="" />
-	<meta property="og:locale" content="ja-jp" />
+	<meta property="og:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<meta property="og:locale" content="jp" />
+	<!-- Facebook Open Graph -->
+
+	<!-- Twitter Open Graph -->
+	<meta name="twitter:widgets:csp" content="on">
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:site" content="@yuanshen_site" />
+	<meta name="twitter:image:src" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<meta name="twitter:creator" content="@yuanshen_site" />
+	<meta property="twitter:url" content="https://yuanshen.site/index_jp.html" />
+	<meta property="twitter:type" content="website" />
+	<meta property="twitter:title" content="原神地図" />
+	<meta property="twitter:description" content="「米游社空荧酒馆」が作成した原神全資源攻略マップ" />
+	<meta property="twitter:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<!-- Twitter Open Graph -->
+
+	<!-- Other Open Graph -->
+	<meta property="url" content="https://yuanshen.site/index_jp.html" />
+	<meta property="type" content="website" />
+	<meta property="title" content="原神地図" />
+	<meta property="description" content="「米游社空荧酒馆」が作成した原神全資源攻略マップ" />
+	<meta property="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<meta itemprop="name" content="原神地図" />
+	<meta itemprop="description" content="「米游社空荧酒馆」が作成した原神全資源攻略マップ" />
+	<meta itemprop="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<!-- Other Open Graph -->
+
 	<link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
 	<link rel="apple-touch-icon" href="https://yuanshen.site/favicon.ico" sizes="120x120" />
+	<link rel="canonical" href="https://yuanshen.site/index_jp.html" />
 	<link rel="stylesheet" type="text/css" href="leaflet/leaflet.css">
 	<link rel="stylesheet" type="text/css" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/index_jp.css">
@@ -40,6 +69,7 @@
 	<script src="js/gitFunctions.js"></script>
 	<script>
 		Login();
+
 	</script>
 	<script>
 		var _hmt = _hmt || [];
@@ -49,6 +79,7 @@
 			var s = document.getElementsByTagName("script")[0];
 			s.parentNode.insertBefore(hm, s);
 		})();
+
 	</script>
 </head>
 
@@ -541,6 +572,7 @@
 			</div>
 		</div>
 	</aside>
+	
 	<div class="bottom-rules">
 		<a href="disclaimer_jp.html" target="_bal" class="disclaimer">免責事項</a>
 	</div>
@@ -556,61 +588,90 @@
 	<script src="js/index2_jp.js"></script>
 	<script type="module">
 		import { Prompt } from './js/ui/index.js';
-		window.defenseVersion = '1.0.2(beta)';
-		const updateLog = 
-		[
-			{
-				type: '增加',
-				date: "2020.4.4",
-				text: "インターフェース翻訳をアップロードします",
-			},
-			{
-				type: '优化',
-				date: "2020.4.4",
-				text: "バウンス表示ロジックを最適化する",
-			},
-			{
-				type: "改进",
-				date: "2020.4.1",
-				text: "誤訳を修正する",
-			},
-		];
-		// 只有版本与localStorage有变化时弹出
-		if (localStorage.getItem("defenseVersion") !== window.defenseVersion) {
+		; ((doc, win) => {
+			const isDevelopmentMode = doc.domain !== "yuanshen.site";
+			console.log('isDevelopmentMode: ', isDevelopmentMode);
+			window.defenseVersion = '1.0.4(beta)';
+			const updateLog =
+				[
+					{
+						type: '增加',
+						date: "2020.4.4",
+						text: "インターフェース翻訳をアップロードします",
+					},
+					{
+						type: '优化',
+						date: "2020.4.4",
+						text: "バウンス表示ロジックを最適化する",
+					},
+					{
+						type: "改进",
+						date: "2020.4.1",
+						text: "誤訳を修正する",
+					},
+					{
+						type: '优化',
+						date: '2020.4.9',
+						text: 'SEO'
+					},
+					{
+						type: '改进',
+						date: "2020.4.10",
+						text: 'ポップアップスクロールのバグを修正'
+					},
+				];
 			let p1 = new Prompt({
-				title: "デフォルトタイトル",
-				lastEditTime: "2020.4.4",
-				version: window.defenseVersion,
-				about: "中国の「空荧酒馆チーム」プロデュース",
-				//content: "2020.4.1<br/>誤った記述の日本語訳を修正します",
+				title: "原神地図",
+				textAlign: 'center',
+				lastEditTime: "2020.4.10",
+				version: win.defenseVersion,
+				about: "中国の「空荧酒馆チーム」プロデュース<br/>",
 				content: updateLog
 			});
-			p1.show();
-			localStorage.setItem("defenseVersion", window.defenseVersion);
-		} 	
+			isDevelopmentMode && console.log("P1: ", p1);
+			// 只有版本与localStorage不同时弹出
+			if (localStorage.getItem("defenseVersion") !== window.defenseVersion || isDevelopmentMode) {
+				p1.show();
+				localStorage.setItem("defenseVersion", window.defenseVersion);
+			}
+
+			// 侧边栏按钮提示
+			const btn = doc.querySelector('.fold-btn');
+			if (!btn) return;
+			const close = 'サイドバーを閉じます';
+			const open = 'サイドバーを開きます';
+			btn.addEventListener("click", (e) => {
+				let eleTitle = e.target.title;
+				if (typeof eleTitle === "undefined") throw new Error(e.target + "need one Title");
+				if (eleTitle === open) {
+					e.target.title = close;
+				} else {
+					e.target.title = open;
+				}
+			}, false);
+		
+			// window.onload = () => {
+			//   const observer = new IntersectionObserver(function (changes) {
+			//     changes.forEach(function (element, index) {
+			//       if (element.intersectionRatio > 1) {
+			//         observer.unobserve(element.target);
+			//         element.target.src = element.target.dataset.src;
+			//       }
+			//     });
+			//   });
+			//   function initObserver() {
+			//     const listItems = document.querySelectorAll("img");
+			//     listItems.forEach(function (item) {
+			//       observer.observe(item);
+			//     });
+			//   }
+			//   initObserver();
+			// };
+
+		})(document, window);
 	</script>
 	<script>
 		const AdminMailStr = 'メールに連絡する: 790489566@qq.com';
-		 ; (doc => {
-			function switchTitlePrompt(ele) {
-				const btn = doc.querySelector(ele);
-				if (!btn) return;
-				const close = 'サイドバーを閉じます';
-				const open = 'サイドバーを開きます';
-				btn.addEventListener("click", (e) => {
-					let eleTitle = e.target.title;
-					if (typeof eleTitle === "undefined") throw new Error(e.target + "need one Title");
-					if (eleTitle === open) {
-						e.target.title = close;
-					} else {
-						e.target.title = open;
-					}
-				}, false);
-			}
-		 })(document);
-	</script>
-	<script>
-		// const AdminMailStr = 'メールに連絡する: 790489566@qq.com';
 		$(".area-list-li-containor").hide();
 		$(".area-list-containor").show();
 		//筛选函数
@@ -1000,6 +1061,7 @@
 				map.removeLayer(LayerMap["Layer_MJ_LY"]);
 			}
 		})
+
 	</script>
 </body>
 
