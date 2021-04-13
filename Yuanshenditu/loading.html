@@ -1,0 +1,138 @@
+<!--
+ * @Author       : Jia Zeng
+ * @LastEditTime : 2021-04-13 6:21 PM
+-->
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Loading - Genshin Map</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+  <meta name="renderer" content="webkit" />
+  <meta name="force-rendering" content="webkit" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="msappdivcation-navbutton-color" content="#ffffff" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="lack-translucent" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="google" value="notranslate">
+  <meta name="keywords" content="原神地図,Choose-country-region,Genshin,Genshin Impact Map" />
+  <meta name="description" content="Choose-country-region - Genshin Map" />
+  <link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="https://yuanshen.site/favicon.ico" sizes="120x120" />
+  <link rel="stylesheet" href="./css/global.min.css">
+  <link rel="stylesheet" href="./css/loading/loading.css">
+  <!-- <script>
+    window.localeCode = {};
+
+  </script>
+  <script src="./js/localeCode.js"></script> -->
+  <head>
+  <body>
+    <noscript>
+      <p>(:</p>
+      <p>We're sorry but</p>
+      <p>This page requires JavaScript to work properly</p>
+      <p>You can click on the link below to jump</p>
+      <p>༼ つ ◕_◕ ༽つ<a href="https://yuanshen.site/" title="yuanshen.site">https://yuanshen.site/</a></p>
+    </noscript>
+    <div class="wrapper">
+      <main>
+        <!-- 默认加载动画 -->
+        <div class="loading-img">
+          <img src="./imgs/loading-bar.png" alt="Loading...">
+        </div>
+        <!-- 移动端加载动画 -->
+        <div class="loading-text">
+          <ul class="rotate">
+            <li class="item"></li>
+            <li class="item"></li>
+            <li class="item"></li>
+            <li class="item"></li>
+            <li class="item"></li>
+          </ul>
+          <h2>Loading...</h2>
+        </div>
+      </main>
+    </div>
+    <script>
+      'use strict';
+      (() => {
+        // 解析URL参数
+        const myURL = new URL(location.href);
+        const searchParams = new URLSearchParams(myURL.search);
+        const options = {
+          theme: searchParams.get('theme') || 'default', // 主题 => default / dark
+          delay: searchParams.get('delay') || false,     // 动画时间(ms)
+          total_delay: searchParams.get('total_delay') || '3000', // 总延迟时间(ms)
+          count: searchParams.get('count') || '1', // 动画次数
+          bg: searchParams.get('bg') || '#fff', // 背景颜色
+        };
+        console.group('URL-Parameter');
+        console.log("%cTheme\t\t:" + options.theme + '\n' + 'Delay\t\t:' + options.delay + '\n' + 'Total_delay\t:' + options.total_delay + '\n' + "Count\t\t:" + options.count + '\n' + 'bg\t\t\t:' +
+          options.bg + '\nReplaceHref\t:' + options.href, `font-size: 14px;`);
+        console.groupEnd('URL-Parameter');
+        // 计算动画速度
+        const delay = options.delay ? options.delay / 1000 : (options.total_delay / 1000) / options.count;
+        // 写入样式
+        const style = document.createElement("style");
+        style.innerHTML = `.loading-img::after{animation: loading-bar ${Number.parseInt(delay)}s ${options.count} forwards ;}`;
+        document.head.appendChild(style);
+        // 设置背景颜色
+        document.querySelector('.wrapper').style.backgroundColor = options.bg;
+        // 动态更改颜色主题
+        if (options.theme === 'dark') {
+          document.body.style.setProperty('--ThemeBackgroundColor', '#1C1B21');
+          document.body.style.setProperty('--ThemeFontColor', 'rgba(255,255,255,.7)');
+          document.body.style.setProperty('--themeLoadingBackgroundColor', 'rgba(100,100,100,1)');
+          document.body.style.setProperty('--ThemeLoadingProspectColor', '#fff');
+        }
+        // 到总延迟时间会开始判断语言并且跳转
+        setTimeout(() => {
+          autoLanguageReplace();
+        }, options.total_delay);
+
+        function autoLanguageReplace() {
+          const language = localStorage.getItem("locale") || window.navigator.language || "en";
+          console.log('language: ', language);
+          localStorage.setItem("locale", language);
+          let result = '';
+          switch (language) {
+            case 'zh-CN': // 中国大陆
+            case 'zh-TW': // 中国台湾
+            case 'zh-HK': // 中国香港
+            case 'zh-SG': // 新加坡
+            case 'zh':    // 中文
+              result = `/?locale=${language}`;
+              break;
+            case 'ja':    // 日语
+            case 'ja-JP': // 日本
+              result = `/index_jp.html?locale=${language}`;
+              break;
+            case 'en':    // 英语
+            case 'en-US': // 美国
+            case 'en-AU': // 澳大利亚
+            case 'en-NZ': // 新西兰
+            case 'en-ZA': // 南非
+            case 'en-TT': // 特立尼达
+            case 'en-GB': // 英国
+            case 'en-CA': // 加拿大
+            case 'en-IE': // 爱尔兰
+            case 'en-JM': // 牙买加
+            case 'en-BZ': // 伯利兹
+              result = `/index_en.html?locale=${language}`;
+              break;
+            default:
+              result = `/index_en.html?locale=${language}`;
+          }
+          window.location.replace('https://yuanshen.site' + result);
+        }
+      })();
+
+    </script>
+  </body>
+
+</html>
