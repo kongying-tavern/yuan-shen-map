@@ -1,10 +1,10 @@
-﻿<!--
+<!--
  * @Author       : zengjia@stelulo.com
- * @LastEditTime : 2021-04-11 4:11 PM
+ * @LastEditTime : 2021-04-13 6:27 PM
 -->
 
 <!DOCTYPE html>
-<html lang="JP" dir="ltr">
+<html lang="ja-jp" dir="ltr">
 
 <head>
 	<meta charset='UTF-8'>
@@ -29,7 +29,7 @@
 	<meta property="og:description" content="「米游社空荧酒馆」が作成した原神全資源攻略マップ" />
 	<meta property="og:type" content="website" />
 	<meta property="og:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
-	<meta property="og:locale" content="jp" />
+	<meta property="og:locale" content="ja-jp" />
 	<!-- Facebook Open Graph -->
 
 	<!-- Twitter Open Graph -->
@@ -55,7 +55,8 @@
 	<meta itemprop="description" content="「米游社空荧酒馆」が作成した原神全資源攻略マップ" />
 	<meta itemprop="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
 	<!-- Other Open Graph -->
-
+	<link rel="alternate" href="https://yuanshen.site/index_en.html" hreflang="en-US" />
+	<link rel="alternate" href="https://yuanshen.site/" hreflang="zh-Hans" />
 	<link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
 	<link rel="apple-touch-icon" href="https://yuanshen.site/favicon.ico" sizes="120x120" />
 	<link rel="canonical" href="https://yuanshen.site/index_jp.html" />
@@ -589,9 +590,9 @@
 	<script type="module">
 		import { Prompt } from './js/ui/index.js';
 		; ((doc, win) => {
-			const isDevelopmentMode = doc.domain !== "yuanshen.site";
+			window.isDevelopmentMode = doc.domain !== "yuanshen.site";
+			window.defenseVersion = '1.0.5(beta)';
 			console.log('isDevelopmentMode: ', isDevelopmentMode);
-			window.defenseVersion = '1.0.4(beta)';
 			const updateLog =
 				[
 					{
@@ -610,7 +611,7 @@
 						text: "誤訳を修正する",
 					},
 					{
-						type: '优化',
+						type: '改进',
 						date: '2020.4.9',
 						text: 'SEO'
 					},
@@ -619,18 +620,23 @@
 						date: "2020.4.10",
 						text: 'ポップアップスクロールのバグを修正'
 					},
+					{
+						type: '增加',
+						date: '2020.4.13',
+						text: '自動ジャンプページを追加します'
+					}
 				];
 			let p1 = new Prompt({
 				title: "原神地図",
 				textAlign: 'center',
-				lastEditTime: "2020.4.10",
+				lastEditTime: "2020.4.13",
 				version: win.defenseVersion,
 				about: "中国の「空荧酒馆チーム」プロデュース<br/>",
 				content: updateLog
 			});
 			isDevelopmentMode && console.log("P1: ", p1);
 			// 只有版本与localStorage不同时弹出
-			if (localStorage.getItem("defenseVersion") !== window.defenseVersion || isDevelopmentMode) {
+			if (localStorage.getItem("defenseVersion") !== window.defenseVersion || isDevelopmentMode) {			
 				p1.show();
 				localStorage.setItem("defenseVersion", window.defenseVersion);
 			}

@@ -1,0 +1,220 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap");
+:root {
+  --ThemeBackgroundColor: #fff;
+  --ThemeFontColor: rgba(0, 0, 0, .7);
+  --themeLoadingBackgroundColor: #F5F5F5;
+  --ThemeLoadingProspectColor: #666666;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--ThemeBackgroundColor);
+  overflow: hidden;
+}
+
+.wrapper main {
+  max-width: 1920px;
+  width: 76%;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.wrapper main .loading-img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 500px;
+  height: 62.5px;
+  -webkit-transform: translate(-50%, -50%) scale(0.8);
+          transform: translate(-50%, -50%) scale(0.8);
+  overflow: hidden;
+}
+
+.wrapper main .loading-img img {
+  position: absolute;
+  left: 0;
+  top: 500px;
+  -webkit-filter: drop-shadow(0 -500px 0 var(--themeLoadingBackgroundColor));
+          filter: drop-shadow(0 -500px 0 var(--themeLoadingBackgroundColor));
+}
+
+.wrapper main .loading-img::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 500px;
+  -webkit-filter: drop-shadow(0 -500px 0 var(--ThemeLoadingProspectColor));
+          filter: drop-shadow(0 -500px 0 var(--ThemeLoadingProspectColor));
+  width: 500px;
+  height: 62.5px;
+  background: url("../../imgs/loading-bar.png") no-repeat left 100%;
+  background-size: 500px 62.5px;
+  background-position-x: 0;
+}
+
+.wrapper main .loading-text {
+  display: none;
+}
+
+@media screen and (max-width: 680px) {
+  .wrapper main .loading-img {
+    display: none;
+  }
+  .wrapper main .loading-text {
+    display: inline-block;
+    position: absolute;
+    width: 150px;
+    height: auto;
+    left: 50%;
+    top: 50%;
+    text-align: center;
+    -webkit-transform: translate(-50%, -50%) scale(1.2);
+            transform: translate(-50%, -50%) scale(1.2);
+  }
+  .wrapper main .loading-text .rotate {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    margin: 0 50px;
+    padding: 0;
+    background-color: transparent;
+    -webkit-transform: scale(1.2);
+            transform: scale(1.2);
+  }
+  .wrapper main .loading-text .item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-animation: rotating 4s linear infinite;
+            animation: rotating 4s linear infinite;
+  }
+  .wrapper main .loading-text .item::after {
+    content: '';
+    display: block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: #d6d5d5;
+  }
+  .wrapper main .loading-text .item:nth-child(1) {
+    -webkit-animation-delay: 0.15s;
+            animation-delay: 0.15s;
+  }
+  .wrapper main .loading-text .item:nth-child(2) {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+  }
+  .wrapper main .loading-text .item:nth-child(3) {
+    -webkit-animation-delay: 0.45s;
+            animation-delay: 0.45s;
+  }
+  .wrapper main .loading-text .item:nth-child(4) {
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+  }
+  .wrapper main .loading-text .item:nth-child(5) {
+    -webkit-animation-delay: 0.75s;
+            animation-delay: 0.75s;
+  }
+  .wrapper main .loading-text h2 {
+    display: inline-block;
+    margin-top: 80px;
+    font-size: 1.26rem;
+    font-family: 'Roboto', sans-serif;
+    color: var(--ThemeFontColor);
+  }
+}
+
+@-webkit-keyframes rotating {
+  75% {
+    -webkit-transform: rotate(600deg);
+            transform: rotate(600deg);
+  }
+  79% {
+    -webkit-transform: rotate(720deg);
+            transform: rotate(720deg);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: rotate(720deg);
+            transform: rotate(720deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotate(810deg);
+            transform: rotate(810deg);
+    opacity: 0;
+  }
+}
+
+@keyframes rotating {
+  75% {
+    -webkit-transform: rotate(600deg);
+            transform: rotate(600deg);
+  }
+  79% {
+    -webkit-transform: rotate(720deg);
+            transform: rotate(720deg);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: rotate(720deg);
+            transform: rotate(720deg);
+    opacity: 0;
+  }
+  100% {
+    -webkit-transform: rotate(810deg);
+            transform: rotate(810deg);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes loading-bar {
+  0% {
+    width: 0px;
+    background-size: 500px 62.5px;
+  }
+  16.6% {
+  }
+  33.2% {
+  }
+  49.8% {
+  }
+  66.4% {
+  }
+  83% {
+  }
+  100% {
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    width: 0px;
+    background-size: 500px 62.5px;
+  }
+  16.6% {
+  }
+  33.2% {
+  }
+  49.8% {
+  }
+  66.4% {
+  }
+  83% {
+  }
+  100% {
+  }
+}
+/*# sourceMappingURL=loading.css.map */

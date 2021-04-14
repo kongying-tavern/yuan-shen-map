@@ -1,0 +1,169 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap');
+
+$loading-img-height: 62.5px;
+$loading-img-width: 500px;
+$text-loading-animation-delay: .15s;
+$text-loading-animation-item-size: 5px;
+$text-loading-animation-rotate-size: 50px;
+
+:root {
+  --ThemeBackgroundColor: #fff;
+  --ThemeFontColor: rgba(0, 0, 0, .7);
+  --themeLoadingBackgroundColor: #F5F5F5;
+  --ThemeLoadingProspectColor: #666666;
+}
+@mixin img-color($color,$top: 500px) {
+  position: absolute;
+  left: 0;
+  top: $top;
+  filter: drop-shadow(0 #{-$top} 0 $color);
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--ThemeBackgroundColor);
+  overflow: hidden;
+
+  main {
+    max-width: 1920px;
+    width: 76%;
+    height: 100vh;
+    margin: 0 auto;
+
+    .loading-img {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: $loading-img-width;
+      height: $loading-img-height;
+      transform: translate(-50%, -50%) scale(.8);
+      overflow: hidden;
+
+      img {
+        @include img-color(var(--themeLoadingBackgroundColor));
+      }
+
+      &::after {
+        content: '';
+        @include img-color(var(--ThemeLoadingProspectColor));
+        width: $loading-img-width;
+        height: $loading-img-height;
+        background: url('../../imgs/loading-bar.png')no-repeat left 100%;
+        background-size: $loading-img-width $loading-img-height;
+        background-position-x: 0;
+        //animation: loading-bar 3s forwards;
+      }
+    }
+
+    .loading-text {
+      display: none;
+    }
+
+    @media screen and (max-width: 680px) {
+      .loading-img {
+        display: none;
+      }
+
+      .loading-text {
+        display: inline-block;
+        position: absolute;
+        width: 150px;
+        height: auto;
+        left: 50%;
+        top: 50%;
+        text-align: center;
+        transform: translate(-50%, -50%) scale(1.2);
+
+        .rotate {
+          position: relative;
+          width: $text-loading-animation-rotate-size;
+          height: $text-loading-animation-rotate-size;
+          margin: 0 $text-loading-animation-rotate-size;
+          padding: 0;
+          background-color: transparent;
+          transform: scale(1.2);
+        }
+
+        .item {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: flex-end;
+          animation: rotating 4s linear infinite;
+        }
+
+        .item::after {
+          content: '';
+          display: block;
+          width: $text-loading-animation-item-size;
+          height: $text-loading-animation-item-size;
+          border-radius: 50%;
+          background-color: rgb(214, 213, 213);
+        }
+
+        @for $i from 1 through 5 {
+          .item:nth-child(#{$i}) {
+            animation-delay: $text-loading-animation-delay*$i;
+          }
+        }
+
+        h2 {
+          display: inline-block;
+          margin-top: 80px;
+          font-size: 1.26rem;
+          font-family: 'Roboto', sans-serif;
+          color: var(--ThemeFontColor);
+        }
+      }
+    }
+
+  }
+}
+
+@keyframes rotating {
+  75% {
+    transform: rotate(600deg);
+  }
+
+  79% {
+    transform: rotate(720deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: rotate(720deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: rotate(810deg);
+    opacity: 0;
+  }
+}
+
+@keyframes loading-bar {
+  0% {
+    width: 0px;
+    background-size: $loading-img-width $loading-img-height;
+  }
+
+  16.6% {
+    //以此类推,默认匀速运动
+  }
+
+  33.2% {}
+
+  49.8% {}
+
+  66.4% {}
+
+  83% {}
+
+  100% {}
+}
+
