@@ -30,7 +30,9 @@
 
   </script>
   <script src="./js/localeCode.js"></script> -->
+
   <head>
+
   <body>
     <noscript>
       <p>(:</p>
@@ -66,20 +68,22 @@
         const searchParams = new URLSearchParams(myURL.search);
         const options = {
           theme: searchParams.get('theme') || 'default', // 主题 => default / dark
-          delay: searchParams.get('delay') || false,     // 动画时间(ms)
+          delay: searchParams.get('delay') || false, // 动画时间(ms)
           total_delay: searchParams.get('total_delay') || '3000', // 总延迟时间(ms)
           count: searchParams.get('count') || '1', // 动画次数
           bg: searchParams.get('bg') || '#fff', // 背景颜色
         };
         console.group('URL-Parameter');
-        console.log("%cTheme\t\t:" + options.theme + '\n' + 'Delay\t\t:' + options.delay + '\n' + 'Total_delay\t:' + options.total_delay + '\n' + "Count\t\t:" + options.count + '\n' + 'bg\t\t\t:' +
+        console.log("%cTheme\t\t:" + options.theme + '\n' + 'Delay\t\t:' + options.delay + '\n' + 'Total_delay\t:' +
+          options.total_delay + '\n' + "Count\t\t:" + options.count + '\n' + 'bg\t\t\t:' +
           options.bg + '\nReplaceHref\t:' + options.href, `font-size: 14px;`);
         console.groupEnd('URL-Parameter');
         // 计算动画速度
         const delay = options.delay ? options.delay / 1000 : (options.total_delay / 1000) / options.count;
         // 写入样式
         const style = document.createElement("style");
-        style.innerHTML = `.loading-img::after{animation: loading-bar ${Number.parseInt(delay)}s ${options.count} forwards ;}`;
+        style.innerHTML =
+          `.loading-img::after{animation: loading-bar ${Number.parseInt(delay)}s ${options.count} forwards ;}`;
         document.head.appendChild(style);
         // 设置背景颜色
         document.querySelector('.wrapper').style.backgroundColor = options.bg;
@@ -96,33 +100,34 @@
         }, options.total_delay);
 
         function autoLanguageReplace() {
-          const language = localStorage.getItem("locale") || window.navigator.language || "en";
+          let language = localStorage.getItem("locale") || window.navigator.language || "en";
           console.log('language: ', language);
           localStorage.setItem("locale", language);
           let result = '';
+          language = language.toLowerCase();
           switch (language) {
-            case 'zh-CN': // 中国大陆
-            case 'zh-TW': // 中国台湾
-            case 'zh-HK': // 中国香港
-            case 'zh-SG': // 新加坡
-            case 'zh':    // 中文
+            case 'zh-cn': // 中国大陆
+            case 'zh-tw': // 中国台湾
+            case 'zh-hk': // 中国香港
+            case 'zh-sg': // 新加坡
+            case 'zh': // 中文
               result = `/index.html?locale=${language}`;
               break;
-            case 'ja':    // 日语
-            case 'ja-JP': // 日本
+            case 'ja': // 日语
+            case 'ja-jp': // 日本
               result = `/index_jp.html?locale=${language}`;
               break;
-            case 'en':    // 英语
-            case 'en-US': // 美国
-            case 'en-AU': // 澳大利亚
-            case 'en-NZ': // 新西兰
-            case 'en-ZA': // 南非
-            case 'en-TT': // 特立尼达
-            case 'en-GB': // 英国
-            case 'en-CA': // 加拿大
-            case 'en-IE': // 爱尔兰
-            case 'en-JM': // 牙买加
-            case 'en-BZ': // 伯利兹
+            case 'en': // 英语
+            case 'en-us': // 美国
+            case 'en-au': // 澳大利亚
+            case 'en-nz': // 新西兰
+            case 'en-za': // 南非
+            case 'en-tt': // 特立尼达
+            case 'en-gb': // 英国
+            case 'en-ca': // 加拿大
+            case 'en-ie': // 爱尔兰
+            case 'en-jm': // 牙买加
+            case 'en-bz': // 伯利兹
               result = `/index_en.html?locale=${language}`;
               break;
             default:
@@ -131,7 +136,6 @@
           window.location.replace('https://yuanshen.site' + result);
         }
       })();
-
     </script>
   </body>
 
