@@ -371,7 +371,7 @@
         }
         window.addEventListener("message", function (event) {
             if (event.data.message == "refreshGistList") {
-                $(".currentUserName").html("クラウドアーカイブが選択されていません");
+                $(".currentUserName").html("選択していない");
                 $(".saveUpdate").unbind(); //取消上传按钮事件绑定
                 $(".saveUpdate").click(function () {
                     window.parent.addGistFile();

@@ -95,7 +95,7 @@ function getToken() {
 function Login() {
   confirmSync = true;
   isFirstLogin = true;
-  if (window.location.search !== undefined && window.location.search.split('=')[0] !== "?locale") {
+  if (window.location.search !== undefined && window.location.search!="" && window.location.search.split('=')[0] !== "?locale") {
     let tempTokenPara = GetQueryString("access_token");
     setCookie("gitee_Token", tempTokenPara, 1);
     //return window.location.href = "https://yuanshen.site/Beta/index.html";
