@@ -112,6 +112,19 @@ body,
     /* right: 0px; */
     right: -1000px;
 }
+/* 反馈样式 */
+.fankui {
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 220px;
+    background: url(../imgs/con_img/fankui.png) no-repeat center top;
+    background-size: contain;
+    width: 170px;
+    height: 64px;
+    z-index: 400;
+    cursor: pointer;
+}
 
 /* 单机下载样式 */
 .danjixiazai {
@@ -123,7 +136,7 @@ body,
     background-size: contain;
     width: 170px;
     height: 64px;
-    z-index: 999;
+    z-index: 400;
     cursor: pointer;
 }
 
@@ -179,7 +192,7 @@ body,
 
 .control-containor {
     position: fixed;
-    z-index: 400;
+    z-index: 999;
     top: 0;
     right: -415px;
     width: 431px;
@@ -426,6 +439,8 @@ body,
     bottom: 0;
     width: auto;
     height: auto;
+    padding: 0 5px;
+    background: rgba(255, 255, 255, 0.7)
 }
 
 .disclaimer {
@@ -433,9 +448,7 @@ body,
     left: 0;
     bottom: 0;
     color: #0078A8;
-    font-size: 12px;
-    padding: 1px 5px;
-    background: rgba(255, 255, 255, 0.7)
+    font-size: 11px;
 }
 
 .disclaimer:hover {
@@ -457,7 +470,7 @@ body,
     float: left;
     bottom: 0;
     color: #0078A8;
-    font-size: 12px;
+    font-size: 11px;
     padding: 1px 5px;
     background: rgba(255, 255, 255, 0.7)
 }
@@ -867,7 +880,7 @@ body,
 }
 .enindex-btn
 {
-    z-index: 9999;
+    z-index: 400;
     position: absolute;
     display: block;
     left: 57px;
@@ -877,7 +890,7 @@ body,
 }
 .jpindex-btn
 {
-    z-index: 9999;
+    z-index: 400;
     position: absolute;
     display: block;
     left: 57px;
@@ -887,7 +900,7 @@ body,
 }
 @media screen and (max-width: 400px) {
     .enindex-btn {
-        z-index: 9999;
+        z-index: 400;
         position: absolute;
         display: block;
         left: 35px;
@@ -897,7 +910,7 @@ body,
         font-size: 12px;
     }
     .jpindex-btn {
-        z-index: 9999;
+        z-index: 400;
         position: absolute;
         display: block;
         left: 35px;
