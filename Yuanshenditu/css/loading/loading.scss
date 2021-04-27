@@ -32,7 +32,6 @@ $text-loading-animation-rotate-size: 50px;
     width: 76%;
     height: 100vh;
     margin: 0 auto;
-
     .loading-img {
       position: absolute;
       left: 50%;
@@ -62,7 +61,7 @@ $text-loading-animation-rotate-size: 50px;
       display: none;
     }
 
-    @media screen and (max-width: 680px) {
+    @media screen and (max-width: 1024px) {
       .loading-img {
         display: none;
       }
