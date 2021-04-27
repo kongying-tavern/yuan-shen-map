@@ -1,14 +1,14 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-04-13 6:21 PM
+ * @LastEditTime : 2021-04-27 10:27 PM
 -->
 
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="zh-cmn" dir="ltr" style="font-size: 100px;">
 
 <head>
   <meta charset="UTF-8">
-  <title>Loading - Genshin Map</title>
+  <title>原神地图</title>
   <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
   <meta name="renderer" content="webkit" />
@@ -21,32 +21,101 @@
   <meta name="google" value="notranslate">
   <meta name="keywords" content="原神地図,Choose-country-region,Genshin,Genshin Impact Map" />
   <meta name="description" content="Choose-country-region - Genshin Map" />
+  <!-- Open Graph -->
+  <meta property="fb:app_id" content="3340670332825887" />
+  <meta property="og:url" content="https://yuanshen.site/" />
+  <meta property="og:title" content="原神地图" />
+  <meta property="og:site_name" content="Genshin Impact Map" />
+  <meta property="og:description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+  <meta property="og:locale" content="zn-ch" />
+  <meta name="twitter:widgets:csp" content="on">
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@yuanshen_site" />
+  <meta name="twitter:image:src" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+  <meta name="twitter:creator" content="@yuanshen_site" />
+  <meta property="twitter:url" content="https://yuanshen.site/" />
+  <meta property="twitter:type" content="website" />
+  <meta property="twitter:title" content="原神地图" />
+  <meta property="twitter:description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
+  <meta property="twitter:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+  <meta property="url" content="https://yuanshen.site/" />
+  <meta property="type" content="website" />
+  <meta property="title" content="原神地图" />
+  <meta property="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
+  <meta property="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+  <meta itemprop="name" content="原神地图" />
+  <meta itemprop="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
+  <meta itemprop="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+  <!-- Open Graph -->
+  <link rel="canonical" href="https://yuanshen.site/" />
   <link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
   <link rel="apple-touch-icon" href="https://yuanshen.site/favicon.ico" sizes="120x120" />
   <link rel="stylesheet" href="./css/global.min.css">
   <link rel="stylesheet" href="./css/loading/loading.css">
-  <!-- <script>
-    window.localeCode = {};
+  <!-- 开发环境依赖 -->
+  <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+  <script src="https://unpkg.com/vue-i18n@9.1.6/dist/vue-i18n.global.js"></script>
+  <!-- 生产环境依赖 -->
+  <!-- <script src="./js/vue-3.0.11.global.prod.js"></script>
+  <script src="./js/vue-i18n-9.1.6.global.prod.js"></script> -->
+  <script>
+    /**
+     * @description: 移动端REM布局适配
+     */
+    (function (win, doc) {
+      if (!win.addEventListener) return;
+      const html = document.documentElement;
+
+      function setFont() {
+        const html = document.documentElement;
+        /** 
+         * @description: 设计稿宽度
+         * @type {number} k 
+         */
+        const k = 640;
+        html.style.fontSize = html.clientWidth / k * 100 + "px";
+      }
+      setFont();
+      setTimeout(function () {
+        setFont();
+      }, 300);
+      doc.addEventListener('DOMContentLoaded', setFont, false);
+      win.addEventListener('resize', setFont, false);
+      win.addEventListener('load', setFont, false);
+    })(window, document);
 
   </script>
-  <script src="./js/localeCode.js"></script> -->
+  <script>
+    window.locale = {};
+  </script>
+  <script src="/Yuanshenditu/js/locale.js"></script>
+
   <head>
-  <body>
+
+    <!--[if IE]>
+    <center style="font-size: 22px;">
+      Sorry we have stopped supporting IE browser<br />
+      Please change your browser<br />
+      New browser download <a href="https://www.microsoft.com/edge">https://www.microsoft.com/edge</a>
+    </center> 
+  <![endif]-->
+
+  <body data-theme="light">
     <noscript>
       <p>(:</p>
       <p>We're sorry but</p>
       <p>This page requires JavaScript to work properly</p>
-      <p>You can click on the link below to jump</p>
-      <p>༼ つ ◕_◕ ༽つ<a href="https://yuanshen.site/" title="yuanshen.site">https://yuanshen.site/</a></p>
     </noscript>
-    <div class="wrapper">
-      <main>
+    <div class="wrapper" id="app">
+      <div class="loading" style="display:none;">
         <!-- 默认加载动画 -->
-        <div class="loading-img">
+        <div class="loading-default">
           <img src="./imgs/loading-bar.png" alt="Loading...">
         </div>
         <!-- 移动端加载动画 -->
-        <div class="loading-text">
+        <div class="loading-mobile">
           <ul class="rotate">
             <li class="item"></li>
             <li class="item"></li>
@@ -56,79 +125,104 @@
           </ul>
           <h2>Loading...</h2>
         </div>
-      </main>
+        <!-- Loading 提示 -->
+        <p class="loading-tips">
+          正为您重定向到
+          「
+          <span class='replace-link'>
+            <!-- 处为自动重定向的link, 运行时动态渲染 -->
+            index.html
+          </span>
+          」
+          <br>
+          你可以
+          <a href="#" title="点击取消自动重定向并手动选择">手动选择</a>
+        </p>
+      </div>
+      <header>
+        <div class="header-container cover">
+          <nav class="topnav">
+            <div class="topnav-container">
+              <h1 class="logo">
+                <a href="#">Genshin Impact Map</a>
+              </h1>
+              <ul class="topnav-list">
+                <li class="topnav-list-item">
+                  <a href="#" class="link arrow" title="Choose your language">Language</a>
+                  <ul class="nav-dropdown">
+                    <!-- 此处为语言选项,运行时动态渲染 -->
+                  </ul>
+                </li>
+                <li class="topnav-list-item">
+                  <a href="https://support.qq.com/products/321980" class="link" title="Question feedback and help">Feedback</a>
+                </li>
+              </ul>
+          </nav>
+        </div>
     </div>
-    <script>
-      'use strict';
+    </header>
+    <main>
+      <div class="main-container cover">
+        <nav>
+          <h2>Choose Your Country or Region</h2>
+        </nav>
+        <!-- 此处为国家和地区列表, 运行时动态渲染 -->
+      </div>
+    </main>
+    <footer>
+      <div class="footer-container cover">
+        <div class="annotation">
+          <!-- 此处为页脚注释, 运行时动态渲染 -->
+        </div>
+        <nav>
+          <ul>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+            <li><a href=""></a></li>
+          </ul>
+        </nav>
+      </div>
+    </footer>
+    </div>
+    <script type="module">
+      import { ResourceReloading } from "./js/module.js";
+      new ResourceReloading('data/preload.json').init();
+      ;
       (() => {
-        // 解析URL参数
-        const myURL = new URL(location.href);
-        const searchParams = new URLSearchParams(myURL.search);
-        const options = {
-          theme: searchParams.get('theme') || 'default', // 主题 => default / dark
-          delay: searchParams.get('delay') || false,     // 动画时间(ms)
-          total_delay: searchParams.get('total_delay') || '3000', // 总延迟时间(ms)
-          count: searchParams.get('count') || '1', // 动画次数
-          bg: searchParams.get('bg') || '#fff', // 背景颜色
+        const CONFIG = {
+          theme: {
+            themeList: [
+              "dark", "light" // 主题列表
+            ],
+            defaultTheme: "light", // 默认主题
+            autoTheme: true, // 自动切换主题
+          },
+          resourceReloadingData: 'data/preload.json', // 资源预加载的数据url
+          maxOverTime: 10000, // 最大延迟(ms)
+          loadingBarContainer: '.loading-default', // loading 挂载容器的选择器
+          defaultLanguage: 'en', // 默认语言
+          host: 'yuanshen.site' // 重定向的host
         };
-        console.group('URL-Parameter');
-        console.log("%cTheme\t\t:" + options.theme + '\n' + 'Delay\t\t:' + options.delay + '\n' + 'Total_delay\t:' + options.total_delay + '\n' + "Count\t\t:" + options.count + '\n' + 'bg\t\t\t:' +
-          options.bg + '\nReplaceHref\t:' + options.href, `font-size: 14px;`);
-        console.groupEnd('URL-Parameter');
-        // 计算动画速度
-        const delay = options.delay ? options.delay / 1000 : (options.total_delay / 1000) / options.count;
-        // 写入样式
-        const style = document.createElement("style");
-        style.innerHTML = `.loading-img::after{animation: loading-bar ${Number.parseInt(delay)}s ${options.count} forwards ;}`;
-        document.head.appendChild(style);
-        // 设置背景颜色
-        document.querySelector('.wrapper').style.backgroundColor = options.bg;
-        // 动态更改颜色主题
-        if (options.theme === 'dark') {
-          document.body.style.setProperty('--ThemeBackgroundColor', '#1C1B21');
-          document.body.style.setProperty('--ThemeFontColor', 'rgba(255,255,255,.7)');
-          document.body.style.setProperty('--themeLoadingBackgroundColor', 'rgba(100,100,100,1)');
-          document.body.style.setProperty('--ThemeLoadingProspectColor', '#fff');
-        }
-        // 到总延迟时间会开始判断语言并且跳转
-        setTimeout(() => {
-          autoLanguageReplace();
-        }, options.total_delay);
 
-        function autoLanguageReplace() {
-          const language = localStorage.getItem("locale") || window.navigator.language || "en";
-          console.log('language: ', language);
-          localStorage.setItem("locale", language);
-          let result = '';
-          switch (language) {
-            case 'zh-CN': // 中国大陆
-            case 'zh-TW': // 中国台湾
-            case 'zh-HK': // 中国香港
-            case 'zh-SG': // 新加坡
-            case 'zh':    // 中文
-              result = `/?locale=${language}`;
-              break;
-            case 'ja':    // 日语
-            case 'ja-JP': // 日本
-              result = `/index_jp.html?locale=${language}`;
-              break;
-            case 'en':    // 英语
-            case 'en-US': // 美国
-            case 'en-AU': // 澳大利亚
-            case 'en-NZ': // 新西兰
-            case 'en-ZA': // 南非
-            case 'en-TT': // 特立尼达
-            case 'en-GB': // 英国
-            case 'en-CA': // 加拿大
-            case 'en-IE': // 爱尔兰
-            case 'en-JM': // 牙买加
-            case 'en-BZ': // 伯利兹
-              result = `/index_en.html?locale=${language}`;
-              break;
-            default:
-              result = `/index_en.html?locale=${language}`;
-          }
-          window.location.replace('https://yuanshen.site' + result);
+        const i18n = VueI18n.createI18n({
+          locale: 'ja', // set locale
+          fallbackLocale: 'en', // set fallback locale
+          //  messages, // set locale messages
+          // If you need to specify other options, you can set other options
+          // ...
+        })
+        const app = Vue.createApp({});
+        app.use(i18n);
+        const vm = app.mount('#app');
+        function log() {
+          console.group(
+            '%c原神地图%c自动跳转页',
+            'background:#35495e; padding: 2px 4px; border-radius: 3px 0 0 3px; color: #fff;font-family: sans-serif;',
+            'background:#41b883 ; padding: 2px 4px; border-radius: 0 3px 3px 0;  color: #fff; font-family: sans-serif;'
+          );
+          console.groupEnd('%c原神地图%c自动跳转页');
+          console.log('%c📝\u0020问题反馈: https://support.qq.com/products/321980', 'font-size:13px;');
+          console.log('%c😉\u0020加入我们: https://yuanshen.site/disclaimer.html', 'font-size:13px;')
         }
       })();
 
