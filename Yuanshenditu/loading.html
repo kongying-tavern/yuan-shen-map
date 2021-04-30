@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-04-30 2:50 PM
+ * @LastEditTime : 2021-04-30 7:12 PM
 -->
 
 <!DOCTYPE html>
@@ -223,7 +223,7 @@
             }
             this.DynamicTheme = new DynamicTheme(globalConfig.theme.themeList);
             if (globalConfig.theme.autoTheme) this.DynamicTheme.autoTheme();
-            log([{ pageVersion: "1.1.0", vueVersion: "3.0.11", author: "(*^_^*)", lastEditTime: "2021-4-29" }]);
+            utils.log([{ pageVersion: "1.1.0", vueVersion: "3.0.11", author: "(*^_^*)", lastEditTime: "2021-4-29" }]);
           },
           mounted() {
             this.$nextTick(function () {
@@ -277,32 +277,6 @@
         })
         app.use(i18n)
         app.mount(globalConfig.VueContainer);
-
-        /**
-         * @description: 输出漂亮自动对齐的log
-         * @param {array<object>} [array]
-         * @return {void}
-         */
-        function log(array = []) {
-          const style = 'font-size:13px;';
-          console.group(
-            '%c原神地图%c自动跳转页',
-            'background:#35495e; padding: 2px 4px; border-radius: 3px 0 0 3px; color: #fff;font-family: sans-serif;',
-            'background:#41b883 ; padding: 2px 4px; border-radius: 0 3px 3px 0;  color: #fff; font-family: sans-serif;'
-          );
-
-          array.forEach((val) => {
-            for (const prop in val) {
-              if (val.hasOwnProperty(prop)) {
-                console.log(`%c${prop}${'\u0020'.repeat(18 - prop.length)}: %c${val[prop]}`,
-                  "font-size:13px;", "font-size:13px;color: #45B744;");
-              }
-            }
-          });
-          console.groupEnd('原神地图自动跳转页');
-          console.log('%c📝\u0020问题反馈: https://support.qq.com/products/321980', style);
-          console.log('%c😉\u0020加入我们: https://yuanshen.site/disclaimer.html', style);
-        }
       })();
     </script>
   </body>
