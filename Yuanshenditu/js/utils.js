@@ -1,6 +1,6 @@
 /*
  * @Author       : ( * ^ _ ^ * )
- * @LastEditTime : 2021-04-27 10:15 PM
+ * @LastEditTime : 2021-04-30 1:54 PM
  * @Description  : 工具函数封装
  */
 
@@ -85,32 +85,32 @@ const unique = (arr) => Array.from(new Set(arr));
  */
 const request = (url, config) =>
   fetch(url, config)
-    .then((response) => {
-      const {
-        status,
-        statusText
-      } = response;
-      if (status >= 200 && status < 300) return response.json();
-      return Promise.reject({
-        code: "STATUS ERROR",
-        status,
-        statusText,
-      });
-    })
-    .catch((reason) => {
-      if (reason && reason.code === "STATUS ERROR") {
-        window.alert(
-          `😅Sorry Fetch data acquisition error\nErrorCode: ${reason.status}\nErrorText: ${reason.statusText}`
-        );
-      }
-
-      if (!navigator.onLine) {
-        window.alert("😅Network connection failed\nPlease check your network ~");
-      }
-
-      return Promise.reject(reason);
+  .then((response) => {
+    const {
+      status,
+      statusText
+    } = response;
+    if (status >= 200 && status < 300) return response.json();
+    return Promise.reject({
+      code: "STATUS ERROR",
+      status,
+      statusText,
     });
-    
+  })
+  .catch((reason) => {
+    if (reason && reason.code === "STATUS ERROR") {
+      window.alert(
+        `😅Sorry Fetch data acquisition error\nErrorCode: ${reason.status}\nErrorText: ${reason.statusText}`
+      );
+    }
+
+    if (!navigator.onLine) {
+      window.alert("😅Network connection failed\nPlease check your network ~");
+    }
+
+    return Promise.reject(reason);
+  });
+
 /**
  * @description: 通过柯里化函数创建类型判断函数
  * @param {object} obj 类型判断函数的挂载对象
@@ -181,6 +181,8 @@ function throttle(callback, wait) {
  * @return {Promise}
  */
 function delay(interval) {
+  // @ts-ignore
+  // @ts-ignore
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(interval);
@@ -265,15 +267,16 @@ function getCanonicalLocales(...localeCode) {
   } catch (err) {
     console.error("Error Locales:", err);
   }
-  
-  return localeCode.map(val => CanonicalLocales(val));
-  
+
+  return localeCode.map((val) => CanonicalLocales(val));
+
   /**
    * @description: 如果不支持上面的API就自己转
    * @param {string} str
    * @return {string}
-   */  
+   */
   function CanonicalLocales(str) {
+    if (str === "" || typeof str === "undefined") throw new TypeError("str cannot be empty");
     let result = str.toLowerCase();
     let i = str.indexOf("-");
     if (i + 1 === result.length) return result.substring(0, result.length - 1);
@@ -281,6 +284,59 @@ function getCanonicalLocales(...localeCode) {
     return result;
   }
 }
+
+/**
+ * @description: 判断是否为IE浏览器
+ * @return {boolean}
+ */
+function isIE() {
+  if (!!window.ActiveXObject || "ActiveXObject" in window) return true;
+  return false;
+}
+
+/**
+ * @description: onload
+ * @param {function} callback
+ * @return {void}
+ */
+function onload(callback) {
+  // @ts-ignore
+  document.readyState === "complete" ? callback() : window.addEventListener("load", callback);
+}
+
+/**
+ * @description: 先凑和用
+ * @param {object} data
+ * @param {string} defaultLanguage
+ * @return {object} 返回一个link和localeCode
+ */
+function getSupperLocale(data, defaultLanguage) {
+  let userLocale = getUserLanguage(defaultLanguage);
+  for (let i = 0; i < data.length; i++) {
+    if (data[i].node) {
+      for (let x = 0; x < data[i].node.length; x++) {
+        if (data[i].node[x].code === userLocale) return {
+          code: data[i].node[x].code,
+          link: data[i].node[x].link
+        }
+      }
+      for (let x = 0; x < data[i].code.length; x++) {
+        if (data[i].code[x] === userLocale) return {
+          code: data[i].code,
+          link: data[i].link
+        };
+      }
+    } else {
+      for (let x = 0; x < data[i].code.length; x++) {
+        if (data[i].code[x] === userLocale) return {
+          code: data[i].code,
+          link: data[i].link
+        };
+      }
+    }
+  }
+}
+
 
 export {
   getUserLanguage,
@@ -296,5 +352,8 @@ export {
   concurrentRequest,
   arrayFrom,
   setPseudoStyle,
-  getCanonicalLocales
+  getCanonicalLocales,
+  isIE,
+  onload,
+  getSupperLocale,
 };

@@ -1,669 +1,686 @@
 {
-  "data": {
-    "share": [
-      {
-        "platform": "qq",
-        "link": "https://qq.com"
-      }
-    ],
-    "locale": {
-      "default": {
-        "code": "en",
-        "link": "index_en.html"
-      },
-      "support": [
-        {
-          "type": "中文",
-          "code": [
-            "zh-cn",
-            "zh-tw",
-            "zh-hk",
-            "zh-sg"
-          ],
-          "link": "index.html",
-          "node": [
-            {
-              "code": "zh-tw",
-              "link": "index_zh_tw.html"
-            }
-          ]
-        },
-        {
-          "type": "日语",
-          "code": [
-            "ja",
-            "ja-jp"
-          ],
-          "link": "index_jp.html"
-        },
-        {
-          "type": "英语",
-          "code": [
-            "en",
-            "en-us",
-            "en-au",
-            "en-nz",
-            "en-za",
-            "en-tt",
-            "en-gb",
-            "en-ca",
-            "en-ie",
-            "en-jm",
-            "en-bz"
-          ],
-          "link": "index_en.html"
-        }
-      ],
-      "message": {
-        "en": {},
-        "zh": {},
-        "ja": {}
-      }
+  "locale": {
+    "default": {
+      "code": "en",
+      "link": "index_en.html"
     },
-    "country-region": [
+    "support": [
       {
-        "type": "Africa, Middle East, and India",
-        "map": [
+        "name": "中文",
+        "code": [
+          "zh-CN",
+          "zh-TW",
+          "zh-HK",
+          "zh-SG",
+          "zh-MO",
+          "zh"
+        ],
+        "link": "index.html",
+        "node": [
           {
-            "name": "Bahrain",
-            "code": "en-BH"
-          },
-          {
-            "name": "البحرين",
-            "code": "ar-BH"
-          },
-          {
-            "name": "Botswana",
-            "code": "en-BW"
-          },
-          {
-            "name": "Cameroun",
-            "code": "fr-CM"
-          },
-          {
-            "name": "République Centrafricaine",
-            "code": "fr-CF"
-          },
-          {
-            "name": "Côte d'Ivoire",
-            "code": "fr-CI"
-          },
-          {
-            "name": "Egypt",
-            "code": "en-EG"
-          },
-          {
-            "name": "مصر",
-            "code": "ar-EG"
-          },
-          {
-            "name": "Guinea-Bissau",
-            "code": "en-GW"
-          },
-          {
-            "name": "Guinée",
-            "code": "fr-GN"
-          },
-          {
-            "name": "Guinée Equatoriale",
-            "code": "fr-GQ"
-          },
-          {
-            "name": "India",
-            "code": "en-IN"
-          },
-          {
-            "name": "Israel",
-            "code": "en-IL"
-          },
-          {
-            "name": "Jordan",
-            "code": "en-JO"
-          },
-          {
-            "name": "الأردن",
-            "code": "ar-JO"
-          },
-          {
-            "name": "Kenya",
-            "code": "en-KE"
-          },
-          {
-            "name": "Kuwait",
-            "code": "en-KW"
-          },
-          {
-            "name": "الكويت",
-            "code": "ar-KW"
-          },
-          {
-            "name": "Madagascar",
-            "code": "en-MG"
-          },
-          {
-            "name": "Mali",
-            "code": "fr-ML"
-          },
-          {
-            "name": "Maroc",
-            "code": "fr-MA"
-          },
-          {
-            "name": "Maurice",
-            "code": "fr-MU"
-          },
-          {
-            "name": "Mozambique",
-            "code": "en-MZ"
-          },
-          {
-            "name": "Niger",
-            "code": "fr-NE"
-          },
-          {
-            "name": "Nigeria",
-            "code": "en-NG"
-          },
-          {
-            "name": "Oman",
-            "code": "en-OM"
-          },
-          {
-            "name": "عُمان",
-            "code": "ar-OM"
-          },
-          {
-            "name": "Qatar",
-            "code": "en-QA"
-          },
-          {
-            "name": "قطر",
-            "code": "ar-QA"
-          },
-          {
-            "name": "Saudi Arabia",
-            "code": "en-SA"
-          },
-          {
-            "name": "المملكة العربية السعودية",
-            "code": "ar-SA"
-          },
-          {
-            "name": "Sénégal",
-            "code": "fr-SN"
-          },
-          {
-            "name": "South Africa",
-            "code": "en-ZA"
-          },
-          {
-            "name": "Tunisie",
-            "code": "fr-TN"
-          },
-          {
-            "name": "Uganda",
-            "code": "en-UG"
-          },
-          {
-            "name": "United Arab Emirates",
-            "code": "en-AE"
-          },
-          {
-            "name": "الإمارات العربية المتحدة",
-            "code": "ar-AE"
+            "code": "zh-CN",
+            "link": "index.html"
           }
         ]
       },
       {
-        "type": "Asia Pacific",
-        "map": [
-          {
-            "name": "Australia",
-            "code": "en-AU"
-          },
-          {
-            "name": "中国大陆",
-            "code": "zh-CN"
-          },
-          {
-            "name": "Hong Kong",
-            "code": "en-HK"
-          },
-          {
-            "name": "中国香港",
-            "code": "zh-HK"
-          },
-          {
-            "name": "Indonesia",
-            "code": "en-ID"
-          },
-          {
-            "name": "日本",
-            "code": "ja-JP"
-          },
-          {
-            "name": "대한민국",
-            "code": "ko-KR"
-          },
-          {
-            "name": "中国澳門",
-            "code": "zh-MO"
-          },
-          {
-            "name": "Malaysia",
-            "code": "en-MY"
-          },
-          {
-            "name": "New Zealand",
-            "code": "en-NZ"
-          },
-          {
-            "name": "Philippines",
-            "code": "en-PH"
-          },
-          {
-            "name": "Singapore",
-            "code": "en-SG"
-          },
-          {
-            "name": "中国台灣",
-            "code": "zh-TW"
-          },
-          {
-            "name": "ไทย",
-            "code": "th-TH"
-          },
-          {
-            "name": "Vietnam",
-            "code": "en-VN"
-          }
-        ]
+        "name": "日本語",
+        "code": [
+          "ja",
+          "ja-JP"
+        ],
+        "link": "index_jp.html"
       },
       {
-        "type": "Europe",
-        "map": [
-          {
-            "name": "Armenia",
-            "code": "en-AM"
-          },
-          {
-            "name": "Azerbaijan",
-            "code": "en-AZ"
-          },
-          {
-            "name": "Belarus",
-            "code": "en-BY"
-          },
-          {
-            "name": "België",
-            "code": "nl-BE"
-          },
-          {
-            "name": "Belgique",
-            "code": "fr-BE"
-          },
-          {
-            "name": "България",
-            "code": "bg-BG"
-          },
-          {
-            "name": "Česko",
-            "code": "cs-CZ"
-          },
-          {
-            "name": "Danmark",
-            "code": "da-DK"
-          },
-          {
-            "name": "Deutschland",
-            "code": "de-DE"
-          },
-          {
-            "name": "Eesti",
-            "code": "et-EE"
-          },
-          {
-            "name": "España",
-            "code": "es-ES"
-          },
-          {
-            "name": "France",
-            "code": "fr-FR"
-          },
-          {
-            "name": "Georgia",
-            "code": "en-GE"
-          },
-          {
-            "name": "Ελλάδα",
-            "code": "el-GR"
-          },
-          {
-            "name": "Hrvatska",
-            "code": "hr-HR"
-          },
-          {
-            "name": "Ireland",
-            "code": "en-IE"
-          },
-          {
-            "name": "Italia",
-            "code": "it-IT"
-          },
-          {
-            "name": "Kazakhstan",
-            "code": "en-KZ"
-          },
-          {
-            "name": "Kyrgyzstan",
-            "code": "en-KG"
-          },
-          {
-            "name": "Latvija",
-            "code": "lv-LV"
-          },
-          {
-            "name": "Liechtenstein",
-            "code": "de-LI"
-          },
-          {
-            "name": "Lietuva",
-            "code": "lt-LT"
-          },
-          {
-            "name": "Luxembourg",
-            "code": "fr-LU"
-          },
-          {
-            "name": "Magyarország",
-            "code": "hu-HU"
-          },
-          {
-            "name": "Malta",
-            "code": "en-MT"
-          },
-          {
-            "name": "Moldova",
-            "code": "en-MD"
-          },
-          {
-            "name": "Montenegro",
-            "code": "en-ME"
-          },
-          {
-            "name": "Nederland",
-            "code": "nl-NL"
-          },
-          {
-            "name": "North Macedonia",
-            "code": "en-MK"
-          },
-          {
-            "name": "Norge",
-            "code": "no-NO"
-          },
-          {
-            "name": "Österreich",
-            "code": "de-AT"
-          },
-          {
-            "name": "Polska",
-            "code": "pl-PL"
-          },
-          {
-            "name": "Portugal",
-            "code": "pt-PT"
-          },
-          {
-            "name": "România",
-            "code": "ro-RO"
-          },
-          {
-            "name": "Россия",
-            "code": "ru-RU"
-          },
-          {
-            "name": "Slovensko",
-            "code": "sk-SK"
-          },
-          {
-            "name": "Slovenia",
-            "code": "en-SI"
-          },
-          {
-            "name": "Schweiz",
-            "code": "de-CH"
-          },
-          {
-            "name": "Suisse",
-            "code": "fr-CH"
-          },
-          {
-            "name": "Suomi",
-            "code": "fi-FI"
-          },
-          {
-            "name": "Sverige",
-            "code": "sv-SE"
-          },
-          {
-            "name": "Tajikistan",
-            "code": "en-TJ"
-          },
-          {
-            "name": "Türkiye",
-            "code": "tr-TR"
-          },
-          {
-            "name": "Turkmenistan",
-            "code": "en-TM"
-          },
-          {
-            "name": "United Kingdom",
-            "code": "en-GB"
-          },
-          {
-            "name": "Україна",
-            "code": "uk-UA"
-          },
-          {
-            "name": "Uzbekistan",
-            "code": "en-UZ"
-          }
-        ]
-      },
-      {
-        "type": "Latin America and the Caribbean",
-        "map": [
-          {
-            "name": "Anguilla",
-            "code": "en-AI"
-          },
-          {
-            "name": "Antigua & Barbuda",
-            "code": "en-AG"
-          },
-          {
-            "name": "Argentina",
-            "code": "es-AR"
-          },
-          {
-            "name": "Barbados",
-            "code": "en-BB"
-          },
-          {
-            "name": "Belize",
-            "code": "en-BZ"
-          },
-          {
-            "name": "Bermuda",
-            "code": "en-BM"
-          },
-          {
-            "name": "Bolivia",
-            "code": "es-BO"
-          },
-          {
-            "name": "Brasil",
-            "code": "pt-BR"
-          },
-          {
-            "name": "British Virgin Islands",
-            "code": "en-VG"
-          },
-          {
-            "name": "Cayman Islands",
-            "code": "en-KY"
-          },
-          {
-            "name": "Chile",
-            "code": "es-CL"
-          },
-          {
-            "name": "Colombia",
-            "code": "es-CO"
-          },
-          {
-            "name": "Costa Rica",
-            "code": "es-CR"
-          },
-          {
-            "name": "Dominica",
-            "code": "en-DM"
-          },
-          {
-            "name": "República Dominicana",
-            "code": "es-DO"
-          },
-          {
-            "name": "Ecuador",
-            "code": "es-EC"
-          },
-          {
-            "name": "El Salvador",
-            "code": "es-SV"
-          },
-          {
-            "name": "Grenada",
-            "code": "en-GD"
-          },
-          {
-            "name": "Guatemala",
-            "code": "es-GT"
-          },
-          {
-            "name": "Guyana",
-            "code": "en-GY"
-          },
-          {
-            "name": "Honduras",
-            "code": "es-HN"
-          },
-          {
-            "name": "Jamaica",
-            "code": "en-JM"
-          },
-          {
-            "name": "México",
-            "code": "es-MX"
-          },
-          {
-            "name": "Montserrat",
-            "code": "en-MS"
-          },
-          {
-            "name": "Nicaragua",
-            "code": "es-NI"
-          },
-          {
-            "name": "Panamá",
-            "code": "es-PA"
-          },
-          {
-            "name": "Paraguay",
-            "code": "es-PY"
-          },
-          {
-            "name": "Perú",
-            "code": "es-PE"
-          },
-          {
-            "name": "St. Kitts & Nevis",
-            "code": "en-KN"
-          },
-          {
-            "name": "St. Lucia",
-            "code": "en-LC"
-          },
-          {
-            "name": "St. Vincent & The Grenadines",
-            "code": "en-VC"
-          },
-          {
-            "name": "Suriname",
-            "code": "en-SR"
-          },
-          {
-            "name": "The Bahamas",
-            "code": "en-BS"
-          },
-          {
-            "name": "Trinidad & Tobago",
-            "code": "en-TT"
-          },
-          {
-            "name": "Turks & Caicos",
-            "code": "en-TC"
-          },
-          {
-            "name": "Uruguay",
-            "code": "es-UY"
-          },
-          {
-            "name": "Venezuela",
-            "code": "es-VE"
-          },
-          {
-            "name": "América Latina y el Caribe (Español)",
-            "code": "es-419"
-          },
-          {
-            "name": "Latin America and the Caribbean (English)",
-            "code": "en-419"
-          }
-        ]
-      },
-      {
-        "type": "The United States, Canada, and Puerto Rico",
-        "map": [
-          {
-            "name": "Canada (English)",
-            "code": "en-CA"
-          },
-          {
-            "name": "Canada (Français)",
-            "code": "fr-CA"
-          },
-          {
-            "name": "Puerto Rico (English)",
-            "code": "en-PR"
-          },
-          {
-            "name": "Puerto Rico (Español)",
-            "code": "es-PR"
-          },
-          {
-            "name": "United States",
-            "code": "en-US"
-          }
-        ]
+        "name": "English",
+        "code": [
+          "en",
+          "en-US",
+          "en-AU",
+          "en-NZ",
+          "en-ZA",
+          "en-TT",
+          "en-GB",
+          "en-CA",
+          "en-IE",
+          "en-JM",
+          "en-BZ",
+          "en-PR",
+          "en-419"
+        ],
+        "link": "index_en.html"
       }
     ],
-    "annotation": [
-      {
-        "index": "1",
-        "message": "The data on this page is collected manually. If there are errors or missing, please feedback in time.\nDoes not represent any political position"
+    "message": {
+      "en": {
+        "name": "English",
+        "message": {
+          "title": "Genshin Map",
+          "loading": "Loading",
+          "tips": {
+            "first": "Is redirecting you to",
+            "second": "You Can",
+            "third": "Manual selection"
+          },
+          "language": "language",
+          "feedback": "Feedback",
+          "cycor": "Choose Your Country or Regione"
+        }
+      },
+      "zh": {
+        "name": "中文",
+        "message": {
+          "title": "原神地图",
+          "loading": "加载中",
+          "tips": {
+            "first": "正在重定向到",
+            "second": "你可以",
+            "third": "手动选择"
+          },
+          "language": "语言",
+          "feedback": "反馈",
+          "cycor": "选择您的国家或者地区"
+        }
       }
-    ]
-  }
+    }
+  },
+  "countryRegion": [
+    {
+      "type": "Africa, Middle East, and India",
+      "map": [
+        {
+          "name": "Bahrain",
+          "code": "en-BH"
+        },
+        {
+          "name": "البحرين",
+          "code": "ar-BH"
+        },
+        {
+          "name": "Botswana",
+          "code": "en-BW"
+        },
+        {
+          "name": "Cameroun",
+          "code": "fr-CM"
+        },
+        {
+          "name": "République Centrafricaine",
+          "code": "fr-CF"
+        },
+        {
+          "name": "Côte d'Ivoire",
+          "code": "fr-CI"
+        },
+        {
+          "name": "Egypt",
+          "code": "en-EG"
+        },
+        {
+          "name": "مصر",
+          "code": "ar-EG"
+        },
+        {
+          "name": "Guinea-Bissau",
+          "code": "en-GW"
+        },
+        {
+          "name": "Guinée",
+          "code": "fr-GN"
+        },
+        {
+          "name": "Guinée Equatoriale",
+          "code": "fr-GQ"
+        },
+        {
+          "name": "India",
+          "code": "en-IN"
+        },
+        {
+          "name": "Israel",
+          "code": "en-IL"
+        },
+        {
+          "name": "Jordan",
+          "code": "en-JO"
+        },
+        {
+          "name": "الأردن",
+          "code": "ar-JO"
+        },
+        {
+          "name": "Kenya",
+          "code": "en-KE"
+        },
+        {
+          "name": "Kuwait",
+          "code": "en-KW"
+        },
+        {
+          "name": "الكويت",
+          "code": "ar-KW"
+        },
+        {
+          "name": "Madagascar",
+          "code": "en-MG"
+        },
+        {
+          "name": "Mali",
+          "code": "fr-ML"
+        },
+        {
+          "name": "Maroc",
+          "code": "fr-MA"
+        },
+        {
+          "name": "Maurice",
+          "code": "fr-MU"
+        },
+        {
+          "name": "Mozambique",
+          "code": "en-MZ"
+        },
+        {
+          "name": "Niger",
+          "code": "fr-NE"
+        },
+        {
+          "name": "Nigeria",
+          "code": "en-NG"
+        },
+        {
+          "name": "Oman",
+          "code": "en-OM"
+        },
+        {
+          "name": "عُمان",
+          "code": "ar-OM"
+        },
+        {
+          "name": "Qatar",
+          "code": "en-QA"
+        },
+        {
+          "name": "قطر",
+          "code": "ar-QA"
+        },
+        {
+          "name": "Saudi Arabia",
+          "code": "en-SA"
+        },
+        {
+          "name": "المملكة العربية السعودية",
+          "code": "ar-SA"
+        },
+        {
+          "name": "Sénégal",
+          "code": "fr-SN"
+        },
+        {
+          "name": "South Africa",
+          "code": "en-ZA"
+        },
+        {
+          "name": "Tunisie",
+          "code": "fr-TN"
+        },
+        {
+          "name": "Uganda",
+          "code": "en-UG"
+        },
+        {
+          "name": "United Arab Emirates",
+          "code": "en-AE"
+        },
+        {
+          "name": "الإمارات العربية المتحدة",
+          "code": "ar-AE"
+        }
+      ]
+    },
+    {
+      "type": "Asia Pacific",
+      "map": [
+        {
+          "name": "Australia",
+          "code": "en-AU"
+        },
+        {
+          "name": "中国大陆",
+          "code": "zh-CN"
+        },
+        {
+          "name": "Hong Kong",
+          "code": "en-HK"
+        },
+        {
+          "name": "中国香港",
+          "code": "zh-HK"
+        },
+        {
+          "name": "Indonesia",
+          "code": "en-ID"
+        },
+        {
+          "name": "日本",
+          "code": "ja-JP"
+        },
+        {
+          "name": "대한민국",
+          "code": "ko-KR"
+        },
+        {
+          "name": "中国澳門",
+          "code": "zh-MO"
+        },
+        {
+          "name": "Malaysia",
+          "code": "en-MY"
+        },
+        {
+          "name": "New Zealand",
+          "code": "en-NZ"
+        },
+        {
+          "name": "Philippines",
+          "code": "en-PH"
+        },
+        {
+          "name": "Singapore",
+          "code": "en-SG"
+        },
+        {
+          "name": "中国台灣",
+          "code": "zh-TW"
+        },
+        {
+          "name": "ไทย",
+          "code": "th-TH"
+        },
+        {
+          "name": "Vietnam",
+          "code": "en-VN"
+        }
+      ]
+    },
+    {
+      "type": "Europe",
+      "map": [
+        {
+          "name": "Armenia",
+          "code": "en-AM"
+        },
+        {
+          "name": "Azerbaijan",
+          "code": "en-AZ"
+        },
+        {
+          "name": "Belarus",
+          "code": "en-BY"
+        },
+        {
+          "name": "België",
+          "code": "nl-BE"
+        },
+        {
+          "name": "Belgique",
+          "code": "fr-BE"
+        },
+        {
+          "name": "България",
+          "code": "bg-BG"
+        },
+        {
+          "name": "Česko",
+          "code": "cs-CZ"
+        },
+        {
+          "name": "Danmark",
+          "code": "da-DK"
+        },
+        {
+          "name": "Deutschland",
+          "code": "de-DE"
+        },
+        {
+          "name": "Eesti",
+          "code": "et-EE"
+        },
+        {
+          "name": "España",
+          "code": "es-ES"
+        },
+        {
+          "name": "France",
+          "code": "fr-FR"
+        },
+        {
+          "name": "Georgia",
+          "code": "en-GE"
+        },
+        {
+          "name": "Ελλάδα",
+          "code": "el-GR"
+        },
+        {
+          "name": "Hrvatska",
+          "code": "hr-HR"
+        },
+        {
+          "name": "Ireland",
+          "code": "en-IE"
+        },
+        {
+          "name": "Italia",
+          "code": "it-IT"
+        },
+        {
+          "name": "Kazakhstan",
+          "code": "en-KZ"
+        },
+        {
+          "name": "Kyrgyzstan",
+          "code": "en-KG"
+        },
+        {
+          "name": "Latvija",
+          "code": "lv-LV"
+        },
+        {
+          "name": "Liechtenstein",
+          "code": "de-LI"
+        },
+        {
+          "name": "Lietuva",
+          "code": "lt-LT"
+        },
+        {
+          "name": "Luxembourg",
+          "code": "fr-LU"
+        },
+        {
+          "name": "Magyarország",
+          "code": "hu-HU"
+        },
+        {
+          "name": "Malta",
+          "code": "en-MT"
+        },
+        {
+          "name": "Moldova",
+          "code": "en-MD"
+        },
+        {
+          "name": "Montenegro",
+          "code": "en-ME"
+        },
+        {
+          "name": "Nederland",
+          "code": "nl-NL"
+        },
+        {
+          "name": "North Macedonia",
+          "code": "en-MK"
+        },
+        {
+          "name": "Norge",
+          "code": "no-NO"
+        },
+        {
+          "name": "Österreich",
+          "code": "de-AT"
+        },
+        {
+          "name": "Polska",
+          "code": "pl-PL"
+        },
+        {
+          "name": "Portugal",
+          "code": "pt-PT"
+        },
+        {
+          "name": "România",
+          "code": "ro-RO"
+        },
+        {
+          "name": "Россия",
+          "code": "ru-RU"
+        },
+        {
+          "name": "Slovensko",
+          "code": "sk-SK"
+        },
+        {
+          "name": "Slovenia",
+          "code": "en-SI"
+        },
+        {
+          "name": "Schweiz",
+          "code": "de-CH"
+        },
+        {
+          "name": "Suisse",
+          "code": "fr-CH"
+        },
+        {
+          "name": "Suomi",
+          "code": "fi-FI"
+        },
+        {
+          "name": "Sverige",
+          "code": "sv-SE"
+        },
+        {
+          "name": "Tajikistan",
+          "code": "en-TJ"
+        },
+        {
+          "name": "Türkiye",
+          "code": "tr-TR"
+        },
+        {
+          "name": "Turkmenistan",
+          "code": "en-TM"
+        },
+        {
+          "name": "United Kingdom",
+          "code": "en-GB"
+        },
+        {
+          "name": "Україна",
+          "code": "uk-UA"
+        },
+        {
+          "name": "Uzbekistan",
+          "code": "en-UZ"
+        }
+      ]
+    },
+    {
+      "type": "Latin America and the Caribbean",
+      "map": [
+        {
+          "name": "Anguilla",
+          "code": "en-AI"
+        },
+        {
+          "name": "Antigua & Barbuda",
+          "code": "en-AG"
+        },
+        {
+          "name": "Argentina",
+          "code": "es-AR"
+        },
+        {
+          "name": "Barbados",
+          "code": "en-BB"
+        },
+        {
+          "name": "Belize",
+          "code": "en-BZ"
+        },
+        {
+          "name": "Bermuda",
+          "code": "en-BM"
+        },
+        {
+          "name": "Bolivia",
+          "code": "es-BO"
+        },
+        {
+          "name": "Brasil",
+          "code": "pt-BR"
+        },
+        {
+          "name": "British Virgin Islands",
+          "code": "en-VG"
+        },
+        {
+          "name": "Cayman Islands",
+          "code": "en-KY"
+        },
+        {
+          "name": "Chile",
+          "code": "es-CL"
+        },
+        {
+          "name": "Colombia",
+          "code": "es-CO"
+        },
+        {
+          "name": "Costa Rica",
+          "code": "es-CR"
+        },
+        {
+          "name": "Dominica",
+          "code": "en-DM"
+        },
+        {
+          "name": "República Dominicana",
+          "code": "es-DO"
+        },
+        {
+          "name": "Ecuador",
+          "code": "es-EC"
+        },
+        {
+          "name": "El Salvador",
+          "code": "es-SV"
+        },
+        {
+          "name": "Grenada",
+          "code": "en-GD"
+        },
+        {
+          "name": "Guatemala",
+          "code": "es-GT"
+        },
+        {
+          "name": "Guyana",
+          "code": "en-GY"
+        },
+        {
+          "name": "Honduras",
+          "code": "es-HN"
+        },
+        {
+          "name": "Jamaica",
+          "code": "en-JM"
+        },
+        {
+          "name": "México",
+          "code": "es-MX"
+        },
+        {
+          "name": "Montserrat",
+          "code": "en-MS"
+        },
+        {
+          "name": "Nicaragua",
+          "code": "es-NI"
+        },
+        {
+          "name": "Panamá",
+          "code": "es-PA"
+        },
+        {
+          "name": "Paraguay",
+          "code": "es-PY"
+        },
+        {
+          "name": "Perú",
+          "code": "es-PE"
+        },
+        {
+          "name": "St. Kitts & Nevis",
+          "code": "en-KN"
+        },
+        {
+          "name": "St. Lucia",
+          "code": "en-LC"
+        },
+        {
+          "name": "St. Vincent & The Grenadines",
+          "code": "en-VC"
+        },
+        {
+          "name": "Suriname",
+          "code": "en-SR"
+        },
+        {
+          "name": "The Bahamas",
+          "code": "en-BS"
+        },
+        {
+          "name": "Trinidad & Tobago",
+          "code": "en-TT"
+        },
+        {
+          "name": "Turks & Caicos",
+          "code": "en-TC"
+        },
+        {
+          "name": "Uruguay",
+          "code": "es-UY"
+        },
+        {
+          "name": "Venezuela",
+          "code": "es-VE"
+        },
+        {
+          "name": "América Latina y el Caribe (Español)",
+          "code": "es-419"
+        },
+        {
+          "name": "Latin America and the Caribbean (English)",
+          "code": "en-419"
+        }
+      ]
+    },
+    {
+      "type": "The United States, Canada, and Puerto Rico",
+      "map": [
+        {
+          "name": "Canada (English)",
+          "code": "en-CA"
+        },
+        {
+          "name": "Canada (Français)",
+          "code": "fr-CA"
+        },
+        {
+          "name": "Puerto Rico (English)",
+          "code": "en-PR"
+        },
+        {
+          "name": "Puerto Rico (Español)",
+          "code": "es-PR"
+        },
+        {
+          "name": "United States",
+          "code": "en-US"
+        }
+      ]
+    }
+  ]
 }

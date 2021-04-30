@@ -1,14 +1,14 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-04-27 10:27 PM
+ * @LastEditTime : 2021-04-30 1:46 PM
 -->
 
 <!DOCTYPE html>
-<html lang="zh-cmn" dir="ltr" style="font-size: 100px;">
+<html lang="zh-cmn" dir="ltr">
 
 <head>
   <meta charset="UTF-8">
-  <title>原神地图</title>
+  <title></title>
   <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
   <meta name="renderer" content="webkit" />
@@ -55,52 +55,30 @@
   <link rel="stylesheet" href="./css/global.min.css">
   <link rel="stylesheet" href="./css/loading/loading.css">
   <!-- 开发环境依赖 -->
-  <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
-  <script src="https://unpkg.com/vue-i18n@9.1.6/dist/vue-i18n.global.js"></script>
+  <!-- <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+  <script src="https://unpkg.com/vue-i18n@9.1.6/dist/vue-i18n.global.js"></script> -->
   <!-- 生产环境依赖 -->
-  <!-- <script src="./js/vue-3.0.11.global.prod.js"></script>
-  <script src="./js/vue-i18n-9.1.6.global.prod.js"></script> -->
+  <script src="./js/vue-3.0.11.global.prod.js"></script>
+  <script src="./js/vue-i18n-9.1.6.global.prod.js"></script>
   <script>
-    /**
-     * @description: 移动端REM布局适配
-     */
-    (function (win, doc) {
-      if (!win.addEventListener) return;
-      const html = document.documentElement;
-
-      function setFont() {
-        const html = document.documentElement;
-        /** 
-         * @description: 设计稿宽度
-         * @type {number} k 
-         */
-        const k = 640;
-        html.style.fontSize = html.clientWidth / k * 100 + "px";
-      }
-      setFont();
-      setTimeout(function () {
-        setFont();
-      }, 300);
-      doc.addEventListener('DOMContentLoaded', setFont, false);
-      win.addEventListener('resize', setFont, false);
-      win.addEventListener('load', setFont, false);
-    })(window, document);
+    // 该页面的全局配置
+    const globalConfig = {
+      theme: {
+        themeList: ["dark", "light"], // 主题列表
+        defaultTheme: "light", // 默认主题
+        autoTheme: true, // 自动切换主题 (即白天light 晚上dark
+      },
+      resourceReloadingData: 'data/preload.json', // 资源预加载的数据url
+      otherData: 'data/loading.json', // 其他数据的url
+      maxOverTime: 2500, // 最大延迟[ms] ( 即强制自动重定向的时间, 默认为资源预加载完成后
+      loadingBarContainer: '.loading-default', // loadingBar 挂载容器的选择器
+      VueContainer: '#app', // vue 挂载容器的选择器
+      defaultLanguage: 'en', // 如果用户浏览器主语言不在支持范围内, 回退的语言代码
+    };
 
   </script>
-  <script>
-    window.locale = {};
-  </script>
-  <script src="/Yuanshenditu/js/locale.js"></script>
 
   <head>
-
-    <!--[if IE]>
-    <center style="font-size: 22px;">
-      Sorry we have stopped supporting IE browser<br />
-      Please change your browser<br />
-      New browser download <a href="https://www.microsoft.com/edge">https://www.microsoft.com/edge</a>
-    </center> 
-  <![endif]-->
 
   <body data-theme="light">
     <noscript>
@@ -109,7 +87,7 @@
       <p>This page requires JavaScript to work properly</p>
     </noscript>
     <div class="wrapper" id="app">
-      <div class="loading" style="display:none;">
+      <div class="loading" v-show="showLoading">
         <!-- 默认加载动画 -->
         <div class="loading-default">
           <img src="./imgs/loading-bar.png" alt="Loading...">
@@ -123,109 +101,209 @@
             <li class="item"></li>
             <li class="item"></li>
           </ul>
-          <h2>Loading...</h2>
+          <h2>{{ $t("message.loading") }} ...</h2>
         </div>
         <!-- Loading 提示 -->
-        <p class="loading-tips">
-          正为您重定向到
-          「
-          <span class='replace-link'>
-            <!-- 处为自动重定向的link, 运行时动态渲染 -->
-            index.html
-          </span>
-          」
-          <br>
-          你可以
-          <a href="#" title="点击取消自动重定向并手动选择">手动选择</a>
-        </p>
+        <transition name="slide-fade">
+          <p class="loading-tips">
+            {{ $t("message.tips.first") }}
+            「
+            <span class='replace-link'>
+              {{ replaceLink }}
+            </span>
+            」
+            <br>
+            {{ $t("message.tips.second") }}
+            <a href="#" @click="showLoading=false">{{ $t("message.tips.third") }}</a>
+          </p>
+        </transition>
       </div>
       <header>
         <div class="header-container cover">
+          <input type="checkbox" id="checkbox-menustate">
           <nav class="topnav">
             <div class="topnav-container">
+              <!-- 移动端侧边栏按钮Icon -->
+              <label for="checkbox-menustate" class="menuicon-top" aria-hidden="true">
+                <span class="line-first"></span>
+                <span class="line-second"></span>
+                <span class="line-third"></span>
+              </label>
+              <a href="#checkbox-menustate" role="button" class="menuanchor-open">Open Menu</a>
+              <a href="#" role="button" class="menuanchor-close">Close Menu</a>
               <h1 class="logo">
-                <a href="#">Genshin Impact Map</a>
+                <a href="#">{{ $t("message.title") }}</a>
               </h1>
               <ul class="topnav-list">
                 <li class="topnav-list-item">
-                  <a href="#" class="link arrow" title="Choose your language">Language</a>
-                  <ul class="nav-dropdown">
-                    <!-- 此处为语言选项,运行时动态渲染 -->
+                  <a href="#" class="link arrow">{{ $t("message.language") }}</a>
+                  <ul class=nav-dropdown" @click="selectLanguage">
+                    <li v-for="(lang, i) in langs" :key="`langs${i}`">
+                      <a :href="`?lang=${lang.code}`" :lang="lang.code" v-html="lang.name"></a>
+                    </li>
                   </ul>
                 </li>
                 <li class="topnav-list-item">
-                  <a href="https://support.qq.com/products/321980" class="link" title="Question feedback and help">Feedback</a>
+                  <a href="https://support.qq.com/products/321980" class="link">
+                    {{$t("message.feedback")}}
+                  </a>
                 </li>
               </ul>
           </nav>
         </div>
-    </div>
-    </header>
-    <main>
-      <div class="main-container cover">
+      </header>
+      <main>
         <nav>
-          <h2>Choose Your Country or Region</h2>
+          <div class="content">
+            <h2>
+              <a href="#">{{$t("message.cycor")}}</a>
+            </h2>
+          </div>
         </nav>
-        <!-- 此处为国家和地区列表, 运行时动态渲染 -->
-      </div>
-    </main>
-    <footer>
-      <div class="footer-container cover">
-        <div class="annotation">
-          <!-- 此处为页脚注释, 运行时动态渲染 -->
+        <div class="main-container cover">
+          <div class="section-container">
+            <div v-for="(locale, i) in countryRegion" :key="`locale${i}`" class="section-content">
+              <h2 class="category-title"> {{locale.type}} </h2>
+              <ul class="category-sections" @click="selectLocation">
+                <li class="category-item" v-for="(map, x) in locale.map">
+                  <a :href="`#${map.code}`" :class="map.code">
+                    <span v-html="map.name" :lang="map.code"></span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <nav>
-          <ul>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-            <li><a href=""></a></li>
-          </ul>
-        </nav>
-      </div>
-    </footer>
+      </main>
+      <!-- <footer>
+        <div class="footer-container cover">
+          <div class="annotation">
+          
+          </div>
+          <nav>
+            <ul>
+              <li><a href=""></a></li>
+              <li><a href=""></a></li>
+              <li><a href=""></a></li>
+            </ul>
+          </nav>
+        </div>
+      </footer> -->
     </div>
     <script type="module">
-      import { ResourceReloading } from "./js/module.js";
-      new ResourceReloading('data/preload.json').init();
-      ;
-      (() => {
-        const CONFIG = {
-          theme: {
-            themeList: [
-              "dark", "light" // 主题列表
-            ],
-            defaultTheme: "light", // 默认主题
-            autoTheme: true, // 自动切换主题
-          },
-          resourceReloadingData: 'data/preload.json', // 资源预加载的数据url
-          maxOverTime: 10000, // 最大延迟(ms)
-          loadingBarContainer: '.loading-default', // loading 挂载容器的选择器
-          defaultLanguage: 'en', // 默认语言
-          host: 'yuanshen.site' // 重定向的host
-        };
-
+      import { ResourceReloading, LoadingBar, DynamicTheme } from "./js/module.js";
+      import * as utils from "./js/utils.js";
+      /**
+       * @todo 
+       *  refactor
+       */
+      (async () => {
+        const { countryRegion, locale } = await utils.request(globalConfig.otherData).catch(err => console.log(err));
+        const localeData = utils.getSupperLocale(locale.support, globalConfig.defaultLanguage);
+        console.log('localeData: ', localeData);
         const i18n = VueI18n.createI18n({
-          locale: 'ja', // set locale
-          fallbackLocale: 'en', // set fallback locale
-          //  messages, // set locale messages
-          // If you need to specify other options, you can set other options
-          // ...
+          locale: new URLSearchParams(new URL(location.href).search).get("lang") || localeData.code,     // set locale
+          fallbackLocale: globalConfig.defaultLanguage,                                                  // set fallback locale
+          messages: locale.message,                                                                      // set locale messages
+        });
+        const app = Vue.createApp({
+          data() {
+            return {
+              replaceLink: localeData.link,
+              showLoading: true,
+              countryRegion: countryRegion
+            }
+          },
+          created() {
+            this.langs = []; // 支持显示的语言列表
+            for (const prop in locale.message) {
+              if (locale.message.hasOwnProperty(prop)) {
+                this.langs.push({ code: prop, name: locale.message[prop].name })
+              }
+            }
+            this.DynamicTheme = new DynamicTheme(globalConfig.theme.themeList);
+            if (globalConfig.theme.autoTheme) this.DynamicTheme.autoTheme();
+            log([{ pageVersion: "1.1.0", vueVersion: "3.0.11", author: "(*^_^*)", lastEditTime: "2021-4-29" }]);
+          },
+          mounted() {
+            this.$nextTick(function () {
+              this.LoadingBar = new LoadingBar(".loading-default", 3000);
+              this.LoadingBar.start();
+              let timer = setTimeout(() => replace(), globalConfig.maxOverTime);
+              new ResourceReloading("data/preload.json").init().then(() => setTimeout(() => replace(), 2500));
+              const replace = () => {
+                if (this.showLoading) {
+                  this.LoadingBar.finish();
+                  setTimeout(() => document.location.replace(`https://yuanshen.site/${this.replaceLink}`, 500));
+                }
+              }
+            })
+          },
+          methods: {
+            selectLanguage(e) {
+              const lang = e.target.lang;
+              this.$i18n.locale = lang;
+              lang.includes("ar") ? document.documentElement.setAttribute('dir', "rtl") : document.documentElement.setAttribute('dir', "ltr");
+              document.documentElement.setAttribute('lang', lang);
+            },
+            selectLocation(e) {
+              const target = e.target;
+              let result = "";
+              if (target.tagName === "SPAN") {
+                locale.support.forEach((val) => {
+                  if (val.node) {
+                    for (let i = 0; i < val.node.length; i++) {
+                      if (val.node[i].code === target.lang) {
+                        console.log(val.node[i].link);
+                        result = val.node[i].link;
+                      }
+                    }
+                  }
+                  for (let i = 0; i < val.code.length; i++) {
+                    if (val.code[i] === target.lang) {
+                      result = val.link;
+                    }
+                  }
+                });
+                if (result) {
+                  document.location.replace(`https://yuanshen.site/${result}`);
+                } else {
+                  let state = window.confirm(`This area is not currently supported.\n You can go to https://yuanshen.site/index_${globalConfig.defaultLanguage}.html`);
+                  if (state) document.location.replace(`https://yuanshen.site/index_${globalConfig.defaultLanguage}.html`);
+                }
+              }
+            }
+          }
         })
-        const app = Vue.createApp({});
-        app.use(i18n);
-        const vm = app.mount('#app');
-        function log() {
+        app.use(i18n)
+        app.mount(globalConfig.VueContainer);
+
+        /**
+         * @description: 输出漂亮自动对齐的log
+         * @param {array<object>} [array]
+         * @return {void}
+         */
+        function log(array = []) {
+          const style = 'font-size:13px;';
           console.group(
             '%c原神地图%c自动跳转页',
             'background:#35495e; padding: 2px 4px; border-radius: 3px 0 0 3px; color: #fff;font-family: sans-serif;',
             'background:#41b883 ; padding: 2px 4px; border-radius: 0 3px 3px 0;  color: #fff; font-family: sans-serif;'
           );
-          console.groupEnd('%c原神地图%c自动跳转页');
-          console.log('%c📝\u0020问题反馈: https://support.qq.com/products/321980', 'font-size:13px;');
-          console.log('%c😉\u0020加入我们: https://yuanshen.site/disclaimer.html', 'font-size:13px;')
+
+          array.forEach((val) => {
+            for (const prop in val) {
+              if (val.hasOwnProperty(prop)) {
+                console.log(`%c${prop}${'\u0020'.repeat(18 - prop.length)}: %c${val[prop]}`,
+                  "font-size:13px;", "font-size:13px;color: #45B744;");
+              }
+            }
+          });
+          console.groupEnd('原神地图自动跳转页');
+          console.log('%c📝\u0020问题反馈: https://support.qq.com/products/321980', style);
+          console.log('%c😉\u0020加入我们: https://yuanshen.site/disclaimer.html', style);
         }
       })();
-
     </script>
   </body>
 

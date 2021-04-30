@@ -22,6 +22,10 @@ L.control
       "<a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank'>(Chinese hoyolab)Made By Kongying Tavern</a>",
   })
   .addTo(map);
+  L.control.attribution({
+	prefix: "<a href='disclaimer_jp.html' target='_bal'>免責事項</a>",
+	position: "bottomleft"
+}).addTo(map);
 // @ts-ignore
 L.control.zoom({
 	zoomInTitle: '+',

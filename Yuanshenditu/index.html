@@ -74,6 +74,7 @@
 	<div class="loading" style="display: none;"></div>
 	<div id='map'></div>
 	<div class="danjixiazai"></div>
+	<div class="fankui"></div>
 	<!-- 筛选器 -->
 	<div class="control-containor">
 		<img class="Background" src="imgs/con_img/Content.png">
@@ -471,12 +472,12 @@
 				<span class="Layer_SJ_LY map-opts" area="LY" itemtype="TX">
 					<div class="img-border"><img src="imgs/icon_114.png" class="map-opts-icon" alt="icon"></div>书籍-璃月
 				</span>
-				<!-- <span class="Layer_SJRW_MD map-opts" area="MD" itemtype="TX">
+				<span class="Layer_SJRW_MD map-opts" area="MD" itemtype="TX">
 					<div class="img-border"><img src="imgs/icon_115.png" class="map-opts-icon" alt="icon"></div>世界任务-蒙德
-				</span> -->
-				<!-- <span class="Layer_SJRW_LY map-opts" area="LY" itemtype="TX">
+				</span>
+				<span class="Layer_SJRW_LY map-opts" area="LY" itemtype="TX">
 					<div class="img-border"><img src="imgs/icon_116.png" class="map-opts-icon" alt="icon"></div>世界任务-璃月
-				</span> -->
+				</span>
 				<span class="Layer_SYWD_MD map-opts" area="MD" itemtype="TX">
 					<div class="img-border"><img src="imgs/icon_117.png" class="map-opts-icon" alt="icon"></div>圣遗物点-蒙德
 				</span>
@@ -554,9 +555,6 @@
 				</span>
 			</div>
 		</div>
-	</div>
-	<div class="bottom-rules">
-		<a href="disclaimer.html" target="_bal" class="disclaimer">免责声明/招募</a>
 	</div>
 	<div class="bottom-beian">
 		<a href="http://beian.miit.gov.cn" target="_bal" class="beian">蜀ICP备2020028219号-1</a>
@@ -771,6 +769,12 @@
 				window.location.href = 'main.html';
 			})
 
+			//反馈跳转
+			$(".fankui").click(function () {
+				window.event.returnValue = false;
+				window.open('https://support.qq.com/products/321980');
+			})
+
 			var statu = 1;
 			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
 				$(".bottom-beian").hide();
@@ -787,6 +791,17 @@
 				$(".danjixiazai").css("transform-origin", "0% 0% 0");
 				$(".danjixiazai").css("transform", "scale(0.5)");
 				$(".danjixiazai").css("left", "35px");
+				$(".fankui").css("transform-origin", "0% 0% 0");
+				$(".fankui").css("transform", "scale(0.5)");
+				$(".fankui").css("left", "120px");
+				$(".enindex-btn").css("transform-origin", "0% 0% 0");
+				$(".enindex-btn").css("transform", "scale(0.5)");
+				$(".enindex-btn").css("left", "35px");
+				$(".enindex-btn").css("top", "35px");
+				$(".jpindex-btn").css("transform-origin", "0% 0% 0");
+				$(".jpindex-btn").css("transform", "scale(0.5)");
+				$(".jpindex-btn").css("left", "35px");
+				$(".jpindex-btn").css("top", "45px");
 				$(".switch_FB").css("transform-origin", "0% 100% 0");
 				$(".switch_FB").css("transform", "scale(0.5)");
 				$(".switch_FB").css("left", "5px");

@@ -14,7 +14,12 @@ var map = L.map("map", {
 	zoomControl: false
 });
 L.control.attribution({
-	prefix: "<a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank'>使用说明/米游社空荧酒馆</a>"
+	prefix: "<a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank'>使用说明/米游社空荧酒馆</a>",
+	position: "bottomright"
+}).addTo(map);
+L.control.attribution({
+	prefix: "<a href='disclaimer.html' target='_bal'>免责声明/招募</a>",
+	position: "bottomleft"
 }).addTo(map);
 L.control.zoom({
 	zoomInTitle: '+',
