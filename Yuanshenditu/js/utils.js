@@ -1,6 +1,6 @@
 /*
  * @Author       : ( * ^ _ ^ * )
- * @LastEditTime : 2021-04-30 1:54 PM
+ * @LastEditTime : 2021-05-02 2:07 PM
  * @Description  : 工具函数封装
  */
 
@@ -338,6 +338,68 @@ function getSupperLocale(data, defaultLanguage) {
 }
 
 
+/**
+ * @description: 输出会自动对齐而且漂亮的log
+ * @param {string} title
+ * @param {string} description
+ * @param {Array<object>} data
+ * @return {void}
+ */
+function log(title, description, data) {
+  const myTitle = title || "原神地图";
+  const myDescription = description || "";
+  const myData = data || [];
+  const style = 'font-size:13px;';
+
+  console.group(
+    `%c${myTitle}${myDescription === ""?"":"%c"+myDescription}`,
+    'background:#35495e; padding: 2px 4px; border-radius: 3px 0 0 3px; color: #fff;font-family: sans-serif;',
+    'background:#41b883 ; padding: 2px 4px; border-radius: 0 3px 3px 0;  color: #fff; font-family: sans-serif;'
+  );
+
+  myData.forEach((val) => {
+    for (const prop in val) {
+      if (val.hasOwnProperty(prop)) {
+        console.log(
+          `%c${prop}${'\u0020'.repeat(18 - prop.length)}: %c${val[prop]}`,
+          "font-size:13px;", "font-size:13px;color: #45B744;"
+        );
+      }
+    }
+  });
+  console.groupEnd();
+  console.log('%c📝\u0020问题反馈: https://support.qq.com/products/321980', style);
+  console.log('%c😉\u0020了解更多: https://yuanshen.site/disclaimer.html', style);
+}
+
+/**
+ * @description: 设置url的参数(不刷新)
+ * @param {string} key
+ * @param {string} value
+ * @return {*}
+ */
+function setURL(key, value) {
+  let url = new URL(location.href);
+  let params = new URLSearchParams(url.search);
+  const oldKey = params.get(key);
+  let result = "";
+  if (oldKey === null || oldKey === "") {
+    if (url.search === "") {
+      if (url.hash !== "") {
+        result = location.href.replace(url.hash, "") + `${key}=${value}` + url.hash;
+      } else {
+        result = location.href + `/?${key}=${value}`;
+      }
+    }
+  } else {
+    result = location.href.replace(`${key}=${oldKey}`, `${key}=${value}`);
+  }
+
+  history.pushState({
+    url: result,
+    title: document.title
+  }, document.title, result);
+}
 export {
   getUserLanguage,
   currying,
@@ -356,4 +418,6 @@ export {
   isIE,
   onload,
   getSupperLocale,
+  log,
+  setURL
 };

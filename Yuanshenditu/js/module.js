@@ -1,6 +1,6 @@
 /*
  * @Author       : (*^_^*)
- * @LastEditTime : 2021-04-30 7:12 PM
+ * @LastEditTime : 2021-05-02 2:10 PM
  * @Description  : loading页的依赖模块封装
  */
 import * as utils from './utils.js';
@@ -24,7 +24,7 @@ class ResourceReloading {
     this.data = await this.getData(this.url);
     this.resourceLink = this.reader(this.data.data);
     this.bandEvent(this.container);
-    return Promise.resolve();
+    return Promise.resolve(this.succeed);
   }
 
   /** @private */
@@ -119,11 +119,12 @@ class LoadingBar {
  * @param {string} [defaultTheme='light']
  */
 class DynamicTheme {
-  constructor(themeList, defaultTheme = "light") {
+  constructor(themeList, defaultTheme = "light",isAutoTheme = true) {
     this.themeList = new Set(themeList);
     this.defaultTheme = defaultTheme;
     this.container = document.body;
-    this.Theme = this.defaultTheme;
+    if(isAutoTheme) this.autoTheme();
+    this.Theme = new URLSearchParams(new URL(location.href).search).get("theme") || this.autoTheme();
   }
   /**
    * @public
@@ -144,6 +145,7 @@ class DynamicTheme {
    * @param {string} value
    */
   set Theme(value) {
+    console.log(value);
     this.container.setAttribute("data-theme", value);
   }
 

@@ -4,53 +4,6 @@
       "code": "en",
       "link": "index_en.html"
     },
-    "support": [
-      {
-        "name": "中文",
-        "code": [
-          "zh-CN",
-          "zh-TW",
-          "zh-HK",
-          "zh-SG",
-          "zh-MO",
-          "zh"
-        ],
-        "link": "index.html",
-        "node": [
-          {
-            "code": "zh-CN",
-            "link": "index.html"
-          }
-        ]
-      },
-      {
-        "name": "日本語",
-        "code": [
-          "ja",
-          "ja-JP"
-        ],
-        "link": "index_jp.html"
-      },
-      {
-        "name": "English",
-        "code": [
-          "en",
-          "en-US",
-          "en-AU",
-          "en-NZ",
-          "en-ZA",
-          "en-TT",
-          "en-GB",
-          "en-CA",
-          "en-IE",
-          "en-JM",
-          "en-BZ",
-          "en-PR",
-          "en-419"
-        ],
-        "link": "index_en.html"
-      }
-    ],
     "message": {
       "en": {
         "name": "English",
@@ -655,7 +608,8 @@
     },
     {
       "type": "The United States, Canada, and Puerto Rico",
-      "map": [
+      "map": 
+      [
         {
           "name": "Canada (English)",
           "code": "en-CA"
