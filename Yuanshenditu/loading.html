@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-04-30 7:12 PM
+ * @LastEditTime : 2021-05-02 2:49 PM
 -->
 
 <!DOCTYPE html>
@@ -29,7 +29,6 @@
   <meta property="og:description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
-  <meta property="og:locale" content="zh-CN" />
   <meta name="twitter:widgets:csp" content="on">
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:site" content="@yuanshen_site" />
@@ -54,12 +53,6 @@
   <link rel="apple-touch-icon" href="https://yuanshen.site/favicon.ico" sizes="120x120" />
   <link rel="stylesheet" href="./css/global.min.css">
   <link rel="stylesheet" href="./css/loading/loading.css">
-  <!-- 开发环境依赖 -->
-  <!-- <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
-  <script src="https://unpkg.com/vue-i18n@9.1.6/dist/vue-i18n.global.js"></script> -->
-  <!-- 生产环境依赖 -->
-  <script src="./js/vue-3.0.11.global.prod.js"></script>
-  <script src="./js/vue-i18n-9.1.6.global.prod.js"></script>
   <script>
     // 该页面的全局配置
     const globalConfig = {
@@ -69,13 +62,11 @@
         autoTheme: true, // 自动切换主题 (即白天light 晚上dark
       },
       resourceReloadingData: 'data/preload.json', // 资源预加载的数据url
-      otherData: 'data/loading.json', // 其他数据的url
+      supportLocale: 'data/support-locale.json',
       maxOverTime: 2500, // 最大延迟[ms] ( 即强制自动重定向的时间, 默认为资源预加载完成后
       loadingBarContainer: '.loading-default', // loadingBar 挂载容器的选择器
-      VueContainer: '#app', // vue 挂载容器的选择器
       defaultLanguage: 'en', // 如果用户浏览器主语言不在支持范围内, 回退的语言代码
     };
-
   </script>
 
   <head>
@@ -87,7 +78,7 @@
       <p>This page requires JavaScript to work properly</p>
     </noscript>
     <div class="wrapper" id="app">
-      <div class="loading" v-show="showLoading">
+      <div class="loading">
         <!-- 默认加载动画 -->
         <div class="loading-default">
           <img src="./imgs/loading-bar.png" alt="Loading...">
@@ -103,182 +94,49 @@
           </ul>
           <h2>{{ $t("message.loading") }} ...</h2>
         </div>
-        <!-- Loading 提示 -->
-        <transition name="slide-fade">
-          <p class="loading-tips">
-            {{ $t("message.tips.first") }}
-            「
-            <span class='replace-link'>
-              {{ replaceLink }}
-            </span>
-            」
-            <br>
-            {{ $t("message.tips.second") }}
-            <a href="#" @click="showLoading=false">{{ $t("message.tips.third") }}</a>
-          </p>
-        </transition>
+        <p class="loading-tips">
+          Is redirecting you to
+          「
+          <span class="replace-link">
+            {{ replaceLink }}
+          </span>
+          」
+          <br>
+          You can
+          <a href="#choose-country-region" >Manual selection</a>
+        </p>
       </div>
-      <header>
-        <div class="header-container cover">
-          <input type="checkbox" id="checkbox-menustate">
-          <nav class="topnav">
-            <div class="topnav-container">
-              <!-- 移动端侧边栏按钮Icon -->
-              <label for="checkbox-menustate" class="menuicon-top" aria-hidden="true">
-                <span class="line-first"></span>
-                <span class="line-second"></span>
-                <span class="line-third"></span>
-              </label>
-              <a href="#checkbox-menustate" role="button" class="menuanchor-open">Open Menu</a>
-              <a href="#" role="button" class="menuanchor-close">Close Menu</a>
-              <h1 class="logo">
-                <a href="#">{{ $t("message.title") }}</a>
-              </h1>
-              <ul class="topnav-list">
-                <li class="topnav-list-item">
-                  <a href="#" class="link arrow">{{ $t("message.language") }}</a>
-                  <ul class=nav-dropdown" @click="selectLanguage">
-                    <li v-for="(lang, i) in langs" :key="`langs${i}`">
-                      <a :href="`?lang=${lang.code}`" :lang="lang.code" v-html="lang.name"></a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="topnav-list-item">
-                  <a href="https://support.qq.com/products/321980" class="link">
-                    {{$t("message.feedback")}}
-                  </a>
-                </li>
-              </ul>
-          </nav>
-        </div>
-      </header>
-      <main>
-        <nav>
-          <div class="content">
-            <h2>
-              <a href="#">{{$t("message.cycor")}}</a>
-            </h2>
-          </div>
-        </nav>
-        <div class="main-container cover">
-          <div class="section-container">
-            <div v-for="(locale, i) in countryRegion" :key="`locale${i}`" class="section-content">
-              <h2 class="category-title"> {{locale.type}} </h2>
-              <ul class="category-sections" @click="selectLocation">
-                <li class="category-item" v-for="(map, x) in locale.map">
-                  <a :href="`#${map.code}`" :class="map.code">
-                    <span v-html="map.name" :lang="map.code"></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </main>
-      <!-- <footer>
-        <div class="footer-container cover">
-          <div class="annotation">
-          
-          </div>
-          <nav>
-            <ul>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-            </ul>
-          </nav>
-        </div>
-      </footer> -->
-    </div>
-    <script type="module">
-      import { ResourceReloading, LoadingBar, DynamicTheme } from "./js/module.js";
-      import * as utils from "./js/utils.js";
-      /**
-       * @todo 
-       *  refactor
-       */
-      (async () => {
-        const { countryRegion, locale } = await utils.request(globalConfig.otherData).catch(err => console.log(err));
-        const localeData = utils.getSupperLocale(locale.support, globalConfig.defaultLanguage);
-        console.log('localeData: ', localeData);
-        const i18n = VueI18n.createI18n({
-          locale: new URLSearchParams(new URL(location.href).search).get("lang") || localeData.code,     // set locale
-          fallbackLocale: globalConfig.defaultLanguage,                                                  // set fallback locale
-          messages: locale.message,                                                                      // set locale messages
-        });
-        const app = Vue.createApp({
-          data() {
-            return {
-              replaceLink: localeData.link,
-              showLoading: true,
-              countryRegion: countryRegion
-            }
-          },
-          created() {
-            this.langs = []; // 支持显示的语言列表
-            for (const prop in locale.message) {
-              if (locale.message.hasOwnProperty(prop)) {
-                this.langs.push({ code: prop, name: locale.message[prop].name })
+      <script type="module">
+        import { ResourceReloading, LoadingBar, DynamicTheme } from "./js/module.js";
+        import { request, onload, log, getSupperLocale } from "./js/utils.js";
+        ; (() => {
+          onload(async () => {
+            const myLoadingBar = new LoadingBar(globalConfig.loadingBarContainer);
+            const myDynamicTheme = new DynamicTheme(globalConfig.theme.themeList);
+            const supportLocale = await request(globalConfig.supportLocale).catch(error => console.error(error));
+            const { code, link } = getSupperLocale(supportLocale.support, globalConfig.defaultLanguage);
+            const myResourceReloading = new ResourceReloading(globalConfig.resourceReloadingData);
+            let state = false;
+            ['click', 'keyup'].forEach(value => document.addEventListener(value, () => { state = !state }, true));
+            document.querySelector(".replace-link").innerText = link;
+            myLoadingBar.start();
+            myResourceReloading.init().then(res => setTimeout(() => replace(), 800));
+            await setTimeout(() => replace(), globalConfig.maxOverTime);
+
+            function replace() {
+              if (!state) {
+                myLoadingBar.finish();
+                setTimeout(() => document.location.replace(`https://yuanshen.site/${link}?locale=${code}`), 500);
               }
             }
-            this.DynamicTheme = new DynamicTheme(globalConfig.theme.themeList);
-            if (globalConfig.theme.autoTheme) this.DynamicTheme.autoTheme();
-            utils.log([{ pageVersion: "1.1.0", vueVersion: "3.0.11", author: "(*^_^*)", lastEditTime: "2021-4-29" }]);
-          },
-          mounted() {
-            this.$nextTick(function () {
-              this.LoadingBar = new LoadingBar(".loading-default", 3000);
-              this.LoadingBar.start();
-              let timer = setTimeout(() => replace(), globalConfig.maxOverTime);
-              new ResourceReloading("data/preload.json").init().then(() => setTimeout(() => replace(), 2500));
-              const replace = () => {
-                if (this.showLoading) {
-                  this.LoadingBar.finish();
-                  setTimeout(() => document.location.replace(`https://yuanshen.site/${this.replaceLink}`, 500));
-                }
-              }
-            })
-          },
-          methods: {
-            selectLanguage(e) {
-              const lang = e.target.lang;
-              this.$i18n.locale = lang;
-              lang.includes("ar") ? document.documentElement.setAttribute('dir', "rtl") : document.documentElement.setAttribute('dir', "ltr");
-              document.documentElement.setAttribute('lang', lang);
-            },
-            selectLocation(e) {
-              const target = e.target;
-              let result = "";
-              if (target.tagName === "SPAN") {
-                locale.support.forEach((val) => {
-                  if (val.node) {
-                    for (let i = 0; i < val.node.length; i++) {
-                      if (val.node[i].code === target.lang) {
-                        console.log(val.node[i].link);
-                        result = val.node[i].link;
-                      }
-                    }
-                  }
-                  for (let i = 0; i < val.code.length; i++) {
-                    if (val.code[i] === target.lang) {
-                      result = val.link;
-                    }
-                  }
-                });
-                if (result) {
-                  document.location.replace(`https://yuanshen.site/${result}`);
-                } else {
-                  let state = window.confirm(`This area is not currently supported.\n You can go to https://yuanshen.site/index_${globalConfig.defaultLanguage}.html`);
-                  if (state) document.location.replace(`https://yuanshen.site/index_${globalConfig.defaultLanguage}.html`);
-                }
-              }
-            }
-          }
-        })
-        app.use(i18n)
-        app.mount(globalConfig.VueContainer);
-      })();
-    </script>
+
+            log(
+              "原神地图", "自动跳转页",
+              [{ pageVersion: "1.1.0", lastEditTime: "2021-4-29" }]
+            );
+          });
+        })();
+      </script>
   </body>
 
 </html>
