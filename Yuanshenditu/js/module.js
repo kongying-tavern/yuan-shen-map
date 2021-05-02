@@ -1,6 +1,6 @@
 /*
  * @Author       : (*^_^*)
- * @LastEditTime : 2021-05-02 6:25 PM
+ * @LastEditTime : 2021-05-02 7:53 PM
  * @Description  : loading页的依赖模块封装
  */
 import * as utils from './utils.js';
@@ -119,12 +119,13 @@ class LoadingBar {
  * @param {string} [defaultTheme='light']
  */
 class DynamicTheme {
-  constructor(themeList, defaultTheme = "light",isAutoTheme = true) {
+  constructor(themeList, defaultTheme = "light") {
     this.themeList = new Set(themeList);
     this.defaultTheme = defaultTheme;
     this.container = document.body;
-    if(isAutoTheme) this.autoTheme();
-    this.Theme = new URLSearchParams(new URL(location.href).search).get("theme") || this.autoTheme();
+    this.Theme = new URLSearchParams(new URL(location.href).search).get("theme")
+    if(new URLSearchParams(new URL(location.href).search).get("theme") === null) this.autoTheme();
+    
   }
   /**
    * @public
@@ -173,6 +174,7 @@ class DynamicTheme {
     } else {
       result = "dark";
     }
+    console.log(result);
     return this.switchTheme(result);
   }
 }

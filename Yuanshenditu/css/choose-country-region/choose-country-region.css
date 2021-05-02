@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-02 2:18 PM
+ * @LastEditTime : 2021-05-02 7:58 PM
  */
 :root {
   --ThemeBackgroundColor: #fff;
@@ -278,10 +278,10 @@ header .header-container {
 }
 
 .topnav-list .topnav-list-item > select {
-  z-index: 9999;
+  z-index: 8888;
   position: absolute;
   top: -100%;
-  right: 3%;
+  margin-left: -120px;
   width: 140px;
   max-height: 160px;
   height: auto;

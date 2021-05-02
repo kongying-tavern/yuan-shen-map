@@ -1,6 +1,6 @@
 /*
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-02 2:18 PM
+ * @LastEditTime : 2021-05-02 7:58 PM
  */
 
 @charset "utf-8";
@@ -252,10 +252,10 @@ header {
     }
 
     &>select {
-      z-index: 9999;
+      z-index: 8888;
       position: absolute;
       top: -100%;
-      right: 3%;
+      margin-left: -120px;
       width: 140px;
       max-height: 160px;
       height: auto;
@@ -444,7 +444,7 @@ main {
     }
   }
 
-  .menuicon-top {
+   .menuicon-top {
     cursor: pointer;
     position: absolute;
     left: 11px;
