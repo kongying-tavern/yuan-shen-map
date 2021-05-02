@@ -1,6 +1,6 @@
 /*
  * @Author       : (*^_^*)
- * @LastEditTime : 2021-05-02 2:10 PM
+ * @LastEditTime : 2021-05-02 6:25 PM
  * @Description  : loading页的依赖模块封装
  */
 import * as utils from './utils.js';
@@ -145,7 +145,6 @@ class DynamicTheme {
    * @param {string} value
    */
   set Theme(value) {
-    console.log(value);
     this.container.setAttribute("data-theme", value);
   }
 
