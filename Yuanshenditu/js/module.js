@@ -1,6 +1,6 @@
 /*
  * @Author       : (*^_^*)
- * @LastEditTime : 2021-05-02 7:53 PM
+ * @LastEditTime : 2021-05-02 10:36 PM
  * @Description  : loading页的依赖模块封装
  */
 import * as utils from './utils.js';
@@ -174,7 +174,6 @@ class DynamicTheme {
     } else {
       result = "dark";
     }
-    console.log(result);
     return this.switchTheme(result);
   }
 }

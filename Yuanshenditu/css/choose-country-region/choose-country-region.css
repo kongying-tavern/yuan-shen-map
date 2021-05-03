@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-02 7:58 PM
+ * @LastEditTime : 2021-05-03 9:26 AM
  */
 :root {
   --ThemeBackgroundColor: #fff;
@@ -292,17 +292,24 @@ header .header-container {
   background-color: var(--ThemeBackgroundColor);
   -webkit-transition: all .3s;
   transition: all .3s;
-  overflow-y: scroll;
-  overflow: hidden;
 }
 
 .topnav-list .topnav-list-item > select > option {
   width: 100%;
-  font-size: 16px;
-  line-height: 2em;
+  height: 28px;
+  font-size: 17px;
+  line-height: 28px;
+  text-align: left;
   padding: 0 18px 0 18px;
   color: var(--ThemeFontColor);
+  font-family: "Roboto"sans-serif;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  vertical-align: text-top;
   width: calc(100% - 36px);
+  -webkit-transition: all .3s;
+  transition: all .3s;
 }
 
 .topnav-list .topnav-list-item > select > option:hover {
@@ -310,9 +317,8 @@ header .header-container {
   font-weight: 500;
 }
 
-.topnav-list .topnav-list-item > select > option:disabled {
-  color: rgba(210, 210, 215, 0.2);
-  background-color: transparent;
+.topnav-list .topnav-list-item > select > option:checked:disabled {
+  color: #2997ff !important;
 }
 
 .topnav-list .topnav-list-item:hover > select {

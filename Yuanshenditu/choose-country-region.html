@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-02 6:26 PM
+ * @LastEditTime : 2021-05-02 10:47 PM
 -->
 
 <!DOCTYPE html>
@@ -109,7 +109,7 @@
                 <ul class="topnav-list">
                   <li class="topnav-list-item">
                     <a href="#" class="link arrow">{{ $t("message.language") }}</a>
-                    <select id="selectLanguage" :size="langs.length<5?4-langs.length:5" v-model="locale">
+                    <select id="selectLanguage" :size="langs.length<5?langs.length+-1:5" v-model="locale">
                       <option v-for="(lang, i) in langs" :key="`langs${i}`" :lang="lang.code" :value="lang.code" :disabled="$i18n.locale===lang.code" v-text="lang.name">
                       </option>
                     </select>
@@ -126,6 +126,7 @@
                 <h2>
                   <a href="#">
                     {{$t("message.cycor")}}
+                    
                   </a>
                 </h2>
               </div>
@@ -136,8 +137,8 @@
 
           <div class="main-container cover">
             <div class="section-container">
-              <section v-once v-for="(locale, i) in countryRegion" :key="`locale${i}`" class="section-content">
-                <h2 class="category-title"> {{locale.type}} </h2>
+              <section v-for="(locale, i) in countryRegion" :key="`locale${i}`" class="section-content">
+                <h2 class="category-title" v-html=`${locale.type}`>  </h2>
                 <ul class="category-sections">
                   <li class="category-item" v-for="(map, x) in locale.map">
                     <a :href="`#${map.code}`" :class="map.code">
@@ -178,6 +179,9 @@
             fallbackLocale: globalConfig.defaultLanguage,                                                  // set fallback locale
             messages: locale.message,                                                                      // set locale messages
           });
+          // 如果没有传参,就使用浏览器用户的主语言并且设置url的参数
+          if(!new URLSearchParams(new URL(location.href).search).has("lang")) utils.setURL("lang", userLocaleData.code);
+
           const app = Vue.createApp({
             data() {
               return {
@@ -191,7 +195,6 @@
               for (const prop in locale.message) {
                 if (locale.message.hasOwnProperty(prop)) this.langs.push({ code: prop, name: locale.message[prop].name });
               }
-
               // DynamicTheme
               this.DynamicTheme = new DynamicTheme(globalConfig.theme.themeList);
             
@@ -226,8 +229,9 @@
             },
             watch: {
               locale(val) {
+                if(val === this.$i18n.locale) return;
                 this.$i18n.locale = val;
-                utils.setURL('lang',val);
+                utils.setURL('lang', val);
                 val.includes("ar") ? document.documentElement.setAttribute('dir', "rtl") : document.documentElement.setAttribute('dir', "ltr");
                 document.documentElement.setAttribute('lang', val);  
               }

@@ -1,6 +1,6 @@
 /*
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-02 7:58 PM
+ * @LastEditTime : 2021-05-03 9:26 AM
  */
 
 @charset "utf-8";
@@ -265,26 +265,31 @@ header {
       border: 1px solid var(--ThemeBorder);
       background-color: var(--ThemeBackgroundColor);
       transition: all .3s;
-      overflow-y: scroll;
-      overflow: hidden;
 
       &>option {
         width: 100%;
-        font-size: 16px;
-        line-height: 2em;
+        height: 28px;
+        font-size: 17px;
+        line-height: 28px;
+        text-align: left;
         padding: 0 18px 0 18px;
         color: var(--ThemeFontColor);
+        font-family: "Roboto"sans-serif;
+        appearance: none;
+        vertical-align: text-top;
         width: calc(100% - 36px);
+        transition: all .3s;
 
         &:hover {
           color: $link-color;
           font-weight: 500;
         }
 
-        &:disabled {
-          color: rgba(210, 210, 215, .2);
-          background-color: transparent;
+
+        &:checked:disabled {
+          color: $link-color !important;
         }
+
       }
     }
 
@@ -444,7 +449,7 @@ main {
     }
   }
 
-   .menuicon-top {
+  .menuicon-top {
     cursor: pointer;
     position: absolute;
     left: 11px;

@@ -10,11 +10,6 @@
         "message": {
           "title": "Genshin Map",
           "loading": "Loading",
-          "tips": {
-            "first": "Is redirecting you to",
-            "second": "You Can",
-            "third": "Manual selection"
-          },
           "language": "language",
           "feedback": "Feedback",
           "cycor": "Choose Your Country or Regione"
@@ -25,14 +20,49 @@
         "message": {
           "title": "原神地图",
           "loading": "加载中",
-          "tips": {
-            "first": "正在重定向到",
-            "second": "你可以",
-            "third": "手动选择"
-          },
           "language": "语言",
           "feedback": "反馈",
           "cycor": "选择您的国家或者地区"
+        }
+      },
+      "ja": {
+        "name": "日本語",
+        "message": {
+          "title": "原神地図",
+          "loading": "ローディング中",
+          "language": "言語",
+          "feedback": "フィードバック",
+          "cycor": "国または地域を選択します"
+        }
+      },
+      "zh-TW": {
+        "name": "中文繁體",
+        "message": {
+          "title": "原神地圖",
+          "loading": "加載中",
+          "language": "語言",
+          "feedback": "反饋",
+          "cycor": "選擇您的國家或者地區"
+        }
+      },
+      "ru": {
+        "name": "русский",
+        "message": {
+          "title": "Genshin Map",
+          "loading": "Загрузка",
+          "language": "Язык",
+          "feedback": "Обратная связь",
+          "cycor": "Выберите вашу страну или регион"
+        }
+      },
+      "de": {
+        "name": "Deutsche",
+        "message": {
+          "title": "Genshin Map",
+          "loading": "Wird geladen",
+          "language": "Sprache",
+          "feedback": "Feedback",
+          "cycor": "Wählen Sie Ihr Land oder Ihre Region"
         }
       }
     }
@@ -608,8 +638,7 @@
     },
     {
       "type": "The United States, Canada, and Puerto Rico",
-      "map": 
-      [
+      "map": [
         {
           "name": "Canada (English)",
           "code": "en-CA"

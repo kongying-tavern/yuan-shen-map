@@ -1,6 +1,6 @@
 /*
  * @Author       : ( * ^ _ ^ * )
- * @LastEditTime : 2021-05-02 2:07 PM
+ * @LastEditTime : 2021-05-02 9:56 PM
  * @Description  : 工具函数封装
  */
 
@@ -374,6 +374,7 @@ function log(title, description, data) {
 
 /**
  * @description: 设置url的参数(不刷新)
+ * @todo refactor 懒得写了先凑合用吧,一般用户应该触发不了bug
  * @param {string} key
  * @param {string} value
  * @return {*}
@@ -388,11 +389,21 @@ function setURL(key, value) {
       if (url.hash !== "") {
         result = location.href.replace(url.hash, "") + `${key}=${value}` + url.hash;
       } else {
-        result = location.href + `/?${key}=${value}`;
+        result = location.href + `?${key}=${value}`;
       }
+    }else{
+        result = location.href + `&${key}=${value}`;
     }
   } else {
-    result = location.href.replace(`${key}=${oldKey}`, `${key}=${value}`);
+    if(params.has(key)){
+      result = location.href.replace(`${key}=${oldKey}`, `${key}=${value}`);
+    }else{
+      if(location.href.includes("?")){
+        result = location.href + `&${key}=${value}`;
+      }else{
+        result = location.href + `?${key}=${value}`;
+      }
+    }
   }
 
   history.pushState({
