@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-03 10:06 AM
+ * @LastEditTime : 2021-05-03 12:11 PM
 -->
 
 <!DOCTYPE html>
@@ -133,7 +133,6 @@
           </div>
         </header>
         <main>
-
           <div class="main-container cover">
             <div class="section-container">
               <section v-for="(locale, i) in countryRegion" :key="`locale${i}`" class="section-content">
@@ -150,20 +149,19 @@
             </div>
           </div>
         </main>
-        <!-- <footer>
-        <div class="footer-container cover">
-          <div class="annotation">
-          
+        <footer>
+          <div class="footer-container cover">
+            <nav class="footer-content">
+              <ul class="footer-list">
+                <li>
+                  <a href="https://bbs.mihoyo.com/ys/article/1328298" target="_blank">
+                    「Chinese hoyolab」Made By Kongying Tavern
+                  </a>
+                </li>
+              </ul>
+            </nav>
           </div>
-          <nav>
-            <ul>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-              <li><a href=""></a></li>
-            </ul>
-          </nav>
-        </div>
-      </footer> -->
+        </footer>
       </div>
       <script type="module">
         import { DynamicTheme, ResourceReloading } from "./js/module.js";
@@ -176,10 +174,11 @@
           const i18n = VueI18n.createI18n({
             locale: new URLSearchParams(new URL(location.href).search).get("lang") || userLocaleData.code, // set locale
             fallbackLocale: globalConfig.defaultLanguage,                                                  // set fallback locale
-            messages: locale.message,                                                                      // set locale messages
+            messages: locale.message,
+            silentTranslationWarn: true                                                                  // set locale messages
           });
           // 如果没有传参,就使用浏览器用户的主语言并且设置url的参数
-          if(!new URLSearchParams(new URL(location.href).search).has("lang")) utils.setURL("lang", userLocaleData.code);
+          if (!new URLSearchParams(new URL(location.href).search).has("lang")) utils.setURL("lang", userLocaleData.code);
 
           const app = Vue.createApp({
             data() {
@@ -196,7 +195,7 @@
               }
               // DynamicTheme
               this.DynamicTheme = new DynamicTheme(globalConfig.theme.themeList);
-            
+
               // replace
               window.addEventListener('hashchange', function () {
                 const link = getSupperReplaceLink(location.hash.replace("#", ""));
@@ -228,11 +227,12 @@
             },
             watch: {
               locale(val) {
-                if(val === this.$i18n.locale) return;
+                if (val === this.$i18n.locale) return;
                 this.$i18n.locale = val;
                 utils.setURL('lang', val);
+                document.title = this.$i18n.t('message.title');
                 val.includes("ar") ? document.documentElement.setAttribute('dir', "rtl") : document.documentElement.setAttribute('dir', "ltr");
-                document.documentElement.setAttribute('lang', val);  
+                document.documentElement.setAttribute('lang', val);
               }
             },
             mounted() {
@@ -247,7 +247,7 @@
           app.mount("#app");
           utils.log(
             "原神地图", "地区选择页",
-            [{ pageVersion: "1.1.0", vueVersion: "3.0.11",lastEditTime: "2021-5-2" }]
+            [{ pageVersion: "1.1.0", vueVersion: "3.0.11", lastEditTime: "2021-5-2" }]
           );
         })();
       </script>
