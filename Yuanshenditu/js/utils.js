@@ -1,6 +1,6 @@
 /*
  * @Author       : ( * ^ _ ^ * )
- * @LastEditTime : 2021-05-02 9:56 PM
+ * @LastEditTime : 2021-05-03 3:02 PM
  * @Description  : 工具函数封装
  */
 
@@ -317,20 +317,23 @@ function getSupperLocale(data, defaultLanguage) {
       for (let x = 0; x < data[i].node.length; x++) {
         if (data[i].node[x].code === userLocale) return {
           code: data[i].node[x].code,
-          link: data[i].node[x].link
+          link: data[i].node[x].link,
+          dir: data[i].node[x].code.includes("ar")?"rtl":"ltr"
         }
       }
       for (let x = 0; x < data[i].code.length; x++) {
         if (data[i].code[x] === userLocale) return {
           code: data[i].code,
-          link: data[i].link
+          link: data[i].link,
+          dir: data[i].node[x].code.includes("ar")?"rtl":"ltr"
         };
       }
     } else {
       for (let x = 0; x < data[i].code.length; x++) {
         if (data[i].code[x] === userLocale) return {
           code: data[i].code,
-          link: data[i].link
+          link: data[i].link,
+          dir: data[i].node[x].code.includes("ar")?"rtl":"ltr"
         };
       }
     }

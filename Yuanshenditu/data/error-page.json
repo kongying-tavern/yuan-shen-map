@@ -1,0 +1,29 @@
+{
+  "locale": {
+    "default": {
+      "code": "en"
+    },
+    "message": {
+      "en": {
+        "name": "English",
+        "message": {
+          "title": "Genshin Map - ErrorPage",
+          "siteTitle": "Genshin Map",
+          "loading": "Loading",
+          "language": "language",
+          "feedback": "Feedback"
+        }
+      },
+      "zh": {
+        "name": "中文",
+        "message": {
+          "title": "原神地图 - 错误页面",
+          "siteTitle": "原神地图",
+          "loading": "加载中",
+          "language": "语言",
+          "feedback": "反馈"
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-03 5:14 PM
+ * @LastEditTime : 2021-05-03 3:34 PM
 -->
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>原神地图 - Choose country or region</title>
+    <title>原神地图 - Error Page</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
     <meta name="renderer" content="webkit" />
@@ -53,7 +53,7 @@
     <link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="https://yuanshen.site/favicon.ico" sizes="120x120" />
     <link rel="stylesheet" href="./css/global.min.css">
-    <link rel="stylesheet" href="./css/choose-country-region/choose-country-region.css">
+    <link rel="stylesheet" href="./css/error-page/index.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Noto+Sans+TC:wght@300&family=Roboto&display=swap" rel="stylesheet">
     <!-- Google Tag Manager -->
@@ -75,9 +75,7 @@
           defaultTheme: "light", // 默认主题
           autoTheme: true, // 自动切换主题 (即白天light 晚上dark
         },
-        supportLocale: 'data/support-locale.json',
-        resourceReloadingData: 'data/preload.json', // 资源预加载的数据url
-        chooseCountryRegion: 'data/choose-country-region.json',
+        data: 'data/error-page.json',
         defaultLanguage: 'en', // 如果用户浏览器主语言不在支持范围内, 回退的语言代码
       };
 
@@ -109,7 +107,7 @@
                 <ul class="topnav-list">
                   <li class="topnav-list-item">
                     <a href="#" class="link arrow">{{ $t("message.language") }}</a>
-                    <select id="selectLanguage" :size="langs.length<5?langs.length+-1:5" v-model="locale">
+                    <select id="selectLanguage" :size="langs.length<5?langs.length:5" v-model="locale">
                       <option v-for="(lang, i) in langs" :key="`langs${i}`" :lang="lang.code" :value="lang.code" :disabled="$i18n.locale===lang.code" v-text="lang.name">
                       </option>
                     </select>
@@ -121,31 +119,19 @@
                   </li>
                 </ul>
             </nav>
-            <nav role="navigation" class="subhead">
-              <div class="subhead-container">
-                <h2>
-                  <a href="#">
-                    {{$t("message.cycor")}}
-                  </a>
-                </h2>
-              </div>
-            </nav>
           </div>
         </header>
         <main>
           <div class="main-container cover">
-            <div class="section-container">
-              <section v-for="(locale, i) in countryRegion" :key="`locale${i}`" class="section-content">
-                <h2 class="category-title" v-text="locale.type"></h2>
-                <ul class="category-sections">
-                  <li class="category-item" v-for="(map, x) in locale.map">
-                    <a :href="`#${map.code}`" :class="map.code">
-                      <span v-text="map.name" :dir="map.code.includes('ar')?'rtl':''" :lang="map.code">
-                      </span>
-                    </a>
-                  </li>
-                </ul>
-              </section>
+            <div class="main-content">
+              <div class="title">
+                <h2>
+
+                </h2>
+              </div>
+              <div class="inner">
+                
+              </div>
             </div>
           </div>
         </main>
@@ -164,28 +150,23 @@
         </footer>
       </div>
       <script type="module">
-        import { DynamicTheme, ResourceReloading } from "./js/module.js";
         import * as utils from "./js/utils.js";
-        
+
         (async () => {
-          const { countryRegion, locale } = await utils.request(globalConfig.chooseCountryRegion).catch(error => console.log(error));
-          const supportLocale = await utils.request(globalConfig.supportLocale).catch(error => console.error(error));
-          const userLocaleData = utils.getSupperLocale(supportLocale.support, globalConfig.defaultLanguage);
+          const { locale } = await utils.request(globalConfig.data).catch(error => console.log(error));
+          const userLocaleCode = utils.getUserLanguage(globalConfig.defaultLanguage);
           const i18n = VueI18n.createI18n({
-            locale: new URLSearchParams(new URL(location.href).search).get("lang") || userLocaleData.code, // set locale
+            locale: new URLSearchParams(new URL(location.href).search).get("lang") || userLocaleCode, // set locale
             fallbackLocale: globalConfig.defaultLanguage,                                                  // set fallback locale
             messages: locale.message,
             silentTranslationWarn: true                                                                  // set locale messages
           });
           // 如果没有传参,就使用浏览器用户的主语言并且设置url的参数
-          if (!new URLSearchParams(new URL(location.href).search).has("lang")) utils.setURL("lang", userLocaleData.code);
-          if (!new URLSearchParams(new URL(location.href).search).has("dir")) utils.setURL("dir", userLocaleData.dir);  
-          document.documentElement.setAttribute('dir', new URLSearchParams(new URL(location.href).search).get("dir"));
-          
+          if (!new URLSearchParams(new URL(location.href).search).has("lang")) utils.setURL("lang", userLocaleCode);
+
           const app = Vue.createApp({
             data() {
               return {
-                countryRegion: countryRegion,
                 langs: [],
                 locale: this.$i18n.locale
               }
@@ -195,37 +176,6 @@
               for (const prop in locale.message) {
                 if (locale.message.hasOwnProperty(prop)) this.langs.push({ code: prop, name: locale.message[prop].name });
               }
-              // DynamicTheme
-              this.DynamicTheme = new DynamicTheme(globalConfig.theme.themeList);
-
-              // replace
-              window.addEventListener('hashchange', function () {
-                const link = getSupperReplaceLink(location.hash.replace("#", ""));
-                if (link) {
-                  document.location.replace(`https://yuanshen.site/${link}`);
-                } else {
-                  const tips = `This area is not currently supported.\n You can go to https://yuanshen.site/index_${globalConfig.defaultLanguage}.html`;
-                  if (window.confirm(tips)) document.location.replace(`https://yuanshen.site/index_${globalConfig.defaultLanguage}.html`);
-                }
-              }, false);
-              function getSupperReplaceLink(lang) {
-                let result = "";
-                supportLocale.support.forEach((val) => {
-                  if (val.node) {
-                    for (let i = 0; i < val.node.length; i++) {
-                      if (val.node[i].code === lang) {
-                        result = val.node[i].link;
-                      }
-                    }
-                  }
-                  for (let i = 0; i < val.code.length; i++) {
-                    if (val.code[i] === lang) {
-                      result = val.link;
-                    }
-                  }
-                });
-                return result;
-              }
             },
             watch: {
               locale(val) {
@@ -233,28 +183,20 @@
                 this.$i18n.locale = val;
                 utils.setURL('lang', val);
                 document.title = this.$i18n.t('message.title');
-                if(val.includes("ar")){
-                  document.documentElement.setAttribute('dir', "rtl");
-                  utils.setURL('dir', "rtl");
-                }else{
-                  utils.setURL('dir', "ltr");
-                  document.documentElement.setAttribute('dir', "ltr");
-                }
+                val.includes("ar") ? document.documentElement.setAttribute('dir', "rtl") : document.documentElement.setAttribute('dir', "ltr");
                 document.documentElement.setAttribute('lang', val);
               }
             },
             mounted() {
               this.$nextTick(function () {
-                new ResourceReloading(globalConfig.resourceReloadingData).init().then((res) => {
-                  console.log("✔ 资源预加载以完成");
-                });
+                
               });
             }
           });
           app.use(i18n)
           app.mount("#app");
           utils.log(
-            "原神地图", "地区选择页",
+            "原神地图", "错误页面",
             [{ pageVersion: "1.1.0", vueVersion: "3.0.11", lastEditTime: "2021-5-2" }]
           );
         })();

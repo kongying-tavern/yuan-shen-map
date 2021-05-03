@@ -8,7 +8,8 @@
       "en": {
         "name": "English",
         "message": {
-          "title": "Genshin Map",
+          "title": "Genshin Map - Choose-country-region",
+          "siteTitle": "Genshin Map",
           "loading": "Loading",
           "language": "language",
           "feedback": "Feedback",
@@ -18,7 +19,8 @@
       "zh": {
         "name": "中文",
         "message": {
-          "title": "原神地图",
+          "title": "原神地图 - 选择您的国家或者地区",
+          "siteTitle": "原神地图",
           "loading": "加载中",
           "language": "语言",
           "feedback": "反馈",
@@ -28,7 +30,8 @@
       "ja": {
         "name": "日本語",
         "message": {
-          "title": "原神地図",
+          "title": "原神地図 - 国または地域を選択します",
+          "siteTitle": "原神地図",
           "loading": "ローディング中",
           "language": "言語",
           "feedback": "フィードバック",
@@ -38,7 +41,8 @@
       "zh-TW": {
         "name": "中文繁體",
         "message": {
-          "title": "原神地圖",
+          "title": "原神地圖 - 選擇您的國家或者地區",
+          "siteTitle": "原神地図",
           "loading": "加載中",
           "language": "語言",
           "feedback": "反饋",
@@ -48,7 +52,8 @@
       "ru": {
         "name": "русский",
         "message": {
-          "title": "Genshin Map",
+          "title": "Genshin Map - Выберите вашу страну или регион",
+          "siteTitle": "Genshin Map",
           "loading": "Загрузка",
           "language": "Язык",
           "feedback": "Обратная связь",
@@ -58,7 +63,8 @@
       "de": {
         "name": "Deutsche",
         "message": {
-          "title": "Genshin Map",
+          "title": "Genshin Map - Wählen Sie Ihr Land oder Ihre Region",
+          "siteTitle": "Genshin Map",
           "loading": "Wird geladen",
           "language": "Sprache",
           "feedback": "Feedback",
