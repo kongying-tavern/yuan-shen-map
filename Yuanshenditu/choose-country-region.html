@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-02 10:47 PM
+ * @LastEditTime : 2021-05-03 10:06 AM
 -->
 
 <!DOCTYPE html>
@@ -126,7 +126,6 @@
                 <h2>
                   <a href="#">
                     {{$t("message.cycor")}}
-                    
                   </a>
                 </h2>
               </div>
@@ -138,7 +137,7 @@
           <div class="main-container cover">
             <div class="section-container">
               <section v-for="(locale, i) in countryRegion" :key="`locale${i}`" class="section-content">
-                <h2 class="category-title" v-html=`${locale.type}`>  </h2>
+                <h2 class="category-title" v-text="locale.type"></h2>
                 <ul class="category-sections">
                   <li class="category-item" v-for="(map, x) in locale.map">
                     <a :href="`#${map.code}`" :class="map.code">

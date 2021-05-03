@@ -1,6 +1,6 @@
 /*
  * @Author       : (*^_^*)
- * @LastEditTime : 2021-05-02 10:36 PM
+ * @LastEditTime : 2021-05-03 10:12 AM
  * @Description  : loading页的依赖模块封装
  */
 import * as utils from './utils.js';
@@ -123,8 +123,9 @@ class DynamicTheme {
     this.themeList = new Set(themeList);
     this.defaultTheme = defaultTheme;
     this.container = document.body;
-    this.Theme = new URLSearchParams(new URL(location.href).search).get("theme")
-    if(new URLSearchParams(new URL(location.href).search).get("theme") === null) this.autoTheme();
+    this.urlValue = new URLSearchParams(new URL(location.href).search).get("theme");
+    this.Theme = this.urlValue;
+    if(this.urlValue === null || this.urlValue === "") this.autoTheme();
     
   }
   /**
@@ -146,6 +147,7 @@ class DynamicTheme {
    * @param {string} value
    */
   set Theme(value) {
+    utils.setURL("theme", value);
     this.container.setAttribute("data-theme", value);
   }
 
