@@ -1,6 +1,6 @@
 /*
  * @Author       : (*^_^*)
- * @LastEditTime : 2021-05-03 6:01 PM
+ * @LastEditTime : 2021-05-03 9:24 PM
  * @Description  : loading页的依赖模块封装
  */
 import * as utils from './utils.js';
@@ -35,7 +35,7 @@ class ResourceReloading {
 
   /** @private */
   reader(data){
-    data.map((val) => ResourceReloading.createLink(val.href, val.as, val.type, this.container));
+    return data.map((val) => ResourceReloading.createLink(val.href, val.as, val.type, this.container));
   }
 
   /** @private */
