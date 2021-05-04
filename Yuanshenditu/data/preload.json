@@ -8,303 +8,303 @@
   ],
   "data": [
     {
-      "href": "/Yuanshenditu/css/reset.css",
+      "href": "/css/reset.css",
       "as": "style"
     },
     {
-      "href": "/Yuanshenditu/leaflet/leaflet.css",
+      "href": "/leaflet/leaflet.css",
       "as": "style"
     },
     {
-      "href": "/Yuanshenditu/dist/MarkerCluster.Default.css",
+      "href": "/dist/MarkerCluster.Default.css",
       "as": "style"
     },
     {
-      "href": "/Yuanshenditu/dist/MarkerCluster.css",
+      "href": "/dist/MarkerCluster.css",
       "as": "style"
     },
     {
-      "href": "/Yuanshenditu/js/Cookie.js",
+      "href": "/js/Cookie.js",
       "as": "script"
     },
     {
-      "href": "/Yuanshenditu/js/jquery-3.5.1.min.js",
+      "href": "/js/jquery-3.5.1.min.js",
       "as": "script"
     },
     {
-      "href": "/Yuanshenditu/leaflet/leaflet.js",
+      "href": "/leaflet/leaflet.js",
       "as": "script"
     },
     {
-      "href": "/Yuanshenditu/dist/leaflet.markercluster-src.js",
+      "href": "/dist/leaflet.markercluster-src.js",
       "as": "script"
     },
     {
-      "href": "/Yuanshenditu/js/index2.js",
+      "href": "/js/index2.js",
       "as": "script"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/Content.png",
+      "href": "/imgs/con_img/Content.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp9_9.jpg",
+      "href": "/tiles_test/4/ppp9_9.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp10_9.jpg",
+      "href": "/tiles_test/4/ppp10_9.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp9_8.jpg",
+      "href": "/tiles_test/4/ppp9_8.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp10_8.jpg",
+      "href": "/tiles_test/4/ppp10_8.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp9_10.jpg",
+      "href": "/tiles_test/4/ppp9_10.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp10_10.jpg",
+      "href": "/tiles_test/4/ppp10_10.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp8_9.jpg",
+      "href": "/tiles_test/4/ppp8_9.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp11_9.jpg",
+      "href": "/tiles_test/4/ppp11_9.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp8_8.jpg",
+      "href": "/tiles_test/4/ppp8_8.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp11_8.jpg",
+      "href": "/tiles_test/4/ppp11_8.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp8_10.jpg",
+      "href": "/tiles_test/4/ppp8_10.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp11_10.jpg",
+      "href": "/tiles_test/4/ppp11_10.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp9_11.jpg",
+      "href": "/tiles_test/4/ppp9_11.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp10_11.jpg",
+      "href": "/tiles_test/4/ppp10_11.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp9_11.jpg",
+      "href": "/tiles_test/4/ppp9_11.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp11_11.jpg",
+      "href": "/tiles_test/4/ppp11_11.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp8_11.jpg",
+      "href": "/tiles_test/4/ppp8_11.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp19_18.jpg",
+      "href": "/tiles_test/4/ppp19_18.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp20_21.jpg",
+      "href": "/tiles_test/4/ppp20_21.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp18_21.jpg",
+      "href": "/tiles_test/4/ppp18_21.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp20_19.jpg",
+      "href": "/tiles_test/4/ppp20_19.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp18_19.jpg",
+      "href": "/tiles_test/4/ppp18_19.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp19_21.jpg",
+      "href": "/tiles_test/4/ppp19_21.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp20_20.jpg",
+      "href": "/tiles_test/4/ppp20_20.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp18_20.jpg",
+      "href": "/tiles_test/4/ppp18_20.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp19_19.jpg",
+      "href": "/tiles_test/4/ppp19_19.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp41_42.jpg",
+      "href": "/tiles_test/4/ppp41_42.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp39_43.jpg",
+      "href": "/tiles_test/4/ppp39_43.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp40_43.jpg",
+      "href": "/tiles_test/4/ppp40_43.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp38_40.jpg",
+      "href": "/tiles_test/4/ppp38_40.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp41_40.jpg",
+      "href": "/tiles_test/4/ppp41_40.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp38_43.jpg",
+      "href": "/tiles_test/4/ppp38_43.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp41_43.jpg",
+      "href": "/tiles_test/4/ppp41_43.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp19_20.jpg",
+      "href": "/tiles_test/4/ppp19_20.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp39_41.jpg",
+      "href": "/tiles_test/4/ppp39_41.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp40_41.jpg",
+      "href": "/tiles_test/4/ppp40_41.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp39_42.jpg",
+      "href": "/tiles_test/4/ppp39_42.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp40_42.jpg",
+      "href": "/tiles_test/4/ppp40_42.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp39_40.jpg",
+      "href": "/tiles_test/4/ppp39_40.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/tiles_test/4/ppp40_40.jpg",
+      "href": "/tiles_test/4/ppp40_40.jpg",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/icon_126_done.png",
+      "href": "/imgs/icon_126_done.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/fold_open.png",
+      "href": "/imgs/con_img/fold_open.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/zhidong.png",
+      "href": "/imgs/con_img/zhidong.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/xumi.png",
+      "href": "/imgs/con_img/xumi.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/fengdan.png",
+      "href": "/imgs/con_img/fengdan.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/munata.png",
+      "href": "/imgs/con_img/munata.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/liyue.png",
+      "href": "/imgs/con_img/liyue.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/mengde-on.png",
+      "href": "/imgs/con_img/mengde-on.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/daoqi.png",
+      "href": "/imgs/con_img/daoqi.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/img-border.png",
+      "href": "/imgs/con_img/img-border.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/fold.png",
+      "href": "/imgs/con_img/fold.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/border.png",
+      "href": "/imgs/con_img/border.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/img-border.png",
+      "href": "/imgs/con_img/img-border.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/con_img/Content.png",
+      "href": "/imgs/con_img/Content.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/icon_128.png",
+      "href": "/imgs/icon_128.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/icon_132.png",
+      "href": "/imgs/icon_132.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/icon_131.png",
+      "href": "/imgs/icon_131.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/icon_125.png",
+      "href": "/imgs/icon_125.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/icon_126.png",
+      "href": "/imgs/icon_126.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/icon_127.png",
+      "href": "/imgs/icon_127.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/icon_128.png",
+      "href": "/imgs/icon_128.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/icon_129.png",
+      "href": "/imgs/icon_129.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/icon_130.png",
+      "href": "/imgs/icon_130.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/icon_131.png",
+      "href": "/imgs/icon_131.png",
       "as": "image"
     },
     {
-      "href": "/Yuanshenditu/imgs/icon_132.png",
+      "href": "/imgs/icon_132.png",
       "as": "image"
     },
     {
