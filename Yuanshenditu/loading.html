@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-03 9:21 PM
+ * @LastEditTime : 2021-05-05 12:01 PM
 -->
 
 <!DOCTYPE html>
@@ -54,6 +54,11 @@
   <link rel="apple-touch-icon" href="https://yuanshen.site/favicon.ico" sizes="120x120" />
   <link rel="stylesheet" href="./css/global.min.css">
   <link rel="stylesheet" href="./css/loading/loading.css">
+  <script>
+    if (!window.fetch || (!!window.ActiveXObject || "ActiveXObject" in window)) {
+      window.location.href = "error.html";
+    }
+  </script>
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
       w[l] = w[l] || []; w[l].push({
@@ -112,7 +117,7 @@
           Is redirecting you to
           「
           <span class="replace-link">
-            unknown
+            <a href="https://yuanshen.site/index_en.html">https://yuanshen.site/index_en.html</a>
           </span>
           」
           <br>

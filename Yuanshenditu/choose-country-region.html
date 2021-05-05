@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-03 5:14 PM
+ * @LastEditTime : 2021-05-05 11:58 AM
 -->
 
 <!DOCTYPE html>
@@ -56,6 +56,11 @@
     <link rel="stylesheet" href="./css/choose-country-region/choose-country-region.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&family=Noto+Sans+TC:wght@300&family=Roboto&display=swap" rel="stylesheet">
+    <script>
+      if (!window.fetch || (!!window.ActiveXObject || "ActiveXObject" in window)) {
+        window.location.href = "error.html";
+      }
+    </script>
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
         w[l] = w[l] || []; w[l].push({
