@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-05 11:45 AM
+ * @LastEditTime : 2021-05-06 2:37 PM
 -->
 
 <!DOCTYPE html>
@@ -66,6 +66,7 @@
             'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-5H6V3NB');</script>
     <!-- End Google Tag Manager -->
+  </head>
 
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -95,7 +96,7 @@
                   </a>
                 </li>
                 <li class="topnav-list-item">
-                  <a href="#" class="link arrow">language</a>
+                  <a href="#" class="link arrow">语言</a>
                   <ul id="selectLanguage">
                     <li><a href="error_en.html" class="link">English</a></li>
                     <li><a href="error.html" class="link">中文</a></li>
@@ -149,19 +150,20 @@
           </div>
         </div>
       </div>
-      <script>
-        oncontextmenu = function () {
-          return false;
-        };
-        history.replaceState(null, null, "/");
-        if (navigator.serviceWorker) {
-          navigator.serviceWorker.getRegistrations().then(function (registrations) {
-            for (var i = 0; i < registrations.length; i++) {
-              registrations[i].unregister();
-            }
-          });
-        }
-      </script>
+    </div>
+    <script>
+      oncontextmenu = function () {
+        return false;
+      };
+      history.replaceState(null, null, "/");
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+          for (var i = 0; i < registrations.length; i++) {
+            registrations[i].unregister();
+          }
+        });
+      }
+    </script>
   </body>
 
 </html>

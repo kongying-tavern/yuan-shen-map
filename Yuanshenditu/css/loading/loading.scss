@@ -1,6 +1,6 @@
 /*
  * @Author       : (^_^)
- * @LastEditTime : 2021-05-01 12:22 AM
+ * @LastEditTime : 2021-05-06 1:20 PM
  */
 
 @charset "utf-8";
@@ -53,17 +53,6 @@ body[data-theme="light"] {
   left: 0;
   top: $top;
   filter: drop-shadow(0 #{-$top} 0 $color);
-}
-
-@supports not (filter: drop-shadow(0 0 0 #fff)) {
-  // 如果浏览器不支持filter就使用移动端的动画
-  .loading-default {
-    display: none !important;
-  }
-
-  .loading-mobile {
-    display: inline-block !important;
-  }
 }
 
 [lang]:lang(ar) {
@@ -119,10 +108,6 @@ a {
       text-align: center;
       font-family: "Roboto", sans-serif;
       color: var(--ThemeFontColor);
-
-      a {
-        color: $link-color;
-      }
     }
 
     .loading-default {
@@ -230,6 +215,19 @@ a {
         }
       }
     }
+  }
+}
+
+
+@supports not (filter: drop-shadow(0 0 0 #fff)) {
+
+  // 如果浏览器不支持filter就使用移动端的动画
+  .loading-default {
+    display: none !important;
+  }
+
+  .loading-mobile {
+    display: inline-block !important;
   }
 }
 

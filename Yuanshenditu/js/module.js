@@ -1,9 +1,9 @@
+// @ts-nocheck
 /*
  * @Author       : (*^_^*)
- * @LastEditTime : 2021-05-03 9:24 PM
+ * @LastEditTime : 2021-05-06 2:01 PM
  * @Description  : loading页的依赖模块封装
  */
-import * as utils from './utils.js';
 
 /**
  * @description: 资源预加载
@@ -30,7 +30,7 @@ class ResourceReloading {
   /** @private */
   async getData(url) {
     // @ts-ignore
-    return await utils.request(url).catch((error) => console.log(error));
+    return await request(url).catch((error) => console.log(error));
   }
 
   /** @private */
@@ -127,7 +127,8 @@ class DynamicTheme {
     this.themeList = new Set(themeList);
     this.defaultTheme = defaultTheme;
     this.container = document.body;
-    this.urlValue = new URLSearchParams(new URL(location.href).search).get("theme");
+    this.urlValue = defaultTheme;
+    if(URLSearchParams) this.urlValue = new URLSearchParams(new URL(location.href).search).get("theme");
     this.Theme = this.urlValue;
     if(this.urlValue === null || this.urlValue === "") this.autoTheme();
     
@@ -151,7 +152,7 @@ class DynamicTheme {
    * @param {string} value
    */
   set Theme(value) {
-    utils.setURL("theme", value);
+    utils.setURLParam("theme", value);
     this.container.setAttribute("data-theme", value);
   }
 
@@ -184,8 +185,6 @@ class DynamicTheme {
   }
 }
 
-export {
-  DynamicTheme,
-  LoadingBar,
-  ResourceReloading
-}
+window.DynamicTheme = DynamicTheme;
+window.LoadingBar = LoadingBar;
+window.ResourceReloading = ResourceReloading;

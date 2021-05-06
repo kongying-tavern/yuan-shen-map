@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-05 11:37 AM
+ * @LastEditTime : 2021-05-06 2:38 PM
 -->
 
 <!DOCTYPE html>
@@ -69,6 +69,7 @@
             'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
       })(window, document, 'script', 'dataLayer', 'GTM-5H6V3NB');</script>
     <!-- End Google Tag Manager -->
+  </head>
 
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -152,19 +153,20 @@
           </div>
         </div>
       </div>
-      <script>
-        oncontextmenu = function () {
-          return false;
-        };
-        history.replaceState(null, null, "/");
-        if (navigator.serviceWorker) {
-          navigator.serviceWorker.getRegistrations().then(function (registrations) {
-            for (var i = 0; i < registrations.length; i++) {
-              registrations[i].unregister();
-            }
-          });
-        }
-      </script>
+    </div>
+    <script>
+      oncontextmenu = function () {
+        return false;
+      };
+      history.replaceState(null, null, "/");
+      if (navigator.serviceWorker) {
+        navigator.serviceWorker.getRegistrations().then(function (registrations) {
+          for (var i = 0; i < registrations.length; i++) {
+            registrations[i].unregister();
+          }
+        });
+      }
+    </script>
   </body>
 
 </html>

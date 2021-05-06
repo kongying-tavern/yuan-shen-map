@@ -1,96 +1,91 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-05 12:01 PM
+ * @LastEditTime : 2021-05-06 4:08 PM
 -->
 
 <!DOCTYPE html>
 <html lang="zh-cmn" dir="ltr">
 
-<head>
-  <meta charset="UTF-8">
-  <title>原神地图 - Genshin Impact Map</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
-  <meta name="renderer" content="webkit" />
-  <meta name="force-rendering" content="webkit" />
-  <meta name="theme-color" content="#ffffff" />
-  <meta name="msappdivcation-navbutton-color" content="#ffffff" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="lack-translucent" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-title" content="Genshin Map">
-  <meta name="format-detection" content="telephone=no" />
-  <!-- <meta name="google" value="notranslate"> -->
-  <meta name="keywords" content="原神地図,Choose-country-region,Genshin,Genshin Impact Map" />
-  <meta name="description" content="Choose-country-region - Genshin Map" />
-  <!-- Open Graph -->
-  <meta property="fb:app_id" content="3340670332825887" />
-  <meta property="og:url" content="https://yuanshen.site/" />
-  <meta property="og:title" content="原神地图" />
-  <meta property="og:site_name" content="Genshin Impact Map" />
-  <meta property="og:description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
-  <meta name="twitter:widgets:csp" content="on">
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="@yuanshen_site" />
-  <meta name="twitter:image:src" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
-  <meta name="twitter:creator" content="@yuanshen_site" />
-  <meta property="twitter:url" content="https://yuanshen.site/" />
-  <meta property="twitter:type" content="website" />
-  <meta property="twitter:title" content="原神地图" />
-  <meta property="twitter:description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
-  <meta property="twitter:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
-  <meta property="url" content="https://yuanshen.site/" />
-  <meta property="type" content="website" />
-  <meta property="title" content="原神地图" />
-  <meta property="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
-  <meta property="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
-  <meta itemprop="name" content="原神地图" />
-  <meta itemprop="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
-  <meta itemprop="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
-  <!-- Open Graph -->
-  <link rel="canonical" href="https://yuanshen.site/" />
-  <link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="https://yuanshen.site/favicon.ico" sizes="120x120" />
-  <link rel="stylesheet" href="./css/global.min.css">
-  <link rel="stylesheet" href="./css/loading/loading.css">
-  <script>
-    if (!window.fetch || (!!window.ActiveXObject || "ActiveXObject" in window)) {
-      window.location.href = "error.html";
-    }
-  </script>
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5H6V3NB');</script>
-  <!-- End Google Tag Manager -->
-  <script>
-    // 该页面的全局配置
-    const globalConfig = {
-      theme: {
-        themeList: ["dark", "light"], // 主题列表
-        defaultTheme: "light", // 默认主题
-        autoTheme: true, // 自动切换主题 (即白天light 晚上dark
-      },
-      resourceReloadingData: 'data/preload.json', // 资源预加载的数据url
-      supportLocale: 'data/support-locale.json',
-      maxOverTime: 2500, // 最大延迟[ms] ( 即强制自动重定向的时间, 默认为资源预加载完成后
-      loadingBarContainer: '.loading-default', // loadingBar 挂载容器的选择器
-      defaultLanguage: 'en', // 如果用户浏览器主语言不在支持范围内, 回退的语言代码
-    };
-  </script>
-
   <head>
+    <meta charset="UTF-8">
+    <title>原神地图 - 自动跳转页</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="msappdivcation-navbutton-color" content="#ffffff" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="lack-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Genshin Map">
+    <meta name="format-detection" content="telephone=no" />
+    <!-- <meta name="google" value="notranslate"> -->
+    <meta name="keywords" content="原神地図,Choose-country-region,Genshin,Genshin Impact Map" />
+    <meta name="description" content="Choose-country-region - Genshin Map" />
+    <!-- Open Graph -->
+    <meta property="fb:app_id" content="3340670332825887" />
+    <meta property="og:url" content="https://yuanshen.site/" />
+    <meta property="og:title" content="原神地图" />
+    <meta property="og:site_name" content="Genshin Impact Map" />
+    <meta property="og:description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+    <meta name="twitter:widgets:csp" content="on">
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@yuanshen_site" />
+    <meta name="twitter:image:src" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+    <meta name="twitter:creator" content="@yuanshen_site" />
+    <meta property="twitter:url" content="https://yuanshen.site/" />
+    <meta property="twitter:type" content="website" />
+    <meta property="twitter:title" content="原神地图" />
+    <meta property="twitter:description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
+    <meta property="twitter:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+    <meta property="url" content="https://yuanshen.site/" />
+    <meta property="type" content="website" />
+    <meta property="title" content="原神地图" />
+    <meta property="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
+    <meta property="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+    <meta itemprop="name" content="原神地图" />
+    <meta itemprop="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
+    <meta itemprop="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+    <!-- Open Graph -->
+    <meta http-equiv="refresh" content="5; url='https://yuanshen.site/index.html'">
+    <link rel="canonical" href="https://yuanshen.site/" />
+    <link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="https://yuanshen.site/favicon.ico" sizes="120x120" />
+    <link rel="stylesheet" href="./css/global.min.css">
+    <link rel="stylesheet" href="./css/loading/loading.css">
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+        w[l] = w[l] || []; w[l].push({
+          'gtm.start':
+            new Date().getTime(), event: 'gtm.js'
+        }); var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-5H6V3NB');</script>
+    <!-- End Google Tag Manager -->
+    <script>
+      // 该页面的全局配置
+      const globalConfig = {
+        theme: {
+          themeList: ["dark", "light"], // 主题列表
+          defaultTheme: "light", // 默认主题
+          autoTheme: true, // 自动切换主题 (即白天light 晚上dark
+        },
+        resourceReloadingData: 'data/preload.json', // 资源预加载的数据url
+        supportLocale: 'data/support-locale.json',
+        maxOverTime: 2500, // 最大延迟[ms] ( 即强制自动重定向的时间, 默认为资源预加载完成后
+        loadingBarContainer: '.loading-default', // loadingBar 挂载容器的选择器
+        defaultLanguage: 'en', // 如果用户浏览器主语言不在支持范围内, 回退的语言代码
+      };
+    </script>
+  </head>
 
   <body data-theme="light">
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H6V3NB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H6V3NB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <noscript>
       <p>(:</p>
       <p>We're sorry but</p>
@@ -114,49 +109,42 @@
           <h2>Loading ...</h2>
         </div>
         <p class="loading-tips">
-          Is redirecting you to
-          「
-          <span class="replace-link">
-            <a href="https://yuanshen.site/index_en.html">https://yuanshen.site/index_en.html</a>
-          </span>
-          」
-          <br>
-          You can
-          <a href="choose-country-region.html">Manual selection</a>
+          自动跳转页 / Automatically jump to page
         </p>
       </div>
-      <script type="module">
-        import { ResourceReloading, LoadingBar, DynamicTheme } from "./js/module.js";
-        import { request, onload, log, getSupperLocale } from "./js/utils.js";
-        ; (() => {
-          onload(async () => {
-            const myLoadingBar = new LoadingBar(globalConfig.loadingBarContainer);
-            const myDynamicTheme = new DynamicTheme(globalConfig.theme.themeList);
-            const supportLocale = await request(globalConfig.supportLocale).catch(error => console.error(error));
-            const { code, link } = getSupperLocale(supportLocale.support, globalConfig.defaultLanguage);
-            const myResourceReloading = new ResourceReloading(globalConfig.resourceReloadingData);
-            let state = false;
-            ['click', 'keyup'].forEach(value => document.addEventListener(value, () => { state = !state }, true));
-            document.querySelector(".replace-link").innerText = link;
-            myLoadingBar.start();
-            myResourceReloading.init().then(res => setTimeout(() => replace(), 800));
-            await setTimeout(() => replace(), globalConfig.maxOverTime);
+    </div>
+    <script>
+      if (!(window.fetch || URLSearchParams)) {
+        window.location.href = "error.html";
+      }
+    </script>
+    <script src="./js/fetch.js"></script>
+    <script src="./js/utils.cjs.js"></script>
+    <script src="./js/module.js"></script>
+    <script>
+      utils.compatibility();
+      ; (async function () {
+        const myResourceReloading = new ResourceReloading(globalConfig.resourceReloadingData);
+        const myLoadingBar = new LoadingBar(globalConfig.loadingBarContainer);
+        const myDynamicTheme = new DynamicTheme(globalConfig.theme.themeList);
+        const supportLocale = await request(globalConfig.supportLocale).catch(error => alert(error));
+        const { code, link } = utils.getSupperLocale(supportLocale.support, globalConfig.defaultLanguage);
+        myLoadingBar.start();
+        myResourceReloading.init().then(res => setTimeout(() => replace(), 1000));
+        await setTimeout(() => replace(), globalConfig.maxOverTime);
 
-            function replace() {
-              if (!state) {
-                myLoadingBar.finish();
-                setTimeout(() => document.location.replace(`https://yuanshen.site/${link}?locale=${code}`), 500);
-              }
-            }
+        function replace() {
+          myLoadingBar.finish();
+          setTimeout(() => document.location.replace(`https://yuanshen.site/${link}?locale=${code}`), 500);
+        }
 
-            log(
-              "原神地图", "自动跳转页",
-              [{ pageVersion: "1.1.0", author: "(*^_^*)", lastEditTime: "2021-4-29" }]
-            );
-            
-          });
-        })();
-      </script>
+        utils.log(
+          "原神地图", "自动跳转页",
+          [{ pageVersion: "1.2.0", author: "(*^_^*)", lastEditTime: "2021-5-6" }]
+        );
+
+      })();
+    </script>
   </body>
 
 </html>

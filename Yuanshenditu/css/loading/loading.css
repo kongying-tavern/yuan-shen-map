@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*
  * @Author       : (^_^)
- * @LastEditTime : 2021-05-01 12:22 AM
+ * @LastEditTime : 2021-05-06 1:20 PM
  */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap");
 :root {
@@ -30,15 +30,6 @@ body[data-theme="light"] {
   --ThemeFontTitleColor: #1d1d1f;
   --ThemeLoadingBackgroundColor: #f5f5f5;
   --ThemeLoadingProspectColor: #666666;
-}
-
-@supports not ((-webkit-filter: drop-shadow(0 0 0 #fff)) or (filter: drop-shadow(0 0 0 #fff))) {
-  .loading-default {
-    display: none !important;
-  }
-  .loading-mobile {
-    display: inline-block !important;
-  }
 }
 
 [lang]:lang(ar) {
@@ -99,10 +90,6 @@ a {
   text-align: center;
   font-family: "Roboto", sans-serif;
   color: var(--ThemeFontColor);
-}
-
-.wrapper .loading .loading-tips a {
-  color: #2997ff;
 }
 
 .wrapper .loading .loading-default {
@@ -236,6 +223,15 @@ a {
     font-size: 21px;
     font-family: "Roboto", sans-serif;
     color: var(--ThemeFontColor);
+  }
+}
+
+@supports not ((-webkit-filter: drop-shadow(0 0 0 #fff)) or (filter: drop-shadow(0 0 0 #fff))) {
+  .loading-default {
+    display: none !important;
+  }
+  .loading-mobile {
+    display: inline-block !important;
   }
 }
 
