@@ -1,7 +1,7 @@
 // @ts-nocheck
 /*
  * @Author       : (*^_^*)
- * @LastEditTime : 2021-05-06 2:01 PM
+ * @LastEditTime : 2021-05-07 8:40 PM
  * @Description  : loading页的依赖模块封装
  */
 
@@ -46,12 +46,12 @@ class ResourceReloading {
 
   /** @private */
   resourceLinkError(e) {
-    if (e.target.rel === "preload" && !(e instanceof ErrorEvent)) this.unsuccessful.push(e.target);
+    if (e.target.rel === "prefetch" && !(e instanceof ErrorEvent)) this.unsuccessful.push(e.target);
   }
 
   /** @private */
   resourceLinkLoad(e) {
-    if (e.target.rel === "preload" && !(e instanceof ErrorEvent)) this.succeed.push(e.target);
+    if (e.target.rel === "prefetch" && !(e instanceof ErrorEvent)) this.succeed.push(e.target);
   }
 
   /**
@@ -79,7 +79,7 @@ class ResourceReloading {
     type = type || "";
     const PRELOADLINK = document.createElement("link");
     const RE = new RegExp("^((https|http)?://)");
-    PRELOADLINK.rel = "preload";
+    PRELOADLINK.rel = "prefetch";
     PRELOADLINK.href = href;
     PRELOADLINK.as = as;
     if (type) PRELOADLINK.type = type;
