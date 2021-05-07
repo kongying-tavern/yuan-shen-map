@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-06 4:17 PM
+ * @LastEditTime : 2021-05-07 4:20 PM
 -->
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 
   <head>
     <meta charset="UTF-8">
-    <title>原神地图 - 自动跳转页</title>
+    <title>原神地图</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,minimal-ui" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
     <meta name="renderer" content="webkit" />
@@ -20,8 +20,8 @@
     <meta name="apple-mobile-web-app-title" content="Genshin Map">
     <meta name="format-detection" content="telephone=no" />
     <!-- <meta name="google" value="notranslate"> -->
-    <meta name="keywords" content="原神地図,Choose-country-region,Genshin,Genshin Impact Map" />
-    <meta name="description" content="Choose-country-region - Genshin Map" />
+    <meta name="keywords" content="原神地图,原神地図,原神地图工具,全资源攻略地图,空荧酒馆,原神資源地圖,Genshin Map,Genshin Impact Map" />
+    <meta name="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
     <!-- Open Graph -->
     <meta property="fb:app_id" content="3340670332825887" />
     <meta property="og:url" content="https://yuanshen.site/" />
@@ -49,7 +49,7 @@
     <meta itemprop="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
     <meta itemprop="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
     <!-- Open Graph -->
-    <meta http-equiv="refresh" content="5; url='https://yuanshen.site/index.html'">
+    <meta http-equiv="refresh" content="4; url='https://yuanshen.site/index.html'">
     <link rel="canonical" href="https://yuanshen.site/" />
     <link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="https://yuanshen.site/favicon.ico" sizes="120x120" />
@@ -71,13 +71,11 @@
         theme: {
           themeList: ["dark", "light"], // 主题列表
           defaultTheme: "light", // 默认主题
-          autoTheme: true, // 自动切换主题 (即白天light 晚上dark
         },
         resourceReloadingData: 'data/preload.json', // 资源预加载的数据url
         supportLocale: 'data/support-locale.json',
         maxOverTime: 2500, // 最大延迟[ms] ( 即强制自动重定向的时间, 默认为资源预加载完成后
         loadingBarContainer: '.loading-default', // loadingBar 挂载容器的选择器
-        defaultLanguage: 'en', // 如果用户浏览器主语言不在支持范围内, 回退的语言代码
       };
     </script>
   </head>
@@ -106,32 +104,46 @@
             <li class="item"></li>
             <li class="item"></li>
           </ul>
-          <h2>Loading ...</h2>
+          <h2 id="loading-text">Loading ...</h2>
         </div>
-        <p class="loading-tips">
-          自动跳转页 / Automatically jump to page
+        <p class="loading-tips" id="loading-tips">
+          自动跳转页
         </p>
       </div>
     </div>
     <script>
-      if (!window.fetch) {
-        window.location.href = "error.html";
-      }
+      if (!window.fetch) window.location.href = "error.html";
+    </script>
+    <script>
+      const lang = (() => {
+        if (!navigator.language || /^(yue|zh)(-cn|-hans(-[a-z]+)?)?$/i.test(navigator.language)) {
+          return ["原神地图 - 自动跳转页", "加载中"]
+        } else if (navigator.language.startsWith("zh") || navigator.language.startsWith("yue")) {
+          return ["原神地圖 - 自動跳轉頁", "加載中"]
+        } else {
+          return ["Genshin Map - Automatically jump to page", "Loading"];
+        }
+      });
+      const str = lang();
+      document.getElementById("loading-tips").innerText = `「${str[0]}」`;
+      document.getElementById("loading-text").innerText = str[1] + "...";
+      document.title = str[0];
     </script>
     <script src="./js/fetch.js"></script>
     <script src="./js/utils.cjs.js"></script>
     <script src="./js/module.js"></script>
     <script>
-      utils.compatibility();
       ; (async function () {
         const myResourceReloading = new ResourceReloading(globalConfig.resourceReloadingData);
         const myLoadingBar = new LoadingBar(globalConfig.loadingBarContainer);
         const myDynamicTheme = new DynamicTheme(globalConfig.theme.themeList);
-        const supportLocale = await request(globalConfig.supportLocale).catch(error => alert(error));
-        const { code, link } = utils.getSupperLocale(supportLocale.support, globalConfig.defaultLanguage);
+        const mySupportLocale = await request(globalConfig.supportLocale).catch(error => alert(error));
+        const { code, link } = utils.getSupperLocale(mySupportLocale.support, globalConfig.defaultLanguage);
+        
+        document.documentElement.oncontextmenu = (e) => e.preventDefault();
         myLoadingBar.start();
         myResourceReloading.init().then(res => setTimeout(() => replace(), 1000));
-        await setTimeout(() => replace(), globalConfig.maxOverTime);
+        setTimeout(() => replace(), globalConfig.maxOverTime);
 
         function replace() {
           myLoadingBar.finish();
@@ -140,9 +152,8 @@
 
         utils.log(
           "原神地图", "自动跳转页",
-          [{ pageVersion: "1.2.0", author: "(*^_^*)", lastEditTime: "2021-5-6" }]
+          [{ pageVersion: "1.2.0", author: "(*^_^*)", lastEditTime: "2021-5-7" }]
         );
-
       })();
     </script>
   </body>

@@ -13,7 +13,8 @@
           "loading": "Loading",
           "language": "language",
           "feedback": "Feedback",
-          "cycor": "Choose Your Country or Regione"
+          "cycor": "Choose Your Country or Regione",
+          "tips": "Sorry, this area is not currently supported\n you can visit our English page"
         }
       },
       "zh": {
@@ -35,7 +36,8 @@
           "loading": "ローディング中",
           "language": "言語",
           "feedback": "フィードバック",
-          "cycor": "国または地域を選択します"
+          "cycor": "国または地域を選択します",
+          "tips": "申し訳ありませんが、このエリアは現在サポートされていません\n英語のページにアクセスしてください。"
         }
       },
       "zh-TW": {
@@ -46,7 +48,8 @@
           "loading": "加載中",
           "language": "語言",
           "feedback": "反饋",
-          "cycor": "選擇您的國家或者地區"
+          "cycor": "選擇您的國家或者地區",
+          "tips": "抱歉, 暫時未支持該地區\n你可以訪問我們的英文頁面"
         }
       },
       "ru": {
@@ -57,7 +60,8 @@
           "loading": "Загрузка",
           "language": "Язык",
           "feedback": "Обратная связь",
-          "cycor": "Выберите вашу страну или регион"
+          "cycor": "Выберите вашу страну или регион",
+          "tips": "К сожалению, эта область в настоящее время не поддерживается\n вы можете посетить нашу страницу на английском языке"
         }
       },
       "de": {
@@ -68,7 +72,8 @@
           "loading": "Wird geladen",
           "language": "Sprache",
           "feedback": "Feedback",
-          "cycor": "Wählen Sie Ihr Land oder Ihre Region"
+          "cycor": "Wählen Sie Ihr Land oder Ihre Region",
+          "tips": "Leider wird dieser Bereich derzeit nicht unterstützt\n Sie können unsere englische Seite besuchen"
         }
       }
     }

@@ -174,12 +174,6 @@
         };
     }
 
-    function compatibility() {
-        if (!window.fetch || (!!window.ActiveXObject || "ActiveXObject" in window)) {
-            window.location.href = "error.html";
-        }
-    }
-
     /**
      * @description: 先凑和用
      * @param {object} data
@@ -230,6 +224,15 @@
         var oldUrl = window.location.href.toString();
         var re = eval('/(' + paramName + '=)([^&]*)/gi');
         var result = oldUrl.replace(re, paramName + '=' + newValue);
+        if (result === location.href &&
+            !new URLSearchParams(new URL(location.href).search).has(paramName)) {
+            if (location.search === "") {
+                result = "?" + paramName + "=" + newValue + location.hash;
+            }
+            else {
+                result = location.search + "&" + paramName + "=" + newValue + location.hash;
+            }
+        }
         history.pushState({
             url: result,
             title: document.title
@@ -245,7 +248,6 @@
         onload: onloads,
         setPseudoStyle: setPseudoStyle,
         throttle: throttle,
-        compatibility: compatibility,
         getSupperLocale: getSupperLocale,
         setURLParam: setURLParam,
         version: '1.0.0(beta)'

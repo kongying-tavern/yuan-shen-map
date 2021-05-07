@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-06 4:17 PM
+ * @LastEditTime : 2021-05-07 7:44 PM
 -->
 
 <!DOCTYPE html>
@@ -92,6 +92,9 @@
       <header>
         <div class="header-container">
           <input type="checkbox" id="checkbox-menustate" class="checkbox-menustate">
+          <aside>
+            
+          </aside>
           <nav class="topnav">
             <div class="topnav-container cover">
               <!-- 移动端侧边栏按钮Icon -->
@@ -161,6 +164,9 @@
           </nav>
         </div>
       </footer>
+      <div id="tips" style="display:none;" v-text="$t('message.tips')">
+      
+      </div>
     </div>
     <script>
       if (!window.fetch ) {
@@ -206,13 +212,12 @@
             this.DynamicTheme = new DynamicTheme(globalConfig.theme.themeList);
 
             // replace
-            window.addEventListener('hashchange', function () {
+            window.addEventListener('hashchange',  () => {
               const link = getSupperReplaceLink(location.hash.replace("#", ""));
               if (link) {
                 document.location.replace(`https://yuanshen.site/${link}`);
               } else {
-                const tips = `This area is not currently supported.\n You can go to https://yuanshen.site/index_${globalConfig.defaultLanguage}.html`;
-                if (window.confirm(tips)) document.location.replace(`https://yuanshen.site/index_${globalConfig.defaultLanguage}.html`);
+                if (window.confirm(document.getElementById("tips").textContent)) document.location.replace(`https://yuanshen.site/index_${globalConfig.defaultLanguage}.html`);
               }
             }, false);
             function getSupperReplaceLink(lang) {

@@ -17,5 +17,4 @@ export default {
         commonjs(),
         typescript()
     ],
-    external:['lodash','jquery']
 }

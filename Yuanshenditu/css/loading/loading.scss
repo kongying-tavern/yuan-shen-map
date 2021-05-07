@@ -1,6 +1,6 @@
 /*
  * @Author       : (^_^)
- * @LastEditTime : 2021-05-06 1:20 PM
+ * @LastEditTime : 2021-05-07 6:12 PM
  */
 
 @charset "utf-8";
@@ -78,6 +78,14 @@ body[data-theme="light"] {
 a {
   transition: color .5s cubic-bezier(0.28, 0.11, 0.32, 1);
 }
+::selection {
+  color:inherit;
+  background: inherit;
+}
+
+html{
+  cursor: none;
+}
 
 .wrapper {
   position: position;
@@ -85,7 +93,7 @@ a {
   height: 100%;
   overflow-x: hidden;
   background-color: var(--ThemeBackgroundColor);
-
+  transition: color .5s cubic-bezier(.28, .11, .32, 1);
   .loading {
     position: fixed;
     top: 0;
@@ -104,10 +112,16 @@ a {
       left: 50%;
       transform: translateX(-50%);
       font-size: 17px;
+      opacity: .7;
       font-weight: 600;
       text-align: center;
       font-family: "Roboto", sans-serif;
       color: var(--ThemeFontColor);
+
+      &:hover {
+        opacity: 1;
+        transition: opacity .3s ease-in;
+      }
     }
 
     .loading-default {
@@ -145,6 +159,7 @@ a {
       }
 
       .loading-tips {
+        font-size: 14px;
         white-space: nowrap;
       }
 

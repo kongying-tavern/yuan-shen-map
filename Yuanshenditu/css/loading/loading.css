@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*
  * @Author       : (^_^)
- * @LastEditTime : 2021-05-06 1:20 PM
+ * @LastEditTime : 2021-05-07 6:12 PM
  */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap");
 :root {
@@ -57,12 +57,28 @@ a {
   transition: color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
 }
 
+::-moz-selection {
+  color: inherit;
+  background: inherit;
+}
+
+::selection {
+  color: inherit;
+  background: inherit;
+}
+
+html {
+  cursor: none;
+}
+
 .wrapper {
   position: position;
   width: 100vw;
   height: 100%;
   overflow-x: hidden;
   background-color: var(--ThemeBackgroundColor);
+  -webkit-transition: color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+  transition: color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
 }
 
 .wrapper .loading {
@@ -86,10 +102,17 @@ a {
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   font-size: 17px;
+  opacity: .7;
   font-weight: 600;
   text-align: center;
   font-family: "Roboto", sans-serif;
   color: var(--ThemeFontColor);
+}
+
+.wrapper .loading .loading-tips:hover {
+  opacity: 1;
+  -webkit-transition: opacity .3s ease-in;
+  transition: opacity .3s ease-in;
 }
 
 .wrapper .loading .loading-default {
@@ -136,6 +159,7 @@ a {
     display: none;
   }
   .wrapper .loading .loading-tips {
+    font-size: 14px;
     white-space: nowrap;
   }
 }
