@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-08 11:49 AM
+ * @LastEditTime : 2021-05-08 5:35 PM
 -->
 
 <!DOCTYPE html>
@@ -50,6 +50,7 @@
     <meta itemprop="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
     <!-- Open Graph -->
     <meta http-equiv="refresh" content="4; url='https://yuanshen.site/index.html'">
+    <link rel="alternate" href="https://yuanshen.site/" hreflang="x-default" />
     <link rel="canonical" href="https://yuanshen.site/" />
     <link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
     <link rel="apple-touch-icon" href="https://yuanshen.site/favicon.ico" sizes="120x120" />
@@ -78,6 +79,31 @@
         loadingBarContainer: '.loading-default', // loadingBar 挂载容器的选择器
       };
     </script>
+    <script type="application/ld+json">
+      [{
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "url": "https://yuanshen.site",
+        "logo": "https://yuanshen.site/tiles_test/4/ppp10_9.jpg"
+      },
+      {
+        "@context": "https://schema.org/",
+        "@type": "WebPage",
+        "name": "Genshin Map",
+        "author": {
+          "@type": "Organization",
+          "name": " Kongying"
+        },
+        "datePublished": "2021-05-08"
+      },
+      {
+        "@context": "https://schema.org/",
+        "@type": "ImageObject",
+        "url": "https://yuanshen.site",
+        "license": "https://yuanshen.site/disclaimer_en.html",
+        "acquireLicensePage": "https://yuanshen.site/disclaimer_en.html"
+      }]
+    </script>
   </head>
 
   <body data-theme="light">
@@ -89,6 +115,15 @@
       <p>We're sorry but</p>
       <p>This page requires JavaScript to work properly</p>
     </noscript>
+    <nav style="display: none;">
+      <a href="https://yuanshen.site/index.html">index.html</a>
+      <a href="https://yuanshen.site/index_en.html">index_en.html</a>
+      <a href="https://yuanshen.site/index_jp.html">index_jp.html</a>
+      <a href="https://yuanshen.site/choose-country-region.html">choose-country-region.html</a>
+      <a href="https://yuanshen.site/main.html">main.html</a>
+      <a href="https://yuanshen.site/main_en.html">main_en.html</a>
+      <a href="https://yuanshen.site/main_jp.html">main_jp.html</a>
+    </nav>
     <div class="wrapper" id="app">
       <div class="loading">
         <!-- 默认加载动画 -->
@@ -120,7 +155,7 @@
           return ["原神地图 - 自动跳转页", "加载中"]
         } else if (navigator.language.startsWith("zh") || navigator.language.startsWith("yue")) {
           return ["原神地圖 - 自動跳轉頁", "加載中"]
-        } else if (navigator.language.startsWith("ja") || navigator.language.startsWith("jp")){
+        } else if (navigator.language.startsWith("ja") || navigator.language.startsWith("jp")) {
           return ["原神地図 - 自動ジャンプページ", "読み込み中"]
         } else {
           return ["Genshin Map - Automatically jump page", "Loading"];
@@ -141,7 +176,7 @@
         const myDynamicTheme = new DynamicTheme(globalConfig.theme.themeList);
         const mySupportLocale = await request(globalConfig.supportLocale).catch(error => alert(error));
         const { code, link } = utils.getSupperLocale(mySupportLocale.support, globalConfig.defaultLanguage);
-        
+
         document.documentElement.oncontextmenu = (e) => e.preventDefault();
         myLoadingBar.start();
         myResourceReloading.init().then(res => setTimeout(() => replace(), 1000));
