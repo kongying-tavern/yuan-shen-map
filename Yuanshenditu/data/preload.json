@@ -1,11 +1,4 @@
 {
-  "dataLength": "75",
-  "typing": [
-    "style",
-    "script",
-    "image",
-    "font"
-  ],
   "data": [
     {
       "href": "/css/reset.css",
@@ -244,10 +237,6 @@
       "as": "image"
     },
     {
-      "href": "/imgs/con_img/img-border.png",
-      "as": "image"
-    },
-    {
       "href": "/imgs/con_img/fold.png",
       "as": "image"
     },
@@ -264,15 +253,519 @@
       "as": "image"
     },
     {
-      "href": "/imgs/icon_128.png",
+      "href": "/imgs/genshin_art.png",
       "as": "image"
     },
     {
-      "href": "/imgs/icon_132.png",
+      "href": "/imgs/genshin_pub.png",
       "as": "image"
     },
     {
-      "href": "/imgs/icon_131.png",
+      "href": "/imgs/con_img/switch_on.png",
+      "as": "image"
+    },
+    {
+      "href": "imgs/con_img/danjixiazai.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_0.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_1.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_2.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_3.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_4.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_5.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_6.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_7.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_8.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_9.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_10.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_11.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_12.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_13.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_14.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_15.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_16.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_17.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_18.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_19.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_20.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_21.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_22.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_23.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_24.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_25.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_26.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_27.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_28.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_29.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_30.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_31.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_32.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_33.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_34.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_35.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_36.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_37.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_38.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_39.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_40.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_41.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_42.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_43.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_44.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_45.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_46.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_47.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_48.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_49.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_50.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_51.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_52.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_53.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_54.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_55.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_56.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_57.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_58.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_59.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_60.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_61.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_62.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_63.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_64.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_65.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_66.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_67.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_68.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_69.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_70.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_71.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_72.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_73.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_74.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_75.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_76.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_77.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_78.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_79.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_80.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_81.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_82.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_83.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_84.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_85.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_86.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_87.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_88.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_89.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_90.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_91.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_92.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_93.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_94.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_95.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_96.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_97.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_98.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_99.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_100.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_101.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_102.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_103.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_104.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_105.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_106.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_107.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_108.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_109.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_110.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_111.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_112.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_113.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_114.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_115.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_116.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_117.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_118.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_119.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_120.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_121.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_122.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_123.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_124.png",
       "as": "image"
     },
     {
@@ -305,6 +798,46 @@
     },
     {
       "href": "/imgs/icon_132.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_133.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_134.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_135.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_136.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_137.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_138.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_139.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_140.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_141.png",
+      "as": "image"
+    },
+    {
+      "href": "/imgs/icon_142.png",
       "as": "image"
     },
     {
