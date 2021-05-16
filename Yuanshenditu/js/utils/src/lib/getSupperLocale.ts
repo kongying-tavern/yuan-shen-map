@@ -12,16 +12,14 @@ function getSupperLocale(data: any, defaultLanguage:string) {
     if (data[i].node) {
       for (let x = 0; x < data[i].node.length; x++) {
         if (data[i].node[x].code === userLocale) return {
-          code: data[i].node[x].code,
+          code: [data[i].node[x].code],
           link: data[i].node[x].link,
-          dir: data[i].node[x].code.includes("ar") ? "rtl" : "ltr"
         }
       }
       for (let x = 0; x < data[i].code.length; x++) {
         if (data[i].code[x] === userLocale) return {
           code: data[i].code,
           link: data[i].link,
-          dir: data[i].node[x].code.includes("ar") ? "rtl" : "ltr"
         };
       }
     } else {
@@ -29,7 +27,6 @@ function getSupperLocale(data: any, defaultLanguage:string) {
         if (data[i].code[x] === userLocale) return {
           code: data[i].code,
           link: data[i].link,
-          dir: data[i].node[x].code.includes("ar") ? "rtl" : "ltr"
         };
       }
     }

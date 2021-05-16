@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-08 1:41 PM
+ * @LastEditTime : 2021-05-08 7:37 PM
 -->
 
 <!DOCTYPE html>
@@ -179,23 +179,16 @@
     <script src="./js/module.js"></script>
     <script>
       (async () => {
-        const {
-          countryRegion,
-          locale
-        } = await request(globalConfig.chooseCountryRegion).catch(error => console.log(error));
-        const supportLocale = await request(globalConfig.supportLocale).catch(error => console.error(error));
-        const userLocaleData = utils.getSupperLocale(supportLocale.support, globalConfig.defaultLanguage);
+        const { countryRegion, locale } = await request(globalConfig.chooseCountryRegion).catch(error => console.log(error));
+        const { support } = await request(globalConfig.supportLocale).catch(error => console.error(error));
+        const { code, link } = utils.getSupperLocale(support, globalConfig.defaultLanguage);
         const i18n = VueI18n.createI18n({
-          locale: new URLSearchParams(new URL(location.href).search).get("lang") || userLocaleData.code, // set locale
+          locale: new URLSearchParams(new URL(location.href).search).get("lang") || utils.getUserLanguage, // set locale
           fallbackLocale: globalConfig.defaultLanguage,                                                  // set fallback locale
           messages: locale.message,
           silentTranslationWarn: true                                                                  // set locale messages
         });
-        // 如果没有传参,就使用浏览器用户的主语言并且设置url的参数
-        if (!new URLSearchParams(new URL(location.href).search).has("lang")) utils.setURLParam("lang", userLocaleData.code);
-        if (!new URLSearchParams(new URL(location.href).search).has("dir")) utils.setURLParam("dir", userLocaleData.dir);
-        document.documentElement.setAttribute('dir', new URLSearchParams(new URL(location.href).search).get("dir"));
-
+        
         const app = Vue.createApp({
           data() {
             return {
@@ -223,7 +216,7 @@
             }, false);
             function getSupperReplaceLink(lang) {
               let result = "";
-              supportLocale.support.forEach((val) => {
+              support.forEach((val) => {
                 if (val.node) {
                   for (let i = 0; i < val.node.length; i++) {
                     if (val.node[i].code === lang) {

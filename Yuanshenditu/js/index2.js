@@ -1,4 +1,4 @@
-//@ts-check
+// @ts-nocheck
 //初始化地图
 t = L.latLngBounds([0, 0], [-66.5, 90]);
 var map = L.map("map", {
@@ -950,4 +950,64 @@ $(".myPopComment").click(function (event) {
 	change();
 })
 
-updatePointTime()
+updatePointTime();
+
+/**
+ * @description: 隐藏传送点记忆
+ * @param null
+ */
+;
+(function () {
+	/**
+  * @description: 开关记忆类实现
+	* @constructor
+  * @param {string} [element=".switch_FB"] 需要记忆的元素选择器
+  * @param {"on"|"off"} [defaultState="on"] 元素的默认状态 (on / off
+  * @return {void}
+  */ 
+ function SwitchMemory(element, defaultState) {
+		this.element = element || ".switch_FB";
+		this.event = "click";
+		this.defaultState = defaultState || "on";
+		this.state = this.getState() === null ? this.defaultState === "on" ? 2 : 1 : this.getState();
+		this.SWITCH = document.querySelectorAll(this.element)[0];
+		this.init();
+	}
+
+	SwitchMemory.prototype.init = function () {
+		this.bindEvent(this.SWITCH);
+		if (this.getState() !== null) {
+			if (this.getState() % 2 !== 0) {
+				this.change(this.SWITCH, this.event);
+				this.state = this.state - 1;
+			}
+			return;
+		}
+		this.setState(this.element, this.state);
+	}
+
+	SwitchMemory.prototype.bindEvent = function (element) {
+		element.addEventListener(this.event, this.onEvent.bind(this), false);
+	};
+
+	SwitchMemory.prototype.onEvent = function (self) {
+		console.log(self.target);
+		this.setState(this.element, ++this.state);
+	}
+
+	SwitchMemory.prototype.getState = function (name = this.element) {
+		return localStorage.getItem(name);
+	}
+
+	SwitchMemory.prototype.setState = function (name, value) {
+		localStorage.setItem(name, value);
+	}
+
+	SwitchMemory.prototype.change = function (element, event) {
+		setTimeout(function () {
+			element[event]();
+		}, 0);
+	}
+
+	new SwitchMemory(".switch_FB", "on");
+})();
