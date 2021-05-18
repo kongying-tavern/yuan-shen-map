@@ -54,6 +54,7 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" href="dist/MarkerCluster.css" />
 	<link rel="stylesheet" href="dist/MarkerCluster.Default.css" />
+	<script src="js/getError.js"></script>
 	<script src="js/Cookie.js"></script>
 	<script src="js/gitFunctions.js"></script>
 	<script>
@@ -101,7 +102,7 @@
 				}); var f = d.getElementsByTagName(s)[0],
 					j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
 						'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-			})(window, document, 'script', 'dataLayer', 'GTMs-5H6V3NB');</script>
+			})(window, document, 'script', 'dataLayer', 'GTM-5H6V3NB');</script>
 		<!-- End Google Tag Manager -->
 			<!-- Google Tag Manager (noscript) -->
 			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H6V3NB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -731,15 +732,16 @@
 					this.element = element || ".switch_FB";
 					this.event = "click";
 					this.defaultState = defaultState || "on";
-					this.state = this.getState() === null ? this.defaultState === "on" ? 2 : 1 : this.getState();
+					this.state = !this.getState() ? this.defaultState === "on" ? 2 : 1 : this.getState();
 					this.SWITCH = document.querySelectorAll(this.element)[0];
-					this.init();
+					this.load();
 				}
 
-				SwitchMemory.prototype.init = function () {
+				SwitchMemory.prototype.load = function () {
 					this.bindEvent(this.SWITCH);
-					if (this.getState() !== null) {
-						if (this.getState() % 2 !== 0) {
+					const myState = this.getState();
+					if (myState) {
+						if (myState % 2 !== 0) {
 							this.change(this.SWITCH, this.event);
 							this.state = this.state - 1;
 						}
@@ -753,7 +755,6 @@
 				};
 
 				SwitchMemory.prototype.onEvent = function (self) {
-					console.log(self.target);
 					this.setState(this.element, ++this.state);
 				}
 
@@ -874,10 +875,10 @@
 			})
 
 			//反馈跳转
-			$(".fankui").click(function () {
-				window.event.returnValue = false;
-				window.open('https://support.qq.com/products/321980');
-			})
+			//$(".fankui").click(function () {
+			//	window.event.returnValue = false;
+			//	window.open('https://support.qq.com/products/321980');
+			//})
 
 			var statu = 1;
 			if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
@@ -1034,6 +1035,7 @@
 				$(".login-info")
 					.removeClass('reg_log_link').text("加载中...")
 				getGitUser(function (res) {
+					
 					localStorage.setItem("user", JSON.stringify(res))
 					console.log('res', res)
 					$(".login-info")
@@ -1062,7 +1064,6 @@
 			csd = !csd;
 				if (csd) {
 				$(".switch_FB").css("background-image", "url(imgs/con_img/switch_on.png)");
-				console.log("1")
 				map.addLayer(LayerMap["Layer_SX_MD"]);
 				map.addLayer(LayerMap["Layer_SX_LY"]);
 				map.addLayer(LayerMap["Layer_CSD_MD"]);
@@ -1072,7 +1073,6 @@
 				map.addLayer(LayerMap["Layer_MJ_MD"]);
 				map.addLayer(LayerMap["Layer_MJ_LY"]);
 			} else {
-				console.log("2")
 				$(".switch_FB").css("background-image", "url(imgs/con_img/switch_off.png)");
 				map.removeLayer(LayerMap["Layer_SX_MD"]);
 				map.removeLayer(LayerMap["Layer_SX_LY"]);
@@ -1085,6 +1085,7 @@
 			}
 		},false);
 	</script>
+	<script src="js/feedback.js"></script>
 </body>
 
 </html>
