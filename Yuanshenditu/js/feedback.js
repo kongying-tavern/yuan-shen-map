@@ -1,33 +1,105 @@
-	;
+	const APPID = "321980";
+  const ELEMENT_SELECT = ".fankui";
+  /**
+	 * 吐个槽接入脚本
+	 * 支持 AMD，CJS，全局调用
+	 */
+	(function (root, factory) {
+	  if (typeof define === "function" && define.amd) {
+	    define(function () {
+	      return (root.Tucao = factory());
+	    });
+	  } else if (typeof module === "object" && module.exports) {
+	    module.exports = (root.Tucao = factory());
+	  } else {
+	    root.Tucao = factory();
+	  }
+	}(this, function () {
+
+	  var Tucao = (function () {
+	    /**
+	     * 发起接入请求
+	     * @param  {Number} productId  需要接入产品 id
+	     * @param  {[Object]} data     需要传递的用户信息            
+	     */
+	    var request = function (productId, data) {
+	      var form = document.createElement("form");
+	      form.id = "form";
+	      form.name = "form";
+	      document.body.appendChild(form);
+
+	      // 设置相应参数 
+	      for (key in data) {
+	        var input = document.createElement("input");
+	        input.type = "text";
+	        input.name = key;
+	        input.value = data[key];
+	        // 将该输入框插入到 form 中 
+	        form.appendChild(input);
+	      }
+	      // form 的提交方式 
+	      form.method = "POST";
+	      // form 提交路径 
+	      form.action = "https://support.qq.com/product/" + productId;
+	      // 对该 form 执行提交 
+	      form.submit();
+	      // 删除该 form 
+	      document.body.removeChild(form);
+	    }
+	    return {
+	      request: request,
+	    }
+	  })();
+	  return Tucao;
+	}));
 	(function () {
-	  const element = document.querySelector(".fankui");
+	  const element = document.querySelector(ELEMENT_SELECT);
 	  element.addEventListener("click", feedback, false);
 
 	  function feedback() {
-
+	    Tucao.request(APPID, getUserInfo());
 	  }
 
 	  function getUserInfo() {
-	    const loginInfo = JSON.parse(localStorage.getItem("user"));
 	    let result = {
 	      clientInfo: navigator.userAgent,
 	      clientVersion: navigator.appVersion,
 	      os: navigator.platform,
 	      osVersion: navigator.appVersion,
 	      netType: navigator.connection.effectiveType,
-	      openid: loginInfo.id,
-	      nickname: loginInfo.name,
-	      avatar: loginInfo.avatar_url,
-	      customInfo: filtration({
+	      customInfo: JSON.stringify(filtration({
 	        title: document.title,
 	        href: location.href,
 	        onLine: navigator.onLine,
 	        fetch: typeof window.fetch === "undefined" ? false : true,
 	        inIframe: self != top,
 	        cookie: navigator.cookieEnabled,
-	        ...getScreenInfo()
-	      })
+	        ...getScreenInfo(),
+	        // ...getErrorLog() customInfo长度限制256, 错误信息太多不传了
+	      })).substring(0, 255),
+        ...getUserLoginInfo(),
 	    };
+
+	    function getErrorLog() {
+	      if (!localStorage.getItem("indexPage-ErrorLog")) return;
+	      return {
+	        errorLog: JSON.parse(localStorage.getItem("indexPage-ErrorLog"))
+	      }
+	    }
+
+	    function getUserLoginInfo() {
+	      if (!localStorage.getItem("user")) return {};
+	      let {
+	        id,
+	        name,
+	        avatar_url
+	      } = JSON.parse(localStorage.getItem("user"));
+	      return {
+	        "openid": id,
+	        "nickname": name,
+	        "avatar": avatar_url
+	      }
+	    }
 
 	    function getScreenInfo() {
 	      let innerW = document.documentElement.clientWidth,
@@ -72,10 +144,9 @@
 	        if (typeof object[item] === "undefined" || object[item] === null) delete object[item];
 	      return object;
 	    }
-      
 	    return filtration(result);
 	  }
-	  console.log(getUserInfo())
+
 	})();
 
 	if (!String.prototype.includes) {
@@ -91,7 +162,7 @@
 	    }
 	  };
 	}
-  
+
 	function isMobile() {
 	  const info = navigator.userAgent;
 	  const agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPod", "iPad"];

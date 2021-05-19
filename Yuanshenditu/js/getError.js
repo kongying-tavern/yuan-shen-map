@@ -1,28 +1,36 @@
+/*
+ * @Author       : (*^_^*)
+ * @LastEditTime : 2021-05-19 7:33 PM
+ * @Description  : SaveErrorLog
+ */
+
   "use strict";
-  const NAMESPACE = `${window.location.pathname}ErrorLog`;
+  const NAMESPACE = `indexPage-ErrorLog`;
 
   injecJsError(); // 捕获Js错误
-  injectFetch();  // 捕获Fetch错误
-  injectXhr();    // 捕获Ajax错误
-  blackScreen();  // 捕获白屏错误
+  injectFetch(); // 捕获Fetch错误
+  injectXhr(); // 捕获Ajax错误
+  blackScreen(); // 捕获白屏错误
 
   function injecJsError() {
     window.addEventListener("error", function (event) {
       let lastEvent = getLastEvent();
       if (event.target && (event.target.src || event.target.href)) {
-        saveItem("resourceError", {
+        saveItem({
+          type: "resourceError",
           message: event.message,
           filters: event.target.src || event.target.href,
           tagNmae: event.target.tagName,
-          selector: getSelection(event.target)
+          selector: getSelector(event.target)
         });
       } else {
-        saveItem("JsError", {
+        saveItem({
+          type: "JsError",
           message: event.message,
           filters: event.filename,
           position: `${event.lineno}:${event.colno}`,
           state: getLines(event.error.stack),
-          selector: lastEvent ? getSelection(lastEvent.path) : ""
+          selector: lastEvent ? getSelector(lastEvent.path) : ""
         });
       }
     }, true);
@@ -47,12 +55,13 @@
         }
         stack = getLines(reason.stack);
       }
-      saveItem("PromiseError", {
+      saveItem({
+        type: "PromiseError",
         message,
         filename,
         position: `${ line}:${column}`,
         stack: getLines(event.error.stack),
-        selector: lastEvent ? getSelection(lastEvent.path) : ""
+        selector: lastEvent ? getSelector(lastEvent.path) : ""
       })
     }, true);
   }
@@ -68,7 +77,8 @@
           let duration = Date.now() - startTime;
           let status = this.status;
           let stateText = this.statusText;
-          saveItem("xhrError", {
+          saveItem({
+            type: "xhrError",
             eventType: type,
             pathname: this.logData.url,
             status: status + "-" + stateText,
@@ -92,7 +102,8 @@
       return _oldFetch.apply(this, arguments)
         .then(res => {
           if (!res.ok) { // True if status is HTTP 2xx
-            saveItem("fetchError", {
+            saveItem({
+              type: "fetchError",
               url: res.url,
               redirected: res.redirect,
               type: res.type,
@@ -103,7 +114,8 @@
           return res;
         })
         .catch(error => {
-          saveItem("fetchError", {
+          saveItem({
+            type: "fetchError2",
             url: res.url,
             type: res.type,
             redirected: res.redirect,
@@ -132,14 +144,15 @@
           window.innerWidth * i / 10, window.innerHeight / 2);
         yElements = document.elementFromPoint(
           window.innerWidth / 2, window.innerHeight * i / 10);
-        isWrapper(xElements[0]);
-        isWrapper(yElements[0]);
+        isWrapper(xElements);
+        isWrapper(yElements);
       }
       if (emptyPoints >= 16) { //空白点阀值
         let centerElements = document.elementFromPoint(
           window.innerWidth / 2, window.innerHeight / 2
         );
-        saveItem("blackScreen", {
+        saveItem({
+          type: "blackScreen",
           emptyPoints,
           selector: getSelector(centerElements[0]),
         })
@@ -151,7 +164,8 @@
 
   function getSelector(element) {
     let selector;
-    if (element.id) {
+    if (typeof element === "undefined") return "unknown";
+    if (typeof element.id !== "undefined" && element.id !== "") {
       selector = `#${element.id}`;
     } else if (element.className && typeof element.className === 'string') {
       selector = '.' + element.className.split(' ').filter(function (item) {
@@ -217,31 +231,89 @@
     return object;
   }
 
-  function saveItem(key, value) {
+  function saveItem(value) {
     let storage = window.localStorage.getItem(NAMESPACE);
-
     if (!storage) {
-      storage = {};
+      storage = [];
     } else {
       storage = JSON.parse(storage);
+      const date = new Date(storage.date);
+      storage = storage.storage;
+      // 放了超过十分钟就删除
+      if (new Date().getTime() - new Date(date).getTime() >= 60 * 10000) {
+        window.localStorage.removeItem(NAMESPACE);
+        console.log(`delete errorlog succeed\nlodDate: ${new Date(date).toLocaleString()}`);
+      }
     }
-
-    storage[key] = value;
+    storage.push({
+      id: goodid(8),
+      data: {
+        ...value,
+      },
+      date: new Date().toLocaleString('zh-CN')
+    });
     window.localStorage.setItem(NAMESPACE, JSON.stringify({
-      storage: filtration(storage),
+      storage,
       date: new Date()
     }));
   }
 
-  function loadItem(key, myDefault) {
-    let storage = window.localStorage.getItem(NAMESPACE);
+  (function (global, factory) {
+    typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : (global.goodid = factory())
+  }(this, (function () {
+    'use strict';
+    var defaultAlphabet = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+    var defaultStartTime = new Date(2018, 9, 1).getTime();
+    var defaultLength = 16;
+    var defaultPrefix = '';
 
-    if (!storage) return myDefault;
+    function genRandom(length, alphabet) {
+      alphabet = alphabet || defaultAlphabet;
+      length = length || 1;
+      var id = '';
+      while (length-- > 0) {
+        id += alphabet[Math.random() * alphabet.length | 0]
+      }
+      return id
+    }
 
-    storage = JSON.parse(storage);
-    let result = storage[key];
-    return {
-      value,
-      date
-    } = result || myDefault;
-  }
+    function genTimestamp() {
+      var timeArr = Math.round((Date.now() - defaultStartTime) / 1000).toString(36).split('');
+      var count = 3;
+      var index = 0;
+      while (count-- > 0) {
+        index = Math.random() * timeArr.length | 0;
+        timeArr[index] = timeArr[index].toUpperCase()
+      }
+      return timeArr.join('')
+    }
+
+    function goodid(length, prefix, alphabet) {
+      length = length || defaultLength;
+      prefix = prefix || defaultPrefix;
+      if (length <= prefix.length) throw new Error('The length parameter cannot be less than the length of the prefix.');
+      var time = genTimestamp();
+      if (length < 16 || alphabet) {
+        return [prefix, genRandom(length - prefix.length, alphabet)].join('')
+      } else {
+        return [prefix, time, genRandom(length - prefix.length - time.length)].join('')
+      }
+    }
+    goodid.defaults = {
+      length: defaultLength,
+      prefix: defaultPrefix,
+      alphabet: defaultAlphabet,
+      startTime: defaultStartTime
+    };
+    goodid.config = function (options) {
+      options = options || goodid.defaults;
+      defaultLength = options.length || defaultLength;
+      defaultPrefix = options.prefix || defaultPrefix;
+      defaultAlphabet = options.alphabet || defaultAlphabet;
+      defaultStartTime = options.startTime || defaultStartTime
+    };
+    goodid.create = function () {
+      return goodid.apply(this, arguments)
+    };
+    return goodid
+  })));
