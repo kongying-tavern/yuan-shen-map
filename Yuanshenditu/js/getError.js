@@ -1,27 +1,40 @@
 /*
  * @Author       : (*^_^*)
- * @LastEditTime : 2021-05-19 7:33 PM
+ * @LastEditTime : 2021-05-21 6:49 PM
  * @Description  : SaveErrorLog
  */
 
   "use strict";
-  const NAMESPACE = `indexPage-ErrorLog`;
-
+  const NAMESPACE = `${window.location.pathname.substring(1).toLocaleUpperCase()}@ERRORLLOG`;
+  
   injecJsError(); // 捕获Js错误
-  injectFetch(); // 捕获Fetch错误
-  injectXhr(); // 捕获Ajax错误
-  blackScreen(); // 捕获白屏错误
+  injectFetch();  // 捕获Fetch错误
+  injectXhr();    // 捕获Ajax错误
+  blackScreen();  // 捕获白屏错误
+
+  function core() {
+
+  }
 
   function injecJsError() {
     window.addEventListener("error", function (event) {
       let lastEvent = getLastEvent();
       if (event.target && (event.target.src || event.target.href)) {
+        const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+        const {
+          downlink,
+          effectiveType,
+          rtt,
+        } = connection;
         saveItem({
           type: "resourceError",
           message: event.message,
           filters: event.target.src || event.target.href,
           tagNmae: event.target.tagName,
-          selector: getSelector(event.target)
+          selector: getSelector(event.target),
+          effectiveType,
+          downlink,
+          rtt,
         });
       } else {
         saveItem({
@@ -30,6 +43,7 @@
           filters: event.filename,
           position: `${event.lineno}:${event.colno}`,
           state: getLines(event.error.stack),
+          name: event.error.name,
           selector: lastEvent ? getSelector(lastEvent.path) : ""
         });
       }
@@ -59,6 +73,7 @@
         type: "PromiseError",
         message,
         filename,
+        stack,
         position: `${ line}:${column}`,
         stack: getLines(event.error.stack),
         selector: lastEvent ? getSelector(lastEvent.path) : ""
@@ -77,6 +92,12 @@
           let duration = Date.now() - startTime;
           let status = this.status;
           let stateText = this.statusText;
+          const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+          const {
+            downlink,
+            effectiveType,
+            rtt,
+          } = connection;
           saveItem({
             type: "xhrError",
             eventType: type,
@@ -85,6 +106,9 @@
             duration,
             pesponse: this.response ? `${JSON.stringify(this.response)}`.length >= 99 ? JSON.stringify(this.response).substr(0, 99) + "..." : JSON.stringify(this.response) : "",
             params: body || "",
+            downlink,
+            effectiveType,
+            rtt,
           })
         }
         this.addEventListener("load", handler("load"), false);
@@ -99,55 +123,68 @@
     if (!window.fetch) return;
     let _oldFetch = window.fetch;
     window.fetch = function () {
+      const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+      const {
+        downlink,
+        effectiveType,
+        rtt,
+      } = connection;
       return _oldFetch.apply(this, arguments)
         .then(res => {
-          if (!res.ok) { // True if status is HTTP 2xx
+          if (!res.ok) { 
             saveItem({
-              type: "fetchError",
+              type: "fetchStateError",
               url: res.url,
               redirected: res.redirect,
-              type: res.type,
+              requestType: res.type,
               status: res.status,
               text: res.statusText,
+              downlink,
+              effectiveType,
+              rtt,
             });
           }
           return res;
         })
         .catch(error => {
           saveItem({
-            type: "fetchError2",
+            type: "fetchError",
             url: res.url,
-            type: res.type,
+            requestType: res.type,
             redirected: res.redirect,
             status: res.status,
             text: res.statusText,
+            downlink,
+            effectiveType,
+            rtt,
           });
           throw error;
         })
     }
   }
 
-  function blackScreen() {
-    let wrapperElements = ["html", "body"]; //过滤元素数组
+  function blackScreen(filtrationElement, emptyPointsCount, blankPointThreshold) {
+    const wrapperElements = filtrationElement || ["html", "body"]; //过滤元素数组
+    const myBlankPointThreshold = blankPointThreshold || 16;
+    let myEmptyPointsCount = emptyPointsCount || 9;
+    if (myBlankPointThreshold >= myEmptyPointsCount * 2) throw new TypeError("BlankPointThreshold cannot be greater than twice the emptyPointsCount");
     let emptyPoints = 0;
 
     function isWrapper(element) {
       let selector = getSelector(element);
-      if (wrapperElements.includes(selector)) {
-        emptyPoints++;
-      }
+      if (wrapperElements.includes(selector)) emptyPoints++;
     }
     onload(function () {
       let yElements, xElements;
-      for (let i = 1; i <= 9; i++) { //以网页中心做轴获取X轴和Y轴十个点,判断是否是空白点
+      for (let i = 1; i <= myEmptyPointsCount - 1; i++) { //以网页中心做轴获取X轴和Y轴十个点,判断是否是空白点
         xElements = document.elementFromPoint(
-          window.innerWidth * i / 10, window.innerHeight / 2);
+          window.innerWidth * i / myEmptyPointsCount, window.innerHeight / 2);
         yElements = document.elementFromPoint(
-          window.innerWidth / 2, window.innerHeight * i / 10);
+          window.innerWidth / 2, window.innerHeight * i / myEmptyPointsCount);
         isWrapper(xElements);
         isWrapper(yElements);
       }
-      if (emptyPoints >= 16) { //空白点阀值
+      if (emptyPoints >= myBlankPointThreshold) { //空白点阀值
         let centerElements = document.elementFromPoint(
           window.innerWidth / 2, window.innerHeight / 2
         );
@@ -155,10 +192,10 @@
           type: "blackScreen",
           emptyPoints,
           selector: getSelector(centerElements[0]),
+          ...getScreenInfo()
         })
       }
     })
-
   }
   // Utils Function
 
@@ -225,12 +262,6 @@
     }
   }
 
-  function filtration(object) {
-    for (const item in object)
-      if (typeof object[item] === "undefined" || object[item] === null || object[item] === "") delete object[item];
-    return object;
-  }
-
   function saveItem(value) {
     let storage = window.localStorage.getItem(NAMESPACE);
     if (!storage) {
@@ -239,10 +270,10 @@
       storage = JSON.parse(storage);
       const date = new Date(storage.date);
       storage = storage.storage;
-      // 放了超过十分钟就删除
-      if (new Date().getTime() - new Date(date).getTime() >= 60 * 10000) {
+      // 每次存入时检查, 距离上一次存超过三十分钟就删除
+      if (new Date().getTime() - new Date(date).getTime() >= 60 * 30000) {
         window.localStorage.removeItem(NAMESPACE);
-        console.log(`delete errorlog succeed\nlodDate: ${new Date(date).toLocaleString()}`);
+        console.log(`delete errorlog succeed\nLastSavedDate: ${new Date(date).toLocaleString()}`);
       }
     }
     storage.push({
@@ -258,6 +289,68 @@
     }));
   }
 
+  function getScreenInfo() {
+    let innerW = document.documentElement.clientWidth,
+      innerH = document.documentElement.clientHeight,
+      sreenW = window.screen.width,
+      sreenH = window.screen.height;
+    ratio = window.devicePixelRatio ? window.devicePixelRatio : 1;
+    if (isMobile()) {
+      let tempW1 = window.screen.width,
+        tempW2 = innerW,
+        tempH1 = window.screen.height,
+        sreenW = "",
+        sreenH = "";
+      if (Math.max(tempW1, tempH1) == tempW2) {
+        sreenW = tempW1, sreenH = tempH1;
+      } else {
+        sreenH = innerW / tempW1 * tempH1;
+        sreenW = tempW2;
+      }
+      if (sreenW > sreenH) {
+        let t1 = sreenH;
+        sreenH = sreenW;
+        sreenW = t1;
+      }
+      if (innerW > innerH) {
+        let t2 = innerH;
+        innerH = innerW;
+        innerW = t2;
+      }
+    } else {
+      sreenW = window.screen.width,
+        sreenH = window.screen.height;
+    }
+    return filtration({
+      pixelRatio: `${parseInt(sreenW * ratio)}*${parseInt(sreenH * ratio)}`, //物理分辨率
+      viewPixelRatio: `${parseInt(innerW * ratio)}*${parseInt(innerH * ratio)}`, //逻辑分辨率
+      colorDepth: typeof screen.colorDepth !== "undefined" ? `${screen.colorDepth}` : null, //目标设备或缓冲器上的调色板的比特深度
+      pixelDepth: typeof screen.pixelDepth !== "undefined" ? `${screen.pixelDepth}` : null, //显示屏幕的颜色分辨率（比特每像素）
+      state: `${getOrientationState()}`, //屏幕横竖状态 
+    })
+  }
+
+  function getOrientationState() {
+    if (window.matchMedia("(orientation: portrait)")) {
+      return orientationStatus = "vertical";
+    }
+    return orientationStatus = "cross";
+  }
+  
+	function isMobile() {
+	  const info = navigator.userAgent;
+	  const agents = ["Android", "iPhone", "SymbianOS", "Windows Phone", "iPod", "iPad"];
+	  for (let i = 0; i < agents.length; i++) {
+	    if (info.indexOf(agents[i]) >= 0) return true;
+	  }
+	  return false;
+	}
+
+	function filtration(object) {
+	  for (const item in object)
+	    if (typeof object[item] === "undefined" || object[item] === null) delete object[item];
+	  return object;
+	}
   (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() : typeof define === 'function' && define.amd ? define(factory) : (global.goodid = factory())
   }(this, (function () {

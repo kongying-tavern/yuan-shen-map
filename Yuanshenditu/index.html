@@ -2,12 +2,14 @@
 <html>
 
 <head>
+	<meta charset="utf-8">
+	<title>原神地图</title>
 	<meta name="keywords" content="原神,原神地图,原神攻略,原神宝箱位置" />
 	<meta name="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
+	<meta name="applicable-device" content="pc,mobile">
 	<meta name="baidu_union_verify" content="50113a1916bc6375d27b9699c721c4da">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-	<title>原神地图</title>
-	<meta charset="utf-8">
+	
 	<!-- Facebook Open Graph -->
 	<meta property="fb:app_id" content="3340670332825887" />
 	<!-- Facebook Open Graph -->
@@ -54,6 +56,8 @@
 	<link rel="stylesheet" type="text/css" href="css/index.css">
 	<link rel="stylesheet" href="dist/MarkerCluster.css" />
 	<link rel="stylesheet" href="dist/MarkerCluster.Default.css" />
+	<!-- Auto Polyfill -->
+	<script crossOrigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js"></script>
 	<script src="js/getError.js"></script>
 	<script src="js/Cookie.js"></script>
 	<script src="js/gitFunctions.js"></script>
@@ -1084,6 +1088,11 @@
 				map.removeLayer(LayerMap["Layer_MJ_LY"]);
 			}
 		},false);
+	</script>
+	<script>
+		fetch("/data/node").then((res)=>{
+			return res.json()
+		})
 	</script>
 	<script src="js/feedback.js"></script>
 </body>

@@ -66,7 +66,7 @@
 	      clientVersion: navigator.appVersion,
 	      os: navigator.platform,
 	      osVersion: navigator.appVersion,
-	      netType: navigator.connection.effectiveType,
+	      netType: JSON.stringify(navigator.connection),
 	      customInfo: JSON.stringify(filtration({
 	        title: document.title,
 	        href: location.href,
@@ -79,13 +79,6 @@
 	      })).substring(0, 255),
         ...getUserLoginInfo(),
 	    };
-
-	    function getErrorLog() {
-	      if (!localStorage.getItem("indexPage-ErrorLog")) return;
-	      return {
-	        errorLog: JSON.parse(localStorage.getItem("indexPage-ErrorLog"))
-	      }
-	    }
 
 	    function getUserLoginInfo() {
 	      if (!localStorage.getItem("user")) return {};
