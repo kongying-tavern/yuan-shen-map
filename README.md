@@ -12,7 +12,7 @@
 
 ④当前针对PC优化，手机端也许会有一些意想不到的新(B)特(U)性(G)
 
-⑤如果各位旅行者发现了问题，可以[【点击这里并简述问题】]([https://support.qq.com/product/321980])
+⑤如果各位旅行者发现了问题，可以[【点击这里并简述问题】](https://support.qq.com/product/321980)
 
 制作：A8、大白米、Icarusss、南极风、(*^_^*)
 ![实例](https://upload-bbs.mihoyo.com/upload/2020/09/09/5284717/58b1e0a88e58bed8ddfc3bd34b439b75_259109571177980462.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg)
