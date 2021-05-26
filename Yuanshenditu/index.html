@@ -1041,7 +1041,6 @@
 				$(".login-info")
 					.removeClass('reg_log_link').text("加载中...")
 				getGitUser(function (res) {
-					console.log("123");
 					localStorage.setItem("user", JSON.stringify(res))
 					console.log('res', res)
 					$(".login-info")
