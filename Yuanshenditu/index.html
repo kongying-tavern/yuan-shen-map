@@ -1037,7 +1037,7 @@
 				event.preventDefault();
 			});
 
-			if (getCookie("gitee_Token") != "notfound" || true) {
+			if (getCookie("gitee_Token") != "notfound") {
 				$(".login-info")
 					.removeClass('reg_log_link').text("加载中...")
 				getGitUser(function (res) {
