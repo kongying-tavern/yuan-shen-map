@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /*
  * @Author       : Jia Zeng
- * @LastEditTime : 2021-05-05 11:35 AM
+ * @LastEditTime: 2021-05-26 18:37:42
  */
 [lang]:lang(ar) {
   font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
@@ -548,9 +548,13 @@ html {
   left: 0;
 }
 
-@media only screen and (max-width: 734px) {
+@media only screen and (max-width: 834px) {
+  .footer {
+    position: relative !important;
+  }
   .main-container,
   .footer-container {
     width: 87.5% !important;
   }
 }
+/*# sourceMappingURL=error.css.map */

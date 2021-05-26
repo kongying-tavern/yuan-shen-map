@@ -19,7 +19,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="Genshin Map">
     <meta name="format-detection" content="telephone=no" />
-    <!-- <meta name="google" value="notranslate"> -->
+    <meta name="google" value="notranslate">
     <meta name="keywords" content="原神地图,原神地図,原神地图工具,全资源攻略地图,空荧酒馆,原神資源地圖,Genshin Map,Genshin Impact Map" />
     <meta name="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
     <!-- Open Graph -->
@@ -154,13 +154,13 @@
     <script>
       const lang = (() => {
         if (!navigator.language || /^(yue|zh)(-cn|-hans(-[a-z]+)?)?$/i.test(navigator.language)) {
-          return ["原神地图 - 自动跳转页", "加载中"]
+          return ["原神地图", "加载中"]
         } else if (navigator.language.startsWith("zh") || navigator.language.startsWith("yue")) {
-          return ["原神地圖 - 自動跳轉頁", "加載中"]
+          return ["原神地圖", "加載中"]
         } else if (navigator.language.startsWith("ja") || navigator.language.startsWith("jp")) {
-          return ["原神地図 - 自動ジャンプページ", "読み込み中"]
+          return ["原神地図", "読み込み中"]
         } else {
-          return ["Genshin Map - Automatically jump page", "Loading"];
+          return ["Genshin Map", "Loading"];
         }
       });
       const str = lang();
@@ -186,7 +186,6 @@
         setTimeout(() => replace(), globalConfig.maxOverTime);
 
         function replace() {
-          if(isDevelopmentMode) debugger;
           myLoadingBar.finish();
           setTimeout(() => document.location.replace(`https://yuanshen.site/${link}?locale=${utils.getUserLanguage()}`), 500);
         }

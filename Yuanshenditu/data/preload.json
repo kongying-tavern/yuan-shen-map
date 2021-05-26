@@ -25,6 +25,10 @@
       "as": "script"
     },
     {
+      "href": "/js/getError.js",
+      "as": "script"
+    },
+    {
       "href": "/leaflet/leaflet.js",
       "as": "script"
     },

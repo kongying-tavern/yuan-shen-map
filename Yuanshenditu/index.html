@@ -9,7 +9,7 @@
 	<meta name="applicable-device" content="pc,mobile">
 	<meta name="baidu_union_verify" content="50113a1916bc6375d27b9699c721c4da">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
-	
+
 	<!-- Facebook Open Graph -->
 	<meta property="fb:app_id" content="3340670332825887" />
 	<!-- Facebook Open Graph -->
@@ -73,7 +73,7 @@
 			s.parentNode.insertBefore(hm, s);
 		})();
 	</script>
-			<script type="application/ld+json">
+	<script type="application/ld+json">
 			      [{
 			        "@context": "https://schema.org",
 			        "@type": "Organization",
@@ -98,28 +98,30 @@
 			        "acquireLicensePage": "https://yuanshen.site/disclaimer_en.html"
 			      }]
 			    </script>
-		<!-- Google Tag Manager -->
-		<script>(function (w, d, s, l, i) {
-				w[l] = w[l] || []; w[l].push({
-					'gtm.start':
-						new Date().getTime(), event: 'gtm.js'
-				}); var f = d.getElementsByTagName(s)[0],
-					j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-						'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-			})(window, document, 'script', 'dataLayer', 'GTM-5H6V3NB');</script>
-		<!-- End Google Tag Manager -->
-			<!-- Google Tag Manager (noscript) -->
-			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H6V3NB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-			<!-- End Google Tag Manager (noscript) -->
+	<!-- Google Tag Manager -->
+	<script>(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-5H6V3NB');</script>
+	<!-- End Google Tag Manager -->
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H6V3NB" height="0" width="0"
+			style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
 </head>
 
 <body>
 	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H6V3NB" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5H6V3NB" height="0" width="0"
+			style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
 	<iframe src="/Save/pop.html" class="savePop" style="display: none;"></iframe>
 	<div class="genshin_pub"><a href="https://genshin.pub/" target="_bal" class="YQLJ"></a></div>
-	<div class="genshin_art"><a href="https://mona-uranai.com/" target="_bal" class="YQLJ2"></a></div>
+	<div class="genshin_art"><a href="https://genshin.art/" target="_bal" class="YQLJ2"></a></div>
 	<div class="switch_FB"></div>
 	<div class="loading" style="display: none;"></div>
 	<div id='map'></div>
@@ -658,10 +660,10 @@
 				var idx = $(this).index();
 				$(".area-list-li-containor,.area-list-li-containor:not(.undone) .area-img").removeClass("on");
 				$(".area-list-li-containor,.area-list-li-containor:not(.undone) .area-img").addClass("off");
-				$(`.area-list-li-containor:eq(${idx})`).removeClass("off");
-				$(`.area-list-li-containor:eq(${idx})`).addClass("on");
-				$(`.area-list-li-containor:eq(${idx}) .area-img`).removeClass("off");
-				$(`.area-list-li-containor:eq(${idx}) .area-img`).addClass("on");
+				$(`.area-list-li-containor:eq(${ idx })`).removeClass("off");
+				$(`.area-list-li-containor:eq(${ idx })`).addClass("on");
+				$(`.area-list-li-containor:eq(${ idx }) .area-img`).removeClass("off");
+				$(`.area-list-li-containor:eq(${ idx }) .area-img`).addClass("on");
 				area_idx = $(this).attr("i_area");
 				filter();
 			}
@@ -690,7 +692,7 @@
 				let fclass = $(this).attr("class");
 				fclass = fclass.slice(0, fclass.indexOf(" "));
 				$(".selector-list-containor p:last").after(`
-					<p class="opt-selector" bind="${fclass}">${text}<a href="javascript:;" class="opt-selector-close hd">close</a></p>
+					<p class="opt-selector" bind="${ fclass }">${ text }<a href="javascript:;" class="opt-selector-close hd">close</a></p>
 				`);
 				$(".selector-list-containor p:last").click(function () {
 					let bind = $(this).attr("bind");
@@ -954,7 +956,7 @@
 				$(".area-list-li-containor").fadeIn(500);
 				$(".fold-btn").css("background-image", "url(imgs/con_img/fold.png)");
 			}
-			// else 
+			// else
 			// {
 			// 	//面板切换动画(pc)
 			// 	var Lock = true; //锁，防止抖动
@@ -1035,19 +1037,19 @@
 				event.preventDefault();
 			});
 
-			if (getCookie("gitee_Token") != "notfound") {
+			if (getCookie("gitee_Token") != "notfound" || true) {
 				$(".login-info")
 					.removeClass('reg_log_link').text("加载中...")
 				getGitUser(function (res) {
-					
+					console.log("123");
 					localStorage.setItem("user", JSON.stringify(res))
 					console.log('res', res)
 					$(".login-info")
 						.removeClass('reg_log_link')
 						.html(`
 				<div class="avatar-wrapper">
-					<img width="50" height="50" src="${res.avatar_url}" />
-					<div style="margin-left: 10px">${res.name}</div>
+					<img width="50" height="50" src="${ res.avatar_url }" />
+					<div style="margin-left: 10px">${ res.name }</div>
 				</div>`)
 				})
 			}
@@ -1062,11 +1064,11 @@
 			event.stopPropagation();
 		});
 		var csd = true;
-	
+
 		const mySwitch = document.querySelector(".switch_FB");
-		mySwitch.addEventListener("click", ()=>{
+		mySwitch.addEventListener("click", () => {
 			csd = !csd;
-				if (csd) {
+			if (csd) {
 				$(".switch_FB").css("background-image", "url(imgs/con_img/switch_on.png)");
 				map.addLayer(LayerMap["Layer_SX_MD"]);
 				map.addLayer(LayerMap["Layer_SX_LY"]);
@@ -1087,12 +1089,7 @@
 				map.removeLayer(LayerMap["Layer_MJ_MD"]);
 				map.removeLayer(LayerMap["Layer_MJ_LY"]);
 			}
-		},false);
-	</script>
-	<script>
-		fetch("/data/node").then((res)=>{
-			return res.json()
-		})
+		}, false);
 	</script>
 	<script src="js/feedback.js"></script>
 </body>
