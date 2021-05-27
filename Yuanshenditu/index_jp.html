@@ -1,6 +1,6 @@
 <!--
  * @Author       : zengjia@stelulo.com
- * @LastEditTime : 2021-05-21 6:55 PM
+ * @LastEditTime: 2021-05-27 14:30:10
 -->
 
 <!DOCTYPE html>
@@ -16,6 +16,7 @@
 	<meta name="theme-color" content="#fafafa" />
 	<meta name="msappdivcation-navbutton-color" content="#fafafa" />
 	<meta name="apple-mobile-web-app-status-bar-style" content="lack-translucent" />
+	<meta name="applicable-device" content="pc,mobile">
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="format-detection" content="telephone=no" />
 	<meta name="google" value="notranslate">
@@ -31,7 +32,7 @@
 	<meta property="og:site_name" content="Genshin Impact Map" />
 	<meta property="og:description" content="「米游社空荧酒馆」が作成した原神全資源攻略マップ" />
 	<meta property="og:type" content="website" />
-	<meta property="og:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<meta property="og:image" content="https://yuanshen.site/imgs/cover.jpg" />
 	<meta property="og:locale" content="ja-jp" />
 	<!-- Google Open Graph -->
 
@@ -39,13 +40,13 @@
 	<meta name="twitter:widgets:csp" content="on">
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@yuanshen_site" />
-	<meta name="twitter:image:src" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<meta name="twitter:image:src" content="https://yuanshen.site/imgs/cover.jpg" />
 	<meta name="twitter:creator" content="@yuanshen_site" />
 	<meta property="twitter:url" content="https://yuanshen.site/index_jp.html" />
 	<meta property="twitter:type" content="website" />
 	<meta property="twitter:title" content="原神地図" />
 	<meta property="twitter:description" content="「米游社空荧酒馆」が作成した原神全資源攻略マップ" />
-	<meta property="twitter:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<meta property="twitter:image" content="https://yuanshen.site/imgs/cover.jpg" />
 	<!-- Twitter Open Graph -->
 
 	<!-- Other Open Graph -->
@@ -53,10 +54,10 @@
 	<meta property="type" content="website" />
 	<meta property="title" content="原神地図" />
 	<meta property="description" content="「米游社空荧酒馆」が作成した原神全資源攻略マップ" />
-	<meta property="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<meta property="image" content="https://yuanshen.site/imgs/cover.jpg" />
 	<meta itemprop="name" content="原神地図" />
 	<meta itemprop="description" content="「米游社空荧酒馆」が作成した原神全資源攻略マップ" />
-	<meta itemprop="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<meta itemprop="image" content="https://yuanshen.site/imgs/cover.jpg" />
 	<!-- Other Open Graph -->
 	<link rel="alternate" href="https://yuanshen.site/index_en.html" hreflang="en-US" />
 	<link rel="alternate" href="https://yuanshen.site/index.html" hreflang="zh-Hans" />
@@ -93,7 +94,7 @@
 			        "@context": "https://schema.org",
 			        "@type": "Organization",
 			        "url": "https://yuanshen.site",
-			        "logo": "https://yuanshen.site/tiles_test/4/ppp10_9.jpg"
+			        "logo": "https://yuanshen.site/imgs/cover.jpg"
 			      },
 			      {
 			        "@context": "https://schema.org/",
@@ -617,7 +618,7 @@
 			</div>
 		</div>
 	</aside>
-	
+
 	<div class="bottom-rules">
 		<a href="disclaimer_jp.html" target="_bal" class="disclaimer">免責事項</a>
 	</div>
@@ -680,7 +681,7 @@
 			});
 			isDevelopmentMode && console.log("P1: ", p1);
 			// 只有版本与localStorage不同时弹出
-			if (localStorage.getItem("defenseVersion") !== window.defenseVersion || isDevelopmentMode) {			
+			if (localStorage.getItem("defenseVersion") !== window.defenseVersion || isDevelopmentMode) {
 				p1.show();
 				localStorage.setItem("defenseVersion", window.defenseVersion);
 			}
@@ -699,7 +700,7 @@
 					e.target.title = open;
 				}
 			}, false);
-		
+
 			// window.onload = () => {
 			//   const observer = new IntersectionObserver(function (changes) {
 			//     changes.forEach(function (element, index) {
@@ -1039,7 +1040,7 @@
 				$(".area-list-li-containor").fadeIn(500);
 				$(".fold-btn").css("background-image", "url(imgs/con_img/fold.png)");
 			}
-			// else 
+			// else
 			// {
 			// 	//面板切换动画(pc)
 			// 	var Lock = true; //锁，防止抖动

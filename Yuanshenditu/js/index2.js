@@ -17,10 +17,20 @@ L.control.attribution({
 	prefix: "<a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank'>/使用说明/米游社空荧酒馆</a>",
 	position: "bottomright"
 }).addTo(map);
-L.control.attribution({
-	prefix: "<p role='button' onclick='wees.downloadItem()'>导出日志</p>",
-	position: "bottomright"
-}).addTo(map);
+L.control
+  .attribution({
+    prefix:
+      "<p role='button' onclick='exportLog(this)' style='z-index:99999; cursor: pointer;color:#0078A8;'>导出当前日志📝</p>",
+    position: "bottomright",
+  })
+  .addTo(map);
+	function exportLog(e){
+		console.log(e);
+		const userAgreement =
+      "# 您正在导出日志\n导出数据中可能包含:\n\u0020\u0020-\u0020[账号信息]。你的ID和相关账号详细信息，包括电子邮件地址、账号状态和已使用时间\n\u0020\u0020-\u0020[设备信息]。可用于识别你的设备的数据 (如设备序列号和浏览器类型)\n\u0020\u0020-\u0020[使用数据]。有关产品使用的数据，例如网站启动数据，包括产品交互、崩溃数据、性能和其他诊断数据以及其他使用数据\n# 最后请确保您已阅读我们的免责声明(https://yuanshen.site/disclaimer.html)。";
+		if (!window.confirm(userAgreement)) return;
+		wees.downloadItem();
+	}
 L.control.attribution({
 	prefix: "<a href='disclaimer.html' target='_bal'>免责声明/招募</a>",
 	position: "bottomleft"

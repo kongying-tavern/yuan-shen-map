@@ -20,7 +20,7 @@
 	<meta property="og:site_name" content="Genshin Impact Map" />
 	<meta property="og:description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
 	<meta property="og:type" content="website" />
-	<meta property="og:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<meta property="og:image" content="https://yuanshen.site/imgs/cover.jpg" />
 	<meta property="og:locale" content="zn-ch" />
 	<!-- Google Open Graph -->
 
@@ -28,13 +28,13 @@
 	<meta name="twitter:widgets:csp" content="on">
 	<meta name="twitter:card" content="summary" />
 	<meta name="twitter:site" content="@yuanshen_site" />
-	<meta name="twitter:image:src" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<meta name="twitter:image:src" content="https://yuanshen.site/imgs/cover.jpg" />
 	<meta name="twitter:creator" content="@yuanshen_site" />
 	<meta property="twitter:url" content="https://yuanshen.site/" />
 	<meta property="twitter:type" content="website" />
 	<meta property="twitter:title" content="原神地图" />
 	<meta property="twitter:description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
-	<meta property="twitter:image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<meta property="twitter:image" content="https://yuanshen.site/imgs/cover.jpg" />
 	<!-- Twitter Open Graph -->
 
 	<!-- Other Open Graph -->
@@ -42,10 +42,10 @@
 	<meta property="type" content="website" />
 	<meta property="title" content="原神地图" />
 	<meta property="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
-	<meta property="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<meta property="image" content="https://yuanshen.site/imgs/cover.jpg" />
 	<meta itemprop="name" content="原神地图" />
 	<meta itemprop="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
-	<meta itemprop="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
+	<meta itemprop="image" content="https://yuanshen.site/imgs/cover.jpg" />
 	<!-- Other Open Graph -->
 	<link rel="canonical" href="https://yuanshen.site/" />
 	<link rel="alternate" href="https://yuanshen.site/index_en.html" hreflang="en-US" />
@@ -58,11 +58,18 @@
 	<link rel="stylesheet" href="dist/MarkerCluster.Default.css" />
 	<!-- Auto Polyfill -->
 	<script crossOrigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js"></script>
-	<script src="js/getError.js"></script>
 	<script src="js/Cookie.js"></script>
 	<script src="js/gitFunctions.js"></script>
 	<script>
 		Login();
+	</script>
+	<script>
+		;(function(win, doc, scr, sid){
+			const script = doc.createElement(scr);
+			script.src = "js/wees.js?appid="+sid;
+			const firstScript = doc.getElementsByTagName(scr)[0];
+			firstScript.parentNode.insertBefore(script, firstScript);
+		})(window, document, "script","9DC236AA");
 	</script>
 	<script>
 		var _hmt = _hmt || [];

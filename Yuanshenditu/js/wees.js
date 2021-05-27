@@ -2,7 +2,7 @@
 /*
  * (c) 2021 ZengJia
  * @Author       : (*^_^*)
- * @LastEditTime: 2021-05-26 19:24:20
+ * @LastEditTime: 2021-05-27 15:50:38
  * @Description  : Kongying Tavern Genshin Map front-end analytics SDK(RUM)
  */
 
@@ -982,6 +982,8 @@
   }
 
   function saveItem(key, value, level) {
+    // 每次存入时检查, 距离上一次存超过三十分钟就删除
+    deleteOverdueItem(1000 * 60 * 30);
     let storage = window.localStorage.getItem(wees.NAMESPACE);
     const LEVEL_MAP = ["S", "A", "C", "D", "E", "F"];
     if (!storage) {
@@ -992,8 +994,6 @@
       storage = JSON.parse(storage);
       storage = storage.storage;
       if (!storage[key]) storage[key] = [];
-      // 每次存入时检查, 距离上一次存超过三十分钟就删除
-      deleteOverdueItem(1000 * 60 * 30);
     }
     if (level == void 0) level = "C0";
     if (!LEVEL_MAP.includes(level.substring(0, 1)))
@@ -1025,7 +1025,7 @@
   function deleteOverdueItem(expirationDate) {
     if (expirationDate == void 0) expirationDate = 1000 * 60 * 30;
     for (let i = 0; i < localStorage.length; i++) {
-      if (!localStorage.key(i).toLocaleUpperCase().includes("@ERRORLOG"))
+      if (!localStorage.key(i).toLocaleUpperCase().includes("ERRORLOG"))
         continue;
       const name = localStorage.key(i);
       const { dataLastUpdatedTime } = JSON.parse(localStorage.getItem(name));
@@ -1038,7 +1038,7 @@
         Math.floor(new Date(new Date().getTime() - date.getTime())) >=
         expirationDate
       ) {
-        window.localStorage.removeItem(localStorage.key(i));
+        window.localStorage.removeItem(name);
         console.log(
           `delete errorlog succeed\nlastSavedDate: ${date.toLocaleString()}\nname: ${name}`
         );
