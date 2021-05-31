@@ -5,4 +5,5 @@ explorations
 TODOs.md
 RELEASE_NOTE*.md
 .vscode
-
+.temp
+.cache
