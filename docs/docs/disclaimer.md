@@ -1,18 +1,17 @@
 ---
-title: Disclaimer
-description: Disclaimer
-date: 2021-05-30
+title: 免责声明
+description: 免责声明
+date: 2021-5-30
 sidebar: false
 ---
 
-## Disclaimer
+## 免责声明
 
-This site is a game map website of Genshin on [leaflet](https://leafletjs.com/), an open-source JavaScript library， All static resources used in this site (including but not limited to text, pictures, audio, video, charts, interface design, layout frame, relevant data or electronic documents, etc.)，The copyright belongs to[MiHoYo](https://www.mihayou.com/index.html)and its associated companies。The Website is used under its[game license and service agreement](https://ys.mihoyo.com/main/company/agreement)，Relevant documentation will only be used to better represent the game material and to communicate relevant game information
+本站是基于[leaflet](https://leafletjs.com/)免费开源JavaScript地图库制作的《原神》游戏地图网站，本站所有使用的静态资源（包括但不限于文字、图片、音频、视频、图表、界面设计、版面框架、有关数据或电子文档等），其版权均属于[上海米哈游影铁科技有限公司](https://www.mihayou.com/index.html)及其关联公司。本站在基于其[游戏使用许可及服务协议](https://ys.mihoyo.com/main/company/agreement)规定下进行使用，相关文件的使用仅用于更好地表现游戏资料和进行相关的游戏交流
 
-All the functions and browsing of this site are completely free of charge, the income of this site will be completely used for the daily maintenance expenses of this site, the relevant personnel of this site will not in any name from the user to force any property or related interests that is not used for the above purposes
+本站的所有功能以及浏览均完全免费，本站的收入将完全用于对本站进行日常维护开销，本站相关人员不会以任何名义向用户强制索取任何非用于上述用途的财物或相关利益本站所提供的信息，均由本站相关用户上传提供，因此只供参考之用，本站相关人员一概对本站以任何方式就任何信息传递或传送的失误以及其合法性概不负责，亦不承担任何法律责任
 
-The information provided by this site is uploaded and provided by the relevant users of this site, so it is for reference only. The relevant personnel of this site shall not be responsible for the error of any information transmission or transmission in any way and its legality, nor shall they assume any legal responsibility
+本站部分功能将使用cookie与本地缓存。您可以通过修改浏览器设置的方式禁止本站使用cookie，您也可以在浏览器中清空本地缓存。如果您选择禁止cookie或清除本地缓存，则可能导致您部分自定义的数据丢失或部分功能无法使用，敬请知晓。本站不会在任何情况下向第三方提供或分享任何基于cookie与本地缓存的用户信息
 
-Some features of this site will use cookies and localStorage.You can disable cookies on this site by changing your browser Settings, or you can clear the localStorage in your browser.If you choose to disable cookies or clear the localStorage, you may lose some of your custom data or disable some of your functionality.This site will not provide or share any user information based on cookies and localStorage to third parties under any circumstances
-
-This work is licensed under a[Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-nc-sa/4.0/).
+[!["知识共享许可协议"](https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png "知识共享许可协议")]("http://creativecommons.org/licenses/by-nc-sa/4.0/")
+本网站采用[知识共享署名-非商业性使用-相同方式共享 4.0](http://creativecommons.org/licenses/by-nc-sa/4.0/)国际许可协议进行许可授权。

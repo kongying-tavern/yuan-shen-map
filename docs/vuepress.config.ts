@@ -64,14 +64,14 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
   ],
   locales: {
     '/': {
-      lang: 'en-US',
-      title: 'Genshin Map',
-      description: 'The interactive map of Genshin full resources strategy made by Kongying Tavern.',
-    },
-    '/zh/': {
       lang: 'zh-CN',
       title: '原神地图',
       description: '米游社空荧酒馆制作的原神全资源攻略地图。',
+    },
+    '/en/': {
+      lang: 'en-US',
+      title: 'Genshin Map',
+      description: 'The interactive map of Genshin full resources strategy made by Kongying Tavern.',
     },
     '/ja/': {
       lang: 'ja-JP',
@@ -89,73 +89,6 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
     locales: {
       '/': {
         home: '/',
-        selectLanguageName: 'English',
-        selectLanguageText: 'Language',
-        selectLanguageAriaLabel: 'Language',
-        lastUpdatedText: 'Last Updated',
-        contributorsText: 'Contributors',
-        tip: 'Tips',
-        notFound: ['The page you’re looking for can’t be found.', '404 Not Found'],
-        backToHome: 'Back to home',
-        openInNewWindow: 'open in new window',
-        warning: 'Warning',
-        danger: 'Danger',
-        navbar: [
-          {
-            text: 'Feedback',
-            link: 'https://support.qq.com/products/321980',
-          },
-          {
-            text: 'Understand More',
-            children: [
-              {
-                text: 'Update Content',
-                children:
-                [
-                  {
-                    text: 'WebPage',
-                    link: 'https://support.qq.com/products/321980/blog/505810',
-                  },
-                  {
-                    text: 'UnityClient',
-                    link: 'https://support.qq.com/products/321980/blog/505884'
-                  },
-                ],
-              },
-              {
-                text: 'Law Related',
-                children:
-                [
-                  {
-                    text: 'Disclaimer',
-                    link: '/disclaimer.html'
-                  },
-                ],
-              },
-              {
-                text: 'Other',
-                children:
-                [
-                  {
-                    text: 'Download client',
-                    link: '/download-client.html'
-                  },
-                  {
-                    text: 'Join us',
-                    link: '/zh/join.html'
-                  },
-                  {
-                    text: 'Contributing Guide',
-                    link: '/contributing.html'
-                  }
-                ]
-              }
-            ],
-          },
-        ],
-      },
-      '/zh/': {
-        home: '/zh/',
         selectLanguageName: '简体中文',
         selectLanguageText: '选择语言',
         selectLanguageAriaLabel: '选择语言',
@@ -195,7 +128,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                 [
                   {
                     text: '免责声明',
-                    link: '/zh/disclaimer.html'
+                    link: '/disclaimer.html'
                   },
                 ],
               },
@@ -205,19 +138,86 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                 [
                   {
                     text: '加入交流组',
-                    link: '/zh/communication-group.html'
+                    link: '/communication-group.html'
                   },
                   {
                     text: '下载客户端',
-                    link: '/zh/download-client.html'
+                    link: '/download-client.html'
                   },
                   {
                     text: '加入我们',
-                    link: '/zh/join.html'
+                    link: '/join.html'
                   },
                   {
                     text: '贡献指南',
-                    link: '/zh/contributing.html'
+                    link: '/contributing.html'
+                  }
+                ]
+              }
+            ],
+          },
+        ],
+      },
+      '/en/': {
+        home: '/en/',
+        selectLanguageName: 'English',
+        selectLanguageText: 'Language',
+        selectLanguageAriaLabel: 'Language',
+        lastUpdatedText: 'Last Updated',
+        contributorsText: 'Contributors',
+        tip: 'Tips',
+        notFound: ['The page you’re looking for can’t be found.', '404 Not Found'],
+        backToHome: 'Back to home',
+        openInNewWindow: 'open in new window',
+        warning: 'Warning',
+        danger: 'Danger',
+        navbar: [
+          {
+            text: 'Feedback',
+            link: 'https://support.qq.com/products/321980',
+          },
+          {
+            text: 'Understand More',
+            children: [
+              {
+                text: 'Update Content',
+                children:
+                [
+                  {
+                    text: 'WebPage',
+                    link: 'https://support.qq.com/products/321980/blog/505810',
+                  },
+                  {
+                    text: 'UnityClient',
+                    link: 'https://support.qq.com/products/321980/blog/505884'
+                  },
+                ],
+              },
+              {
+                text: 'Law Related',
+                children:
+                [
+                  {
+                    text: 'Disclaimer',
+                    link: '/en/disclaimer.html'
+                  },
+                ],
+              },
+              {
+                text: 'Other',
+                children:
+                [
+                  {
+                    text: 'Download client',
+                    link: '/en/download-client.html'
+                  },
+                  {
+                    text: 'Join us',
+                    link: '/join.html'
+                  },
+                  {
+                    text: 'Contributing Guide',
+                    link: '/en/contributing.html'
                   }
                 ]
               }
@@ -280,7 +280,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                   },
                   {
                     text: 'リクルート',
-                    link: '/zh/join.html'
+                    link: '/join.html'
                   },
                   {
                     text: '投稿ガイド',
@@ -330,11 +330,11 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
       "@vuepress/plugin-pwa-popup",
       {
         locales: {
-          "/": {
+          "/zh/": {
             message: "New content is available.",
             buttonText: "Refresh",
           },
-          "/zh/": {
+          "/": {
             message: "发现新内容可用",
             buttonText: "刷新",
           },
@@ -366,10 +366,10 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
         maxSuggestions: 5,
         // hotKeys: ['s', '/'],
         locales: {
-          "/": {
+          "/en/": {
             placeholder: "Search",
           },
-          "/zh/": {
+          "/": {
             placeholder: "搜索",
           },
           "/ja/":{
@@ -401,10 +401,10 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
       {
         type: "tip",
         locales: {
-          "/": {
+          "/en/": {
             defaultInfo: "Tips",
           },
-          "/zh/": {
+          "/": {
             defaultInfo: "提示",
           },
           "/jp/":{

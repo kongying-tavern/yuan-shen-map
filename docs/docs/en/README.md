@@ -1,12 +1,12 @@
 ---
 home: true
-title: 首页
+title: HomePage
 heroImage: /logo.jpg
 actions:
-  - text: 快速下载
-    link: /zh/download-client.html
+  - text: Fast download
+    link: /en/download-client.html
     type: primary
-  - text: 访问网页版
+  - text: Visti Web
     link: https://yuanshen.site/
     type: secondary
 # features:
