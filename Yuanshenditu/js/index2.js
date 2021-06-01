@@ -14,13 +14,13 @@ var map = L.map("map", {
 	zoomControl: false
 });
 L.control.attribution({
-	prefix: "<a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank'>/使用说明/米游社空荧酒馆</a>",
+	prefix: "<a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank'>使用说明/米游社空荧酒馆</a>",
 	position: "bottomright"
 }).addTo(map);
 L.control
   .attribution({
     prefix:
-      "<p role='button' onclick='exportLog(this)' style='z-index:99999; cursor: pointer;color:#0078A8;'>导出当前日志📝</p>",
+      "<a onclick='exportLog(this)' style='cursor: pointer;'>导出当前日志📝</a>",
     position: "bottomright",
   })
   .addTo(map);
@@ -32,7 +32,11 @@ L.control
 		wees.downloadItem();
 	}
 L.control.attribution({
-	prefix: "<a href='/docs/disclaimer.html' target='_bal'>免责声明/招募</a>",
+	prefix: "<a href='/docs/disclaimer.html' target='_bal'>免责声明</a>",
+	position: "bottomleft"
+}).addTo(map);
+L.control.attribution({
+	prefix: "<a href='/docs/join.html' target='_bal'>招募</a>",
 	position: "bottomleft"
 }).addTo(map);
 L.control.zoom({

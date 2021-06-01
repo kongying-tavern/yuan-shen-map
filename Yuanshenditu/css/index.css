@@ -22,7 +22,7 @@ body,
     width: 170px;
     height: 30px;
     left: 20px;
-    bottom: 30px;
+    bottom: 45px;
     cursor: pointer;
 }
 
@@ -34,7 +34,7 @@ body,
     width: 190px;
     height: 50px;
     right: 20px;
-    bottom: 30px;
+    bottom: 45px;
     cursor: pointer;
 }
 
@@ -46,7 +46,7 @@ body,
     width: 190px;
     height: 50px;
     right: 20px;
-    bottom: 90px;
+    bottom: 105px;
     cursor: pointer;
 }
 
