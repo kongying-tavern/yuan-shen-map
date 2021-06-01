@@ -1,0 +1,29 @@
+{
+  "name": "Web Map",
+  "short_name": "Map",
+  "description": "Web Map",
+  "icons": [
+    {
+      "src": "https://yuanshen.site/v3/icons/ui/paimon_off@192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "https://yuanshen.site/v3/icons/ui/paimon_off@512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "https://yuanshen.site/v3/icons/ui/maskable_icon_x1.png",
+      "sizes": "295x295",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "background_color": "#3367D6",
+  "display": "standalone",
+  "orientation": "natural",
+  "scoop": "index.html",
+  "theme_color": "#3367D6"
+}

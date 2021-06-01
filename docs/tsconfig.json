@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "ESNext",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "alwaysStrict": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["vuepress-types","@vuepress/client/types"],
+    "lib": ["DOM", "ES2020"],
+    "declaration": true,
+    "explainFiles": true,
+    "sourceMap": true
+  }
+}

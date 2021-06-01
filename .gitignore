@@ -7,3 +7,6 @@ RELEASE_NOTE*.md
 .vscode
 .temp
 .cache
+dist
+temp
+cache
