@@ -51,4 +51,4 @@ description: 加入我们
 
 ## 加入方法
 
-有意者欢迎加入群**717152601**洽谈
+有意者欢迎加入群[**717152601**](https://qm.qq.com/cgi-bin/qm/qr?k=jkbGpnEQlZ-1J2W0_RpWJXDkqD49Z-8N&jump_from=webapi "地图开发审核群")洽谈
