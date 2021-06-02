@@ -21,4 +21,6 @@ The client only supports Chinese for the time being
 
 ## 提示
 
-* The whole system only supports Windows system for the time being
+* The current client only supports windows system, if you are a user of other systems, you can use our [web version of the map](https://yuanshen.site/index_en.html "Genshin Map")
+
+I'm sorry for the inconvenience!

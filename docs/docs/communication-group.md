@@ -1,8 +1,9 @@
 ---
-title: 加入交流组
+title: 加入讨论组
 description: 加入地图讨论组
 sidebar: false
 pageClass: communication-group
+footer: Chinese hoyolabMade By Kongying Tavern
 ---
 
 ## QQ 交流群
@@ -15,7 +16,7 @@ pageClass: communication-group
 6. [**原神地图交流六群**1168337427](https://qm.qq.com/cgi-bin/qm/qr?k=-9GO5ByOM-6gpS9UmQhd2Tu_W8KACHln&jump_from=webapi "点击加群")
 
 ::: tip
-目前六群均未满
+点击上方列表项即可一键加群
 
-各群密码均为 123456
+目前六群均未满,各群密码均为 123456
 :::

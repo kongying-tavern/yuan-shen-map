@@ -8,7 +8,8 @@ const isProduction = process.env.NODE_ENV === 'production';
 const defaultThemeColor = process.env.THEME_COLOR || '#ffffff';
 const defaultRenderer = process.env.RENDERER || 'WebKit';
 const cover = process.env.COVER || 'https://yuanshen.site/tiles_test/4/ppp10_9.jpg';
-
+const published_time = new Date().toJSON();
+const host = "https://yuanshen.site/docs/";
 module.exports = defineUserConfig<DefaultThemeOptions>({
   bundler: "@vuepress/vite",
   bundlerConfig: {
@@ -36,35 +37,35 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
     ['meta', { name: 'google',                                  content: 'notranslate'}],
     ['meta', { name: 'twitter:widgets:csp',                     content: 'on'}],
     ['meta', { name: 'twitter:card',                            content: 'summary'}],
-    ['meta', { name: 'twitter:url',                             content: 'https://yuanshen.site/docs/'}],
+    ['meta', { name: 'twitter:url',                             content: host}],
     ['meta', { name: 'twitter:type',                            content: 'website'}],
     ['meta', { name: 'twitter:image',                           content: cover}],
-    ['meta', { property: 'og:url',                              content: 'https://yuanshen.site/docs/'}],
+    ['meta', { property: 'og:url',                              content: host}],
     ['meta', { property: 'og:type',                             content: 'website'}],
     ['meta', { property: 'og:image',                            content: cover}],
     ['meta', { property: 'og:site_name',                        content: 'Genshin Map'}],
     ['meta', { property: 'type',                                content: 'website'}],
     ['meta', { property: 'article:author',                      content: 'ZengJia'}],
-    ['meta', { property: 'article:published_time',              content: '2021-5-30T15:18:13+0200'}],
+    ['meta', { property: 'article:published_time',              content: published_time}],
     ['meta', { property: 'image',                               content: cover}],
     ['meta', { property: 'site_name',                           content: 'Genshin Map'}],
-    ['meta', { property: 'url',                                 content: 'https://yuanshen.site/docs/'}],
+    ['meta', { property: 'url',                                 content: host}],
     ['meta', { itemprop: 'name',                                content: 'Genshin Map'}],
     ['meta', { itemprop: 'image',                               content: cover}],
     ['meta', { itemprop: 'description',                         content: '米游社空荧酒馆制作的原神全资源攻略地图。'}],
     ['link', { rel: 'manifest',                   href: 'manifest.webmanifest' }],
     ['link', { rel: 'apple-touch-icon',           href: 'https://yuanshen.site/v3/paimon_off@192.png' }],
-    ['link', { rel: 'canonical',                  href: 'https://yuanshen.site/docs/' }],
+    ['link', { rel: 'canonical',                  href: host }],
     ['link', { rel: 'shortcut icon',              href: 'https://yuanshen.site/favicon.ico'}],
     ['link', { rel: 'mask-icon',                  href: '/safari-pinned-tab.svg',           color: '#00aba9' }],
-    ['link', { rel: 'alternate',                  href: 'https://yuanshen.site/docs/',      hreflang: 'en-US'}],
-    ['link', { rel: 'alternate',                  href: 'https://yuanshen.site/docs/zh/',   hreflang: 'zh-CN'}],
+    ['link', { rel: 'alternate',                  href: 'https://yuanshen.site/docs/en/',   hreflang: 'en-US'}],
+    ['link', { rel: 'alternate',                  href: host,                               hreflang: 'zh-Hans-CN'}],
     ['link', { rel: 'alternate',                  href: 'https://yuanshen.site/docs/ja/',   hreflang: 'ja-JP'}],
-    ['link', { rel: 'alternate',                  href: 'https://yuanshen.site/docs/',      hreflang: 'x-default'}],
+    ['link', { rel: 'alternate',                  href: host,                               hreflang: 'x-default'}],
   ],
   locales: {
     '/': {
-      lang: 'zh-CN',
+      lang: 'zh-Hans-CN',
       title: '原神地图',
       description: '米游社空荧酒馆制作的原神全资源攻略地图。',
     },
@@ -137,7 +138,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                 children:
                 [
                   {
-                    text: '加入交流组',
+                    text: '加入讨论组',
                     link: '/communication-group.html'
                   },
                   {

@@ -37,12 +37,6 @@ sidebar: auto
 yarn
 ```
 
-监听源文件修改：
-
-```bash
-yarn dev
-```
-
 打开另一个终端，开始开发项目文档网站：
 
 ```bash
@@ -63,25 +57,11 @@ yarn docs:dev
 
 你在克隆代码仓库后，可能需要先执行该命令来确保项目代码可以顺利运行，因为编译后的 JS 文件被 `.gitignore` 排除在仓库以外了。
 
-### `yarn dev`
-
-`dev` 命令使用监听 (watch) 模式执行 `copy` 和 `build` 命令。
-
-### `yarn clean`
-
-`clean` 命令会执行所有子 Package 中的 `clean` 命令，清除所有的输出文件目录和缓存文件。换言之，它将移除所有通过 `build` 和 `copy` 命令生成的文件。
-
-当你想要从最初状态重新构建源代码时，你可以执行该命令。
-
 ### `yarn docs:*`
 
 #### `yarn docs:build`, `yarn docs:dev`
 
 `docs:` 前缀表明，这些命令是针对文档 (documentation) 进行操作的，即 `docs` 目录。
-
-VuePress 使用它自己来构建自己的文档网站。
-
-你需要先执行 `yarn build && yarn copy` 来构建 VuePress 源代码，然后再运行这些 `docs:` 开头的命令来开发或构建文档。
 
 #### `yarn docs:serve`
 
@@ -99,11 +79,11 @@ VuePress 使用它自己来构建自己的文档网站。
 
 ## 文档
 
-所有的 Markdown 源文件都放置在 `docs` 目录下。我们维护了两种翻译：
+所有的 Markdown 源文件都放置在 `docs` 目录下。我们维护了三种翻译：
 
-- 英语 (en-US) 在 `/` 路径下
-- 中文 (zh-CN) 在 `/zh/` 路径下
-
+- 英语 (en-US) 在 `/en/` 路径下
+- 中文 (zh-CN) 在 `/` 路径下
+- 日语 (ja-JP) 在 `/ja/` 路径下
 我们部署了两套站点：
 
 - 在 [yuanshen.site/docs](https://yuanshen.site/docs/) 部署的 Release 版本。该站点是从最新发布的版本中构建而来，因此用户不会看到未发布的改动。域名为 [https://yuanshen.site/docs/](https://yuanshen.site/docs/)。

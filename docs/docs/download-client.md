@@ -36,10 +36,12 @@ sidebar: false
 | 1.8.1 | Beta  | 2020/5/25 | - |[Kongying Tavern Genshin Map-1.8.1_Beta.msi](https://drive.google.com/file/d/1N4JN8Q_1UxjfGbGjnaVYeKLRtEqO5DYF/view?usp=sharing "https://drive.google.com/file/d/1N4JN8Q_1UxjfGbGjnaVYeKLRtEqO5DYF/view?usp=sharing")|
 :::
 
-## 加入交流组
+## 加入讨论组
 
 [communication-group.html](communication-group.html)
 
 ## 提示
 
-* 全系暂时仅支持Windows系统
+* 客户端全系暂时仅支持Windows系统, 如您是其他系统用户可以使用我们的[**Web网页版地图**](https://yuanshen.site/index.html "原神地图")。
+
+很抱歉给您带来不便!
