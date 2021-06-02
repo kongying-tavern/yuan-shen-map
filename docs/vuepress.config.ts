@@ -22,7 +22,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
   },
   dest: 'dist',
   public: 'public',
-  base: '/yuanshenmapdocs/',
+  base: '/docs/',
   head: [
     ['meta', { name: 'renderer',                                content: defaultRenderer}],
     ['meta', { name: 'force-rendering',                         content: defaultRenderer}],
@@ -154,6 +154,16 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                     link: '/contributing.html'
                   }
                 ]
+              },
+              {
+                text: '鸣谢',
+                children:
+                [
+                  {
+                    text: '技术鸣谢',
+                    link: '/credits.html'
+                  },
+                ]
               }
             ],
           },
@@ -221,6 +231,16 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                     link: '/en/contributing.html'
                   }
                 ]
+              },
+              {
+                text: 'Thanks',
+                children:
+                [
+                  {
+                    text: 'Technical',
+                    link: '/en/credits.html'
+                  },
+                ]
               }
             ],
           },
@@ -287,6 +307,16 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                     text: '投稿ガイド',
                     link: '/en/contributing.html'
                   }
+                ]
+              },
+              {
+                text: 'ありがとう',
+                children:
+                [
+                  {
+                    text: 'テクニカル',
+                    link: '/ja/credits.html'
+                  },
                 ]
               }
             ],

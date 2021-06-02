@@ -288,3 +288,10 @@ img.logo{
     }
   }
 }
+
+@media (min-width: 1024px){
+  :root{
+    --content-width: 840px;
+  }
+}
+

@@ -8,8 +8,7 @@
   "scripts": {
     "build": "tsc --build",
     "docs:dev": "vuepress dev docs --clean-cache",
-    "docs:build": "vuepress build docs --clean-cache",
-    "docs:build2": "vuepress build docs --clean-cache -c vuepress.config.prod.ts",
+    "docs:build2": "vuepress build docs --clean-cache",
     "docs:clean": "rmdir /s/q temp cache dist",
     "docs:serve": "http-server ./dist -b",
     "lint": "eslint --ext .js,.ts,.vue .",
