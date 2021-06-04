@@ -33,15 +33,44 @@ sidebar: auto
 
 克隆代码仓库，并安装依赖：
 
-```bash
+<CodeGroup>
+  <CodeGroupItem title="yarn">
+
+```bash:no-line-numbers
 yarn
 ```
 
+  </CodeGroupItem>
+
+  <CodeGroupItem title="npm" active>
+
+```bash:no-line-numbers
+npm install
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 打开另一个终端，开始开发项目文档网站：
 
-```bash
-yarn docs:dev
+<CodeGroup>
+  <CodeGroupItem title="yarn">
+
+```bash:no-line-numbers
+yarn docs:build
 ```
+
+  </CodeGroupItem>
+
+  <CodeGroupItem title="npm" active>
+
+```bash:no-line-numbers
+npm run docs:build2
+```
+
+  </CodeGroupItem>
+</CodeGroup>
+
 
 本项目开发使用的一些主要工具：
 

@@ -4,7 +4,7 @@ title: 首页
 heroImage: /logo.jpg
 actions:
   - text: 快速下载
-    link: /download-client.html
+    link: ./download-client.md
     type: primary
   - text: 访问网页版
     link: https://yuanshen.site/
@@ -24,4 +24,3 @@ actions:
 #     details: 既支持 Webpack 也支持 Vite。选一个你喜欢的来使用吧！
 footer: Chinese hoyolabMade By Kongying Tavern
 ---
-

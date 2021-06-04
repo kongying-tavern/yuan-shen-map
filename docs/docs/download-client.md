@@ -38,7 +38,7 @@ sidebar: false
 
 ## 加入讨论组
 
-[communication-group.html](communication-group.html)
+[./communication-group.md](点击加入讨论组)
 
 ## 提示
 

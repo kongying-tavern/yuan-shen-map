@@ -1,0 +1,22 @@
+@media print {
+  p > a::after{
+    content: '-' attr(href);
+    font-size: .8em;
+  }
+  .page-meta{
+    .meta-item.edit-link{
+      display: none;
+    }
+  }
+  .navbar .navbar-links-wrapper{
+    display: none;
+  }
+}
+
+@page {
+  size: a4;
+  margin: 0;
+  @top-center{
+    content: "Genshin Map";
+  }
+}

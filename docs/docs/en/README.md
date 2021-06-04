@@ -4,7 +4,7 @@ title: HomePage
 heroImage: /logo.jpg
 actions:
   - text: Fast download
-    link: /en/download-client.html
+    link: ./download-client.md
     type: primary
   - text: Visti Web
     link: https://yuanshen.site/

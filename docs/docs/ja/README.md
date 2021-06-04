@@ -4,7 +4,7 @@ title: ホームページ
 heroImage: /logo.jpg
 actions:
   - text: ダウンロード
-    link: /ja/download-client.html
+    link: ./download-client.md
     type: primary
   - text: ウェブサイトを訪問
     link: https://yuanshen.site/
