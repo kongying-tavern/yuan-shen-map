@@ -1,0 +1,605 @@
+{
+  "adm_num": 4,
+  "mems": [
+    {
+      "uin": 790489566,
+      "role": 0,
+      "g": -1,
+      "join_time": 1599987631,
+      "last_speak_time": 1622620717,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "AAAAAAAA",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "AAAAAAAA",
+      "qage": 13,
+      "rm": 0
+    },
+    {
+      "uin": 717818652,
+      "role": 1,
+      "g": 1,
+      "join_time": 1599987691,
+      "last_speak_time": 1622612873,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u94c3",
+      "qage": 10,
+      "rm": 0
+    },
+    {
+      "uin": 1529770248,
+      "role": 1,
+      "g": 0,
+      "join_time": 1600091740,
+      "last_speak_time": 1610354931,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u5357\u6781\u98ce",
+      "qage": 10,
+      "rm": 0
+    },
+    {
+      "uin": 595272421,
+      "role": 1,
+      "g": 0,
+      "join_time": 1600675470,
+      "last_speak_time": 1622620634,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "Icarus",
+      "qage": 14,
+      "rm": 0
+    },
+    {
+      "uin": 362652565,
+      "role": 1,
+      "g": 0,
+      "join_time": 1604386968,
+      "last_speak_time": 1621483426,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u6708\u5149\u4e0b\u7684\u5fae\u7b11",
+      "qage": 16,
+      "rm": 0
+    },
+    {
+      "uin": 1226263106,
+      "role": 2,
+      "g": 0,
+      "join_time": 1599987631,
+      "last_speak_time": 1620627742,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u685c\u843d\u5982\u96e8",
+      "qage": 10,
+      "rm": 0
+    },
+    {
+      "uin": 1355887099,
+      "role": 2,
+      "g": 0,
+      "join_time": 1599987631,
+      "last_speak_time": 1622042496,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u963f\u5947",
+      "qage": 11,
+      "rm": 0
+    },
+    {
+      "uin": 1526628698,
+      "role": 2,
+      "g": 0,
+      "join_time": 1599989962,
+      "last_speak_time": 1600492458,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "\u6c1f\u9511\u9178",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "Cyberangel",
+      "qage": 8,
+      "rm": 0
+    },
+    {
+      "uin": 2483042145,
+      "role": 2,
+      "g": 0,
+      "join_time": 1600162061,
+      "last_speak_time": 1605617731,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "\u6d3b\u8dc3\u4e4b\u9c7c",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u6d3b\u8dc3\u7684\u5fe7\u5fc3",
+      "qage": 9,
+      "rm": 0
+    },
+    {
+      "uin": 1139520983,
+      "role": 2,
+      "g": 0,
+      "join_time": 1600610035,
+      "last_speak_time": 1611134011,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "Aeth",
+      "qage": 11,
+      "rm": 0
+    },
+    {
+      "uin": 3239790745,
+      "role": 2,
+      "g": 0,
+      "join_time": 1600674511,
+      "last_speak_time": 1603641375,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "\u5ff5\u7396",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u8c01\u90fd\u4e0d\u662f\u8ab0\u7684\u8ab0",
+      "qage": 5,
+      "rm": 0
+    },
+    {
+      "uin": 904798118,
+      "role": 2,
+      "g": 0,
+      "join_time": 1600678109,
+      "last_speak_time": 1603385031,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "\u8fb0\u9b42",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u778e\u641e\u4e8b\u7684\u5348\u89c9",
+      "qage": 13,
+      "rm": 0
+    },
+    {
+      "uin": 1873127029,
+      "role": 2,
+      "g": 0,
+      "join_time": 1601036200,
+      "last_speak_time": 1618883149,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u4e9a",
+      "qage": 8,
+      "rm": 0
+    },
+    {
+      "uin": 903271352,
+      "role": 2,
+      "g": 0,
+      "join_time": 1601107340,
+      "last_speak_time": 1601306989,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "\u76d7\u5b9d\u9f2c",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "Eva.",
+      "qage": 12,
+      "rm": 0
+    },
+    {
+      "uin": 2063685683,
+      "role": 2,
+      "g": 1,
+      "join_time": 1601218117,
+      "last_speak_time": 1622371394,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u7559\u68a6\u55dc\u5fc3",
+      "qage": 6,
+      "rm": 0
+    },
+    {
+      "uin": 2087335638,
+      "role": 2,
+      "g": 1,
+      "join_time": 1601296859,
+      "last_speak_time": 1609431230,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u53ef\u8389",
+      "qage": 6,
+      "rm": 0
+    },
+    {
+      "uin": 769351610,
+      "role": 2,
+      "g": 0,
+      "join_time": 1601339579,
+      "last_speak_time": 1622432281,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "\u4e0d\u670d\u8f93\u7684\u6ce1\u6ce1",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u672c\u7fa4\u5973\u88c5\u5927\u4f6c",
+      "qage": 14,
+      "rm": 0
+    },
+    {
+      "uin": 1530403277,
+      "role": 2,
+      "g": -1,
+      "join_time": 1601543249,
+      "last_speak_time": 1622295249,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "salenth",
+      "qage": 0,
+      "rm": 0
+    },
+    {
+      "uin": 1632083718,
+      "role": 2,
+      "g": -1,
+      "join_time": 1601894335,
+      "last_speak_time": 1604111352,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "Karl",
+      "qage": 10,
+      "rm": 0
+    },
+    {
+      "uin": 627759675,
+      "role": 2,
+      "g": 1,
+      "join_time": 1602433382,
+      "last_speak_time": 1622687934,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "B\u7ad9&nbsp;Minazuki_Chocola",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u5b89\u9759\u7684\u51ac\u5929",
+      "qage": 15,
+      "rm": 0
+    },
+    {
+      "uin": 3465144011,
+      "role": 2,
+      "g": -1,
+      "join_time": 1602932282,
+      "last_speak_time": 1621698109,
+      "lv": {
+        "point": 0,
+        "level": 1
+      },
+      "card": "\u7ad6\u5b50",
+      "tags": "-1",
+      "flag": 0,
+      "nick": "\u7a7a",
+      "qage": 4,
+      "rm": 0
+    },
+      {
+        "uin": 305477179,
+        "role": 2,
+        "g": -1,
+        "join_time": 1605585321,
+        "last_speak_time": 1622631483,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "\u5df4\u522b\u5854\u591c\u7a7a",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "\u5618",
+        "qage": 7,
+        "rm": 0
+      },
+      {
+        "uin": 1539779281,
+        "role": 2,
+        "g": 0,
+        "join_time": 1606912132,
+        "last_speak_time": 1620897020,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "\u65e0\u540d\u4eba",
+        "qage": 9,
+        "rm": 0
+      },
+      {
+        "uin": 437234506,
+        "role": 2,
+        "g": 0,
+        "join_time": 1606913060,
+        "last_speak_time": 1608689979,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "Riddikulus",
+        "qage": 13,
+        "rm": 0
+      },
+      {
+        "uin": 413819516,
+        "role": 2,
+        "g": 0,
+        "join_time": 1608735931,
+        "last_speak_time": 1622707451,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "\u67d2\u53f7\u6280\u5e08",
+        "qage": 16,
+        "rm": 0
+      },
+      {
+        "uin": 1209626965,
+        "role": 2,
+        "g": 1,
+        "join_time": 1608753173,
+        "last_speak_time": 1616133755,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "Han",
+        "qage": 10,
+        "rm": 0
+      },
+      {
+        "uin": 3232018769,
+        "role": 2,
+        "g": -1,
+        "join_time": 1610105624,
+        "last_speak_time": 1621708626,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "\u9ed1\u68c9",
+        "qage": 0,
+        "rm": 0
+      },
+      {
+        "uin": 2422822313,
+        "role": 2,
+        "g": 1,
+        "join_time": 1611072939,
+        "last_speak_time": 1622305316,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "\u78a7\u7eb1\u7a97\u4e0b\u6c34\u6c88\u70df",
+        "qage": 8,
+        "rm": 0
+      },
+      {
+        "uin": 1205361860,
+        "role": 2,
+        "g": 0,
+        "join_time": 1612589705,
+        "last_speak_time": 1621665023,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "\u4e18\u4e18\u4eba\u4fdd\u62a4\u534f\u4f1a",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "Zn(OH)\u2082\u00b7H\u2082ZnO\u2082",
+        "qage": 11,
+        "rm": 0
+      },
+      {
+        "uin": 1961266616,
+        "role": 2,
+        "g": 0,
+        "join_time": 1614167157,
+        "last_speak_time": 1622613355,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "(*^_^*)",
+        "qage": 3,
+        "rm": 0
+      },
+      {
+        "uin": 137827341,
+        "role": 2,
+        "g": 1,
+        "join_time": 1615826734,
+        "last_speak_time": 1622707440,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "\u8299\u5170\u6735\u9732\uff01\u55b5\u202d",
+        "qage": 7,
+        "rm": 0
+      },
+      {
+        "uin": 474686444,
+        "role": 2,
+        "g": -1,
+        "join_time": 1616048882,
+        "last_speak_time": 1621297258,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "\u51b7",
+        "qage": 15,
+        "rm": 0
+      },
+      {
+        "uin": 546030010,
+        "role": 2,
+        "g": 1,
+        "join_time": 1621415202,
+        "last_speak_time": 1621415202,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "\u6d77\u5b9d\u2022Alex\u2022\u738b\u8f9b\u5df4",
+        "qage": 13,
+        "rm": 0
+      },
+      {
+        "uin": 382179883,
+        "role": 2,
+        "g": 0,
+        "join_time": 1621693773,
+        "last_speak_time": 1622613210,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "\u5939\u51fb\u59b9\u6296",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "Azimio",
+        "qage": 7,
+        "rm": 0
+      },
+      {
+        "uin": 804117325,
+        "role": 2,
+        "g": -1,
+        "join_time": 1622286909,
+        "last_speak_time": 1622287103,
+        "lv": {
+          "point": 0,
+          "level": 1
+        },
+        "card": "",
+        "tags": "-1",
+        "flag": 0,
+        "nick": "\u76e1\u4eba\u5fc3",
+        "qage": 10,
+        "rm": 0
+      }
+  ],
+  "count": 35,
+  "svr_time": 1622706559,
+  "max_count": 200,
+  "search_count": 35,
+  "extmode": 0
+}

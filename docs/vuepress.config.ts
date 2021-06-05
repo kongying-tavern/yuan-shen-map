@@ -1,8 +1,8 @@
-// @ts-nocheck
+
 import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 const { compilerOptions } = require('./tsconfig.json')
-import path from 'path'
+const { path } = require('@vuepress/utils')
 
 const isProduction = process.env.NODE_ENV === 'production';
 const defaultThemeColor = process.env.THEME_COLOR || '#ffffff';
@@ -10,6 +10,7 @@ const defaultRenderer = process.env.RENDERER || 'WebKit';
 const cover = process.env.COVER || 'https://yuanshen.site/tiles_test/4/ppp10_9.jpg';
 const published_time = new Date().toJSON();
 const host = "https://yuanshen.site/docs/";
+
 module.exports = defineUserConfig<DefaultThemeOptions>({
   bundler: "@vuepress/vite",
   bundlerConfig: {
@@ -101,6 +102,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
         openInNewWindow: '在新窗口中打开',
         lastUpdatedText: '最后更新时间',
         contributorsText: '贡献者',
+        editLinkText: '编辑该页',
         navbar: [
           {
             text: '反馈',
@@ -129,7 +131,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                 [
                   {
                     text: '免责声明',
-                    link: '/disclaimer.html'
+                    link: './disclaimer.md'
                   },
                 ],
               },
@@ -139,19 +141,19 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                 [
                   {
                     text: '加入讨论组',
-                    link: '/communication-group.html'
+                    link: './communication-group.md'
                   },
                   {
                     text: '下载客户端',
-                    link: '/download-client.html'
+                    link: './download-client.md'
                   },
                   {
                     text: '加入我们',
-                    link: '/join.html'
+                    link: './join.md'
                   },
                   {
                     text: '贡献指南',
-                    link: '/contributing.html'
+                    link: './contributing.md'
                   }
                 ]
               },
@@ -160,8 +162,16 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                 children:
                 [
                   {
+                    text: '贡献鸣谢',
+                    link: './contribution.md'
+                  },
+                  {
+                    text: '赞助鸣谢',
+                    link: './sponsor.md'
+                  },
+                  {
                     text: '技术鸣谢',
-                    link: '/credits.html'
+                    link: './credits.md'
                   },
                 ]
               }
@@ -182,6 +192,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
         openInNewWindow: 'open in new window',
         warning: 'Warning',
         danger: 'Danger',
+        editLinkText: 'Edit Page',
         navbar: [
           {
             text: 'Feedback',
@@ -210,7 +221,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                 [
                   {
                     text: 'Disclaimer',
-                    link: '/en/disclaimer.html'
+                    link: './disclaimer.md'
                   },
                 ],
               },
@@ -220,7 +231,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                 [
                   {
                     text: 'Download client',
-                    link: '/en/download-client.html'
+                    link: './download-client.md'
                   },
                   {
                     text: 'Join us',
@@ -228,7 +239,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                   },
                   {
                     text: 'Contributing Guide',
-                    link: '/en/contributing.html'
+                    link: './contributing.md'
                   }
                 ]
               },
@@ -237,8 +248,16 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                 children:
                 [
                   {
+                    text: 'Contribution',
+                    link: './contribution.md'
+                  },
+                  {
+                    text: 'Sponsor',
+                    link: './sponsor.md'
+                  },
+                  {
                     text: 'Technical',
-                    link: '/en/credits.html'
+                    link: './credits.md'
                   },
                 ]
               }
@@ -259,6 +278,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
         openInNewWindow: '新しいウィンドウで開きます',
         lastUpdatedText: '最終更新',
         contributorsText: '貢献者',
+        editLinkText: 'このページを編集',
         navbar: [
           {
             text: 'フィードバック',
@@ -287,7 +307,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                 [
                   {
                     text: '免責事項',
-                    link: '/ja/disclaimer.html'
+                    link: './disclaimer.md'
                   },
                 ],
               },
@@ -297,7 +317,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                 [
                   {
                     text: 'マップ クライアントをダウンロードする',
-                    link: '/ja/download-client.html'
+                    link: './download-client.md'
                   },
                   {
                     text: 'リクルート',
@@ -305,7 +325,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                   },
                   {
                     text: '投稿ガイド',
-                    link: '/en/contributing.html'
+                    link: './contributing.md'
                   }
                 ]
               },
@@ -314,8 +334,16 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
                 children:
                 [
                   {
+                    text: '貢献',
+                    link: './contribution.md'
+                  },
+                  {
+                    text: 'スポンサー',
+                    link: './sponsor.md'
+                  },
+                  {
                     text: 'テクニカル',
-                    link: '/ja/credits.html'
+                    link: './credits.md'
                   },
                 ]
               }
@@ -447,7 +475,7 @@ module.exports = defineUserConfig<DefaultThemeOptions>({
     [
       "@vuepress/register-components",
       {
-        componentsDir: path.resolve(__dirname, "./components"),
+        componentsDir: path.resolve(__dirname, "./docs/.vuepress/components"),
       },
     ],
     [

@@ -3,7 +3,7 @@ title: 加入讨论组
 description: 加入地图讨论组
 sidebar: false
 pageClass: communication-group
-footer: Chinese hoyolabMade By Kongying Tavern
+externalIcon: false
 ---
 
 ## QQ 交流群
@@ -18,5 +18,5 @@ footer: Chinese hoyolabMade By Kongying Tavern
 ::: tip
 点击上方列表项即可一键加群
 
-目前六群均未满,各群密码均为 123456
+目前六群均未满,各群密码均为 **123456**
 :::

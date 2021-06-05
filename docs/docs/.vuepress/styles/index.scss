@@ -1,5 +1,6 @@
 @charset "utf-8";
 
+@import 'print';
 :root {
   // brand colors
   --c-brand: #3eaf7c;
@@ -261,7 +262,7 @@ img.logo{
       margin: 10px 0;
       width: 98%;
       font-size: 16px;
-      border: 1px solid #d7dae2;
+      border: 1px solid var(--c-border-dark);
       border-radius: 5px;
       transition: all .3s;
       text-align: right;
@@ -273,16 +274,18 @@ img.logo{
         opacity: .8;
         padding: 10px 20px;
         box-sizing: border-box;
+        transition: all .3s;
         strong {
           position: absolute;
           left: 25px;
         }
         &:hover{
           opacity: 1;
+          text-decoration:none!important;
         }
       }
       &:hover{
-        transform: translateY(-2px);
+        transform: translate3d(0, -2px, 0);
         box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
       }
     }

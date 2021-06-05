@@ -1,6 +1,6 @@
 ---
-title: Credits
-description: Credits
+title: 技术鸣谢
+description: 技术鸣谢
 sidebar: true
 pageClass: credits
 ---
@@ -29,6 +29,4 @@ pageClass: credits
 | Vue        | 3.0.11 | MIT        | <https://github.com/vuejs/vue>            | Evan You |
 | VuePress   | 2.0.0  | MIT        | <https://github.com/vuejs/vuepress>       | Evan You & ULIVZ |
 
-::: tip
-以上列表按首字母排序, 不分先后。
-:::
+* 以上列表按首字母排序, 不分先后。
