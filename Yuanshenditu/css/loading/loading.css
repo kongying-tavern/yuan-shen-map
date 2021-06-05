@@ -1,9 +1,7 @@
-@charset "UTF-8";
 /*
  * @Author       : (^_^)
- * @LastEditTime : 2021-05-07 6:12 PM
+ * @LastEditTime: 2021-06-05 18:12
  */
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap");
 :root {
   --ThemeBackgroundColor: #fff;
   --ThemeFontColor: rgba(0, 0, 0, .7);
@@ -20,10 +18,6 @@ body[data-theme="dark"] {
   --ThemeLoadingProspectColor: #ece5d8;
 }
 
-body[data-theme="dark"] .category-title {
-  border-top: 1px solid rgba(210, 210, 215, 0.2) !important;
-}
-
 body[data-theme="light"] {
   --ThemeBackgroundColor: #fff;
   --ThemeFontColor: rgba(0, 0, 0, .7);
@@ -32,24 +26,12 @@ body[data-theme="light"] {
   --ThemeLoadingProspectColor: #666666;
 }
 
-[lang]:lang(ar) {
-  font-family: "SF Pro AR", "SF Pro Gulf", "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
-}
-
-[lang]:lang(ko) {
-  font-family: "SF Pro KR", "SF Pro Text", "SF Pro Icons", "Apple Gothic", "HY Gulim", "MalgunGothic", "HY Dotum", "Lexi Gulim", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
-}
-
-[lang]:lang(ja) {
-  font-family: "SF Pro JP", "SF Pro Text", "SF Pro Icons", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
-}
-
-[lang]:lang(zh-CN) {
-  font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
-}
-
-[lang]:lang(zh-TW) {
-  font-family: "SF Pro TC", "SF Pro Text", "SF Pro Icons", "PingFang TC", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
+@font-face {
+  font-family: 'hywh';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../hywh_thin3.ttf") format("truetype");
 }
 
 a {
@@ -95,26 +77,6 @@ html {
   transition: all .3s;
 }
 
-.wrapper .loading .loading-tips {
-  position: absolute;
-  bottom: 10%;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  font-size: 17px;
-  opacity: .7;
-  font-weight: 600;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-  color: var(--ThemeFontColor);
-}
-
-.wrapper .loading .loading-tips:hover {
-  opacity: 1;
-  -webkit-transition: opacity .3s ease-in;
-  transition: opacity .3s ease-in;
-}
-
 .wrapper .loading .loading-default {
   position: absolute;
   left: 50%;
@@ -157,10 +119,6 @@ html {
 @media screen and (max-width: 734px) {
   .wrapper .loading .loading-default {
     display: none;
-  }
-  .wrapper .loading .loading-tips {
-    font-size: 14px;
-    white-space: nowrap;
   }
 }
 
@@ -242,11 +200,25 @@ html {
             animation-delay: 0.75s;
   }
   .wrapper .loading .loading-mobile h2 {
-    display: inline-block;
     margin-top: 80px;
-    font-size: 21px;
-    font-family: "Roboto", sans-serif;
+    font-size: 1.3125em;
+    font-family: "hywh", sans-serif;
     color: var(--ThemeFontColor);
+  }
+  .wrapper .loading .loading-mobile h2 dot {
+    display: inline-block;
+    height: 1em;
+    line-height: 1;
+    text-align: left;
+    vertical-align: -.25ex;
+    overflow: hidden;
+  }
+  .wrapper .loading .loading-mobile h2 dot::before {
+    display: block;
+    content: "...\A..\A.";
+    white-space: pre-wrap;
+    -webkit-animation: dot 2s infinite step-start both;
+            animation: dot 2s infinite step-start both;
   }
 }
 
@@ -256,6 +228,28 @@ html {
   }
   .loading-mobile {
     display: inline-block !important;
+  }
+}
+
+@-webkit-keyframes dot {
+  33% {
+    -webkit-transform: translateY(-2em);
+            transform: translateY(-2em);
+  }
+  66% {
+    -webkit-transform: translateY(-1em);
+            transform: translateY(-1em);
+  }
+}
+
+@keyframes dot {
+  33% {
+    -webkit-transform: translateY(-2em);
+            transform: translateY(-2em);
+  }
+  66% {
+    -webkit-transform: translateY(-1em);
+            transform: translateY(-1em);
   }
 }
 
@@ -342,3 +336,4 @@ html {
     width: 470px;
   }
 }
+/*# sourceMappingURL=loading.css.map */

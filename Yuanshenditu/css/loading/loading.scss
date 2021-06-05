@@ -1,10 +1,9 @@
 /*
  * @Author       : (^_^)
- * @LastEditTime : 2021-05-07 6:12 PM
+ * @LastEditTime: 2021-06-05 18:12
  */
 
 @charset "utf-8";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,100&display=swap");
 
 $loading-img-height: 62.5px;
 $loading-img-width: 500px;
@@ -29,10 +28,6 @@ body[data-theme="dark"] {
   --ThemeFontTitleColor: #fafafa;
   --ThemeLoadingBackgroundColor: #2c2b30;
   --ThemeLoadingProspectColor: #ece5d8;
-
-  .category-title {
-    border-top: 1px solid rgba(210, 210, 215, .2) !important;
-  }
 }
 
 body[data-theme="light"] {
@@ -43,9 +38,12 @@ body[data-theme="light"] {
   --ThemeLoadingProspectColor: #666666;
 }
 
-@function vw($px) {
-  // 移动端vw方案适配
-  @return ($px / 375) * 100vw;
+@font-face {
+  font-family: 'hywh';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('../hywh_thin3.ttf') format('truetype');
 }
 
 @mixin img-color($color, $top: 500px) {
@@ -55,29 +53,10 @@ body[data-theme="light"] {
   filter: drop-shadow(0 #{-$top} 0 $color);
 }
 
-[lang]:lang(ar) {
-  font-family: "SF Pro AR", "SF Pro Gulf", "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
-}
-
-[lang]:lang(ko) {
-  font-family: "SF Pro KR", "SF Pro Text", "SF Pro Icons", "Apple Gothic", "HY Gulim", "MalgunGothic", "HY Dotum", "Lexi Gulim", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
-}
-
-[lang]:lang(ja) {
-  font-family: "SF Pro JP", "SF Pro Text", "SF Pro Icons", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
-}
-
-[lang]:lang(zh-CN) {
-  font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
-}
-
-[lang]:lang(zh-TW) {
-  font-family: "SF Pro TC", "SF Pro Text", "SF Pro Icons", "PingFang TC", "Helvetica Neue", "Helvetica", "Arial", sans-serif !important;
-}
-
 a {
   transition: color .5s cubic-bezier(0.28, 0.11, 0.32, 1);
 }
+
 ::selection {
   color:inherit;
   background: inherit;
@@ -105,25 +84,6 @@ html{
     opacity: 1;
     overflow-y: hidden;
     transition: all .3s;
-
-    .loading-tips {
-      position: absolute;
-      bottom: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 17px;
-      opacity: .7;
-      font-weight: 600;
-      text-align: center;
-      font-family: "Roboto", sans-serif;
-      color: var(--ThemeFontColor);
-
-      &:hover {
-        opacity: 1;
-        transition: opacity .3s ease-in;
-      }
-    }
-
     .loading-default {
       position: absolute;
       left: 50%;
@@ -158,13 +118,7 @@ html{
         display: none;
       }
 
-      .loading-tips {
-        font-size: 14px;
-        white-space: nowrap;
-      }
-
       @media screen and (orientation: landscape) {
-
         // 移动端横屏依旧下使用默认Loading并且得小一点
         .loading-default {
           display: block !important;
@@ -222,11 +176,25 @@ html{
         }
 
         h2 {
-          display: inline-block;
           margin-top: 80px;
-          font-size: 21px;
-          font-family: "Roboto", sans-serif;
+          font-size: 1.3125em;
+          font-family: "hywh", sans-serif;
           color: var(--ThemeFontColor);
+
+          dot {
+            display: inline-block;
+            height: 1em;
+            line-height: 1;
+            text-align: left;
+            vertical-align: -.25ex;
+            overflow: hidden;
+            &::before {
+              display: block;
+              content: "...\A..\A.";
+              white-space: pre-wrap;
+              animation: dot 2s infinite step-start both;
+            }
+          }
         }
       }
     }
@@ -243,6 +211,15 @@ html{
 
   .loading-mobile {
     display: inline-block !important;
+  }
+}
+
+@keyframes dot {
+  33%{
+    transform: translateY(-2em);
+  }
+  66%{
+    transform: translateY(-1em);
   }
 }
 
