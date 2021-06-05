@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime: 2021-06-05 18:42
+ * @LastEditTime: 2021-06-05 18:47
 -->
 
 <!DOCTYPE html>
@@ -49,7 +49,7 @@
   <meta itemprop="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
   <meta itemprop="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
   <!-- Open Graph -->
-  <meta http-equiv="refresh" content="4; url='https://yuanshen.site/index.html'">
+  <meta http-equiv="refresh" content="4; url="https://yuanshen.site/index.html"">
   <link rel="alternate" href="https://yuanshen.site/" hreflang="x-default" />
   <link rel="canonical" href="https://yuanshen.site/" />
   <link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
@@ -286,31 +286,19 @@
     ( function ( w, d, s, l, i ) {
       w[ l ] = w[ l ] || [];
       w[ l ].push( {
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js'
+        "gtm.start": new Date().getTime(),
+        event: "gtm.js"
       } );
       var f = d.getElementsByTagName( s )[ 0 ],
         j = d.createElement( s ),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
+        dl = l != "dataLayer" ? "&l=" + l : "";
       j.async = true;
       j.src =
-        'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
       f.parentNode.insertBefore( j, f );
-    } )( window, document, 'script', 'dataLayer', 'GTM-5H6V3NB' );
+    } )( window, document, "script", "dataLayer", "GTM-5H6V3NB" );
   </script>
   <!-- End Google Tag Manager -->
-  <script>
-    // 该页面的全局配置
-    const globalConfig = {
-      theme: {
-        themeList: [ "dark", "light" ], // 主题列表
-        defaultTheme: "light", // 默认主题
-      },
-      resourceReloadingData: 'data/preload.json', // 资源预加载的数据url
-      supportLocale: 'data/support-locale.json',
-      loadingBarContainer: '.loading-default', // loadingBar 挂载容器的选择器
-    };
-  </script>
   <script type="application/ld+json">
     [ {
         "@context": "https://schema.org",
@@ -346,7 +334,7 @@
   <!-- End Google Tag Manager (noscript) -->
   <noscript>
     <p>(:</p>
-    <p>We're sorry but</p>
+    <p>We"re sorry but</p>
     <p>This page requires JavaScript to work properly</p>
   </noscript>
   <nav style="display: none;">
@@ -381,7 +369,7 @@
   </script>
   <script>
     (function () {
-    'use strict';
+    "use strict";
 
     /**
      * @description: 延迟
@@ -457,18 +445,18 @@
         var myTitle = title || "原神地图";
         var myDescription = description || "";
         var myData = data || [];
-        var style = 'font-size:13px;';
-        console.group("%c" + myTitle + (myDescription === "" ? "" : "%c" + myDescription), 'background:#35495e; padding: 2px 4px; border-radius: 3px 0 0 3px; color: #fff;font-family: sans-serif;', 'background:#41b883 ; padding: 2px 4px; border-radius: 0 3px 3px 0;  color: #fff; font-family: sans-serif;');
+        var style = "font-size:13px;";
+        console.group("%c" + myTitle + (myDescription === "" ? "" : "%c" + myDescription), "background:#35495e; padding: 2px 4px; border-radius: 3px 0 0 3px; color: #fff;font-family: sans-serif;", "background:#41b883 ; padding: 2px 4px; border-radius: 0 3px 3px 0;  color: #fff; font-family: sans-serif;");
         myData.forEach(function (val) {
             for (var prop in val) {
                 if (val.hasOwnProperty(prop)) {
-                    console.log("%c" + prop + '\u0020'.repeat(18 - prop.length) + ": %c" + val[prop], "font-size:13px;", "font-size:13px;color: #45B744;");
+                    console.log("%c" + prop + "\u0020".repeat(18 - prop.length) + ": %c" + val[prop], "font-size:13px;", "font-size:13px;color: #45B744;");
                 }
             }
         });
         console.groupEnd();
-        console.log('%c📝\u0020问题反馈: https://support.qq.com/products/321980', style);
-        console.log('%c😉\u0020了解更多: https://yuanshen.site/docs/disclaimer.html', style);
+        console.log("%c📝\u0020问题反馈: https://support.qq.com/products/321980", style);
+        console.log("%c😉\u0020了解更多: https://yuanshen.site/docs/disclaimer.html", style);
     }
 
     /**
@@ -563,8 +551,8 @@
      */
     function setURLParam(paramName, newValue) {
         var oldUrl = window.location.href.toString();
-        var re = eval('/(' + paramName + '=)([^&]*)/gi');
-        var result = oldUrl.replace(re, paramName + '=' + newValue);
+        var re = eval("/(" + paramName + "=)([^&]*)/gi");
+        var result = oldUrl.replace(re, paramName + "=" + newValue);
         if (result === location.href &&
             !new URLSearchParams(new URL(location.href).search).has(paramName)) {
             if (location.search === "") {
@@ -589,7 +577,6 @@
         setPseudoStyle: setPseudoStyle,
         throttle: throttle,
         setURLParam: setURLParam,
-        version: '1.0.0(beta)'
     };
 
   }());
@@ -616,13 +603,13 @@
         }
         /** @public */
         start() {
-          utils.setPseudoStyle(this.element.className,'after',{
+          utils.setPseudoStyle(this.element.className,"after",{
               animation: `loading-bar ${this.maxDelay / 1000}s 1 forwards`,
           });
         }
         /** @public */
         async finish() {
-          utils.setPseudoStyle(this.element.className,'after',{
+          utils.setPseudoStyle(this.element.className,"after",{
               animation: `none`,
           });
           this.parentNode.style.opacity = 0;
@@ -646,34 +633,34 @@
         const lang = utils.getUserLanguage(navigator.language)[0];
         if ( !lang || /^(yue|zh)(-cn|-hans(-[a-z]+)?)?$/i.test( lang ) ) {
           return {
-            lang: 'zh-Hans',
+            lang: "zh-Hans",
             title: "原神地图",
             loadingText: "加载中",
-            link: 'index.html',
+            link: "index.html",
             prefetch: ["/index.html", "/js/index2.js", "/css/index.css"]
           }
         } else if ( lang.startsWith("zh") || lang.startsWith("yue") ) {
           return {
-            lang: 'zh-Hant',
+            lang: "zh-Hant",
             title: "原神地圖",
             loadingText: "加載中",
-            link: 'index.html',
+            link: "index.html",
             prefetch: ["/index.html","/js/index2.js", "/css/index.css"]
           }
         } else if ( lang.startsWith("ja") || lang.startsWith("jp") ) {
           return {
-            lang: 'ja-JP',
+            lang: "ja-JP",
             title: "原神地図",
             loadingText: "読み込み中",
-            link: 'index_jp.html',
+            link: "index_jp.html",
             prefetch: ["/index_jp.html","/js/index2_jp.js", "/css/index_jp.css"]
           }
         } else {
           return {
-            lang: 'en-US',
+            lang: "en-US",
             title: "Genshin Map",
             loadingText: "Loading",
-            link: 'index_en.html',
+            link: "index_en.html",
             prefetch: ["/index_en.html","/js/index2_en.js","/css/index_en.css", "/js/milo.js"]
           }
         }
@@ -686,13 +673,13 @@
         prefetch
       } = i18n(); // 获取数据
 
-      const myLoadingBar = new LoadingBar(globalConfig.loadingBarContainer);                   // Loading动画                                                                       // 动态主题
+      const myLoadingBar = new LoadingBar("data/preload.json");                   // Loading动画                                                                       // 动态主题
       prefetch.forEach(val => createLink(val,document.head));                                  // 开始资源预加载
       document.documentElement.lang = lang;                                                    // 设置Lang
       document.title = title;                                                                  // 设置Title
       if(utils.getUserLanguage().startsWith("ar"))                                             // 如果是阿拉伯语将dir设为rtl
-        document.documentElement.setAttribute('dir', "rtl");
-      document.getElementById("loading-text").innerHTML = loadingText+'<dot></dot>';           // 设置Loading Text
+        document.documentElement.setAttribute("dir", "rtl");
+      document.getElementById("loading-text").innerHTML = loadingText+"<dot></dot>";           // 设置Loading Text
       document.documentElement.oncontextmenu = ( e ) => e.preventDefault();                    // 屏蔽上下文菜单
       myLoadingBar.start();                                                                    // 开始动画
       window.onload = () => replace(link);
