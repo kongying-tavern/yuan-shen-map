@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime: 2021-06-05 18:47
+ * @LastEditTime: 2021-06-05 18:48
 -->
 
 <!DOCTYPE html>
@@ -673,7 +673,7 @@
         prefetch
       } = i18n(); // 获取数据
 
-      const myLoadingBar = new LoadingBar("data/preload.json");                   // Loading动画                                                                       // 动态主题
+      const myLoadingBar = new LoadingBar('.loading-default');                   // Loading动画                                                                       // 动态主题
       prefetch.forEach(val => createLink(val,document.head));                                  // 开始资源预加载
       document.documentElement.lang = lang;                                                    // 设置Lang
       document.title = title;                                                                  // 设置Title
