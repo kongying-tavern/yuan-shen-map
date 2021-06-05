@@ -1,10 +1,10 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime: 2021-06-05 18:23
+ * @LastEditTime: 2021-06-05 18:42
 -->
 
 <!DOCTYPE html>
-<html lang="zh-cmn" dir="ltr">
+<html lang="zh-Hans-CN" dir="ltr">
 
 <head>
   <meta charset="UTF-8">
@@ -49,7 +49,7 @@
   <meta itemprop="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
   <meta itemprop="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
   <!-- Open Graph -->
-  <!-- <meta http-equiv="refresh" content="4; url='https://yuanshen.site/index.html'"> -->
+  <meta http-equiv="refresh" content="4; url='https://yuanshen.site/index.html'">
   <link rel="alternate" href="https://yuanshen.site/" hreflang="x-default" />
   <link rel="canonical" href="https://yuanshen.site/" />
   <link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
@@ -273,6 +273,14 @@
   <script crossOrigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js"></script>
   <link rel="stylesheet" href="./css/global.min.css">
   <link rel="stylesheet" href="./css/loading/loading.css">
+  <script>
+		;(function(win, doc, scr, sid){
+			const script = doc.createElement(scr);
+			script.src = "js/wees.js?appid="+sid;
+			const firstScript = doc.getElementsByTagName(scr)[0];
+			firstScript.parentNode.insertBefore(script, firstScript);
+		})(window, document, "script","9DC236AA");
+	</script>
   <!-- Google Tag Manager -->
   <script>
     ( function ( w, d, s, l, i ) {
@@ -364,7 +372,7 @@
           <li class="item"></li>
           <li class="item"></li>
         </ul>
-        <h2 id="loading-text" dir="ltr">Loading<dot></dot></h2>
+        <h2 id="loading-text">Loading<dot></dot></h2>
       </div>
     </div>
   </div>
@@ -401,7 +409,6 @@
             localeCode[_i] = arguments[_i];
         }
         try {
-            // @ts-ignore
             if (typeof Intl.getCanonicalLocales() === "object")
                 return Intl.getCanonicalLocales(localeCode);
         }
@@ -636,7 +643,8 @@
       })();
 
       const i18n = ( () => {
-        if ( !navigator.language || /^(yue|zh)(-cn|-hans(-[a-z]+)?)?$/i.test( navigator.language ) ) {
+        const lang = utils.getUserLanguage(navigator.language)[0];
+        if ( !lang || /^(yue|zh)(-cn|-hans(-[a-z]+)?)?$/i.test( lang ) ) {
           return {
             lang: 'zh-Hans',
             title: "原神地图",
@@ -644,7 +652,7 @@
             link: 'index.html',
             prefetch: ["/index.html", "/js/index2.js", "/css/index.css"]
           }
-        } else if ( navigator.language.startsWith( "zh" ) || navigator.language.startsWith( "yue" ) ) {
+        } else if ( lang.startsWith("zh") || lang.startsWith("yue") ) {
           return {
             lang: 'zh-Hant',
             title: "原神地圖",
@@ -652,7 +660,7 @@
             link: 'index.html',
             prefetch: ["/index.html","/js/index2.js", "/css/index.css"]
           }
-        } else if ( navigator.language.startsWith( "ja" ) || navigator.language.startsWith( "jp" ) ) {
+        } else if ( lang.startsWith("ja") || lang.startsWith("jp") ) {
           return {
             lang: 'ja-JP',
             title: "原神地図",
@@ -682,6 +690,8 @@
       prefetch.forEach(val => createLink(val,document.head));                                  // 开始资源预加载
       document.documentElement.lang = lang;                                                    // 设置Lang
       document.title = title;                                                                  // 设置Title
+      if(utils.getUserLanguage().startsWith("ar"))                                             // 如果是阿拉伯语将dir设为rtl
+        document.documentElement.setAttribute('dir', "rtl");
       document.getElementById("loading-text").innerHTML = loadingText+'<dot></dot>';           // 设置Loading Text
       document.documentElement.oncontextmenu = ( e ) => e.preventDefault();                    // 屏蔽上下文菜单
       myLoadingBar.start();                                                                    // 开始动画
