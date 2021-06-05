@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime: 2021-06-05 18:48
+ * @LastEditTime: 2021-06-05 22:30
 -->
 
 <!DOCTYPE html>
@@ -273,14 +273,6 @@
   <script crossOrigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js"></script>
   <link rel="stylesheet" href="./css/global.min.css">
   <link rel="stylesheet" href="./css/loading/loading.css">
-  <script>
-		;(function(win, doc, scr, sid){
-			const script = doc.createElement(scr);
-			script.src = "js/wees.js?appid="+sid;
-			const firstScript = doc.getElementsByTagName(scr)[0];
-			firstScript.parentNode.insertBefore(script, firstScript);
-		})(window, document, "script","9DC236AA");
-	</script>
   <!-- Google Tag Manager -->
   <script>
     ( function ( w, d, s, l, i ) {
@@ -630,7 +622,7 @@
       })();
 
       const i18n = ( () => {
-        const lang = utils.getUserLanguage(navigator.language)[0];
+        const lang = utils.getUserLanguage(navigator.language);
         if ( !lang || /^(yue|zh)(-cn|-hans(-[a-z]+)?)?$/i.test( lang ) ) {
           return {
             lang: "zh-Hans",
