@@ -666,7 +666,7 @@
       } = i18n(); // 获取数据
 
       const myLoadingBar = new LoadingBar('.loading-default');                   // Loading动画                                                                       // 动态主题
-      prefetch.forEach(val => createLink(val,document.head));                                  // 开始资源预加载
+      prefetch.forEach(val => createLink(val,document.head));                                  // 开始预加载跳转页的非公共资源
       document.documentElement.lang = lang;                                                    // 设置Lang
       document.title = title;                                                                  // 设置Title
       if(utils.getUserLanguage().startsWith("ar"))                                             // 如果是阿拉伯语将dir设为rtl
@@ -674,7 +674,11 @@
       document.getElementById("loading-text").innerHTML = loadingText+"<dot></dot>";           // 设置Loading Text
       document.documentElement.oncontextmenu = ( e ) => e.preventDefault();                    // 屏蔽上下文菜单
       myLoadingBar.start();                                                                    // 开始动画
-      window.onload = () => replace(link);
+      window.onload = () => {
+        setTimeout(()=>{
+          replace(link);
+        },1000);
+      }
 
       async function replace(link) {
         // 加载动画结束后重定向
