@@ -1,7 +1,7 @@
 ---
 title: 下载客户端
 description: 下载客户端
-date: 2021-6-10
+date: 2021-6-13
 sidebar: false
 ---
 
@@ -9,13 +9,15 @@ sidebar: false
 
 点击下方链接下载最新版原神地图客户端
 
-[https://pan.baidu.com/s/1IgUaIxAN_C9FR3BUXoy4Zg](https://pan.baidu.com/s/1IgUaIxAN_C9FR3BUXoy4Zg "Kongying Tavern Genshin Map-1.9_Beta.msi")
+[https://pan.baidu.com/s/1X8WbNtZDcxacsY0bzR2m0Q](https://pan.baidu.com/s/1X8WbNtZDcxacsY0bzR2m0Q "Kongying Tavern Genshin Map-1.9.2_Beta.msi")
 
 提取码：**KYJG**
 
 ::: details 下载其他版本
 | 版本号 | 类型 | 发布日期 | 版本说明 | 提取码 | 下载 |
 |:------:|:----:|:-------:|:-------:|:-----:|-----:|
+| 1.9.2  | Beta | 2021/6/13 | 修复bug | KYJG |[Kongying Tavern Genshin Map-1.9.2_Beta.msi](https://pan.baidu.com/s/1X8WbNtZDcxacsY0bzR2m0Q "https://pan.baidu.com/s/1X8WbNtZDcxacsY0bzR2m0Q")|
+| 1.9.1  | Beta | 2021/6/11 | 修复bug | KYJG |[Kongying Tavern Genshin Map-1.9.1_Beta.msi](https://pan.baidu.com/s/1RsrgoZp9hAONHehwN5Z1FQ "https://pan.baidu.com/s/1RsrgoZp9hAONHehwN5Z1FQ")|
 | 1.9  | Beta | 2021/6/10 | 海岛更新 | KYJG |[Kongying Tavern Genshin Map-1.9_Beta.msi](https://pan.baidu.com/s/1IgUaIxAN_C9FR3BUXoy4Zg "https://pan.baidu.com/s/1IgUaIxAN_C9FR3BUXoy4Zg")|
 | 1.8.1  | Beta | 2021/5/25 | - | KYJG |[Kongying Tavern Genshin Map-1.8.1_Beta.msi](https://pan.baidu.com/s/1zRf_Rpi_TZWi994ImJ9Wyg "https://pan.baidu.com/s/1zRf_Rpi_TZWi994ImJ9Wyg")|
 :::
@@ -34,13 +36,15 @@ sidebar: false
 
 | 版本号 | 类型  | 发布日期 | 版本说明 | 下载 |
 |:-----:|:-----:|:-------:|:-------:| -----:|
+| 1.9.2 | Beta  | 2021/6/13 | Fix bugs |[Kongying Tavern Genshin Map-1.9.2_Beta.msi](https://drive.google.com/file/d/1N4JN8Q_1UxjfGbGjnaVYeKLRtEqO5DYF/view?usp=sharing "https://drive.google.com/file/d/1N4JN8Q_1UxjfGbGjnaVYeKLRtEqO5DYF/view?usp=sharing")|
+| 1.9.1 | Beta  | 2021/6/11 | Fix bugs |[Kongying Tavern Genshin Map-1.9.1_Beta.msi](https://drive.google.com/file/d/1N4JN8Q_1UxjfGbGjnaVYeKLRtEqO5DYF/view?usp=sharing "https://drive.google.com/file/d/1N4JN8Q_1UxjfGbGjnaVYeKLRtEqO5DYF/view?usp=sharing")|
 | 1.9 | Beta  | 2021/6/10 | update island |[Kongying Tavern Genshin Map-1.9_Beta.msi](https://drive.google.com/file/d/1N4JN8Q_1UxjfGbGjnaVYeKLRtEqO5DYF/view?usp=sharing "https://drive.google.com/file/d/1N4JN8Q_1UxjfGbGjnaVYeKLRtEqO5DYF/view?usp=sharing")|
 | 1.8.1 | Beta  | 2021/5/25 | - |[Kongying Tavern Genshin Map-1.8.1_Beta.msi](https://drive.google.com/file/d/1N4JN8Q_1UxjfGbGjnaVYeKLRtEqO5DYF/view?usp=sharing "https://drive.google.com/file/d/1N4JN8Q_1UxjfGbGjnaVYeKLRtEqO5DYF/view?usp=sharing")|
 :::
 
 ## 加入讨论组
 
-[./communication-group.md](点击加入讨论组)
+（[点击加入讨论组](./communication-group.md "加入讨论组")）
 
 ## 提示
 
