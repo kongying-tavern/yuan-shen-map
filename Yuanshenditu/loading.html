@@ -1,6 +1,6 @@
 <!--
  * @Author       : Jia Zeng
- * @LastEditTime: 2021-06-05 22:30
+ * @LastEditTime: 2021-06-15 00:45
 -->
 
 <!DOCTYPE html>
@@ -49,7 +49,7 @@
   <meta itemprop="description" content="米游社空荧酒馆制作的原神全资源攻略地图。" />
   <meta itemprop="image" content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg" />
   <!-- Open Graph -->
-  <meta http-equiv="refresh" content="4; url="https://yuanshen.site/index.html"">
+  <meta http-equiv="refresh" content="4; url='https://yuanshen.site/index.html'">
   <link rel="alternate" href="https://yuanshen.site/" hreflang="x-default" />
   <link rel="canonical" href="https://yuanshen.site/" />
   <link rel="shortcut icon" href="https://yuanshen.site/favicon.ico" type="image/x-icon" />
@@ -665,7 +665,7 @@
         prefetch
       } = i18n(); // 获取数据
 
-      const myLoadingBar = new LoadingBar('.loading-default');                   // Loading动画                                                                       // 动态主题
+      const myLoadingBar = new LoadingBar('.loading-default');                                 // Loading动画
       prefetch.forEach(val => createLink(val,document.head));                                  // 开始资源预加载
       document.documentElement.lang = lang;                                                    // 设置Lang
       document.title = title;                                                                  // 设置Title
@@ -674,7 +674,7 @@
       document.getElementById("loading-text").innerHTML = loadingText+"<dot></dot>";           // 设置Loading Text
       document.documentElement.oncontextmenu = ( e ) => e.preventDefault();                    // 屏蔽上下文菜单
       myLoadingBar.start();                                                                    // 开始动画
-      window.onload = () => replace(link);
+      window.onload = () => setTimeout(()=>replace(link),1500);
 
       async function replace(link) {
         // 加载动画结束后重定向
