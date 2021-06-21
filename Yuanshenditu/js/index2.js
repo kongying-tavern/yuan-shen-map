@@ -446,6 +446,11 @@ var LayerMap = {
 		maxClusterRadius: 0
 	}),
 	Layer_MLDCD_QD1: L.markerClusterGroup(),
+	Layer_BTTZ_QD: L.markerClusterGroup(),
+	Layer_SJRW_QD: L.markerClusterGroup(),
+	Layer_BTTZ_QD1: L.markerClusterGroup(),
+	Layer_YJJB_DQ: L.markerClusterGroup(),
+  
 }
 
 //定义各个坐标使用的图标
@@ -930,6 +935,10 @@ var typearray = [
 	[LayerMap["Layer_LCMD_QD1"], JS_LCMD_QD1, "ST", 'LCMD_QD1'],
 	[LayerMap["Layer_CSD_QD1"], JS_CSD_QD1, "CSD", 'CSD_QD1'],
 	[LayerMap["Layer_MLDCD_QD1"], JS_MLDCD_QD1, "TC", 'MLDCD_QD1'],
+	[LayerMap["Layer_BTTZ_QD"], JS_BTTZ_QD, "TC", 'BTTZ_QD'],
+	[LayerMap["Layer_SJRW_QD"], JS_SJRW_QD, "ST", 'SJRW_QD'],
+	[LayerMap["Layer_BTTZ_QD1"], JS_BTTZ_QD1, "TC", 'BTTZ_QD1'],
+	[LayerMap["Layer_YJJB_DQ"], JS_YJJB_DQ, "TC", 'YJJB_DQ'],
 ];
 const MonosTime = {
 	LLD: 48,
