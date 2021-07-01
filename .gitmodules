@@ -1,0 +1,3 @@
+[submodule "docs"]
+	path = docs
+	url = git@gitee.com:KYJGYSDT/yuanshendocs.git
