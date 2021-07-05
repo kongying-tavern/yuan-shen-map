@@ -9,11 +9,11 @@ body,
     height: 100%;
 }
 
-.myPopIssue{
-        display: none;
+.myPopIssue {
+    display: none;
 }
 
-.switch_FB{
+.switch_FB {
     z-index: 4000;
     display: block;
     position: absolute;
@@ -26,7 +26,7 @@ body,
     cursor: pointer;
 }
 
-.genshin_pub{
+.genshin_pub {
     z-index: 4000;
     display: block;
     position: absolute;
@@ -38,7 +38,7 @@ body,
     cursor: pointer;
 }
 
-.genshin_art{
+.genshin_art {
     z-index: 4000;
     display: block;
     position: absolute;
@@ -50,21 +50,21 @@ body,
     cursor: pointer;
 }
 
-.YQLJ{
+.YQLJ {
     display: block;
     margin: auto;
     width: 190px;
     height: 50px;
 }
 
-.YQLJ2{
+.YQLJ2 {
     display: block;
     margin: auto;
     width: 190px;
     height: 50px;
 }
 
-.loading{
+.loading {
     z-index: 4000;
     display: block;
     position: absolute;
@@ -282,7 +282,8 @@ body,
     background: url(../imgs/con_img/liyue.png) no-repeat;
 }
 
-.qundao,.qundao1 {
+.qundao,
+.qundao1 {
     background: url(../imgs/con_img/qundao.png) no-repeat;
 }
 
@@ -314,7 +315,8 @@ body,
     background: url(../imgs/con_img/liyue-on.png) no-repeat;
 }
 
-.qundao.on,.qundao1.on {
+.qundao.on,
+.qundao1.on {
     background: url(../imgs/con_img/qundao-on.png) no-repeat;
 }
 
@@ -856,9 +858,10 @@ body,
         /*兼容-moz-引擎浏览器*/
     }
 }
+
 .time-wrapper {
     font-size: 18px;
-    padding: 0 17px;   
+    padding: 0 17px;
     font-weight: bold;
     margin-top: 10px;
 
@@ -873,32 +876,38 @@ body,
 .avatar-wrapper img {
     border-radius: 50%;
 }
-.Layer_MJK_LY,.Layer_MJK_MD,.Layer_SBLM_LY,.Layer_LYHHR_MD,.Layer_LYHHR_LY,.Layer_BWHHD_LY,.Layer_BWHHD_MD
-{
+
+.Layer_MJK_LY,
+.Layer_MJK_MD,
+.Layer_SBLM_LY,
+.Layer_LYHHR_MD,
+.Layer_LYHHR_LY,
+.Layer_BWHHD_LY,
+.Layer_BWHHD_MD {
     font-size: 18px !important;
     text-indent: 45px !important;
 }
-.cover
-{
+
+.cover {
     width: 100%;
     height: 1px;
 }
-.info_window
-{
+
+.info_window {
     position: relative;
     width: 500px;
     height: 300px;
     background: #fff;
 }
-.info_title
-{
+
+.info_title {
     width: 100%;
     margin: 10px auto 20px;
     text-align: center;
     font-size: 30px;
 }
-.info_window .close_btn
-{
+
+.info_window .close_btn {
     position: absolute;
     bottom: 20px;
     left: 200px;
@@ -908,45 +917,77 @@ body,
     text-align: center;
     line-height: 30px;
     color: white;
-    background:#6495ED;
+    background: #6495ED;
 }
-.info_window p
-{
+
+.info_window p {
     width: 90%;
     margin: 0 auto 5px;
     text-indent: 16px;
 }
-.infodiv
-{
+
+.infodiv {
     width: 100%;
     height: 150px;
-    overflow:hidden scroll;
+    overflow: hidden scroll;
 }
+
+.enindex-btn {
+    z-index: 400;
+    position: absolute;
+    display: block;
+    left: 57px;
+    top: 65px;
+    color: #191970;
+    font-weight: bold;
+}
+
+.jpindex-btn {
+    z-index: 400;
+    position: absolute;
+    display: block;
+    left: 57px;
+    top: 85px;
+    color: #191970;
+    font-weight: bold;
+}
+
 @media screen and (max-width: 400px) {
-    .info_window
-    {
+    .info_window {
         position: relative;
         width: 300px;
         height: 400px;
         background: #fff;
     }
-    .info_window .close_btn
-    {
+
+    .info_window .close_btn {
         bottom: 20px;
         left: 125px;
         width: 60px;
         height: 30px;
     }
-    .infodiv
-    {
+
+    .infodiv {
         height: 210px;
     }
+
     .enindex-btn {
-        z-index: 9999;
+        z-index: 400;
         position: absolute;
         display: block;
         left: 35px;
         top: 35px;
+        color: #191970;
+        font-weight: bold;
+        font-size: 12px;
+    }
+
+    .jpindex-btn {
+        z-index: 400;
+        position: absolute;
+        display: block;
+        left: 35px;
+        top: 55px;
         color: #191970;
         font-weight: bold;
         font-size: 12px;
