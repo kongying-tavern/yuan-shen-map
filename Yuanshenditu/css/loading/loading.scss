@@ -1,6 +1,6 @@
 /*
  * @Author       : (^_^)
- * @LastEditTime: 2021-06-05 18:12
+ * @LastEditTime: 2021-07-05 17:25
  */
 
 @charset "utf-8";
@@ -36,14 +36,6 @@ body[data-theme="light"] {
   --ThemeFontTitleColor: #1d1d1f;
   --ThemeLoadingBackgroundColor: #f5f5f5;
   --ThemeLoadingProspectColor: #666666;
-}
-
-@font-face {
-  font-family: 'hywh';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url('../hywh_thin3.ttf') format('truetype');
 }
 
 @mixin img-color($color, $top: 500px) {

@@ -1,8 +1,3 @@
-<!--
- * @Author       : zengjia@stelulo.com
- * @LastEditTime: 2021-05-31 19:43
--->
-
 <!DOCTYPE html>
 <html lang="ja-jp" dir="ltr">
 
@@ -151,7 +146,7 @@
 		<a href="javascript:;" class="fold-btn hd" title="サイドバーを閉じます">fold</a>
 		<div class="person-div">
 			<div href="javascript:;" id="reg_log_link" class="reg_log_link login-info"></div>
-			<a href="https://www.paypal.me/yuanshenditu" target="_bal" class="zanzhu">スポンサー</a>
+			<a href="https://yuanshen.site/docs/ja/support-us.html" target="_bal" class="zanzhu">スポンサー</a>
 			<a href="javascript:;" class="save-btn disable hd">save</a>
 		</div>
 		<div class="topLine"></div>
@@ -1102,7 +1097,7 @@
 			</div>
 		</div>
 	</aside>
-	<!-- 
+<!--
 	<div class="bottom-rules">
 		<a href="/docs/ja/disclaimer.html" target="_bal" class="disclaimer">免責事項</a>
 	</div> -->
@@ -1116,65 +1111,8 @@
 	<script src="js/Item_Json.js"></script>
 
 	<script src="js/index2_jp.js"></script>
-	<script type="module">
-		import { Prompt } from './js/ui/index.js';
+	<script>
 		; ((doc, win) => {
-			window.isDevelopmentMode = doc.domain !== "yuanshen.site";
-			window.defenseVersion = '1.0.6(beta)';
-			console.log('isDevelopmentMode: ', isDevelopmentMode);
-			const updateLog =
-				[
-					{
-						type: '增加',
-						date: "2020.4.4",
-						text: "インターフェース翻訳をアップロードします",
-					},
-					{
-						type: '优化',
-						date: "2020.4.4",
-						text: "バウンス表示ロジックを最適化する",
-					},
-					{
-						type: "改进",
-						date: "2020.4.1",
-						text: "誤訳を修正する",
-					},
-					{
-						type: '改进',
-						date: '2020.4.9',
-						text: 'SEO'
-					},
-					{
-						type: '改进',
-						date: "2020.4.10",
-						text: 'ポップアップスクロールのバグを修正'
-					},
-					{
-						type: '增加',
-						date: '2020.4.13',
-						text: '自動ジャンプページを追加します'
-					},
-					{
-						type: '增加',
-						date: '2020.7.05',
-						text: '金リンゴ群島を追加します'
-					}
-				];
-			let p1 = new Prompt({
-				title: "原神地図",
-				textAlign: 'center',
-				lastEditTime: "2020.7.05",
-				version: win.defenseVersion,
-				about: "中国の「空荧酒馆チーム」プロデュース<br/>",
-				content: updateLog
-			});
-			isDevelopmentMode && console.log("P1: ", p1);
-			// 只有版本与localStorage不同时弹出
-			if (localStorage.getItem("defenseVersion") !== window.defenseVersion || isDevelopmentMode) {
-				p1.show();
-				localStorage.setItem("defenseVersion", window.defenseVersion);
-			}
-
 			// 侧边栏按钮提示
 			const btn = doc.querySelector('.fold-btn');
 			if (!btn) return;
