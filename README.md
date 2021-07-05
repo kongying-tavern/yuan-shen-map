@@ -1,59 +1,49 @@
-# 【空荧酒馆】提瓦特电子地图•最新版
+# 【空荧酒馆】提瓦特电子地图
 
-## 食用方法：
+这是空荧酒馆网页版原神地图 1.0. 的仓库。
 
-①点击右侧按钮唤出筛选器
+## 食用方法
 
-②每种物品都有【序号id】，方便查缺补漏，可单击标记查看备注
+- 点击右侧按钮唤出筛选器
 
-③每种物品都可进行【标记】，方便旅行者标记已经获取过的物品
+- 每种物品都有【序号id】，方便查缺补漏，可单击标记查看备注
 
-③宝箱有对应【图片】，妈妈再也不用担心找不到宝箱了（蒙德部分宝箱没有图片，可能由于没有截图或者点位不准，请以公测为准）
+- 每种物品都可进行【标记】，方便旅行者标记已经获取过的物品
 
-④当前针对PC优化，手机端也许会有一些意想不到的新(B)特(U)性(G)
+- 宝箱有对应【图片】，妈妈再也不用担心找不到宝箱了（蒙德部分宝箱没有图片，可能由于没有截图或者点位不准，请以公测为准）
 
-⑤如果各位旅行者发现了问题，可以[【点击这里并简述问题】](https://support.qq.com/product/321980)
+- 当前针对PC优化，手机端也许会有一些意想不到的新(B)特(U)性(G)
 
-制作：A8、大白米、Icarusss、南极风、(*^_^*)
+- 如果各位旅行者发现了问题，可以[【点击这里并简述问题】](https://support.qq.com/product/321980)
+
 ![实例](https://upload-bbs.mihoyo.com/upload/2020/09/09/5284717/58b1e0a88e58bed8ddfc3bd34b439b75_259109571177980462.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg)
 ![实例](https://upload-bbs.mihoyo.com/upload/2020/09/19/5284717/3f2f022e016c245b43939b50d6a43de3_2462893354478986890.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg)
 ![实例](https://upload-bbs.mihoyo.com/upload/2020/09/19/5284717/3947428880da5f99e329198c3d779e4c_6341180947935966441.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg)
 ![实例](https://upload-bbs.mihoyo.com/upload/2020/09/26/5284717/82ae121d6c53ad415f69f2315724d14f_1311956324983884438.jpg?x-oss-process=image/resize,s_600/quality,q_80/auto-orient,0/interlace,1/format,jpg)
 
-# 更新日志：
+## 贡献
 
-> 9/27 再次更新了一大波宝箱点位，校准了部分琉璃袋点位及配图
+A8、大白米、Icarusss、南极风、(\^_^\)、Peaceshi
 
-> 9/26 更新了一大波宝箱点位
+## 更新日志
 
-> 9/25 更新了点击点位的弹窗样式，现在可以点击隐藏图片了，没有图片的点位不会显示？图片了
+见 [https://support.qq.com/products/321980/blog/505810](https://support.qq.com/products/321980/blog/505810 "空荧酒馆原神地图网页版更新内容")。
 
-> 9/22 更新了琉璃袋、琉璃百合及部分璃月宝箱点位
+## 许可证
 
-> 9/20 更新了部分宝箱位置和图片
+该项目签署了 MulanPSL-1.0 授权许可，详情请参阅 [LICENSE.md](./LICENSE.md)。
 
-> 9/19 更新了新版筛选器，放大了神瞳，优化了点位样式，现在已获取的物品显示更明显了，校准了岩神瞳位置并更新了岩神瞳图片信息
+## 鸣谢
 
-> 9/15 更新了地图底图到正式服，更新了风神瞳、岩神瞳点位到正式服
+技术鸣谢 [https://yuanshen.site/docs/credits.html](https://yuanshen.site/docs/credits.html)
 
-> 9/14 修复了一些BUG，PC端现在默认开启筛选器了。
+赞助鸣谢 [https://yuanshen.site/docs/support-us.html](https://yuanshen.site/docs/support-us.html#%E8%B5%9E%E5%8A%A9%E9%B8%A3%E8%B0%A2)
 
-> 9/09 重制了筛选器样式，优化了网页源码，添加了璃月宝箱，添加了宝箱图片，添加了标记功能
+## 其他项目
 
-> 7/17 添加、删除了部分璃月精英怪位置，添加了蒙德宝箱位置
-
-> 7/07 更新璃月精英怪位置，给图标加上了边框
-
-> 6/30 更新最后一个岩神瞳位置
-
-> 6/29 更新蒙德水晶矿、蒙德白铁矿位置
-
-> 6/28 更新璃月水晶矿、璃月白铁矿位置
-
-> 6/23 更新钩钩果、嘟嘟莲、落落梅、风车菊、塞西莉亚花、慕风蘑菇、蒲公英籽、夜泊石、石珀位置
-
-> 6/20 优化网页代码，更新菜单样式
-
-> 6/18 更新绝云椒椒、霓裳花、琉璃百合位置
-
-> 6/16 更新蒙德、璃月全20个地灵龛位置
+| 项目                   | 链接                                                      | 仓库                 |
+| ---------------------  | --------------------------------------------------------- | -------------------- |
+| 空荧地图文档            | [https://yuanshen.site/docs/](https://yuanshen.site/)     | [GitHub](https://github.com/jiazengp/genshinmap-docs) |
+| 空荧地图VUE重制版       | -                                                        | [Gitee](https://gitee.com/KYJGYSDT/island_map) |
+| 空荧地图后台管理系统     | -                                                         | [Gitee](https://gitee.com/KYJGYSDT/manage_system) |
+| 原神地图自动追踪dll      | -                                                         | [Gitee](https://gitee.com/Yu_Sui_Xian/yuanshen-auto-tracking-dll) |
