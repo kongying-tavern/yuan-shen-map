@@ -179,7 +179,7 @@ body,
 
 .control-containor {
     position: fixed;
-    z-index: 400;
+    z-index: 999;
     top: 0;
     right: -415px;
     width: 431px;
@@ -282,6 +282,10 @@ body,
     background: url(../imgs/con_img/liyue.png) no-repeat;
 }
 
+.qundao,.qundao1 {
+    background: url(../imgs/con_img/qundao.png) no-repeat;
+}
+
 .daoqi {
     background: url(../imgs/con_img/daoqi.png) no-repeat;
 }
@@ -308,6 +312,10 @@ body,
 
 .liyue.on {
     background: url(../imgs/con_img/liyue-on.png) no-repeat;
+}
+
+.qundao.on,.qundao1.on {
+    background: url(../imgs/con_img/qundao-on.png) no-repeat;
 }
 
 .daoqi.on {

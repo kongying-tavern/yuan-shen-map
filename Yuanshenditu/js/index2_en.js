@@ -1,6 +1,35 @@
 //@ts-check
 //初始化地图
 t = L.latLngBounds([0, 0], [-66.5, 90]);
+/*
+   use latLngBounds as maxBoundsRect
+           n
+      +-----------+ 
+      |           | 
+      |           | 
+   w  |           |  e
+      |           | 
+      |           | 
+      +-----------+ 
+           s
+ */
+		   const northEdge = 0;
+		   const westEdge = 0;
+		   const southEdge = -66.5;
+		   const eastEdge = 90;
+		   const lon2tile = (lon, zoom) => {
+			   return Math.floor(((lon + 180) / 360) * Math.pow(2, zoom));
+		   };
+		   const lat2tile = (lat, zoom) => {
+			   return Math.floor(
+				   ((1 - Math.log(Math.tan((lat * Math.PI) / 180) + 1 / Math.cos((lat * Math.PI) / 180)) / Math.PI) / 2) *
+				   Math.pow(2, zoom)
+			   );
+		   };
+		   const topTile = (northEdge, zoom) => lat2tile(northEdge, zoom);
+		   const leftTile = (westEdge, zoom) => lon2tile(westEdge, zoom);
+		   const bottomTile = (southEdge, zoom) => lat2tile(southEdge, zoom);
+		   const rightTile = (eastEdge, zoom) => lon2tile(eastEdge, zoom);
 var map = L.map("map", {
 	//crs: L.CRS.Simple,
 	center: [-35, 45],
@@ -28,14 +57,39 @@ L.TileLayer.T = L.TileLayer.extend({
 	getTileUrl: function (coords) {
 		x = coords.x
 		y = coords.y
-		return 'https://yuanshen.site/tiles_test/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
+		z = coords.z;
+		if (
+			x >= leftTile(westEdge, z) &&
+			x < rightTile(eastEdge, z) &&
+			y >= topTile(northEdge, z) &&
+			y <= bottomTile(southEdge, z)
+		) {
+			return "tiles_test/" + coords.z + "/ppp" + x + "_" + y + ".jpg";
+		} else {
+			// TODO: return ?
+			x = coords.x
+			y = coords.y
+			z = coords.z;
+			if (
+				x >= leftTile(westEdge, z) &&
+				x < rightTile(eastEdge, z) &&
+				y >= topTile(northEdge, z) &&
+				y <= bottomTile(southEdge, z)
+			) {
+				return "tiles_test/" + coords.z + "/ppp" + x + "_" + y + ".jpg";
+			} else {
+				// TODO: return ?
+				return L.Util.emptyImageUrl;
+			}
+		}
 	},
 	reuseTiles: true
 });
 L.tileLayer.t = function () {
 	return new L.TileLayer.T();
 }
-map.addLayer(L.tileLayer.t());
+var T = new L.TileLayer.T();
+map.addLayer(T);
 //水印
 // L.TileLayer.T1 = L.TileLayer.extend({
 // 	getTileUrl: function (coords) {
@@ -246,6 +300,191 @@ var LayerMap = {
 	Layer_YLX_LY: L.markerClusterGroup(),
 	Layer_TK_MD: L.markerClusterGroup(),
 	Layer_TK_LY: L.markerClusterGroup(),
+	Layer_TZ_MD: L.markerClusterGroup(),
+	Layer_TZ_LY: L.markerClusterGroup(),
+	Layer_MLDCD_MD: L.markerClusterGroup(),
+	Layer_MLDCD_LY: L.markerClusterGroup(),
+	Layer_CSD_QD: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_LCMD_QD: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_BiHua_QD: L.markerClusterGroup(),
+	Layer_BX_QD: L.markerClusterGroup({
+		maxClusterRadius: function (e) {
+			let radius = 100;
+			if (e == 4) radius = 100;
+			else if (e == 5) radius = 80;
+			else if (e == 6) radius = 55;
+			else if (e == 7) radius = 25;
+			//console.log(radius);
+			return radius;
+		}
+	}),
+	Layer_HLZ_QD: L.markerClusterGroup(),
+	Layer_TK_QD: L.markerClusterGroup(),
+	Layer_BTK_QD: L.markerClusterGroup(),
+	Layer_SJK_QD: L.markerClusterGroup(),
+	Layer_MLDCD_QD: L.markerClusterGroup(),
+	Layer_QQR_QD: L.markerClusterGroup(),
+	Layer_QQRSS_QD: L.markerClusterGroup(),
+	Layer_QQSM_QD: L.markerClusterGroup(),
+	Layer_SYFS_QD: L.markerClusterGroup(),
+	Layer_DXQQR_QD: L.markerClusterGroup(),
+	Layer_SLM_QD: L.markerClusterGroup(),
+	Layer_PX_QD: L.markerClusterGroup(),
+	Layer_QR_QD: L.markerClusterGroup(),
+	Layer_YR_QD: L.markerClusterGroup(),
+	Layer_MG_QD: L.markerClusterGroup(),
+	Layer_TTH_QD: L.markerClusterGroup(),
+	Layer_BH_QD: L.markerClusterGroup(),
+	Layer_SM_QD: L.markerClusterGroup(),
+	Layer_QD_QD: L.markerClusterGroup(),
+	Layer_DQSJ_QD: L.markerClusterGroup(),
+	Layer_FGS_QD: L.markerClusterGroup(),
+	Layer_HDCB_QD: L.markerClusterGroup(),
+	Layer_QW_QD: L.markerClusterGroup(),
+	Layer_XYWB_QD: L.markerClusterGroup(),
+	Layer_SR_QD: L.markerClusterGroup(),
+	Layer_PGYZ_QD: L.markerClusterGroup(),
+	Layer_BLB_QD: L.markerClusterGroup(),
+	Layer_HLB_QD: L.markerClusterGroup(),
+	Layer_BWHHD_QD: L.markerClusterGroup(),
+	Layer_LYHHR_QD: L.markerClusterGroup(),
+	Layer_XL_QD: L.markerClusterGroup(),
+	Layer_PPH_QD: L.markerClusterGroup(),
+	Layer_CuiZhu_LY: L.markerClusterGroup(),
+	Layer_LenShan_MD: L.markerClusterGroup(),
+	Layer_LenShan_LY: L.markerClusterGroup(),
+	Layer_SongShu_MD: L.markerClusterGroup(),
+	Layer_SongShu_LY: L.markerClusterGroup(),
+	Layer_HuaShu_MD: L.markerClusterGroup(),
+	Layer_HuaShu_LY: L.markerClusterGroup(),
+	Layer_CangBo_MD: L.markerClusterGroup(),
+	Layer_CangBo_LY: L.markerClusterGroup(),
+	Layer_CuiHuaShu_MD: L.markerClusterGroup(),
+	Layer_CuiHuaShu_LY: L.markerClusterGroup(),
+	Layer_QueShaShu_LY: L.markerClusterGroup(),
+	Layer_HSHL_QD: L.markerClusterGroup(),
+	Layer_LST: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_DLK_DQ: L.markerClusterGroup(),
+	Layer_BX_DQ: L.markerClusterGroup({
+		maxClusterRadius: function (e) {
+			let radius = 100;
+			if (e == 4) radius = 100;
+			else if (e == 5) radius = 80;
+			else if (e == 6) radius = 55;
+			else if (e == 7) radius = 25;
+			//console.log(radius);
+			return radius;
+		}
+	}),
+	Layer_DWQ_DQ: L.markerClusterGroup(),
+	Layer_JG_DQ: L.markerClusterGroup(),
+	Layer_SJ_DQ: L.markerClusterGroup(),
+	Layer_SJRW_DQ: L.markerClusterGroup(),
+	Layer_SYWD_DQ: L.markerClusterGroup(),
+	Layer_SX_DQ: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_CSD_DQ: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_MJ_DQ: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_FB_DQ: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_TFWT_DQ: L.markerClusterGroup(),
+	Layer_ShiP_DQ: L.markerClusterGroup(),
+	Layer_TZ_DQ: L.markerClusterGroup(),
+	Layer_MLDCD_DQ: L.markerClusterGroup(),
+	Layer_SBLM_DQ: L.markerClusterGroup(),
+	Layer_HaiDai_DQ: L.markerClusterGroup(),
+	Layer_HLZ_DQ: L.markerClusterGroup(),
+	Layer_SJK_DQ: L.markerClusterGroup(),
+	Layer_BTK_DQ: L.markerClusterGroup(),
+	Layer_TK_DQ: L.markerClusterGroup(),
+	Layer_MJK_DQ: L.markerClusterGroup(),
+	Layer_KDCD_DQ: L.markerClusterGroup(),
+	Layer_YJSW_DQ: L.markerClusterGroup(),
+	Layer_DXQQR_DQ: L.markerClusterGroup(),
+	Layer_SYFS_DQ: L.markerClusterGroup(),
+	Layer_LYSS_DQ: L.markerClusterGroup(),
+	Layer_DBT_DQ: L.markerClusterGroup(),
+	Layer_PPH_DQ: L.markerClusterGroup(),
+	Layer_XQD_DQ: L.markerClusterGroup(),
+	Layer_SLM_DQ: L.markerClusterGroup(),
+	Layer_KFZH_DQ: L.markerClusterGroup(),
+	Layer_QQR_DQ: L.markerClusterGroup(),
+	Layer_QQRSS_DQ: L.markerClusterGroup(),
+	Layer_QQSM_DQ: L.markerClusterGroup(),
+	Layer_ZWCLR_DQ: L.markerClusterGroup(),
+	Layer_JinGua_DQ: L.markerClusterGroup(),
+	Layer_SongR_DQ: L.markerClusterGroup(),
+	Layer_PX_DQ: L.markerClusterGroup(),
+	Layer_ShouR_DQ: L.markerClusterGroup(),
+	Layer_QR_DQ: L.markerClusterGroup(),
+	Layer_YR_DQ: L.markerClusterGroup(),
+	Layer_BLB_DQ: L.markerClusterGroup(),
+	Layer_HLB_DQ: L.markerClusterGroup(),
+	Layer_MG_DQ: L.markerClusterGroup(),
+	Layer_TTH_DQ: L.markerClusterGroup(),
+	Layer_JYC_DQ: L.markerClusterGroup(),
+	Layer_BH_DQ: L.markerClusterGroup(),
+	Layer_SG_DQ: L.markerClusterGroup(),
+	Layer_SM_DQ: L.markerClusterGroup(),
+	Layer_RLG_DQ: L.markerClusterGroup(),
+	Layer_PG_DQ: L.markerClusterGroup(),
+	Layer_LDR_DQ: L.markerClusterGroup(),
+	Layer_QD_DQ: L.markerClusterGroup(),
+	Layer_BWHHD_DQ: L.markerClusterGroup(),
+	Layer_LYHHR_DQ: L.markerClusterGroup(),
+	Layer_DQSJ_DQ: L.markerClusterGroup(),
+	Layer_FGS_DQ: L.markerClusterGroup(),
+	Layer_JH_DQ: L.markerClusterGroup(),
+	Layer_HDCB_DQ: L.markerClusterGroup(),
+	Layer_QW_DQ: L.markerClusterGroup(),
+	Layer_XYWB_DQ: L.markerClusterGroup(),
+	Layer_LenShan_DQ: L.markerClusterGroup(),
+	Layer_SongShu_DQ: L.markerClusterGroup(),
+	Layer_HuaShu_DQ: L.markerClusterGroup(),
+	Layer_CangBo_DQ: L.markerClusterGroup(),
+	Layer_CuiHuaShu_DQ: L.markerClusterGroup(),
+	Layer_FYXQ_DQ: L.markerClusterGroup(),
+	Layer_DDC_DQ: L.markerClusterGroup(),
+	Layer_JHGS_DQ: L.markerClusterGroup(),
+	Layer_MingCao_DQ: L.markerClusterGroup(),
+	Layer_XH_DQ: L.markerClusterGroup(),
+	Layer_ZJK_DQ: L.markerClusterGroup(),
+	Layer_HSHL_QD1: L.markerClusterGroup(),
+	Layer_BX_QD1: L.markerClusterGroup({
+		maxClusterRadius: function (e) {
+			let radius = 100;
+			if (e == 4) radius = 100;
+			else if (e == 5) radius = 80;
+			else if (e == 6) radius = 55;
+			else if (e == 7) radius = 25;
+			//console.log(radius);
+			return radius;
+		}
+	}),
+	Layer_LCMD_QD1: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_CSD_QD1: L.markerClusterGroup({
+		maxClusterRadius: 0
+	}),
+	Layer_MLDCD_QD1: L.markerClusterGroup(),
+	Layer_BTTZ_QD: L.markerClusterGroup(),
+	Layer_SJRW_QD: L.markerClusterGroup(),
+	Layer_BTTZ_QD1: L.markerClusterGroup(),
+	Layer_YJJB_DQ: L.markerClusterGroup(),
+
 }
 
 //定义各个坐标使用的图标
@@ -598,6 +837,142 @@ var typearray = [
 	[LayerMap["Layer_YLX_LY"], JS_YLX_LY, "PTG", 'JS_YLX_LY'],
 	[LayerMap["Layer_TK_MD"], JS_TK_MD, "KW", 'TK_MD'],
 	[LayerMap["Layer_TK_LY"], JS_TK_LY, "KW", 'TK_LY'],
+	[LayerMap["Layer_TZ_MD"], JS_TZ_MD, "TX", 'TZ_MD'],
+	[LayerMap["Layer_TZ_LY"], JS_TZ_LY, "TX", 'TZ_LY'],
+	[LayerMap["Layer_MLDCD_MD"], JS_MLDCD_MD, "TC", 'MLDCD_MD'],
+	[LayerMap["Layer_MLDCD_LY"], JS_MLDCD_LY, "TC", 'MLDCD_LY'],
+	[LayerMap["Layer_CSD_QD"], JS_CSD_QD, "CSD", 'CSD_QD'],
+	[LayerMap["Layer_LCMD_QD"], JS_LCMD_QD, "ST", 'LCMD_QD'],
+	[LayerMap["Layer_BiHua_QD"], JS_BiHua_QD, "TC", 'BiHua_QD'],
+	[LayerMap["Layer_BX_QD"], JS_BX_QD, "BX", 'BX_QD'],
+	[LayerMap["Layer_HLZ_QD"], JS_HLZ_QD, "TC", 'HLZ_QD'],
+	[LayerMap["Layer_TK_QD"], JS_TK_QD, "KW", 'TK_QD'],
+	[LayerMap["Layer_BTK_QD"], JS_BTK_QD, "KW", 'BTK_QD'],
+	[LayerMap["Layer_SJK_QD"], JS_SJK_QD, "KW", 'SJK_QD'],
+	[LayerMap["Layer_MLDCD_QD"], JS_MLDCD_QD, "TC", 'MLDCD_QD'],
+	[LayerMap["Layer_QQR_QD"], JS_QQR_QD, "TC", 'QQR_QD'],
+	[LayerMap["Layer_QQRSS_QD"], JS_QQRSS_QD, "TC", 'QQRSS_QD'],
+	[LayerMap["Layer_QQSM_QD"], JS_QQSM_QD, "TC", 'QQSM_QD'],
+	[LayerMap["Layer_SYFS_QD"], JS_SYFS_QD, "TC", 'SYFS_QD'],
+	[LayerMap["Layer_DXQQR_QD"], JS_DXQQR_QD, "TC", 'DXQQR_QD'],
+	[LayerMap["Layer_SLM_QD"], JS_SLM_QD, "TC", 'SLM_QD'],
+	[LayerMap["Layer_PX_QD"], JS_PX_QD, "TC", 'PX_QD'],
+	[LayerMap["Layer_QR_QD"], JS_QR_QD, "TC", 'QR_QD'],
+	[LayerMap["Layer_YR_QD"], JS_YR_QD, "TC", 'YR_QD'],
+	[LayerMap["Layer_MG_QD"], JS_MG_QD, "TC", 'MG_QD'],
+	[LayerMap["Layer_TTH_QD"], JS_TTH_QD, "TC", 'TTH_QD'],
+	[LayerMap["Layer_BH_QD"], JS_BH_QD, "TC", 'BH_QD'],
+	[LayerMap["Layer_SM_QD"], JS_SM_QD, "TC", 'SM_QD'],
+	[LayerMap["Layer_QD_QD"], JS_QD_QD, "TC", 'QD_QD'],
+	[LayerMap["Layer_DQSJ_QD"], JS_DQSJ_QD, "TC", 'DQSJ_QD'],
+	[LayerMap["Layer_FGS_QD"], JS_FGS_QD, "TC", 'FGS_QD'],
+	[LayerMap["Layer_HDCB_QD"], JS_HDCB_QD, "TC", 'HDCB_QD'],
+	[LayerMap["Layer_QW_QD"], JS_QW_QD, "TC", 'QW_QD'],
+	[LayerMap["Layer_XYWB_QD"], JS_XYWB_QD, "TC", 'XYWB_QD'],
+	[LayerMap["Layer_SR_QD"], JS_SR_QD, "TC", 'SR_QD'],
+	[LayerMap["Layer_PGYZ_QD"], JS_PGYZ_QD, "TC", 'PGYZ_QD'],
+	[LayerMap["Layer_BLB_QD"], JS_BLB_QD, "TC", 'BLB_QD'],
+	[LayerMap["Layer_HLB_QD"], JS_HLB_QD, "TC", 'HLB_QD'],
+	[LayerMap["Layer_BWHHD_QD"], JS_BWHHD_QD, "TC", 'BWHHD_QD'],
+	[LayerMap["Layer_LYHHR_QD"], JS_LYHHR_QD, "TC", 'LYHHR_QD'],
+	[LayerMap["Layer_XL_QD"], JS_XL_QD, "TC", 'XL_QD'],
+	[LayerMap["Layer_PPH_QD"], JS_PPH_QD, "TC", 'PPH_QD'],
+	[LayerMap["Layer_CuiZhu_LY"], JS_CuiZhu_LY, "TC", 'CuiZhu_LY'],
+	[LayerMap["Layer_LenShan_MD"], JS_LenShan_MD, "TC", 'LenShan_MD'],
+	[LayerMap["Layer_LenShan_LY"], JS_LenShan_LY, "TC", 'LenShan_LY'],
+	[LayerMap["Layer_SongShu_MD"], JS_SongShu_MD, "TC", 'SongShu_MD'],
+	[LayerMap["Layer_SongShu_LY"], JS_SongShu_LY, "TC", 'SongShu_LY'],
+	[LayerMap["Layer_HuaShu_MD"], JS_HuaShu_MD, "TC", 'HuaShu_MD'],
+	[LayerMap["Layer_HuaShu_LY"], JS_HuaShu_LY, "TC", 'HuaShu_LY'],
+	[LayerMap["Layer_CangBo_MD"], JS_CangBo_MD, "TC", 'CangBo_MD'],
+	[LayerMap["Layer_CangBo_LY"], JS_CangBo_LY, "TC", 'CangBo_LY'],
+	[LayerMap["Layer_CuiHuaShu_MD"], JS_CuiHuaShu_MD, "TC", 'CuiHuaShu_MD'],
+	[LayerMap["Layer_CuiHuaShu_LY"], JS_CuiHuaShu_LY, "TC", 'CuiHuaShu_LY'],
+	[LayerMap["Layer_QueShaShu_LY"], JS_QueShaShu_LY, "TC", 'QueShaShu_LY'],
+	[LayerMap["Layer_HSHL_QD"], JS_HSHL_QD, "TC", 'HSHL_QD'],
+	[LayerMap["Layer_LST"], JS_LST, "ST", 'LST'],
+	[LayerMap["Layer_DLK_DQ"], JS_DLK_DQ, "JYG", 'DLK_DQ'],
+	[LayerMap["Layer_BX_DQ"], JS_BX_DQ, "BX", 'BX_DQ'],
+	[LayerMap["Layer_DWQ_DQ"], JS_DWQ_DQ, "TC", 'DWQ_DQ'],
+	[LayerMap["Layer_JG_DQ"], JS_JG_DQ, "TC", 'JG_DQ'],
+	[LayerMap["Layer_SJ_DQ"], JS_SJ_DQ, "TC", 'SJ_DQ'],
+	[LayerMap["Layer_SJRW_DQ"], JS_SJRW_DQ, "TC", 'SJRW_DQ'],
+	[LayerMap["Layer_SYWD_DQ"], JS_SYWD_DQ, "TC", 'SYWD_DQ'],
+	[LayerMap["Layer_SX_DQ"], JS_SX_DQ, "SX", 'SX_DQ'],
+	[LayerMap["Layer_CSD_DQ"], JS_CSD_DQ, "CSD", 'CSD_DQ'],
+	[LayerMap["Layer_MJ_DQ"], JS_MJ_DQ, "FBMJ", 'MJ_DQ'],
+	[LayerMap["Layer_FB_DQ"], JS_FB_DQ, "FBMJ", 'FB_DQ'],
+	[LayerMap["Layer_TFWT_DQ"], JS_TFWT_DQ, "FBMJ", 'TFWT_DQ'],
+	[LayerMap["Layer_ShiP_DQ"], JS_ShiP_DQ, "TC", 'ShiP_DQ'],
+	[LayerMap["Layer_TZ_DQ"], JS_TZ_DQ, "TC", 'TZ_DQ'],
+	[LayerMap["Layer_MLDCD_DQ"], JS_MLDCD_DQ, "TC", 'MLDCD_DQ'],
+	[LayerMap["Layer_SBLM_DQ"], JS_SBLM_DQ, "TC", 'SBLM_DQ'],
+	[LayerMap["Layer_HaiDai_DQ"], JS_HaiDai_DQ, "TC", 'HaiDai_DQ'],
+	[LayerMap["Layer_HLZ_DQ"], JS_HLZ_DQ, "TC", 'HLZ_DQ'],
+	[LayerMap["Layer_SJK_DQ"], JS_SJK_DQ, "KW", 'SJK_DQ'],
+	[LayerMap["Layer_BTK_DQ"], JS_BTK_DQ, "KW", 'BTK_DQ'],
+	[LayerMap["Layer_TK_DQ"], JS_TK_DQ, "KW", 'TK_DQ'],
+	[LayerMap["Layer_MJK_DQ"], JS_MJK_DQ, "KW", 'MJK_DQ'],
+	[LayerMap["Layer_KDCD_DQ"], JS_KDCD_DQ, "TC", 'KDCD_DQ'],
+	[LayerMap["Layer_YJSW_DQ"], JS_YJSW_DQ, "TC", 'YJSW_DQ'],
+	[LayerMap["Layer_DXQQR_DQ"], JS_DXQQR_DQ, "TC", 'DXQQR_DQ'],
+	[LayerMap["Layer_SYFS_DQ"], JS_SYFS_DQ, "TC", 'SYFS_DQ'],
+	[LayerMap["Layer_LYSS_DQ"], JS_LYSS_DQ, "TC", 'LYSS_DQ'],
+	[LayerMap["Layer_DBT_DQ"], JS_DBT_DQ, "TC", 'DBT_DQ'],
+	[LayerMap["Layer_PPH_DQ"], JS_PPH_DQ, "TC", 'PPH_DQ'],
+	[LayerMap["Layer_XQD_DQ"], JS_XQD_DQ, "TC", 'XQD_DQ'],
+	[LayerMap["Layer_SLM_DQ"], JS_SLM_DQ, "TC", 'SLM_DQ'],
+	[LayerMap["Layer_KFZH_DQ"], JS_KFZH_DQ, "TC", 'KFZH_DQ'],
+	[LayerMap["Layer_QQR_DQ"], JS_QQR_DQ, "TC", 'QQR_DQ'],
+	[LayerMap["Layer_QQRSS_DQ"], JS_QQRSS_DQ, "TC", 'QQRSS_DQ'],
+	[LayerMap["Layer_QQSM_DQ"], JS_QQSM_DQ, "TC", 'QQSM_DQ'],
+	[LayerMap["Layer_ZWCLR_DQ"], JS_ZWCLR_DQ, "TC", 'ZWCLR_DQ'],
+	[LayerMap["Layer_JinGua_DQ"], JS_JinGua_DQ, "SC", 'JinGua_DQ'],
+	[LayerMap["Layer_SongR_DQ"], JS_SongR_DQ, "TC", 'SongR_DQ'],
+	[LayerMap["Layer_PX_DQ"], JS_PX_DQ, "TC", 'PX_DQ'],
+	[LayerMap["Layer_ShouR_DQ"], JS_ShouR_DQ, "TC", 'ShouR_DQ'],
+	[LayerMap["Layer_QR_DQ"], JS_QR_DQ, "TC", 'QR_DQ'],
+	[LayerMap["Layer_YR_DQ"], JS_YR_DQ, "TC", 'YR_DQ'],
+	[LayerMap["Layer_BLB_DQ"], JS_BLB_DQ, "TC", 'BLB_DQ'],
+	[LayerMap["Layer_HLB_DQ"], JS_HLB_DQ, "TC", 'HLB_DQ'],
+	[LayerMap["Layer_MG_DQ"], JS_MG_DQ, "TC", 'MG_DQ'],
+	[LayerMap["Layer_TTH_DQ"], JS_TTH_DQ, "TC", 'TTH_DQ'],
+	[LayerMap["Layer_JYC_DQ"], JS_JYC_DQ, "TC", 'JYC_DQ'],
+	[LayerMap["Layer_BH_DQ"], JS_BH_DQ, "TC", 'BH_DQ'],
+	[LayerMap["Layer_SG_DQ"], JS_SG_DQ, "TC", 'SG_DQ'],
+	[LayerMap["Layer_SM_DQ"], JS_SM_DQ, "TC", 'SM_DQ'],
+	[LayerMap["Layer_RLG_DQ"], JS_RLG_DQ, "TC", 'RLG_DQ'],
+	[LayerMap["Layer_PG_DQ"], JS_PG_DQ, "TC", 'PG_DQ'],
+	[LayerMap["Layer_LDR_DQ"], JS_LDR_DQ, "TC", 'LDR_DQ'],
+	[LayerMap["Layer_QD_DQ"], JS_QD_DQ, "TC", 'QD_DQ'],
+	[LayerMap["Layer_BWHHD_DQ"], JS_BWHHD_DQ, "TC", 'BWHHD_DQ'],
+	[LayerMap["Layer_LYHHR_DQ"], JS_LYHHR_DQ, "TC", 'LYHHR_DQ'],
+	[LayerMap["Layer_DQSJ_DQ"], JS_DQSJ_DQ, "TC", 'DQSJ_DQ'],
+	[LayerMap["Layer_FGS_DQ"], JS_FGS_DQ, "TC", 'FGS_DQ'],
+	[LayerMap["Layer_JH_DQ"], JS_JH_DQ, "TC", 'JH_DQ'],
+	[LayerMap["Layer_HDCB_DQ"], JS_HDCB_DQ, "TC", 'HDCB_DQ'],
+	[LayerMap["Layer_QW_DQ"], JS_QW_DQ, "TC", 'QW_DQ'],
+	[LayerMap["Layer_XYWB_DQ"], JS_XYWB_DQ, "TC", 'XYWB_DQ'],
+	[LayerMap["Layer_LenShan_DQ"], JS_LenShan_DQ, "TC", 'LenShan_DQ'],
+	[LayerMap["Layer_SongShu_DQ"], JS_SongShu_DQ, "TC", 'SongShu_DQ'],
+	[LayerMap["Layer_HuaShu_DQ"], JS_HuaShu_DQ, "TC", 'HuaShu_DQ'],
+	[LayerMap["Layer_CangBo_DQ"], JS_CangBo_DQ, "TC", 'CangBo_DQ'],
+	[LayerMap["Layer_CuiHuaShu_DQ"], JS_CuiHuaShu_DQ, "TC", 'CuiHuaShu_DQ'],
+	[LayerMap["Layer_FYXQ_DQ"], JS_FYXQ_DQ, "TC", 'FYXQ_DQ'],
+	[LayerMap["Layer_DDC_DQ"], JS_DDC_DQ, "TC", 'DDC_DQ'],
+	[LayerMap["Layer_JHGS_DQ"], JS_JHGS_DQ, "TC", 'JHGS_DQ'],
+	[LayerMap["Layer_MingCao_DQ"], JS_MingCao_DQ, "TC", 'MingCao_DQ'],
+	[LayerMap["Layer_XH_DQ"], JS_XH_DQ, "TC", 'XH_DQ'],
+	[LayerMap["Layer_ZJK_DQ"], JS_ZJK_DQ, "TC", 'ZJK_DQ'],
+	[LayerMap["Layer_HSHL_QD1"], JS_HSHL_QD1, "TC", 'HSHL_QD1'],
+	[LayerMap["Layer_BX_QD1"], JS_BX_QD1, "BX", 'BX_QD1'],
+	[LayerMap["Layer_LCMD_QD1"], JS_LCMD_QD1, "ST", 'LCMD_QD1'],
+	[LayerMap["Layer_CSD_QD1"], JS_CSD_QD1, "CSD", 'CSD_QD1'],
+	[LayerMap["Layer_MLDCD_QD1"], JS_MLDCD_QD1, "TC", 'MLDCD_QD1'],
+	[LayerMap["Layer_BTTZ_QD"], JS_BTTZ_QD, "TC", 'BTTZ_QD'],
+	[LayerMap["Layer_SJRW_QD"], JS_SJRW_QD, "ST", 'SJRW_QD'],
+	[LayerMap["Layer_BTTZ_QD1"], JS_BTTZ_QD1, "TC", 'BTTZ_QD1'],
+	[LayerMap["Layer_YJJB_DQ"], JS_YJJB_DQ, "TC", 'YJJB_DQ'],
 ];
 const MonosTime = {
 	LLD: 48,
@@ -660,7 +1035,7 @@ function MarkPoint(element) {
 
 
 	var doneUrl = newValue ? "_done" : ""
-	if (layerNumber == 0 || layerNumber == 1 || layerNumber == 26 || layerNumber == 27 || layerNumber == 111) {
+	if (layerNumber == 0 || layerNumber == 1 || layerNumber == 26 || layerNumber == 27 || layerNumber == 111 || layerNumber == 150 || layerNumber == 271 || layerNumber == 198) {
 		var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".svg";
 	} else {
 		var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".png";
@@ -713,7 +1088,7 @@ function InitMarkerLayer() {
 					markedFlag = true;
 				}
 				var doneUrl = markedFlag ? "_done" : ""
-				if (i == 0 || i == 1 || i == 26 || i == 27 || i == 111) {
+				if (i == 0 || i == 1 || i == 26 || i == 27 || i == 111 || i == 150 || i == 271 || i == 198) {
 					var iconUrl = "./imgs/icon_" + i + doneUrl + ".svg";
 				} else {
 					var iconUrl = "./imgs/icon_" + i + doneUrl + ".png";
@@ -758,7 +1133,7 @@ function freshMarkerLayer() {
 					markedFlag = true;
 				}
 				var doneUrl = markedFlag ? "_done" : ""
-				if (i == 0 || i == 1 || i == 26 || i == 27 || i == 111) {
+				if (i == 0 || i == 1 || i == 26 || i == 27 || i == 111 || i == 150 || i == 271 || i == 198) {
 					var iconUrl = "./imgs/icon_" + i + doneUrl + ".svg";
 				} else {
 					var iconUrl = "./imgs/icon_" + i + doneUrl + ".png";
