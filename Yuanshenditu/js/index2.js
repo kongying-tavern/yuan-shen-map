@@ -1,6 +1,35 @@
 // @ts-nocheck
 //初始化地图
 t = L.latLngBounds([0, 0], [-66.5, 90]);
+/*
+   use latLngBounds as maxBoundsRect
+           n
+      +-----------+ 
+      |           | 
+      |           | 
+   w  |           |  e
+      |           | 
+      |           | 
+      +-----------+ 
+           s
+ */
+const northEdge = 0;
+const westEdge = 0;
+const southEdge = -66.5;
+const eastEdge = 90;
+const lon2tile = (lon, zoom) => {
+	return Math.floor(((lon + 180) / 360) * Math.pow(2, zoom));
+};
+const lat2tile = (lat, zoom) => {
+	return Math.floor(
+		((1 - Math.log(Math.tan((lat * Math.PI) / 180) + 1 / Math.cos((lat * Math.PI) / 180)) / Math.PI) / 2) *
+		Math.pow(2, zoom)
+	);
+};
+const topTile = (northEdge, zoom) => lat2tile(northEdge, zoom);
+const leftTile = (westEdge, zoom) => lon2tile(westEdge, zoom);
+const bottomTile = (southEdge, zoom) => lat2tile(southEdge, zoom);
+const rightTile = (eastEdge, zoom) => lon2tile(eastEdge, zoom);
 var map = L.map("map", {
 	//crs: L.CRS.Simple,
 	center: [-35, 45],
@@ -47,7 +76,31 @@ L.TileLayer.T = L.TileLayer.extend({
 	getTileUrl: function (coords) {
 		x = coords.x
 		y = coords.y
-		return '/tiles_test/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
+		z = coords.z;
+		if (
+			x >= leftTile(westEdge, z) &&
+			x < rightTile(eastEdge, z) &&
+			y >= topTile(northEdge, z) &&
+			y <= bottomTile(southEdge, z)
+		) {
+			return "tiles_test/" + coords.z + "/ppp" + x + "_" + y + ".jpg";
+		} else {
+			// TODO: return ?
+			x = coords.x
+			y = coords.y
+			z = coords.z;
+			if (
+				x >= leftTile(westEdge, z) &&
+				x < rightTile(eastEdge, z) &&
+				y >= topTile(northEdge, z) &&
+				y <= bottomTile(southEdge, z)
+			) {
+				return "tiles_test/" + coords.z + "/ppp" + x + "_" + y + ".jpg";
+			} else {
+				// TODO: return ?
+				return L.Util.emptyImageUrl;
+			}
+		}
 	},
 	reuseTiles: true
 });
@@ -450,7 +503,7 @@ var LayerMap = {
 	Layer_SJRW_QD: L.markerClusterGroup(),
 	Layer_BTTZ_QD1: L.markerClusterGroup(),
 	Layer_YJJB_DQ: L.markerClusterGroup(),
-  
+
 }
 
 //定义各个坐标使用的图标
