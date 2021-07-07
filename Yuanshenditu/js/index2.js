@@ -58,6 +58,9 @@ L.control.zoom({
 	zoomInTitle: '+',
 	zoomOutTitle: '-'
 }).addTo(map);
+var area_idx = "MD";
+var area_idx_cur = "TWT";
+var area_idx_last = "TWT";
 L.TileLayer.T = L.TileLayer.extend({
 	getTileUrl: function (coords) {
 		x = coords.x
@@ -69,23 +72,16 @@ L.TileLayer.T = L.TileLayer.extend({
 			y >= topTile(northEdge, z) &&
 			y <= bottomTile(southEdge, z)
 		) {
-			return "tiles_test/" + coords.z + "/ppp" + x + "_" + y + ".jpg";
+			if (area_idx == "MD" || area_idx == "LY") {
+				return 'https://yuanshen.site/tiles_test/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
+			} else if (area_idx == "QD") {
+				return 'https://yuanshen.site/tiles_qd/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
+			} else if (area_idx == "QD1") {
+				return 'https://yuanshen.site/tiles_qd1/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
+			}
 		} else {
 			// TODO: return ?
-			x = coords.x
-			y = coords.y
-			z = coords.z;
-			if (
-				x >= leftTile(westEdge, z) &&
-				x < rightTile(eastEdge, z) &&
-				y >= topTile(northEdge, z) &&
-				y <= bottomTile(southEdge, z)
-			) {
-				return "tiles_test/" + coords.z + "/ppp" + x + "_" + y + ".jpg";
-			} else {
-				// TODO: return ?
-				return L.Util.emptyImageUrl;
-			}
+			return L.Util.emptyImageUrl;
 		}
 	},
 	reuseTiles: true

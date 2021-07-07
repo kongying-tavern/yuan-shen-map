@@ -1071,9 +1071,9 @@
 		$(".area-list-containor").show();
 		//筛选函数
 		var i_type = "ALL";
-		var area_idx = "MD";
-		var area_idx_cur = "TWT";
-		var area_idx_last = "TWT";
+		// var area_idx = "MD";
+		// var area_idx_cur = "TWT";
+		// var area_idx_last = "TWT";
 		var csd = true;
 
 		function filter() {
@@ -1095,20 +1095,20 @@
 					}
 				}
 			}
-			L.TileLayer.T1 = L.TileLayer.extend({
-				getTileUrl: function (coords) {
-					x = coords.x
-					y = coords.y
-					if (area_idx == "MD" || area_idx == "LY") {
-						return 'https://yuanshen.site/tiles_test/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
-					} else if (area_idx == "QD") {
-						return 'https://yuanshen.site/tiles_qd/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
-					} else if (area_idx == "QD1") {
-						return 'https://yuanshen.site/tiles_qd1/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
-					}
-				},
-				reuseTiles: true
-			});
+			// L.TileLayer.T1 = L.TileLayer.extend({
+			// 	getTileUrl: function (coords) {
+			// 		x = coords.x
+			// 		y = coords.y
+			// 		if (area_idx == "MD" || area_idx == "LY") {
+			// 			return 'https://yuanshen.site/tiles_test/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
+			// 		} else if (area_idx == "QD") {
+			// 			return 'https://yuanshen.site/tiles_qd/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
+			// 		} else if (area_idx == "QD1") {
+			// 			return 'https://yuanshen.site/tiles_qd1/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
+			// 		}
+			// 	},
+			// 	reuseTiles: true
+			// });
 			if (area_idx == "MD" || area_idx == "LY") {
 				area_idx_cur = "TWT";
 			} else if (area_idx == "QD") {
@@ -1120,7 +1120,7 @@
 				$(".selector-list-containor p").click();
 				area_idx_last = area_idx_cur;
 				map.removeLayer(T);
-				T = new L.TileLayer.T1;
+				T = new L.TileLayer.T;
 				map.addLayer(T);
 			}
 			if (area_idx_cur == "TWT") {
