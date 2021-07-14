@@ -1,44 +1,40 @@
 // @ts-nocheck
 //初始化地图
-t = L.latLngBounds([0, 0], [-66.5, 90]);
-/*
-   use latLngBounds as maxBoundsRect
-           n
-      +-----------+ 
-      |           | 
-      |           | 
-   w  |           |  e
-      |           | 
-      |           | 
-      +-----------+ 
-           s
- */
-const northEdge = 0;
-const westEdge = 0;
-const southEdge = -66.5;
-const eastEdge = 90;
-const lon2tile = (lon, zoom) => {
-	return Math.floor(((lon + 180) / 360) * Math.pow(2, zoom));
-};
-const lat2tile = (lat, zoom) => {
-	return Math.floor(
-		((1 - Math.log(Math.tan((lat * Math.PI) / 180) + 1 / Math.cos((lat * Math.PI) / 180)) / Math.PI) / 2) *
-		Math.pow(2, zoom)
-	);
-};
-const topTile = (northEdge, zoom) => lat2tile(northEdge, zoom);
-const leftTile = (westEdge, zoom) => lon2tile(westEdge, zoom);
-const bottomTile = (southEdge, zoom) => lat2tile(southEdge, zoom);
-const rightTile = (eastEdge, zoom) => lon2tile(eastEdge, zoom);
+var mapCenter = [3568, 6286], mapSize = [8192, 8192];
+// var mapPixelScale = [mapPixelSize[0] / mapSize[0], mapPixelSize[1] / mapSize[1]];
+var mapCRS = L.Util.extend({}, L.CRS.Simple, {
+	transformation: new L.Transformation(1, 0, 1, 0),
+	projection: {
+		project: function (latlng) {
+			return new L.Point(
+				(latlng.lat + mapCenter[0]),
+				(latlng.lng + mapCenter[1])
+			);
+		},
+		unproject: function (point) {
+			return new L.LatLng(
+				point.x - mapCenter[0],
+				point.y - mapCenter[1]
+			);
+		}
+	},
+	bounds: L.bounds(
+		L.point(0, 0),
+		L.point(mapSize[0], mapSize[1])
+	)
+});
 var map = L.map("map", {
-	//crs: L.CRS.Simple,
-	center: [-35, 45],
-	zoomDelta: 0.5,
+	crs: mapCRS,
+	center: [-528, -2190],
+	zoomDelta: 0,
 	zoomSnap: 0.5,
-	maxZoom: 8,
-	minZoom: 4,
-	zoom: 4,
-	maxBounds: t,
+	maxZoom: 1,
+	minZoom: -3,
+	zoom: -3,
+	maxBounds: L.latLngBounds(
+		L.latLng(-mapCenter[0], -mapCenter[1]),
+		L.latLng(mapSize[0] - mapCenter[0], mapSize[1] - mapCenter[1])
+	),
 	attributionControl: false,
 	zoomControl: false
 });
@@ -63,21 +59,16 @@ var area_idx_cur = "TWT";
 var area_idx_last = "TWT";
 L.TileLayer.T = L.TileLayer.extend({
 	getTileUrl: function (coords) {
-		x = coords.x
-		y = coords.y
-		z = coords.z;
-		if (
-			x >= leftTile(westEdge, z) &&
-			x < rightTile(eastEdge, z) &&
-			y >= topTile(northEdge, z) &&
-			y <= bottomTile(southEdge, z)
-		) {
+		var x = coords.x,
+			y = coords.y,
+			z = coords.z + 13;
+		if (true) {
 			if (area_idx == "MD" || area_idx == "LY") {
-				return 'https://yuanshen.site/tiles_test/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
+				return 'https://assets.yuanshen.site/tiles_md/' + z + '/' + x + '_' + y + '.jpg';
 			} else if (area_idx == "QD") {
-				return 'https://yuanshen.site/tiles_qd/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
+				return 'https://assets.yuanshen.site/tiles_qd/' + z + '/' + x + '_' + y + '.jpg';
 			} else if (area_idx == "QD1") {
-				return 'https://yuanshen.site/tiles_qd1/' + coords.z + '/ppp' + x + '_' + y + '.jpg';
+				return 'https://assets.yuanshen.site/tiles_qd1/' + z + '/' + x + '_' + y + '.jpg';
 			}
 		} else {
 			// TODO: return ?
@@ -86,10 +77,16 @@ L.TileLayer.T = L.TileLayer.extend({
 	},
 	reuseTiles: true
 });
-L.tileLayer.t = function () {
-	return new L.TileLayer.T();
-}
-var T = new L.TileLayer.T();
+var T = new L.TileLayer.T("", {
+	maxZoom: 10,
+	minZoom: -6,
+	maxNativeZoom: 0,
+	minNativeZoom: -3,
+	bounds: L.latLngBounds(
+		L.latLng(-mapCenter[0], -mapCenter[1]),
+		L.latLng(mapSize[0] - mapCenter[0], mapSize[1] - mapCenter[1])
+	)
+});
 map.addLayer(T);
 //水印
 // L.TileLayer.T1 = L.TileLayer.extend({

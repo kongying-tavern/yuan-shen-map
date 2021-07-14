@@ -234,10 +234,10 @@
 					<div class="img-border"><img src="imgs/icon_116.png" class="map-opts-icon" alt="icon"></div>世界任务-璃月
 				</span>
 				<span class="Layer_JG_LY map-opts" area="MD" itemtype="TX">
-					<div class="img-border"><img src="imgs/icon_99.png" class="map-opts-icon" alt="icon"></div>景观-蒙德
+					<div class="img-border"><img src="imgs/icon_99.png" class="map-opts-icon" alt="icon"></div>观景点-蒙德
 				</span>
 				<span class="Layer_JG_MD map-opts" area="LY" itemtype="TX">
-					<div class="img-border"><img src="imgs/icon_100.png" class="map-opts-icon" alt="icon"></div>景观-璃月
+					<div class="img-border"><img src="imgs/icon_100.png" class="map-opts-icon" alt="icon"></div>观景点-璃月
 				</span>
 				<span class="Layer_DWQ_MD map-opts" area="MD" itemtype="TX">
 					<div class="img-border"><img src="imgs/icon_97.png" class="map-opts-icon" alt="icon"></div>大伟丘-蒙德
@@ -802,7 +802,7 @@
 					<div class="img-border"><img src="imgs/icon_199.png" class="map-opts-icon" alt="icon"></div>大伟丘-稻妻
 				</span>
 				<span class="Layer_JG_DQ map-opts" area="DQ" itemtype="TX">
-					<div class="img-border"><img src="imgs/icon_200.png" class="map-opts-icon" alt="icon"></div>景观-稻妻
+					<div class="img-border"><img src="imgs/icon_200.png" class="map-opts-icon" alt="icon"></div>观景点-稻妻
 				</span>
 				<span class="Layer_SJ_DQ map-opts" area="DQ" itemtype="TX">
 					<div class="img-border"><img src="imgs/icon_201.png" class="map-opts-icon" alt="icon"></div>书籍-稻妻
@@ -1108,7 +1108,16 @@
 				$(".selector-list-containor p").click();
 				area_idx_last = area_idx_cur;
 				map.removeLayer(T);
-				T = new L.TileLayer.T;
+				T = new L.TileLayer.T("", {
+					maxZoom: 10,
+					minZoom: -6,
+					maxNativeZoom: 0,
+					minNativeZoom: -3,
+					bounds: L.latLngBounds(
+						L.latLng(-mapCenter[0], -mapCenter[1]),
+						L.latLng(mapSize[0] - mapCenter[0], mapSize[1] - mapCenter[1])
+					)
+				});
 				map.addLayer(T);
 			}
 			if (area_idx_cur == "TWT") {

@@ -1227,7 +1227,16 @@
 				$(".selector-list-containor p").click();
 				area_idx_last = area_idx_cur;
 				map.removeLayer(T);
-				T = new L.TileLayer.T;
+				T = new L.TileLayer.T("", {
+					maxZoom: 10,
+					minZoom: -6,
+					maxNativeZoom: 0,
+					minNativeZoom: -3,
+					bounds: L.latLngBounds(
+						L.latLng(-mapCenter[0], -mapCenter[1]),
+						L.latLng(mapSize[0] - mapCenter[0], mapSize[1] - mapCenter[1])
+					)
+				});
 				map.addLayer(T);
 			}
 			if (area_idx_cur == "TWT") {
