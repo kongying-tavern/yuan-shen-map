@@ -171,11 +171,12 @@ var LayerMap = {
 	// @ts-ignore
 	Layer_BX_MD: L.markerClusterGroup({
 		maxClusterRadius: function (e) {
-			let radius = 100;
-			if (e == 4) radius = 100;
-			else if (e == 5) radius = 80;
-			else if (e == 6) radius = 55;
-			else if (e == 7) radius = 25;
+			let radius = 0;
+			if (e == -3) radius = 100;
+			else if (e == -2) radius = 80;
+			else if (e == -1) radius = 55;
+			else if (e == 0) radius = 25;
+			else if (e == 1) radius = 0;
 			//console.log(radius);
 			return radius;
 		}
@@ -183,11 +184,12 @@ var LayerMap = {
 	// @ts-ignore
 	Layer_BX_LY: L.markerClusterGroup({
 		maxClusterRadius: function (e) {
-			let radius = 100;
-			if (e == 4) radius = 100;
-			else if (e == 5) radius = 80;
-			else if (e == 6) radius = 55;
-			else if (e == 7) radius = 25;
+			let radius = 0;
+			if (e == -3) radius = 100;
+			else if (e == -2) radius = 80;
+			else if (e == -1) radius = 55;
+			else if (e == 0) radius = 25;
+			else if (e == 1) radius = 0;
 			//console.log(radius);
 			return radius;
 		}
@@ -457,11 +459,12 @@ var LayerMap = {
 	Layer_BiHua_QD: L.markerClusterGroup(),
 	Layer_BX_QD: L.markerClusterGroup({
 		maxClusterRadius: function (e) {
-			let radius = 100;
-			if (e == 4) radius = 100;
-			else if (e == 5) radius = 80;
-			else if (e == 6) radius = 55;
-			else if (e == 7) radius = 25;
+			let radius = 0;
+			if (e == -3) radius = 100;
+			else if (e == -2) radius = 80;
+			else if (e == -1) radius = 55;
+			else if (e == 0) radius = 25;
+			else if (e == 1) radius = 0;
 			//console.log(radius);
 			return radius;
 		}
@@ -517,11 +520,12 @@ var LayerMap = {
 	Layer_DLK_DQ: L.markerClusterGroup(),
 	Layer_BX_DQ: L.markerClusterGroup({
 		maxClusterRadius: function (e) {
-			let radius = 100;
-			if (e == 4) radius = 100;
-			else if (e == 5) radius = 80;
-			else if (e == 6) radius = 55;
-			else if (e == 7) radius = 25;
+			let radius = 0;
+			if (e == -3) radius = 100;
+			else if (e == -2) radius = 80;
+			else if (e == -1) radius = 55;
+			else if (e == 0) radius = 25;
+			else if (e == 1) radius = 0;
 			//console.log(radius);
 			return radius;
 		}
