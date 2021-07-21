@@ -58,12 +58,14 @@ L.TileLayer.T = L.TileLayer.extend({
 			y = coords.y,
 			z = coords.z + 13;
 		if (true) {
-			if (area_idx == "MD" || area_idx == "LY" || area_idx == "DQ") {
-				return 'https://assets.yuanshen.site/tiles_DQ/' + z + '/' + x + '_' + y + '.jpg';
+			if (area_idx == "MD" || area_idx == "LY") {
+				return 'https://assets.yuanshen.site/tiles_dq/' + z + '/' + x + '_' + y + '.jpg';
 			} else if (area_idx == "QD") {
 				return 'https://assets.yuanshen.site/tiles_qd/' + z + '/' + x + '_' + y + '.jpg';
 			} else if (area_idx == "QD1") {
 				return 'https://assets.yuanshen.site/tiles_qd1/' + z + '/' + x + '_' + y + '.jpg';
+			} else {
+				return 'https://assets.yuanshen.site/tiles_dq/' + z + '/' + x + '_' + y + '.jpg';
 			}
 		} else {
 			// TODO: return ?
