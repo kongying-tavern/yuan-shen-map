@@ -1,6 +1,7 @@
 // @ts-nocheck
 //初始化地图
-var mapCenter = [3568, 6286], mapSize = [8192, 8192];
+var mapCenter = [3568, 6286],
+	mapSize = [12288, 12288];
 // var mapPixelScale = [mapPixelSize[0] / mapSize[0], mapPixelSize[1] / mapSize[1]];
 var mapCRS = L.Util.extend({}, L.CRS.Simple, {
 	transformation: new L.Transformation(1, 0, 1, 0),
@@ -25,12 +26,12 @@ var mapCRS = L.Util.extend({}, L.CRS.Simple, {
 });
 var map = L.map("map", {
 	crs: mapCRS,
-	center: [-528, -2190],
+	center: [-528, -142],
 	zoomDelta: 0,
 	zoomSnap: 0.5,
 	maxZoom: 1,
-	minZoom: -3,
-	zoom: -3,
+	minZoom: -4,
+	zoom: -4,
 	maxBounds: L.latLngBounds(
 		L.latLng(-mapCenter[0], -mapCenter[1]),
 		L.latLng(mapSize[0] - mapCenter[0], mapSize[1] - mapCenter[1])
@@ -64,11 +65,13 @@ L.TileLayer.T = L.TileLayer.extend({
 			z = coords.z + 13;
 		if (true) {
 			if (area_idx == "MD" || area_idx == "LY") {
-				return 'https://assets.yuanshen.site/tiles_md/' + z + '/' + x + '_' + y + '.jpg';
+				return 'https://assets.yuanshen.site/tiles_dq/' + z + '/' + x + '_' + y + '.jpg';
 			} else if (area_idx == "QD") {
 				return 'https://assets.yuanshen.site/tiles_qd/' + z + '/' + x + '_' + y + '.jpg';
 			} else if (area_idx == "QD1") {
 				return 'https://assets.yuanshen.site/tiles_qd1/' + z + '/' + x + '_' + y + '.jpg';
+			} else {
+				return 'https://assets.yuanshen.site/tiles_dq/' + z + '/' + x + '_' + y + '.jpg';
 			}
 		} else {
 			// TODO: return ?
@@ -487,6 +490,11 @@ var LayerMap = {
 	Layer_SJRW_QD: L.markerClusterGroup(),
 	Layer_BTTZ_QD1: L.markerClusterGroup(),
 	Layer_YJJB_DQ: L.markerClusterGroup(),
+	Layer_YFZ_DQ: L.markerClusterGroup(),
+	Layer_DGSN_DQ: L.markerClusterGroup(),
+	Layer_WQDCD_DQ: L.markerClusterGroup(),
+	Layer_QQBY_DQ: L.markerClusterGroup(),
+	Layer_LCMD_DQ: L.markerClusterGroup(),
 
 }
 
@@ -976,6 +984,11 @@ var typearray = [
 	[LayerMap["Layer_SJRW_QD"], JS_SJRW_QD, "ST", 'SJRW_QD'],
 	[LayerMap["Layer_BTTZ_QD1"], JS_BTTZ_QD1, "TC", 'BTTZ_QD1'],
 	[LayerMap["Layer_YJJB_DQ"], JS_YJJB_DQ, "TC", 'YJJB_DQ'],
+	[LayerMap["Layer_YFZ_DQ"], JS_YFZ_DQ, "PTG", 'YFZ_DQ'],
+	[LayerMap["Layer_DGSN_DQ"], JS_DGSN_DQ, "PTG", 'DGSN_DQ'],
+	[LayerMap["Layer_WQDCD_DQ"], JS_WQDCD_DQ, "TC", 'WQDCD_DQ'],
+	[LayerMap["Layer_QQBY_DQ"], JS_QQBY_DQ, "TC", 'QQBY_DQ'],
+	[LayerMap["Layer_LCMD_DQ"], JS_LCMD_DQ, "ST", 'LCMD_DQ'],
 ];
 const MonosTime = {
 	LLD: 48,
@@ -1040,7 +1053,7 @@ function MarkPoint(element) {
 
 
 	var doneUrl = newValue ? "_done" : ""
-	if (layerNumber == 0 || layerNumber == 1 || layerNumber == 26 || layerNumber == 27 || layerNumber == 111 || layerNumber == 150 || layerNumber == 271 || layerNumber == 198) {
+	if (layerNumber == 0 || layerNumber == 1 || layerNumber == 26 || layerNumber == 27 || layerNumber == 111 || layerNumber == 150 || layerNumber == 271 || layerNumber == 198 || layerNumber == 196) {
 		var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".svg";
 	} else {
 		var iconUrl = "./imgs/icon_" + layerNumber + doneUrl + ".png";
@@ -1093,7 +1106,7 @@ function InitMarkerLayer() {
 					markedFlag = true;
 				}
 				var doneUrl = markedFlag ? "_done" : ""
-				if (i == 0 || i == 1 || i == 26 || i == 27 || i == 111 || i == 150 || i == 271 || i == 198) {
+				if (i == 0 || i == 1 || i == 26 || i == 27 || i == 111 || i == 150 || i == 271 || i == 198 || i == 196) {
 					var iconUrl = "./imgs/icon_" + i + doneUrl + ".svg";
 				} else {
 					var iconUrl = "./imgs/icon_" + i + doneUrl + ".png";
@@ -1138,7 +1151,7 @@ function freshMarkerLayer() {
 					markedFlag = true;
 				}
 				var doneUrl = markedFlag ? "_done" : ""
-				if (i == 0 || i == 1 || i == 26 || i == 27 || i == 111 || i == 150 || i == 271 || i == 198) {
+				if (i == 0 || i == 1 || i == 26 || i == 27 || i == 111 || i == 150 || i == 271 || i == 198 || i == 196) {
 					var iconUrl = "./imgs/icon_" + i + doneUrl + ".svg";
 				} else {
 					var iconUrl = "./imgs/icon_" + i + doneUrl + ".png";
