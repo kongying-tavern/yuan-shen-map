@@ -489,7 +489,10 @@ var LayerMap = {
 	Layer_WQDCD_DQ: L.markerClusterGroup(),
 	Layer_QQBY_DQ: L.markerClusterGroup(),
 	Layer_LCMD_DQ: L.markerClusterGroup(),
-
+	Layer_NPC_DQ: L.markerClusterGroup(),
+	Layer_NPC_MD: L.markerClusterGroup(),
+	Layer_NPC_LY: L.markerClusterGroup(),
+	Layer_SongShu2_DQ: L.markerClusterGroup(),
 }
 
 //定义各个坐标使用的图标
@@ -983,6 +986,10 @@ var typearray = [
 	[LayerMap["Layer_WQDCD_DQ"], JS_WQDCD_DQ, "TC", 'WQDCD_DQ'],
 	[LayerMap["Layer_QQBY_DQ"], JS_QQBY_DQ, "TC", 'QQBY_DQ'],
 	[LayerMap["Layer_LCMD_DQ"], JS_LCMD_DQ, "ST", 'LCMD_DQ'],
+	[LayerMap["Layer_NPC_DQ"], JS_NPC_DQ, "TC", 'NPC_DQ'],
+	[LayerMap["Layer_NPC_MD"], JS_NPC_MD, "TC", 'NPC_MD'],
+	[LayerMap["Layer_NPC_LY"], JS_NPC_LY, "TC", 'NPC_LY'],
+	[LayerMap["Layer_SongShu2_DQ"], JS_SongShu2_DQ, "TC", 'SongShu2_DQ'],
 ];
 const MonosTime = {
 	LLD: 48,
