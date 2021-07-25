@@ -4,7 +4,7 @@
     "target": "es6",
     "checkJs": true
   },
-  "include": ["Yuanshenditu/js/*", "Yuanshenditu/js/ui/Prompt"],
+  "include": ["Yuanshenditu/js/*"],
   "exclude": ["node_modules", "**/node_modules/*"],
   "typeAcquisition": {
     "include": ["jquery", "leaflet", "geojson"]
