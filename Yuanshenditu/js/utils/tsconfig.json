@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "target": "es5",
-    "module": "ESNext",
-    "strict": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true
-  },
-}

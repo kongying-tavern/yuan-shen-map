@@ -267,7 +267,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
 /* general typography */
 .leaflet-container {
-	font: 12px/1.5 "Microsoft YaHei","宋体","Segoe UI", "Lucida Grande", Helvetica, Arial,sans-serif, FreeSans, Arimo;
+	font: 12px/1.5 "Helvetica Neue", Arial, Helvetica, sans-serif;
 	}
 
 
@@ -378,11 +378,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	overflow-x: hidden;
 	padding-right: 5px;
 	}
-/* .leaflet-control-layers-selector {
+.leaflet-control-layers-selector {
 	margin-top: 2px;
 	position: relative;
 	top: 1px;
-	} */
+	}
 .leaflet-control-layers label {
 	display: block;
 	}
@@ -458,7 +458,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
 .leaflet-touch .leaflet-bar {
 	border: 2px solid rgba(0,0,0,0.2);
 	background-clip: padding-box;
-	zoom: 0.7;
 	}
 
 
@@ -494,6 +493,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	width: 17px;
 	height: 17px;
 	padding: 1px;
+
 	margin: -10px auto 0;
 
 	-webkit-transform: rotate(45deg);
@@ -521,7 +521,6 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	text-decoration: none;
 	font-weight: bold;
 	background: transparent;
-	display:none;
 	}
 .leaflet-container a.leaflet-popup-close-button:hover {
 	color: #999;
@@ -533,7 +532,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 	}
 
 .leaflet-oldie .leaflet-popup-content-wrapper {
-	zoom: 1;
+	-ms-zoom: 1;
 	}
 .leaflet-oldie .leaflet-popup-tip {
 	width: 24px;

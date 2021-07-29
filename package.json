@@ -4,17 +4,25 @@
   "description": "①点击右侧按钮唤出筛选器",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "http-server ./Yuanshenditu -d -b",
+    "start-https": "serve ./Yuanshenditu"
   },
   "repository": {
     "type": "git",
-    "url": "git@gitee.com:SecondLAB_peaceshi/yuan-shen-map.git"
+    "url": "git+https://gitee.com/KYJGYSDT/yuan-shen-map",
+    "branch": "master"
   },
-  "author": "",
-  "license": "ISC",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/genshinmap"
+  },
+  "author": "hoyolabMade By Kongying Tavern",
+  "license": "MulanPSL-1.0",
   "devDependencies": {
     "@types/geojson": "^7946.0.7",
     "@types/jquery": "^3.5.3",
-    "@types/leaflet": "^1.5.19"
+    "@types/leaflet": "^1.5.19",
+    "http-server": "^0.12.3",
+    "https-localhost": "^4.6.5"
   }
 }
