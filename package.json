@@ -1,8 +1,6 @@
 {
-  "name": "yuan-shen-map",
-  "version": "1.0.0",
-  "description": "①点击右侧按钮唤出筛选器",
-  "main": "index.js",
+  "private": true,
+  "homepage": "https://yuanshen.site/docs/",
   "scripts": {
     "start": "http-server ./Yuanshenditu -d -b",
     "start-https": "serve ./Yuanshenditu"

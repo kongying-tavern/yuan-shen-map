@@ -1,53 +1,22 @@
-
 :root {
-  --ThemeBackgroundColor: #fff;
-  --ThemeFontColor: rgba(0, 0, 0, .7);
-  --ThemeFontTitleColor: #1d1d1f;
-  --ThemeLoadingBackgroundColor: #f5f5f5;
-  --ThemeLoadingProspectColor: #666666;
+  --loading-background-color: #fff;
+  --loading-font-color: rgba(0, 0, 0, .7);
+  --loading-loadingbar-background-color: #f5f5f5;
+  --loading-loadingbar-prospect-color: #666666;
 }
 
-body[data-theme="dark"] {
-  --ThemeBackgroundColor: #161d22;
-  --ThemeFontColor: rgba(240, 246, 252, .8);
-  --ThemeFontTitleColor: #fafafa;
-  --ThemeLoadingBackgroundColor: #2c2b30;
-  --ThemeLoadingProspectColor: #ece5d8;
-}
-
-body[data-theme="light"] {
-  --ThemeBackgroundColor: #fff;
-  --ThemeFontColor: rgba(0, 0, 0, .7);
-  --ThemeFontTitleColor: #1d1d1f;
-  --ThemeLoadingBackgroundColor: #f5f5f5;
-  --ThemeLoadingProspectColor: #666666;
-}
-
-@font-face {
-  font-family: 'hywh';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url("../hywh_thin3.ttf") format("truetype");
-}
-
-a {
-  -webkit-transition: color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
-  transition: color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
-}
-
-::-moz-selection {
-  color: inherit;
-  background: inherit;
-}
-
-::selection {
-  color: inherit;
-  background: inherit;
+html.dark {
+  --loading-background-color: #161d22;
+  --loading-font-color: rgba(240, 246, 252, .8);
+  --loading-loadingbar-background-color: #2c2b30;
+  --loading-loadingbar-prospect-color: #ece5d8;
 }
 
 html {
-  cursor: none;
+  --loading-background-color: #fff;
+  --loading-font-color: rgba(0, 0, 0, .7);
+  --loading-loadingbar-background-color: #f5f5f5;
+  --loading-loadingbar-prospect-color: #666666;
 }
 
 .wrapper {
@@ -55,9 +24,13 @@ html {
   width: 100vw;
   height: 100%;
   overflow-x: hidden;
-  background-color: var(--ThemeBackgroundColor);
-  -webkit-transition: color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
-  transition: color 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background-color: var(--loading-background-color);
+  -webkit-transition: background 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+  transition: background 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
 }
 
 .wrapper .loading {
@@ -67,59 +40,67 @@ html {
   z-index: 99999;
   width: 100vw;
   height: 100vh;
-  background-color: var(--ThemeBackgroundColor);
+  background-color: var(--loading-background-color);
   opacity: 1;
   overflow-y: hidden;
   -webkit-transition: all .3s;
   transition: all .3s;
 }
 
-.wrapper .loading .loading-default {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 500px;
-  height: 62.5px;
-  -webkit-transform: translate(-50%, -50%) scale(0.8);
-          transform: translate(-50%, -50%) scale(0.8);
-  -webkit-transition: all .5s;
-  transition: all .5s;
-  overflow: hidden;
+@supports ((-webkit-filter: drop-shadow(0 0 0 #fff)) or (filter: drop-shadow(0 0 0 #fff))) {
+  .wrapper .loading .loading-default {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 500px;
+    height: 62.5px;
+    -webkit-transform: translate(-50%, -50%) scale(0.8);
+            transform: translate(-50%, -50%) scale(0.8);
+    -webkit-transition: all .5s;
+    transition: all .5s;
+    overflow: hidden;
+  }
+  .wrapper .loading .loading-default img {
+    position: absolute;
+    left: 0;
+    top: 500px;
+    -webkit-filter: drop-shadow(0 -500px 0 var(--loading-loadingbar-background-color));
+            filter: drop-shadow(0 -500px 0 var(--loading-loadingbar-background-color));
+  }
+  .wrapper .loading .loading-default::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 500px;
+    -webkit-filter: drop-shadow(0 -500px 0 var(--loading-loadingbar-prospect-color));
+            filter: drop-shadow(0 -500px 0 var(--loading-loadingbar-prospect-color));
+    width: 500px;
+    height: 62.5px;
+    background: url("../../imgs/loading-bar.png") no-repeat left 100%;
+    background-size: 500px 62.5px;
+    background-position-x: 0;
+  }
+  .wrapper .loading .loading-mobile {
+    display: none;
+  }
 }
 
-.wrapper .loading .loading-default img {
-  position: absolute;
-  left: 0;
-  top: 500px;
-  -webkit-filter: drop-shadow(0 -500px 0 var(--ThemeLoadingBackgroundColor));
-          filter: drop-shadow(0 -500px 0 var(--ThemeLoadingBackgroundColor));
+@supports not ((-webkit-filter: drop-shadow(0 0 0 #fff)) or (filter: drop-shadow(0 0 0 #fff))) {
+  .wrapper .loading .loading-default {
+    display: none;
+  }
+  .wrapper .loading .loading-mobile {
+    display: inline-block;
+  }
 }
 
-.wrapper .loading .loading-default::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 500px;
-  -webkit-filter: drop-shadow(0 -500px 0 var(--ThemeLoadingProspectColor));
-          filter: drop-shadow(0 -500px 0 var(--ThemeLoadingProspectColor));
-  width: 500px;
-  height: 62.5px;
-  background: url("../../imgs/loading-bar.png") no-repeat left 100%;
-  background-size: 500px 62.5px;
-  background-position-x: 0;
-}
-
-.wrapper .loading .loading-mobile {
-  display: none;
-}
-
-@media screen and (max-width: 734px) {
+@media screen and (max-width: 719px) {
   .wrapper .loading .loading-default {
     display: none;
   }
 }
 
-@media screen and (max-width: 734px) and (orientation: landscape) {
+@media screen and (max-width: 719px) and (orientation: landscape) {
   .wrapper .loading .loading-default {
     display: block !important;
     -webkit-transform: translate(-50%, -50%) scale(0.7) !important;
@@ -130,7 +111,7 @@ html {
   }
 }
 
-@media screen and (max-width: 734px) {
+@media screen and (max-width: 719px) {
   .wrapper .loading .loading-mobile {
     display: inline-block;
     position: absolute;
@@ -152,7 +133,7 @@ html {
     -webkit-transform: scale(1.2);
             transform: scale(1.2);
   }
-  .wrapper .loading .loading-mobile .item {
+  .wrapper .loading .loading-mobile .rotate li {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -168,7 +149,27 @@ html {
     -webkit-animation: rotating 4s linear infinite;
             animation: rotating 4s linear infinite;
   }
-  .wrapper .loading .loading-mobile .item::after {
+  .wrapper .loading .loading-mobile .rotate li:nth-child(1) {
+    -webkit-animation-delay: 0.15s;
+            animation-delay: 0.15s;
+  }
+  .wrapper .loading .loading-mobile .rotate li:nth-child(2) {
+    -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+  }
+  .wrapper .loading .loading-mobile .rotate li:nth-child(3) {
+    -webkit-animation-delay: 0.45s;
+            animation-delay: 0.45s;
+  }
+  .wrapper .loading .loading-mobile .rotate li:nth-child(4) {
+    -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+  }
+  .wrapper .loading .loading-mobile .rotate li:nth-child(5) {
+    -webkit-animation-delay: 0.75s;
+            animation-delay: 0.75s;
+  }
+  .wrapper .loading .loading-mobile .rotate li::after {
     content: "";
     display: block;
     width: 5px;
@@ -176,31 +177,10 @@ html {
     border-radius: 50%;
     background-color: #d6d5d5;
   }
-  .wrapper .loading .loading-mobile .item:nth-child(1) {
-    -webkit-animation-delay: 0.15s;
-            animation-delay: 0.15s;
-  }
-  .wrapper .loading .loading-mobile .item:nth-child(2) {
-    -webkit-animation-delay: 0.3s;
-            animation-delay: 0.3s;
-  }
-  .wrapper .loading .loading-mobile .item:nth-child(3) {
-    -webkit-animation-delay: 0.45s;
-            animation-delay: 0.45s;
-  }
-  .wrapper .loading .loading-mobile .item:nth-child(4) {
-    -webkit-animation-delay: 0.6s;
-            animation-delay: 0.6s;
-  }
-  .wrapper .loading .loading-mobile .item:nth-child(5) {
-    -webkit-animation-delay: 0.75s;
-            animation-delay: 0.75s;
-  }
   .wrapper .loading .loading-mobile h2 {
     margin-top: 80px;
     font-size: 1.3125em;
-    font-family: "hywh", sans-serif;
-    color: var(--ThemeFontColor);
+    color: var(--loading-font-color);
   }
   .wrapper .loading .loading-mobile h2 dot {
     display: inline-block;
@@ -216,15 +196,6 @@ html {
     white-space: pre-wrap;
     -webkit-animation: dot 2s infinite step-start both;
             animation: dot 2s infinite step-start both;
-  }
-}
-
-@supports not ((-webkit-filter: drop-shadow(0 0 0 #fff)) or (filter: drop-shadow(0 0 0 #fff))) {
-  .loading-default {
-    display: none !important;
-  }
-  .loading-mobile {
-    display: inline-block !important;
   }
 }
 
@@ -310,7 +281,7 @@ html {
   83% {
   }
   100% {
-    width: 470px;
+    width: 500px;
   }
 }
 
@@ -330,7 +301,7 @@ html {
   83% {
   }
   100% {
-    width: 470px;
+    width: 500px;
   }
 }
 /*# sourceMappingURL=loading.css.map */
