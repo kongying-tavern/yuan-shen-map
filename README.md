@@ -1,4 +1,4 @@
-# 【空荧酒馆】提瓦特电子地图
+# 空荧酒馆原神地图
 
 这是空荧酒馆网页版原神地图 1.0. 的仓库。
 
@@ -29,6 +29,14 @@ A8、大白米、Icarusss、南极风、(\^_^\)、Peaceshi
 
 见 [https://support.qq.com/products/321980/blog/505810](https://support.qq.com/products/321980/blog/505810 "空荧酒馆原神地图网页版更新内容")。
 
+## 常见问题
+
+见 [https://support.qq.com/products/321980/faqs-more/#parentId=64710?classifyId=64711](https://support.qq.com/products/321980/faqs-more/#parentId=64710?classifyId=64711 "空荧酒馆原神地图网页版常见问题")。
+
+## 参与开发
+
+本项目基于 `JavaScript`, `Leaflet` 和 `Jquery` 开发，我们欢迎一切有关的讨论、帮助和Pull Requests。
+
 ## 许可证
 
 该项目签署了 MulanPSL-1.0 授权许可，详情请参阅 [LICENSE](./LICENSE)。
@@ -42,8 +50,10 @@ A8、大白米、Icarusss、南极风、(\^_^\)、Peaceshi
 ## 其他项目
 
 | 项目                   | 链接                                                      | 仓库                 |
-| ---------------------  | --------------------------------------------------------- | -------------------- |
-| 空荧地图文档            | [https://yuanshen.site/docs/](https://yuanshen.site/)     | [GitHub](https://github.com/jiazengp/genshinmap-docs) |
-| 空荧地图VUE重制版       | -                                                        | [Gitee](https://gitee.com/KYJGYSDT/island_map) |
-| 空荧地图后台管理系统     | -                                                         | [Gitee](https://gitee.com/KYJGYSDT/manage_system) |
-| 原神地图自动追踪dll      | -                                                         | [Gitee](https://gitee.com/Yu_Sui_Xian/yuanshen-auto-tracking-dll) |
+| :--------------------  | :-------------------------------------------------------- | -------------------- |
+| 空荧酒馆原神地图文档            | [https://yuanshen.site/docs/](https://yuanshen.site/)     | [GitHub](https://github.com/jiazengp/genshinmap-docs) |
+| 空荧酒馆原神地图（v2）  | -                                                        | [Gitee](https://gitee.com/KYJGYSDT/island_map) |
+| 空荧酒馆原神地图（v3）          | [https://yuanshen.site/v3/](https://yuanshen.site/v3/)    | [GitHub](https://github.com/peaceshi/nextjs-imagination-map/) |
+| 空荧酒馆原神地图客户端更新器     | - | [Gitee](https://gitee.com/KYJGYSDT/yuanshendt-updater) |    
+| 空荧酒馆原神地图后台管理系统     | -                                                         | [Gitee](https://gitee.com/KYJGYSDT/manage_system) |
+| 空荧酒馆原神地图自动追踪dll      | -                                                         | [Gitee](https://gitee.com/Yu_Sui_Xian/yuanshen-auto-tracking-dll) |
