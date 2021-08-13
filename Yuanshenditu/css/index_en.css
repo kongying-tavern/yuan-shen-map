@@ -118,7 +118,7 @@ body,
     display: block;
     position: absolute;
     top: 5px;
-    left: 50px;
+    left: 25px;
     background: url(../imgs/con_img/danjixiazai_en.png) no-repeat center top;
     background-size: contain;
     width: 170px;
@@ -936,7 +936,7 @@ body,
     z-index: 400;
     position: absolute;
     display: block;
-    left: 57px;
+    left: 30px;
     top: 65px;
     color: #191970;
     font-weight: bold;
@@ -946,7 +946,7 @@ body,
     z-index: 400;
     position: absolute;
     display: block;
-    left: 57px;
+    left: 30px;
     top: 85px;
     color: #191970;
     font-weight: bold;
