@@ -5,13 +5,13 @@ t = L.latLngBounds([0, 0], [-66.5, 90]);
 /*
    use latLngBounds as maxBoundsRect
            n
-      +-----------+ 
-      |           | 
-      |           | 
+      +-----------+
+      |           |
+      |           |
    w  |           |  e
-      |           | 
-      |           | 
-      +-----------+ 
+      |           |
+      |           |
+      +-----------+
            s
  */
 const northEdge = 0;
@@ -46,10 +46,6 @@ var map = L.map("map", {
 });
 L.control.attribution({
 	prefix: "<a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank'>使用说明/米游社空荧酒馆</a>"
-}).addTo(map);
-L.control.zoom({
-	zoomInTitle: '+',
-	zoomOutTitle: '-'
 }).addTo(map);
 L.TileLayer.T = L.TileLayer.extend({
 	getTileUrl: function (coords) {
@@ -371,7 +367,7 @@ function getIconInfo(Name) {
 					iconSize: [22, 22], // size of the icon
 					shadowSize: [24, 24], // size of the shadow
 					iconAnchor: [11, 24], // point of the icon which will correspond to marker's location
-					shadowAnchor: [12, 24], // the same for the shadow    
+					shadowAnchor: [12, 24], // the same for the shadow
 					popupAnchor: [0, -22] // point from which the popup should open relative to the iconAnchor
 				}
 			});
@@ -383,7 +379,7 @@ function getIconInfo(Name) {
 					iconSize: [23, 33], // size of the icon
 					shadowSize: [24, 24], // size of the shadow
 					iconAnchor: [11.5, 16.5], // point of the icon which will correspond to marker's location
-					shadowAnchor: [12, 24], // the same for the shadow    
+					shadowAnchor: [12, 24], // the same for the shadow
 					popupAnchor: [0, -16.5] // point from which the popup should open relative to the iconAnchor
 				}
 			});
@@ -395,7 +391,7 @@ function getIconInfo(Name) {
 					iconSize: [30, 43], // size of the icon
 					shadowSize: [24, 24], // size of the shadow
 					iconAnchor: [15, 21.5], // point of the icon which will correspond to marker's location
-					shadowAnchor: [12, 24], // the same for the shadow    
+					shadowAnchor: [12, 24], // the same for the shadow
 					popupAnchor: [0, -21.5] // point from which the popup should open relative to the iconAnchor
 				}
 			});
@@ -407,7 +403,7 @@ function getIconInfo(Name) {
 					iconSize: [33, 33], // size of the icon
 					shadowSize: [24, 24], // size of the shadow
 					iconAnchor: [16.5, 16.5], // point of the icon which will correspond to marker's location
-					shadowAnchor: [12, 24], // the same for the shadow    
+					shadowAnchor: [12, 24], // the same for the shadow
 					popupAnchor: [0, -16.5] // point from which the popup should open relative to the iconAnchor
 				}
 			});
@@ -899,7 +895,7 @@ map.on('popupopen', function (e) {
 			</div>
 		</div>
 		<div class="tipcard"></div>
-		
+
 	</div>`
 	if (timeValue) {
 		const {
