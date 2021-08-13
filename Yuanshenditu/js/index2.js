@@ -51,10 +51,6 @@ L.control.attribution({
 	prefix: "<a href='/docs/join.html' target='_bal'>招募</a>",
 	position: "bottomleft"
 }).addTo(map);
-L.control.zoom({
-	zoomInTitle: '+',
-	zoomOutTitle: '-'
-}).addTo(map);
 var area_idx = "MD";
 var area_idx_cur = "TWT";
 var area_idx_last = "TWT";
