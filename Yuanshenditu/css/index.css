@@ -928,3 +928,39 @@ body,
         font-size: 12px;
     }
 }
+
+.footer {
+    display: table-cell;
+    width: fit-content;
+    float: left;
+    user-select: none;
+    padding: 1px 5px;
+    font-size: 11px;
+    white-space: normal;
+    transition: all .3s;
+}
+
+.footer a:hover {
+    font-weight: 600;
+}
+
+.footer a {
+    font-weight: 500;
+    color: #0078A8;
+    overflow-wrap: break-word;
+}
+
+.footer a:not(:last-child) {
+    margin-right: 8px;
+}
+
+@media only screen and (max-width: 740px) {
+    .footer {
+        width: 100vw;
+        text-align: center;
+    }
+
+    .footer a:not(:last-child) {
+        margin-right: 1.5vw;
+    }
+}

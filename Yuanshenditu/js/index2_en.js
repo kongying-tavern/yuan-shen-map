@@ -1,4 +1,4 @@
-//@ts-check
+// @ts-nocheck
 //初始化地图
 t = L.latLngBounds([0, 0], [-66.5, 90]);
 var mapCenter = [3568, 6286], mapSize = [12288, 12288];
@@ -38,13 +38,18 @@ var map = L.map("map", {
 	attributionControl: false,
 	zoomControl: false
 });
-L.control.attribution({
-	prefix: "<a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank'>(Chinese hoyolab)Made By Kongying Tavern</a>"
-}).addTo(map);
-L.control.attribution({
-	prefix: "<a href='/docs/en/disclaimer.html' target='_bal'>Disclaimer/Recruitment</a>",
-	position: "bottomleft"
-}).addTo(map);
+
+L.control
+  .attribution({
+    prefix: `<div role="contentinfo" class="footer">
+			<a href='/docs/disclaimer.html' target='_blank'>Disclaimer</a>
+			<a href='/join' target='_blank'>Join Us</a>
+			<a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank' rel="noopener noreferrer">Instructions Use</a>
+	    <a href='https://support.qq.com/products/321980/blog/505810' target='_blank' rel='noopener noreferrer'>Update Log</a>
+		</div>`,
+    position: "bottomleft",
+  })
+  .addTo(map);
 var area_idx = "MD";
 var area_idx_cur = "TWT";
 var area_idx_last = "TWT";
