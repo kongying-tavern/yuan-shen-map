@@ -196,7 +196,7 @@ function Login() {
  * tokenPara 正确 调用上传存档
  *
  * 不正确 跳转登录 / 本地存档
- * 
+ *
  * @param  {function} localSave
  */
 function upLoadSaveData(localSave) {
@@ -819,10 +819,10 @@ function checkAutoUpdate() {
     console.log("地图数据无变化，没有进行自动同步");
   }
 }
-setInterval("checkAutoUpdate()", 300000);
+setInterval(() => checkAutoUpdate(), 300000);
 /**
  *新建存档 by giteeGist
- * 
+ *
  * tips: 新建完成会调用 getGistList() 同步数据
  */
 function addGistFile(_default = '', cb) {
@@ -953,10 +953,10 @@ function deleteGistFile(fileID) {
  *
  *@param fileID {string} 需要加载的存档ID
  *@param fileLastUpdateTime {string} 需要加载的存档更新时间
- * 
+ *
  * tips: 删除完成会调用 getGistList() 同步数据
  * 导入会丢失现在存档，如需要请加备份提示
- * 
+ *
  */
 function loadGistFile(fileID, fileLastUpdateTime) {
   var markersData = [];
