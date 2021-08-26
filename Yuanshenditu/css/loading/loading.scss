@@ -9,27 +9,27 @@ $loading-img-width: 500px !default;
 
 $mobile: 719px !default;
 
-$text-loading-animation-delay: .15s!default;
-$text-loading-animation-item-size: 5px!default;
-$text-loading-animation-rotate-size: 50px!default;
+$text-loading-animation-delay: 0.15s !default;
+$text-loading-animation-item-size: 5px !default;
+$text-loading-animation-rotate-size: 50px !default;
 
 :root {
   --#{$namespace}-background-color: #fff;
-  --#{$namespace}-font-color: rgba(0, 0, 0, .7);
+  --#{$namespace}-font-color: rgba(0, 0, 0, 0.7);
   --#{$namespace}-loadingbar-background-color: #f5f5f5;
   --#{$namespace}-loadingbar-prospect-color: #666666;
 }
 
 html.dark {
   --#{$namespace}-background-color: #161d22;
-  --#{$namespace}-font-color: rgba(240, 246, 252, .8);
+  --#{$namespace}-font-color: rgba(240, 246, 252, 0.8);
   --#{$namespace}-loadingbar-background-color: #2c2b30;
   --#{$namespace}-loadingbar-prospect-color: #ece5d8;
 }
 
 html {
   --#{$namespace}-background-color: #fff;
-  --#{$namespace}-font-color: rgba(0, 0, 0, .7);
+  --#{$namespace}-font-color: rgba(0, 0, 0, 0.7);
   --#{$namespace}-loadingbar-background-color: #f5f5f5;
   --#{$namespace}-loadingbar-prospect-color: #666666;
 }
@@ -48,7 +48,7 @@ html {
   overflow-x: hidden;
   user-select: none;
   background-color: var(--#{$namespace}-background-color);
-  transition: background .5s cubic-bezier(.28, .11, .32, 1);
+  transition: background 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
   .loading {
     position: fixed;
     top: 0;
@@ -59,7 +59,7 @@ html {
     background-color: var(--#{$namespace}-background-color);
     opacity: 1;
     overflow-y: hidden;
-    transition: all .3s;
+    transition: all 0.3s;
     @supports (filter: drop-shadow(0 0 0 #fff)) {
       .loading-default {
         position: absolute;
@@ -67,8 +67,8 @@ html {
         top: 50%;
         width: $loading-img-width;
         height: $loading-img-height;
-        transform: translate(-50%, -50%) scale(.8);
-        transition: all .5s;
+        transform: translate(-50%, -50%) scale(0.8);
+        transition: all 0.5s;
         overflow: hidden;
 
         img {
@@ -76,11 +76,11 @@ html {
         }
 
         &::after {
-          content: "";
+          content: '';
           @include img-color(var(--#{$namespace}-loadingbar-prospect-color));
           width: $loading-img-width;
           height: $loading-img-height;
-          background: url("../../imgs/loading-bar.png") no-repeat left 100%;
+          background: url('../../imgs/loading-bar.png') no-repeat left 100%;
           background-size: $loading-img-width $loading-img-height;
           background-position-x: 0;
         }
@@ -108,7 +108,7 @@ html {
       @media screen and (orientation: landscape) {
         .loading-default {
           display: block !important;
-          transform: translate(-50%, -50%) scale(.7) !important;
+          transform: translate(-50%, -50%) scale(0.7) !important;
         }
 
         .loading-mobile {
@@ -148,7 +148,7 @@ html {
               }
             }
             &::after {
-              content: "";
+              content: '';
               display: block;
               width: $text-loading-animation-item-size;
               height: $text-loading-animation-item-size;
@@ -168,11 +168,11 @@ html {
             height: 1em;
             line-height: 1;
             text-align: left;
-            vertical-align: -.25ex;
+            vertical-align: -0.25ex;
             overflow: hidden;
             &::before {
               display: block;
-              content: "...\A..\A.";
+              content: '...\A..\A.';
               white-space: pre-wrap;
               animation: dot 2s infinite step-start both;
             }
@@ -184,16 +184,15 @@ html {
 }
 
 @keyframes dot {
-  33%{
+  33% {
     transform: translateY(-2em);
   }
-  66%{
+  66% {
     transform: translateY(-1em);
   }
 }
 
 @keyframes rotating {
-
   // 移动端loading动画逻辑
   75% {
     transform: rotate(600deg);
@@ -216,7 +215,6 @@ html {
 }
 
 @keyframes loading-bar {
-
   0% {
     width: 0px;
     background-size: $loading-img-width $loading-img-height;
@@ -225,13 +223,17 @@ html {
   16.6% {
   }
 
-  33.2% {}
+  33.2% {
+  }
 
-  49.8% {}
+  49.8% {
+  }
 
-  66.4% {}
+  66.4% {
+  }
 
-  83% {}
+  83% {
+  }
 
   100% {
     width: $loading-img-width;

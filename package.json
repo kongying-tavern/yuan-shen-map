@@ -1,26 +1,57 @@
 {
   "private": true,
-  "homepage": "https://yuanshen.site/docs/",
+  "homepage": "https://yuanshen.site/",
+  "author": "Kongying Tavern",
+  "license": "MulanPSL-1.0",
   "scripts": {
-    "start": "http-server ./Yuanshenditu -d -b",
-    "start-https": "serve ./Yuanshenditu"
+    "envinfo": "npx envinfo --npmPackages  --system --browsers --binaries --duplicates",
+    "commit": "npx git-cz",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "prettier": "prettier --write ./Yuanshenditu",
+    "postinstall": "husky install"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://gitee.com/KYJGYSDT/yuan-shen-map",
+    "url": "git+https://github.com/kongying-tavern/yuan-shen-map",
     "branch": "master"
+  },
+  "bugs": {
+    "url": "https://github.com/kongying-tavern/yuan-shen-map/issues"
   },
   "funding": {
     "type": "opencollective",
     "url": "https://opencollective.com/genshinmap"
   },
-  "author": "hoyolabMade By Kongying Tavern",
-  "license": "MulanPSL-1.0",
+  "prettier": "@kongying-tavern/prettier-config",
+  "lint-staged": {
+    "*.{md,json,yml,js,ts,html}": [
+      "prettier --write"
+    ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 4 Firefox versions",
+    "last 3 Safari versions",
+    "not Safari 12",
+    "last 4 Edge versions",
+    "not Edge <= 18",
+    "Firefox ESR"
+  ],
   "devDependencies": {
+    "@commitlint/cli": "13.1.0",
+    "@commitlint/config-conventional": "13.1.0",
+    "@kongying-tavern/prettier-config": "^1.0.1-1",
     "@types/geojson": "^7946.0.7",
     "@types/jquery": "^3.5.3",
     "@types/leaflet": "^1.5.19",
-    "http-server": "^0.12.3",
-    "https-localhost": "^4.6.5"
+    "conventional-changelog-cli": "2.1.1",
+    "cz-conventional-changelog": "3.3.0",
+    "husky": "7.0.1",
+    "prettier": "^2.3.2"
   }
 }
