@@ -23,11 +23,6 @@
     "url": "https://opencollective.com/genshinmap"
   },
   "prettier": "@kongying-tavern/prettier-config",
-  "lint-staged": {
-    "*.{md,json,yml,js,ts,html}": [
-      "prettier --write"
-    ]
-  },
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
