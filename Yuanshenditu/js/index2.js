@@ -32,8 +32,7 @@ var map = L.map('map', {
 })
 L.control
   .attribution({
-    prefix:
-    `
+    prefix: `
       <footer role='contentinfo' class='footer'>
         <a href='/docs/disclaimer.html' target='_blank' title='空荧酒馆免责声明'>免责声明</a>
         <a href='/join' target='_blank' target='_blank' title='加入我们'>招募</a>

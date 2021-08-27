@@ -33,8 +33,7 @@ var map = L.map('map', {
 
 L.control
   .attribution({
-    prefix:
-    `
+    prefix: `
       <footer role='contentinfo' class='footer'>
         <a href='/docs/disclaimer.html' target='_blank'>Disclaimer</a>
         <a href='/join' target='_blank'>Join Us</a>
