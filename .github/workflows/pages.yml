@@ -1,5 +1,5 @@
 # @See https://pages.github.com/
-name: page
+name: pages
 
 on:
   # trigger deployment on every push to main branch
