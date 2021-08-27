@@ -33,12 +33,16 @@ var map = L.map('map', {
 
 L.control
   .attribution({
-    prefix: `<div role="contentinfo" class="footer">
-			<a href='/docs/disclaimer.html' target='_blank'>Disclaimer</a>
-			<a href='/join' target='_blank'>Join Us</a>
-			<a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank' rel="noopener noreferrer">Instructions Use</a>
-	    <a href='https://support.qq.com/products/321980/blog/505810' target='_blank' rel='noopener noreferrer'>Update Log</a>
-		</div>`,
+    prefix:
+    `
+      <footer role='contentinfo' class='footer'>
+        <a href='/docs/disclaimer.html' target='_blank'>Disclaimer</a>
+        <a href='/join' target='_blank'>Join Us</a>
+        <a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank' rel="noopener noreferrer">Instructions Use</a>
+        <a href='https://support.qq.com/products/321980/blog/505810' target='_blank' rel='noopener noreferrer'>Update Log</a>
+        <a href='https://github.com/kongying-tavern' target='_blank' rel='noopener noreferrer'>GitHub</a>
+      </footer>
+    `,
     position: 'bottomleft',
   })
   .addTo(map)

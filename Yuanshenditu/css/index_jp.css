@@ -1028,10 +1028,6 @@ body,
   transition: all 0.3s;
 }
 
-.footer a:hover {
-  font-weight: 600;
-}
-
 .footer a {
   font-weight: 500;
   color: #0078a8;

@@ -32,14 +32,15 @@ var map = L.map('map', {
 })
 L.control
   .attribution({
-    prefix: `
-		<div role="contentinfo" class="footer">
-			<a href='/docs/disclaimer.html' target='_blank'>免责声明</a>
-			<a href='/join' target='_blank'>招募</a>
-			<a href='https://bbs.mihoyo.com/ys/article/1328298' target='_blank' rel="noopener noreferrer">使用说明</a>
-	    <a href='https://support.qq.com/products/321980/blog/505810' target='_blank' rel='noopener noreferrer'>更新日志</a>
-			<a href='http://beian.miit.gov.cn' target='_blank' rel="noopener noreferrer">蜀ICP备2020028219号-1</a>
-		</div>
+    prefix:
+    `
+      <footer role='contentinfo' class='footer'>
+        <a href='/docs/disclaimer.html' target='_blank' title='空荧酒馆免责声明'>免责声明</a>
+        <a href='/join' target='_blank' target='_blank' title='加入我们'>招募</a>
+        <a href='https://support.qq.com/products/321980/blog/505810' target='_blank' rel='noopener noreferrer' title='空荧酒馆原神地图更新日志'>更新日志</a>
+        <a href='https://github.com/kongying-tavern' target='_blank' rel='noopener noreferrer' title='GitHub'>GitHub</a>
+        <a href='http://beian.miit.gov.cn' target='_blank' rel='noopener noreferrer' title='工业和信息化部域名信息备案管理系统'>蜀ICP备2020028219号-1</a>
+      </footer>
 		`,
     position: 'bottomleft',
   })
