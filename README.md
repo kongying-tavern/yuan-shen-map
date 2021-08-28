@@ -43,9 +43,8 @@ A8、大白米、Icarusss、南极风、(\^_^\)、Peaceshi
 
 ## 鸣谢
 
-技术鸣谢 [https://yuanshen.site/docs/credits.html](https://yuanshen.site/docs/credits.html)
-
-赞助鸣谢 [https://yuanshen.site/docs/support-us.html](https://yuanshen.site/docs/support-us.html#%E8%B5%9E%E5%8A%A9%E9%B8%A3%E8%B0%A2)
+- 技术鸣谢：[https://yuanshen.site/docs/credits.html](https://yuanshen.site/docs/credits.html)
+- 赞助鸣谢：[https://yuanshen.site/docs/support-us.html](https://yuanshen.site/docs/support-us.html#%E8%B5%9E%E5%8A%A9%E9%B8%A3%E8%B0%A2)
 
 ## 其他项目
 
