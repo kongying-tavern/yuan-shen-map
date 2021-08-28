@@ -35,7 +35,7 @@ A8、大白米、Icarusss、南极风、(\^_^\)、Peaceshi
 
 ## 参与开发
 
-本项目基于 `JavaScript`, `Leaflet` 和 `Jquery` 开发，我们欢迎一切有关的讨论、帮助和Pull Requests。
+本项目基于 `LeafletJs` 和 `Jquery` 开发，我们欢迎一切有关的讨论、帮助和 Pull Requests。
 
 ## 许可证
 
