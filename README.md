@@ -37,14 +37,14 @@ A8、大白米、Icarusss、南极风、(\^_^\)、Peaceshi
 
 本项目基于 `LeafletJs` 和 `Jquery` 开发，我们欢迎一切有关的讨论、帮助和 Pull Requests。
 
-## 许可证
-
-该项目签署了 MulanPSL-1.0 授权许可，详情请参阅 [LICENSE](./LICENSE)。
-
 ## 鸣谢
 
 - 技术鸣谢：[https://yuanshen.site/docs/credits.html](https://yuanshen.site/docs/credits.html)
 - 赞助鸣谢：[https://yuanshen.site/docs/support-us.html](https://yuanshen.site/docs/support-us.html#%E8%B5%9E%E5%8A%A9%E9%B8%A3%E8%B0%A2)
+
+## 许可证
+
+该项目签署了 MulanPSL-1.0 授权许可，详情请参阅 [LICENSE](./LICENSE)。
 
 ## 其他项目
 
