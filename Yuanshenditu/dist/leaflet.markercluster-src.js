@@ -28,7 +28,7 @@
 			zoomToBoundsOnClick: false,
 			singleMarkerMode: false,
 
-			disableClusteringAtZoom: 8,
+			disableClusteringAtZoom: 1,
 
 			// Setting this to false prevents the removal of any clusters outside of the viewpoint, which
 			// is the default behaviour for performance reasons.
