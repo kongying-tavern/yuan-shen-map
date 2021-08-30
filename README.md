@@ -44,7 +44,7 @@ A8、大白米、Icarusss、南极风、(\^_^\)、Peaceshi
 
 ## 许可证
 
-该项目签署了 MulanPSL-1.0 授权许可，详情请参阅 [LICENSE](./LICENSE)。
+该项目签署了 MulanPSL-1.0 授权许可，详情请参阅 [LICENSE](./LICENSE)
 
 ## 其他项目
 
