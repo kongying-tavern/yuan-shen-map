@@ -615,7 +615,7 @@ body,
 .myPopComment {
   display: block;
   position: relative;
-  width: 100%;
+  /* width: 100%; */
   margin: 14px 0 0 0;
   padding: 0 37px 0 17px;
   font-family: font;
