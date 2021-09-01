@@ -1602,7 +1602,7 @@ map.on('popupopen', function (e) {
      function (data) {
       $('.myPopComment,.myPopPicture').removeClass('disable');
       $('.myPopComment').css({'cursor': 'point'});
-      $('.myPopComment img').attr('src',path);
+      $('.myPopPicture>img').attr('src',`comment_png/${key}.jpg`);
      });
   if (timeValue) {
     const { start, end } = JSON.parse(timeValue)
