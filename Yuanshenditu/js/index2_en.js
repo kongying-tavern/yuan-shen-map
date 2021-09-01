@@ -1578,12 +1578,12 @@ map.on('popupopen', function (e) {
 		<div class="myPopLine"></div>
 		<div class="myPopIssue" onclick="openIssue()">反馈<img class="myPopIssueIcon" src=imgs/con_img/popIssue.png></div>
 		<div class="myPopClose" onclick="closePop()"></div>
-		<div class="myPopComment disable" onclick="change()" style="white-space:pre-line;cursor:default">${marker.feature.properties.popupContent}
+		<div class="myPopComment disable" onclick="change()" style="white-space:pre-line">${marker.feature.properties.popupContent}
 			<img class="Select" src=imgs/con_img/Select.png>
 		</div>
 		<div class="time-wrapper"><span id="time"></span></div>
 		<div class="myPopPicture disable">
-			<img src=https://yuanshen.site/comment_png/${key}.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">
+			<img/>
 		</div>
 		<div class="${switchClass}" onclick="MarkPoint(this)" data-key="${key}">
 			<p class="switchOff">todo</p>
@@ -1602,6 +1602,7 @@ map.on('popupopen', function (e) {
      function (data) {
       $('.myPopComment,.myPopPicture').removeClass('disable');
       $('.myPopComment').css({'cursor': 'point'});
+      $('.myPopComment img').attr('src',path);
      });
   if (timeValue) {
     const { start, end } = JSON.parse(timeValue)
