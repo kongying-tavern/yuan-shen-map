@@ -643,7 +643,7 @@ function getIconInfo(Name) {
       //地灵龛
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: './imgs/loc_notfind.svg',
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_notfind.svg',
           iconSize: [24, 23], // size of the icon
           shadowSize: [40, 40], // size of the shadow
           iconAnchor: [12, 34.5], // point of the icon which will correspond to marker's location
@@ -657,7 +657,7 @@ function getIconInfo(Name) {
       //特产
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: './imgs/loc_notfind_black.svg',
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_notfind_black.svg',
           iconSize: [16.5, 17], // size of the icon
           shadowSize: [28, 28], // size of the shadow
           iconAnchor: [8.2, 24.3], // point of the icon which will correspond to marker's location
@@ -671,7 +671,7 @@ function getIconInfo(Name) {
       //矿物
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: './imgs/loc_stonenot.svg',
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_stonenot.svg',
           iconSize: [20, 20], // size of the icon
           shadowSize: [34, 34], // size of the shadow
           iconAnchor: [10, 28], // point of the icon which will correspond to marker's location
@@ -685,7 +685,7 @@ function getIconInfo(Name) {
       //精英怪
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: './imgs/loc_notfind.svg',
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_notfind.svg',
           iconSize: [23.4, 23.4], // size of the icon
           shadowSize: [38, 38], // size of the shadow
           iconAnchor: [11.7, 33.4], // point of the icon which will correspond to marker's location
@@ -699,7 +699,7 @@ function getIconInfo(Name) {
       //普通怪
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: './imgs/loc_notfind.svg',
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_notfind.svg',
           iconSize: [17, 17], // size of the icon
           shadowSize: [28, 28], // size of the shadow
           iconAnchor: [8.5, 24.5], // point of the icon which will correspond to marker's location
@@ -713,7 +713,7 @@ function getIconInfo(Name) {
       // 宝箱
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: './imgs/loc_stonenot.svg',
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_stonenot.svg',
           iconSize: [22, 22], // size of the icon
           shadowSize: [24, 24], // size of the shadow
           iconAnchor: [11, 24], // point of the icon which will correspond to marker's location
@@ -766,7 +766,7 @@ function getIconInfo(Name) {
       //默认
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: './imgs/loc_notfind.svg',
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_notfind.svg',
           iconSize: [17, 17], // size of the icon
           shadowSize: [28, 28], // size of the shadow
           iconAnchor: [8.5, 24.5], // point of the icon which will correspond to marker's location
@@ -1326,31 +1326,31 @@ function MarkPoint(element) {
     layerNumber == 290 ||
     layerNumber == 288
   ) {
-    var iconUrl = './imgs/icon_' + layerNumber + doneUrl + '.svg'
+    var iconUrl = 'https://assets.yuanshen.site/icons/' + layerNumber + doneUrl + '.svg'
   } else {
-    var iconUrl = './imgs/icon_' + layerNumber + doneUrl + '.png'
+    var iconUrl = 'https://assets.yuanshen.site/icons/' + layerNumber + doneUrl + '.png'
   }
   var currentShowdow = currentIcon.prototype.options.shadowUrl
   var downShadow
   if (
-    currentShowdow == './imgs/loc_find.svg' ||
-    currentShowdow == './imgs/loc_notfind.svg'
+    currentShowdow == 'https://assets.yuanshen.site/icons/loc_find.svg' ||
+    currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind.svg'
   ) {
-    downShadow = newValue ? './imgs/loc_find.svg' : './imgs/loc_notfind.svg'
+    downShadow = newValue ? 'https://assets.yuanshen.site/icons/loc_find.svg' : 'https://assets.yuanshen.site/icons/loc_notfind.svg'
   } else if (
-    currentShowdow == './imgs/loc_stonenot.svg' ||
-    currentShowdow == './imgs/loc_stonefound.svg'
+    currentShowdow == 'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
+    currentShowdow == 'https://assets.yuanshen.site/icons/loc_stonefound.svg'
   ) {
     downShadow = newValue ?
-      './imgs/loc_stonefound.svg' :
-      './imgs/loc_stonenot.svg'
+      'https://assets.yuanshen.site/icons/loc_stonefound.svg' :
+      'https://assets.yuanshen.site/icons/loc_stonenot.svg'
   } else if (
-    currentShowdow == './imgs/loc_find_black.svg' ||
-    currentShowdow == './imgs/loc_notfind_black.svg'
+    currentShowdow == 'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
+    currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
   ) {
     downShadow = newValue ?
-      './imgs/loc_find_black.svg' :
-      './imgs/loc_notfind_black.svg'
+      'https://assets.yuanshen.site/icons/loc_find_black.svg' :
+      'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
   }
   var doneShadowUrl = currentShowdow ? downShadow : ''
   var newIcon = new currentIcon({
@@ -1404,33 +1404,33 @@ function InitMarkerLayer() {
           i == 290 ||
           i == 288
         ) {
-          var iconUrl = './imgs/icon_' + i + doneUrl + '.svg'
+          var iconUrl = 'https://assets.yuanshen.site/icons/' + i + doneUrl + '.svg'
         } else {
-          var iconUrl = './imgs/icon_' + i + doneUrl + '.png'
+          var iconUrl = 'https://assets.yuanshen.site/icons/' + i + doneUrl + '.png'
         }
         var currentShowdow = currentIcon.prototype.options.shadowUrl
         var downShadow
         if (
-          currentShowdow == './imgs/loc_find.svg' ||
-          currentShowdow == './imgs/loc_notfind.svg'
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_find.svg' ||
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind.svg'
         ) {
           downShadow = markedFlag ?
-            './imgs/loc_find.svg' :
-            './imgs/loc_notfind.svg'
+            'https://assets.yuanshen.site/icons/loc_find.svg' :
+            'https://assets.yuanshen.site/icons/loc_notfind.svg'
         } else if (
-          currentShowdow == './imgs/loc_stonenot.svg' ||
-          currentShowdow == './imgs/loc_stonefound.svg'
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_stonefound.svg'
         ) {
           downShadow = markedFlag ?
-            './imgs/loc_stonefound.svg' :
-            './imgs/loc_stonenot.svg'
+            'https://assets.yuanshen.site/icons/loc_stonefound.svg' :
+            'https://assets.yuanshen.site/icons/loc_stonenot.svg'
         } else if (
-          currentShowdow == './imgs/loc_find_black.svg' ||
-          currentShowdow == './imgs/loc_notfind_black.svg'
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
         ) {
           downShadow = markedFlag ?
-            './imgs/loc_find_black.svg' :
-            './imgs/loc_notfind_black.svg'
+            'https://assets.yuanshen.site/icons/loc_find_black.svg' :
+            'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
         }
         var doneShadowUrl = currentShowdow ? downShadow : ''
         var marker = L.marker([latlng.lng, latlng.lat], {
@@ -1476,33 +1476,33 @@ function freshMarkerLayer() {
           i == 290 ||
           i == 288
         ) {
-          var iconUrl = './imgs/icon_' + i + doneUrl + '.svg'
+          var iconUrl = 'https://assets.yuanshen.site/icons/' + i + doneUrl + '.svg'
         } else {
-          var iconUrl = './imgs/icon_' + i + doneUrl + '.png'
+          var iconUrl = 'https://assets.yuanshen.site/icons/' + i + doneUrl + '.png'
         }
         var currentShowdow = currentIcon.prototype.options.shadowUrl
         var downShadow
         if (
-          currentShowdow == './imgs/loc_find.svg' ||
-          currentShowdow == './imgs/loc_notfind.svg'
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_find.svg' ||
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind.svg'
         ) {
           downShadow = markedFlag ?
-            './imgs/loc_find.svg' :
-            './imgs/loc_notfind.svg'
+            'https://assets.yuanshen.site/icons/loc_find.svg' :
+            'https://assets.yuanshen.site/icons/loc_notfind.svg'
         } else if (
-          currentShowdow == './imgs/loc_stonenot.svg' ||
-          currentShowdow == './imgs/loc_stonefound.svg'
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_stonefound.svg'
         ) {
           downShadow = markedFlag ?
-            './imgs/loc_stonefound.svg' :
-            './imgs/loc_stonenot.svg'
+            'https://assets.yuanshen.site/icons/loc_stonefound.svg' :
+            'https://assets.yuanshen.site/icons/loc_stonenot.svg'
         } else if (
-          currentShowdow == './imgs/loc_find_black.svg' ||
-          currentShowdow == './imgs/loc_notfind_black.svg'
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
         ) {
           downShadow = markedFlag ?
-            './imgs/loc_find_black.svg' :
-            './imgs/loc_notfind_black.svg'
+            'https://assets.yuanshen.site/icons/loc_find_black.svg' :
+            'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
         }
         var doneShadowUrl = currentShowdow ? downShadow : ''
         var newIcon = new currentIcon({
@@ -1652,30 +1652,30 @@ function updatePointTime() {
 
           let newValue = false
           let doneUrl = newValue ? '_done' : ''
-          let iconUrl = './imgs/icon_' + value.layerNumber + doneUrl + '.png'
+          let iconUrl = 'https://assets.yuanshen.site/icons/' + value.layerNumber + doneUrl + '.png'
           let currentShowdow = currentIcon.prototype.options.shadowUrl
           let downShadow
           if (
-            currentShowdow == './imgs/loc_find.svg' ||
-            currentShowdow == './imgs/loc_notfind.svg'
+            currentShowdow == 'https://assets.yuanshen.site/icons/loc_find.svg' ||
+            currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind.svg'
           ) {
             downShadow = newValue ?
-              './imgs/loc_find.svg' :
-              './imgs/loc_notfind.svg'
+              'https://assets.yuanshen.site/icons/loc_find.svg' :
+              'https://assets.yuanshen.site/icons/loc_notfind.svg'
           } else if (
-            currentShowdow == './imgs/loc_stonenot.svg' ||
-            currentShowdow == './imgs/loc_stonefound.svg'
+            currentShowdow == 'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
+            currentShowdow == 'https://assets.yuanshen.site/icons/loc_stonefound.svg'
           ) {
             downShadow = newValue ?
-              './imgs/loc_stonefound.svg' :
-              './imgs/loc_stonenot.svg'
+              'https://assets.yuanshen.site/icons/loc_stonefound.svg' :
+              'https://assets.yuanshen.site/icons/loc_stonenot.svg'
           } else if (
-            currentShowdow == './imgs/loc_find_black.svg' ||
-            currentShowdow == './imgs/loc_notfind_black.svg'
+            currentShowdow == 'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
+            currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
           ) {
             downShadow = newValue ?
-              './imgs/loc_find_black.svg' :
-              './imgs/loc_notfind_black.svg'
+              'https://assets.yuanshen.site/icons/loc_find_black.svg' :
+              'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
           }
           let doneShadowUrl = currentShowdow ? downShadow : ''
           let newIcon = new currentIcon({
