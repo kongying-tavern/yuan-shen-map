@@ -4,6 +4,7 @@
   "author": "Kongying Tavern",
   "license": "MulanPSL-1.0",
   "scripts": {
+    "dev": "npx http-server Yuanshenditu -p 0 -c 0",
     "envinfo": "npx envinfo --npmPackages  --system --browsers --binaries --duplicates",
     "commit": "npx git-cz",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
