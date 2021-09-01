@@ -3,7 +3,7 @@
 // @ts-ignore
 t = L.latLngBounds([0, 0], [-66.5, 90])
 var mapCenter = [3568, 6286],
-  mapSize = [12288, 12288]
+  mapSize = [12288, 13568]
 var mapCRS = L.Util.extend({}, L.CRS.Simple, {
   transformation: new L.Transformation(1, 0, 1, 0),
   projection: {

@@ -1,7 +1,7 @@
 // @ts-nocheck
 //初始化地图
 var mapCenter = [3568, 6286],
-  mapSize = [12288, 12288]
+  mapSize = [12288, 13568]
 // var mapPixelScale = [mapPixelSize[0] / mapSize[0], mapPixelSize[1] / mapSize[1]];
 var mapCRS = L.Util.extend({}, L.CRS.Simple, {
   transformation: new L.Transformation(1, 0, 1, 0),
