@@ -601,7 +601,7 @@ body,
 }
 
 .myPopComment {
-  display: block;
+  display: flex;
   position: relative;
   /* width: 100%; */
   margin: 14px 0 0 0;
