@@ -56,13 +56,13 @@ L.TileLayer.T = L.TileLayer.extend({
       z = coords.z + 13
     if (true) {
       if (area_idx == 'MD' || area_idx == 'LY') {
-        return './tiles_md/' + z + '/' + x + '_' + y + '.jpg'
+        return 'https://assets.yuanshen.site/tiles_dq2/' + z + '/' + x + '_' + y + '.jpg'
       } else if (area_idx == 'QD') {
-        return './tiles_qd/' + z + '/' + x + '_' + y + '.jpg'
+        return 'https://assets.yuanshen.site/tiles_qd/' + z + '/' + x + '_' + y + '.jpg'
       } else if (area_idx == 'QD1') {
-        return './tiles_qd1/' + z + '/' + x + '_' + y + '.jpg'
+        return 'https://assets.yuanshen.site/tiles_qd1/' + z + '/' + x + '_' + y + '.jpg'
       } else {
-        return './tiles_md/' + z + '/' + x + '_' + y + '.jpg'
+        return 'https://assets.yuanshen.site/tiles_dq2/' + z + '/' + x + '_' + y + '.jpg'
       }
     } else {
       // TODO: return ?
@@ -1483,7 +1483,8 @@ function MarkPoint(element) {
     layerNumber == 150 ||
     layerNumber == 271 ||
     layerNumber == 198 ||
-    layerNumber == 196
+    layerNumber == 196 ||
+    layerNumber == 290
   ) {
     var iconUrl = './imgs/icon_' + layerNumber + doneUrl + '.svg'
   } else {
@@ -1561,7 +1562,8 @@ function InitMarkerLayer() {
           i == 150 ||
           i == 271 ||
           i == 198 ||
-          i == 196
+          i == 196 ||
+          i == 290
         ) {
           var iconUrl = './imgs/icon_' + i + doneUrl + '.svg'
         } else {
@@ -1635,7 +1637,8 @@ function freshMarkerLayer() {
           i == 150 ||
           i == 271 ||
           i == 198 ||
-          i == 196
+          i == 196 ||
+          i == 290
         ) {
           var iconUrl = './imgs/icon_' + i + doneUrl + '.svg'
         } else {

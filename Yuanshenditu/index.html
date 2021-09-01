@@ -205,10 +205,10 @@
         <span class="area-text">稻妻</span>
         <span class="area-img daoqi hd off">area-img</span>
       </a>
-      <!-- <a href="javascript:;" class="area-list-li-containor off" i_area="DQ2">
+      <a href="javascript:;" class="area-list-li-containor off" i_area="DQ2">
         <span class="area-text">稻妻2</span>
         <span class="area-img daoqi hd off">area-img</span>
-      </a> -->
+      </a>
       <a href="javascript:;" class="area-list-li-containor off undone">
         <span class="area-text">至冬</span>
         <span class="area-img zhidong hd off">area-img</span>
@@ -2427,18 +2427,18 @@
           </div>
           清心-稻妻2
         </span>
-        <!-- <span class="Layer_DYD_MD map-opts" area="MD" itemtype="TX">
+        <span class="Layer_DYD_MD map-opts" area="MD" itemtype="TX">
           <div class="img-border">
             <img src="imgs/icon_379.png" class="map-opts-icon" alt="icon" />
           </div>
           钓鱼点-蒙德
-        </span> -->
-        <!-- <span class="Layer_DYD_LY map-opts" area="LY" itemtype="TX">
+        </span>
+        <span class="Layer_DYD_LY map-opts" area="LY" itemtype="TX">
           <div class="img-border">
             <img src="imgs/icon_380.png" class="map-opts-icon" alt="icon" />
           </div>
           钓鱼点-璃月
-        </span> -->
+        </span>
         <!-- <span class="Layer_ZYF_MD map-opts" area="MD" itemtype="TX">
           <div class="img-border">
             <img src="imgs/icon_381.png" class="map-opts-icon" alt="icon" />
@@ -2463,12 +2463,12 @@
           </div>
           玄月宝箱-璃月
         </span> -->
-        <!-- <span class="Layer_DYD_DQ map-opts" area="DQ" itemtype="TX">
+        <span class="Layer_DYD_DQ map-opts" area="DQ" itemtype="TX">
           <div class="img-border">
             <img src="imgs/icon_385.png" class="map-opts-icon" alt="icon" />
           </div>
           钓鱼点-稻妻
-        </span> -->
+        </span>
         <span class="Layer_PFL_DQ2 map-opts" area="DQ2" itemtype="GW">
           <div class="img-border">
             <img src="imgs/icon_387.png" class="map-opts-icon" alt="icon" />
@@ -2623,6 +2623,11 @@
             map.addLayer(LayerMap['Layer_FB_DQ'])
             map.addLayer(LayerMap['Layer_MJ_DQ'])
             map.addLayer(LayerMap['Layer_LCMD_DQ'])
+            map.addLayer(LayerMap['Layer_SX_DQ2'])
+            map.addLayer(LayerMap['Layer_CSD_DQ2'])
+            map.addLayer(LayerMap['Layer_FB_DQ2'])
+            map.addLayer(LayerMap['Layer_MJ_DQ2'])
+            map.addLayer(LayerMap['Layer_LCMD_DQ2'])
           }
           map.removeLayer(LayerMap['Layer_CSD_QD'])
           map.removeLayer(LayerMap['Layer_LCMD_QD'])
@@ -2650,6 +2655,11 @@
           map.removeLayer(LayerMap['Layer_FB_DQ'])
           map.removeLayer(LayerMap['Layer_MJ_DQ'])
           map.removeLayer(LayerMap['Layer_LCMD_DQ'])
+          map.removeLayer(LayerMap['Layer_SX_DQ2'])
+            map.removeLayer(LayerMap['Layer_CSD_DQ2'])
+            map.removeLayer(LayerMap['Layer_FB_DQ2'])
+            map.removeLayer(LayerMap['Layer_MJ_DQ2'])
+            map.removeLayer(LayerMap['Layer_LCMD_DQ2'])
         } catch {}
       } else if (area_idx_cur == 'QD1') {
         try {
@@ -2672,6 +2682,11 @@
           map.removeLayer(LayerMap['Layer_FB_DQ'])
           map.removeLayer(LayerMap['Layer_MJ_DQ'])
           map.removeLayer(LayerMap['Layer_LCMD_DQ'])
+          map.removeLayer(LayerMap['Layer_SX_DQ2'])
+            map.removeLayer(LayerMap['Layer_CSD_DQ2'])
+            map.removeLayer(LayerMap['Layer_FB_DQ2'])
+            map.removeLayer(LayerMap['Layer_MJ_DQ2'])
+            map.removeLayer(LayerMap['Layer_LCMD_DQ2'])
         } catch {}
       }
     }
@@ -2829,6 +2844,11 @@
       map.addLayer(LayerMap['Layer_FB_DQ'])
       map.addLayer(LayerMap['Layer_MJ_DQ'])
       map.addLayer(LayerMap['Layer_LCMD_DQ'])
+      map.addLayer(LayerMap['Layer_SX_DQ2'])
+            map.addLayer(LayerMap['Layer_CSD_DQ2'])
+            map.addLayer(LayerMap['Layer_FB_DQ2'])
+            map.addLayer(LayerMap['Layer_MJ_DQ2'])
+            map.addLayer(LayerMap['Layer_LCMD_DQ2'])
       if (getToken()) {
         console.log('在线模式 token: ' + tokenPara)
       } else {
@@ -3160,6 +3180,11 @@
             map.addLayer(LayerMap['Layer_FB_DQ'])
             map.addLayer(LayerMap['Layer_MJ_DQ'])
             map.addLayer(LayerMap['Layer_LCMD_DQ'])
+            map.addLayer(LayerMap['Layer_SX_DQ2'])
+            map.addLayer(LayerMap['Layer_CSD_DQ2'])
+            map.addLayer(LayerMap['Layer_FB_DQ2'])
+            map.addLayer(LayerMap['Layer_MJ_DQ2'])
+            map.addLayer(LayerMap['Layer_LCMD_DQ2'])
           } else if (area_idx_cur == 'QD') {
             map.addLayer(LayerMap['Layer_CSD_QD'])
             map.addLayer(LayerMap['Layer_LCMD_QD'])
@@ -3186,6 +3211,11 @@
             map.removeLayer(LayerMap['Layer_FB_DQ'])
             map.removeLayer(LayerMap['Layer_MJ_DQ'])
             map.removeLayer(LayerMap['Layer_LCMD_DQ'])
+            map.removeLayer(LayerMap['Layer_SX_DQ2'])
+            map.removeLayer(LayerMap['Layer_CSD_DQ2'])
+            map.removeLayer(LayerMap['Layer_FB_DQ2'])
+            map.removeLayer(LayerMap['Layer_MJ_DQ2'])
+            map.removeLayer(LayerMap['Layer_LCMD_DQ2'])
           } else if (area_idx_cur == 'QD') {
             map.removeLayer(LayerMap['Layer_CSD_QD'])
             map.removeLayer(LayerMap['Layer_LCMD_QD'])
