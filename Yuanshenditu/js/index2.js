@@ -1323,7 +1323,8 @@ function MarkPoint(element) {
     layerNumber == 271 ||
     layerNumber == 198 ||
     layerNumber == 196 ||
-    layerNumber == 290
+    layerNumber == 290 ||
+    layerNumber == 288
   ) {
     var iconUrl = './imgs/icon_' + layerNumber + doneUrl + '.svg'
   } else {
@@ -1400,7 +1401,8 @@ function InitMarkerLayer() {
           i == 271 ||
           i == 198 ||
           i == 196 ||
-          i == 290
+          i == 290 ||
+          i == 288
         ) {
           var iconUrl = './imgs/icon_' + i + doneUrl + '.svg'
         } else {
@@ -1471,7 +1473,8 @@ function freshMarkerLayer() {
           i == 271 ||
           i == 198 ||
           i == 196 ||
-          i == 290
+          i == 290 ||
+          i == 288
         ) {
           var iconUrl = './imgs/icon_' + i + doneUrl + '.svg'
         } else {
