@@ -1746,11 +1746,11 @@ map.on('popupopen', function (e) {
 		<div class="myPopLine"></div>
 		<div class="myPopIssue" onclick="openIssue()">反馈<img class="myPopIssueIcon" src=imgs/con_img/popIssue.png></div>
 		<div class="myPopClose" onclick="closePop()"></div>
-		<div class="myPopComment" onclick="change()">${marker.feature.properties.popupContent}
+		<div class="myPopComment disable" onclick="change()" style="white-space:pre-line;cursor:default">${marker.feature.properties.popupContent}
 			<img class="Select" src=imgs/con_img/Select.png>
 		</div>
 		<div class="time-wrapper"><span id="time"></span></div>
-		<div class="myPopPicture">
+		<div class="myPopPicture disable">
 			<img src=https://yuanshen.site/comment_png/${key}.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">
 		</div>
 		<div class="${switchClass}" onclick="MarkPoint(this)" data-key="${key}">
@@ -1765,6 +1765,12 @@ map.on('popupopen', function (e) {
 		<div class="tipcard"></div>
 
 	</div>`
+  $.get(
+    `comment_png/${key}.jpg`,
+     function (data) {
+      $('.myPopComment,.myPopPicture').removeClass('disable');
+      $('.myPopComment').css({'cursor': 'point'});
+     });
   if (timeValue) {
     const {
       // @ts-ignore
