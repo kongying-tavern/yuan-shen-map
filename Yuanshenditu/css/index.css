@@ -112,6 +112,7 @@ body,
   /* right: 0px; */
   right: -1000px;
 }
+
 /* 反馈样式 */
 .fankui {
   display: block;
@@ -229,11 +230,9 @@ body,
 .con-type-label {
   width: 114px;
   height: 50px;
-  background: linear-gradient(
-      270deg,
+  background: linear-gradient(270deg,
       #ffffff -95.11%,
-      rgba(255, 255, 255, 0) 401.72%
-    ),
+      rgba(255, 255, 255, 0) 401.72%),
     #f0e9e2;
   border: 0.5px solid #d2c6bb;
   box-sizing: border-box;
@@ -248,11 +247,9 @@ body,
 
 .con-type-label.on {
   color: #fff;
-  background: linear-gradient(
-      270deg,
+  background: linear-gradient(270deg,
       rgba(171, 143, 119, 0.5) -46.99%,
-      rgba(143, 110, 76, 0.5) 198.5%
-    ),
+      rgba(143, 110, 76, 0.5) 198.5%),
     #ab8f77;
 }
 
@@ -416,11 +413,9 @@ body,
   display: block;
   width: 266px;
   height: 74px;
-  background: linear-gradient(
-      270deg,
+  background: linear-gradient(270deg,
       #ffffff -95.11%,
-      rgba(255, 255, 255, 0) 100%
-    ),
+      rgba(255, 255, 255, 0) 100%),
     #f0e9e2;
   margin: 0 0 10px 37px;
   border-radius: 2px;
@@ -434,11 +429,9 @@ body,
 }
 
 .options-list .map-opts.on {
-  background: linear-gradient(
-      270deg,
+  background: linear-gradient(270deg,
       rgba(171, 143, 119, 0.5) -46.99%,
-      rgba(143, 110, 76, 0.5) 198.5%
-    ),
+      rgba(143, 110, 76, 0.5) 198.5%),
     #ab8f77;
   color: #f2f0ee;
 }
@@ -703,7 +696,16 @@ body,
 }
 
 .myPopPicture.hasVideo .videoTip {
+  opacity: 0;
   display: inline-block;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+}
+
+.myPopPicture.hasVideo .videoTip.active {
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 0.5s;
 }
 
 .myPopPicture .videoBtn {
@@ -946,6 +948,7 @@ body,
     /*兼容-moz-引擎浏览器*/
   }
 }
+
 .time-wrapper {
   font-size: 18px;
   padding: 0 17px;
@@ -962,6 +965,7 @@ body,
 .avatar-wrapper img {
   border-radius: 50%;
 }
+
 .enindex-btn {
   z-index: 400;
   position: absolute;
@@ -971,6 +975,7 @@ body,
   color: #191970;
   font-weight: bold;
 }
+
 .jpindex-btn {
   z-index: 400;
   position: absolute;
@@ -980,6 +985,7 @@ body,
   color: #191970;
   font-weight: bold;
 }
+
 @media screen and (max-width: 400px) {
   .enindex-btn {
     z-index: 400;
@@ -991,6 +997,7 @@ body,
     font-weight: bold;
     font-size: 12px;
   }
+
   .jpindex-btn {
     z-index: 400;
     position: absolute;
