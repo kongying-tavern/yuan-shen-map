@@ -625,7 +625,7 @@ body,
   line-height: 115%;
   align-items: center;
   color: #4b5368;
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .myPopComment span {
