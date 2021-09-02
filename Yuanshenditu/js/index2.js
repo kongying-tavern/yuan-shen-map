@@ -1605,6 +1605,11 @@ function dealIcon(target, key) {
 // L.control.layers(null, overlays, {
 // 	collapsed: false,
 // }).addTo(map);
+var JS_MEDIA_LIST1={};
+$.getJSON("https://yuanshen.site/HotUpdate/POI_JSON_New/item_media_path.json", function(data) {
+  JS_MEDIA_LIST1=data;
+  });
+
 let timer
 map.on('popupopen', function (e) {
   console.log('e', e)
@@ -1615,7 +1620,7 @@ map.on('popupopen', function (e) {
   var markedFlag = localStorage.getItem(key)
   var switchClass = !markedFlag ? 'myPopSwitchTodo' : 'myPopSwitchDone'
   var switchText = !markedFlag ? '未完成' : '已完成'
-  var videoUrl = JS_MEDIA_LIST[key] || ''
+  var videoUrl = JS_MEDIA_LIST1[key] || ''
   var videoClass = videoUrl ? 'hasVideo' : ''
   const timeValue = localStorage.getItem('done_time_' + key)
 
