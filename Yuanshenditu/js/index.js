@@ -943,23 +943,27 @@ map.on('popupopen', function (e) {
   var key = className.substring(5, className.length)
   var markedFlag = localStorage.getItem(key)
   var switchClass = !markedFlag ? 'myPopSwitchTodo' : 'myPopSwitchDone'
+  var videoUrl = JS_MEDIA_LIST[key] || ''
+  var videoClass = videoUrl ? 'hasVideo' : ''
   var switchText = !markedFlag ? '未完成' : '已完成'
   const timeValue = localStorage.getItem('done_time_' + key)
 
+  console.log(timeValue)
   var popupHtml = `
 	<div class="myPopContainer">
 		<div class="myPopTitle">
-			<div class="myPopName" >${marker.feature.properties.popTitle}${marker.feature.id}</div>
+			<div class="myPopName">${marker.feature.properties.popTitle}${marker.feature.id}</div>
 		</div>
 		<div class="myPopLine"></div>
-		<div class="myPopIssue" onclick="openIssue()">反馈<img class="myPopIssueIcon" src=imgs/con_img/popIssue.png></div>
+		<div class="myPopIssue" onclick="openIssue()">反馈<img class="myPopIssueIcon" src="imgs/con_img/popIssue.png"></div>
 		<div class="myPopClose" onclick="closePop()"></div>
 		<div class="myPopComment" onclick="change()">${marker.feature.properties.popupContent}
-			<img class="Select" src=imgs/con_img/Select.png>
+			<img class="Select" src="imgs/con_img/Select.png">
 		</div>
 		<div class="time-wrapper"><span id="time"></span></div>
-		<div class="myPopPicture">
-			<img src=comment_png/${key}.jpg onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">
+		<div class="myPopPicture hasVideo">
+			<img src="comment_png/${key}.jpg" onerror="javascript:$(\'.myPopComment,.myPopPicture\').addClass(\'disable\');$(\'.myPopComment\').css({\'cursor\': \'default\'})">
+      <img class="noImgVideoTip" src="imgs/media_img/onlyMedia.png">
 		</div>
 		<div class="${switchClass}" onclick="MarkPoint(this)" data-key="${key}">
 			<p class="switchOff">未完成</p>
@@ -971,7 +975,6 @@ map.on('popupopen', function (e) {
 			</div>
 		</div>
 		<div class="tipcard"></div>
-
 	</div>`
   if (timeValue) {
     const { start, end } = JSON.parse(timeValue)

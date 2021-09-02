@@ -661,13 +661,69 @@ body,
   height: 0;
 }
 
-.myPopPicture img {
+.myPopPicture.hasVideo {
+  height: 326px !important;
+}
+
+.myPopPicture .img,
+.myPopPicture .noImgVideoTip {
   display: inline-block;
   margin-top: 14px;
   width: 100%;
   box-sizing: border-box;
   border: 3px solid rgba(255, 255, 255, 1);
   border-radius: 9px;
+}
+
+.myPopPicture .noImgVideoTip {
+  display: none;
+}
+
+.myPopPicture.disable.hasVideo .img {
+  display: none;
+}
+
+.myPopPicture.disable.hasVideo .noImgVideoTip {
+  display: inline-block;
+}
+
+.myPopPicture .videoTip {
+  display: none;
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 18px;
+  line-height: 28px;
+  color: #fff;
+  padding: 0 14px;
+  border-radius: 14px;
+}
+
+.myPopPicture .videoTip {
+  display: inline-block;
+}
+
+.myPopPicture .videoBtn {
+  display: none;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 55px;
+  height: 55px;
+  background-image: url('../imgs/media_img/btnPlay.png');
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  cursor: pointer;
+  text-decoration: none !important;
+  z-index: 100;
+}
+
+.myPopPicture.hasVideo .videoBtn {
+  display: inline-block;
 }
 
 .tipcard {
