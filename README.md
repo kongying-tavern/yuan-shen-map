@@ -52,7 +52,7 @@ A8、大白米、Icarusss、南极风、(\^_^\)、Peaceshi
 | :--------------------  | :-------------------------------------------------------- | -------------------- |
 | 空荧酒馆原神地图文档            | [https://yuanshen.site/docs/](https://yuanshen.site/)     | [GitHub](https://github.com/jiazengp/genshinmap-docs) |
 | 空荧酒馆原神地图（v2）  | -                                                        | [Gitee](https://gitee.com/KYJGYSDT/island_map) |
-| 空荧酒馆原神地图（v3）          | [https://yuanshen.site/v3/](https://yuanshen.site/v3/)    | [GitHub](https://github.com/peaceshi/nextjs-imagination-map/) |
+| 空荧酒馆原神地图（v3）          | [https://mapv3-dev.vercel.app/](https://mapv3-dev.vercel.app/)    | [GitHub](https://github.com/peaceshi/nextjs-imagination-map/) |
 | 空荧酒馆原神地图客户端更新器     | - | [Gitee](https://gitee.com/KYJGYSDT/yuanshendt-updater) |    
 | 空荧酒馆原神地图后台管理系统     | -                                                         | [Gitee](https://gitee.com/KYJGYSDT/manage_system) |
 | 空荧酒馆原神地图自动追踪dll      | -                                                         | [Gitee](https://gitee.com/Yu_Sui_Xian/yuanshen-auto-tracking-dll) |
