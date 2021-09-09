@@ -33,8 +33,8 @@ body,
   background: url('../imgs/genshin_pub.png') no-repeat;
   width: 190px;
   height: 50px;
-  right: 20px;
-  bottom: 45px;
+  left: 20px;
+  bottom: 85px;
   cursor: pointer;
 }
 
@@ -45,8 +45,20 @@ body,
   background: url('../imgs/genshin_art.png') no-repeat;
   width: 190px;
   height: 50px;
-  right: 20px;
-  bottom: 105px;
+  left: 20px;
+  bottom: 145px;
+  cursor: pointer;
+}
+
+.feixiaoqiu {
+  z-index: 4000;
+  display: block;
+  position: absolute;
+  background: url('../imgs/feixiaoqiu.png') no-repeat;
+  width: 190px;
+  height: 50px;
+  left: 20px;
+  bottom: 205px;
   cursor: pointer;
 }
 
@@ -58,6 +70,13 @@ body,
 }
 
 .YQLJ2 {
+  display: block;
+  margin: auto;
+  width: 190px;
+  height: 50px;
+}
+
+.YQLJ3 {
   display: block;
   margin: auto;
   width: 190px;
