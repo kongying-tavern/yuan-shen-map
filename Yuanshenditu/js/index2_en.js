@@ -20,7 +20,7 @@ var map = L.map('map', {
   center: [-528, -142],
   zoomDelta: 0,
   zoomSnap: 0.5,
-  maxZoom: 1,
+  maxZoom: 2,
   minZoom: -4,
   zoom: -4,
   maxBounds: L.latLngBounds(
