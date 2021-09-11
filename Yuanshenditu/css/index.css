@@ -249,9 +249,11 @@ body,
 .con-type-label {
   width: 114px;
   height: 50px;
-  background: linear-gradient(270deg,
+  background: linear-gradient(
+      270deg,
       #ffffff -95.11%,
-      rgba(255, 255, 255, 0) 401.72%),
+      rgba(255, 255, 255, 0) 401.72%
+    ),
     #f0e9e2;
   border: 0.5px solid #d2c6bb;
   box-sizing: border-box;
@@ -266,9 +268,11 @@ body,
 
 .con-type-label.on {
   color: #fff;
-  background: linear-gradient(270deg,
+  background: linear-gradient(
+      270deg,
       rgba(171, 143, 119, 0.5) -46.99%,
-      rgba(143, 110, 76, 0.5) 198.5%),
+      rgba(143, 110, 76, 0.5) 198.5%
+    ),
     #ab8f77;
 }
 
@@ -432,9 +436,11 @@ body,
   display: block;
   width: 266px;
   height: 74px;
-  background: linear-gradient(270deg,
+  background: linear-gradient(
+      270deg,
       #ffffff -95.11%,
-      rgba(255, 255, 255, 0) 100%),
+      rgba(255, 255, 255, 0) 100%
+    ),
     #f0e9e2;
   margin: 0 0 10px 37px;
   border-radius: 2px;
@@ -448,9 +454,11 @@ body,
 }
 
 .options-list .map-opts.on {
-  background: linear-gradient(270deg,
+  background: linear-gradient(
+      270deg,
       rgba(171, 143, 119, 0.5) -46.99%,
-      rgba(143, 110, 76, 0.5) 198.5%),
+      rgba(143, 110, 76, 0.5) 198.5%
+    ),
     #ab8f77;
   color: #f2f0ee;
 }

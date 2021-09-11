@@ -25,7 +25,7 @@
   },
   "prettier": "@kongying-tavern/prettier-config",
   "lint-staged": {
-    "*.{js,ts,md,json,yml}": [
+    "*.{html,js,ts,md,json,yml}": [
       "prettier --write"
     ]
   },
