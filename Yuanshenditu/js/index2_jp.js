@@ -780,6 +780,13 @@ var LayerMap = {
   Layer_YM_DQ3: L.markerClusterGroup(),
   Layer_MR_DQ: L.markerClusterGroup(),
   Layer_HZDBJ_DQ2: L.markerClusterGroup(),
+  Layer_WQDCD_MD: L.markerClusterGroup(),
+  Layer_WQDCD_LY: L.markerClusterGroup(),
+  Layer_NPCShop_MD: L.markerClusterGroup(),
+  Layer_NPCShop_LY: L.markerClusterGroup(),
+  Layer_NPCShop_DQ: L.markerClusterGroup(),
+  Layer_NPCShop_DQ2: L.markerClusterGroup(),
+  Layer_NPCShop_DQ3: L.markerClusterGroup(),
 }
 
 //定义各个坐标使用的图标
@@ -1518,6 +1525,13 @@ var typearray = [
   [LayerMap['Layer_YM_DQ3'], JS_YM_DQ3, 'TC', 'YM_DQ3'],
   [LayerMap['Layer_MR_DQ'], JS_MR_DQ, 'TC', 'MR_DQ'],
   [LayerMap['Layer_HZDBJ_DQ2'], JS_HZDBJ_DQ2, 'TC', 'HZDBJ_DQ2'],
+  [LayerMap['Layer_WQDCD_MD'], JS_WQDCD_MD, 'TC', 'WQDCD_MD'],
+  [LayerMap['Layer_WQDCD_LY'], JS_WQDCD_LY, 'TC', 'WQDCD_LY'],
+  [LayerMap['Layer_NPCShop_MD'], JS_NPCShop_MD, 'TC', 'NPCShop_MD'],
+  [LayerMap['Layer_NPCShop_LY'], JS_NPCShop_LY, 'TC', 'NPCShop_LY'],
+  [LayerMap['Layer_NPCShop_DQ'], JS_NPCShop_DQ, 'TC', 'NPCShop_DQ'],
+  [LayerMap['Layer_NPCShop_DQ2'], JS_NPCShop_DQ2, 'TC', 'NPCShop_DQ2'],
+  [LayerMap['Layer_NPCShop_DQ3'], JS_NPCShop_DQ3, 'TC', 'NPCShop_DQ3'],
 ]
 // @ts-ignore
 const MonosTime = {
