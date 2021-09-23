@@ -31,10 +31,11 @@ body,
   display: block;
   position: absolute;
   background: url('../imgs/genshin_pub.png') no-repeat;
-  width: 190px;
-  height: 50px;
-  left: 20px;
-  bottom: 85px;
+  background-size: contain;
+  width: 120px;
+  height: 35px;
+  right: 10px;
+  bottom: 5px;
   cursor: pointer;
 }
 
@@ -43,10 +44,11 @@ body,
   display: block;
   position: absolute;
   background: url('../imgs/genshin_art.png') no-repeat;
-  width: 190px;
-  height: 50px;
-  left: 20px;
-  bottom: 145px;
+  background-size: contain;
+  width: 120px;
+  height: 35px;
+  right: 10px;
+  bottom: 45px;
   cursor: pointer;
 }
 
@@ -55,32 +57,53 @@ body,
   display: block;
   position: absolute;
   background: url('../imgs/feixiaoqiu.png') no-repeat;
-  width: 190px;
-  height: 50px;
-  left: 20px;
-  bottom: 205px;
+  background-size: contain;
+  width: 120px;
+  height: 35px;
+  right: 140px;
+  bottom: 5px;
+  cursor: pointer;
+}
+
+.wiki {
+  z-index: 4000;
+  display: block;
+  position: absolute;
+  background: url('../imgs/wiki.png') no-repeat;
+  background-size: contain;
+  width: 120px;
+  height: 35px;
+  right: 140px;
+  bottom: 45px;
   cursor: pointer;
 }
 
 .YQLJ {
   display: block;
   margin: auto;
-  width: 190px;
-  height: 50px;
+  width: 120px;
+  height: 35px;
 }
 
 .YQLJ2 {
   display: block;
   margin: auto;
-  width: 190px;
-  height: 50px;
+  width: 120px;
+  height: 35px;
 }
 
 .YQLJ3 {
   display: block;
   margin: auto;
-  width: 190px;
-  height: 50px;
+  width: 120px;
+  height: 35px;
+}
+
+.YQLJ4 {
+  display: block;
+  margin: auto;
+  width: 120px;
+  height: 35px;
 }
 
 .loading {
