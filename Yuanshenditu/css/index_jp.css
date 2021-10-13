@@ -7,6 +7,7 @@ html,
 body,
 #map {
   height: 100%;
+  background-color: #2c2b30;
 }
 
 .myPopIssue {
@@ -961,7 +962,7 @@ body,
   display: block;
   left: 30px;
   top: 65px;
-  color: #191970;
+  color: white !important;
   font-weight: bold;
 }
 
@@ -971,8 +972,16 @@ body,
   display: block;
   left: 30px;
   top: 85px;
-  color: #191970;
+  color: white !important;
   font-weight: bold;
+}
+
+.enindex-btn:hover,
+.jpindex-btn:hover
+{
+  color: rgb(128, 128, 128) !important;
+  transition-property: color;
+  transition-duration: 0.25s;
 }
 
 @media screen and (max-width: 400px) {
@@ -1000,7 +1009,7 @@ body,
     display: block;
     left: 35px;
     top: 35px;
-    color: #191970;
+    color: white !important;
     font-weight: bold;
     font-size: 12px;
   }
@@ -1011,7 +1020,7 @@ body,
     display: block;
     left: 35px;
     top: 55px;
-    color: #191970;
+    color: white !important;
     font-weight: bold;
     font-size: 12px;
   }

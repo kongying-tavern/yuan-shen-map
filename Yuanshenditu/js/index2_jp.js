@@ -3,7 +3,7 @@
 // @ts-ignore
 t = L.latLngBounds([0, 0], [-66.5, 90])
 var mapCenter = [3568, 6286],
-  mapSize = [12288, 13568]
+  mapSize = [12288, 15600]
 var mapCRS = L.Util.extend({}, L.CRS.Simple, {
   transformation: new L.Transformation(1, 0, 1, 0),
   projection: {
@@ -18,7 +18,7 @@ var mapCRS = L.Util.extend({}, L.CRS.Simple, {
 })
 var map = L.map('map', {
   crs: mapCRS,
-  center: [-528, -142],
+  center: [-528, 1742],
   zoomDelta: 0,
   zoomSnap: 0.5,
   maxZoom: 2,
@@ -57,7 +57,7 @@ L.TileLayer.T = L.TileLayer.extend({
     if (true) {
       if (area_idx == 'MD' || area_idx == 'LY') {
         return (
-          'https://assets.yuanshen.site/tiles_dq2/' +
+          'https://assets.yuanshen.site/tiles_dq3/' +
           z +
           '/' +
           x +
@@ -87,7 +87,7 @@ L.TileLayer.T = L.TileLayer.extend({
         )
       } else {
         return (
-          'https://assets.yuanshen.site/tiles_dq2/' +
+          'https://assets.yuanshen.site/tiles_dq3/' +
           z +
           '/' +
           x +
@@ -1614,7 +1614,9 @@ function MarkPoint(element) {
     layerNumber == 198 ||
     layerNumber == 196 ||
     layerNumber == 290 ||
-    layerNumber == 288
+    layerNumber == 288 ||
+    layerNumber == 402 ||
+    layerNumber == 404
   ) {
     var iconUrl =
       'https://assets.yuanshen.site/icons/' + layerNumber + doneUrl + '.svg'
@@ -1698,7 +1700,9 @@ function InitMarkerLayer() {
           i == 198 ||
           i == 196 ||
           i == 290 ||
-          i == 288
+          i == 288 ||
+          i == 402 ||
+          i == 404
         ) {
           var iconUrl =
             'https://assets.yuanshen.site/icons/' + i + doneUrl + '.svg'
@@ -1780,7 +1784,9 @@ function freshMarkerLayer() {
           i == 198 ||
           i == 196 ||
           i == 290 ||
-          i == 288
+          i == 288 ||
+          i == 402 ||
+          i == 404
         ) {
           var iconUrl =
             'https://assets.yuanshen.site/icons/' + i + doneUrl + '.svg'
