@@ -3158,12 +3158,6 @@
               </div>
               晶化骨髓-鹤观
             </span> -->
-            <!-- <span class="Layer_MingCao_DQ3 map-opts" area="DQ3" itemtype="TC">
-              <div class="img-border">
-                <img src="https://assets.yuanshen.site/icons/359.png" class="map-opts-icon" alt="icon" />
-              </div>
-              鸣草-鹤观
-            </span> -->
             <!-- <span class="Layer_XH_DQ3 map-opts" area="DQ3" itemtype="TC">
               <div class="img-border">
                 <img src="https://assets.yuanshen.site/icons/360.png" class="map-opts-icon" alt="icon" />
@@ -3194,12 +3188,6 @@
               </div>
               天云草实-鹤观
             </span> -->
-            <!-- <span class="Layer_SHZZ_DQ3 map-opts" area="DQ3" itemtype="TC">
-              <div class="img-border">
-                <img src="https://assets.yuanshen.site/icons/375.png" class="map-opts-icon" alt="icon" />
-              </div>
-              珊瑚真珠-鹤观
-            </span> -->
             <!-- <span class="Layer_SXLYH_DQ3 map-opts" area="DQ3" itemtype="TC">
               <div class="img-border">
                 <img src="https://assets.yuanshen.site/icons/376.png" class="map-opts-icon" alt="icon" />
@@ -3224,7 +3212,7 @@
       <a href="index_en.html" class="enindex-btn">English Version(test)</a>
       <a href="index_jp.html" class="jpindex-btn">日本語版（テスト）</a>
       <script src="js/jquery-3.5.1.min.js"></script>
-    
+      <script src="js/fastclick.js"></script>
       <script src="leaflet/leaflet.js"></script>
       <script src="dist/leaflet.markercluster-src_old.js"></script>
       <script src="js/Item_Json.js"></script>
@@ -3957,6 +3945,9 @@
           },
           false
         )
+        $(function () {
+          FastClick.attach(document.body);
+        });
     
       </script>
       <script src="js/feedback.js"></script>
