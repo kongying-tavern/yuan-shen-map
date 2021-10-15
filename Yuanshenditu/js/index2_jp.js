@@ -967,8 +967,7 @@ function change() {
           transform: 'rotate(-180deg)',
         })
       })
-      $('.myPopPicture').animate(
-        {
+      $('.myPopPicture').animate({
           height: '0px',
         },
         function () {
@@ -981,8 +980,7 @@ function change() {
           transform: 'rotate(0deg)',
         })
       })
-      $('.myPopPicture').animate(
-        {
+      $('.myPopPicture').animate({
           height: '326px',
         },
         function () {
@@ -1588,17 +1586,17 @@ function MarkPoint(element) {
     const now = new Date()
     localStorage.setItem(
       'done_time_' + key,
-      newValue
-        ? JSON.stringify({
-            stat: now.toString(),
-            end: new Date(
-              now.setHours(
-                now.getHours() + MonosTime[typearray[layerNumber][3]]
-              )
-            ).toString(),
-            layerNumber,
-          })
-        : ''
+      newValue ?
+      JSON.stringify({
+        stat: now.toString(),
+        end: new Date(
+          now.setHours(
+            now.getHours() + MonosTime[typearray[layerNumber][3]]
+          )
+        ).toString(),
+        layerNumber,
+      }) :
+      ''
     )
   }
 
@@ -1631,23 +1629,23 @@ function MarkPoint(element) {
     currentShowdow == 'https://assets.yuanshen.site/icons/loc_find.svg' ||
     currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind.svg'
   ) {
-    downShadow = newValue
-      ? 'https://assets.yuanshen.site/icons/loc_find.svg'
-      : 'https://assets.yuanshen.site/icons/loc_notfind.svg'
+    downShadow = newValue ?
+      'https://assets.yuanshen.site/icons/loc_find.svg' :
+      'https://assets.yuanshen.site/icons/loc_notfind.svg'
   } else if (
     currentShowdow == 'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
     currentShowdow == 'https://assets.yuanshen.site/icons/loc_stonefound.svg'
   ) {
-    downShadow = newValue
-      ? 'https://assets.yuanshen.site/icons/loc_stonefound.svg'
-      : 'https://assets.yuanshen.site/icons/loc_stonenot.svg'
+    downShadow = newValue ?
+      'https://assets.yuanshen.site/icons/loc_stonefound.svg' :
+      'https://assets.yuanshen.site/icons/loc_stonenot.svg'
   } else if (
     currentShowdow == 'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
     currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
   ) {
-    downShadow = newValue
-      ? 'https://assets.yuanshen.site/icons/loc_find_black.svg'
-      : 'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
+    downShadow = newValue ?
+      'https://assets.yuanshen.site/icons/loc_find_black.svg' :
+      'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
   }
   var doneShadowUrl = currentShowdow ? downShadow : ''
   var newIcon = new currentIcon({
@@ -1717,27 +1715,27 @@ function InitMarkerLayer() {
           currentShowdow == 'https://assets.yuanshen.site/icons/loc_find.svg' ||
           currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind.svg'
         ) {
-          downShadow = markedFlag
-            ? 'https://assets.yuanshen.site/icons/loc_find.svg'
-            : 'https://assets.yuanshen.site/icons/loc_notfind.svg'
+          downShadow = markedFlag ?
+            'https://assets.yuanshen.site/icons/loc_find.svg' :
+            'https://assets.yuanshen.site/icons/loc_notfind.svg'
         } else if (
           currentShowdow ==
-            'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
+          'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
           currentShowdow ==
-            'https://assets.yuanshen.site/icons/loc_stonefound.svg'
+          'https://assets.yuanshen.site/icons/loc_stonefound.svg'
         ) {
-          downShadow = markedFlag
-            ? 'https://assets.yuanshen.site/icons/loc_stonefound.svg'
-            : 'https://assets.yuanshen.site/icons/loc_stonenot.svg'
+          downShadow = markedFlag ?
+            'https://assets.yuanshen.site/icons/loc_stonefound.svg' :
+            'https://assets.yuanshen.site/icons/loc_stonenot.svg'
         } else if (
           currentShowdow ==
-            'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
+          'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
           currentShowdow ==
+          'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
+        ) {
+          downShadow = markedFlag ?
+            'https://assets.yuanshen.site/icons/loc_find_black.svg' :
             'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
-        ) {
-          downShadow = markedFlag
-            ? 'https://assets.yuanshen.site/icons/loc_find_black.svg'
-            : 'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
         }
         var doneShadowUrl = currentShowdow ? downShadow : ''
         // @ts-ignore
@@ -1801,27 +1799,27 @@ function freshMarkerLayer() {
           currentShowdow == 'https://assets.yuanshen.site/icons/loc_find.svg' ||
           currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind.svg'
         ) {
-          downShadow = markedFlag
-            ? 'https://assets.yuanshen.site/icons/loc_find.svg'
-            : 'https://assets.yuanshen.site/icons/loc_notfind.svg'
+          downShadow = markedFlag ?
+            'https://assets.yuanshen.site/icons/loc_find.svg' :
+            'https://assets.yuanshen.site/icons/loc_notfind.svg'
         } else if (
           currentShowdow ==
-            'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
+          'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
           currentShowdow ==
-            'https://assets.yuanshen.site/icons/loc_stonefound.svg'
+          'https://assets.yuanshen.site/icons/loc_stonefound.svg'
         ) {
-          downShadow = markedFlag
-            ? 'https://assets.yuanshen.site/icons/loc_stonefound.svg'
-            : 'https://assets.yuanshen.site/icons/loc_stonenot.svg'
+          downShadow = markedFlag ?
+            'https://assets.yuanshen.site/icons/loc_stonefound.svg' :
+            'https://assets.yuanshen.site/icons/loc_stonenot.svg'
         } else if (
           currentShowdow ==
-            'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
+          'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
           currentShowdow ==
+          'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
+        ) {
+          downShadow = markedFlag ?
+            'https://assets.yuanshen.site/icons/loc_find_black.svg' :
             'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
-        ) {
-          downShadow = markedFlag
-            ? 'https://assets.yuanshen.site/icons/loc_find_black.svg'
-            : 'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
         }
         var doneShadowUrl = currentShowdow ? downShadow : ''
         var newIcon = new currentIcon({
@@ -1878,6 +1876,14 @@ function dealIcon(target, key) {
 // 	collapsed: false,
 // }).addTo(map);
 // @ts-ignore
+function checkWebp() {
+  try {
+    return (document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') == 0);
+  } catch (err) {
+    return false;
+  }
+}
+var isWebP = checkWebp();
 let timer
 map.on('popupopen', function (e) {
   console.log('e', e)
@@ -1917,13 +1923,30 @@ map.on('popupopen', function (e) {
 		<div class="tipcard"></div>
 
 	</div>`
-  $.get(`comment_png/${key}.jpg`, function (data) {
-    $('.myPopComment,.myPopPicture').removeClass('disable')
-    $('.myPopComment').css({
-      cursor: 'point',
+  if (isWebP) {
+    $.ajax({
+      url: `comment_png/${key}.jpg`,
+      headers: {
+        Accept: "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+      },
+      type: "get",
+      success: function (data) {
+        $('.myPopComment,.myPopPicture').removeClass('disable')
+        $('.myPopComment').css({
+          cursor: 'point',
+        })
+        $('.myPopPicture>.img').attr('src', `comment_png/${key}.jpg`)
+      }
+    });
+  } else {
+    $.get(`comment_png/${key}.jpg`, function (data) {
+      $('.myPopComment,.myPopPicture').removeClass('disable')
+      $('.myPopComment').css({
+        cursor: 'point',
+      })
+      $('.myPopPicture>.img').attr('src', `comment_png/${key}.jpg`)
     })
-    $('.myPopPicture>img').attr('src', `comment_png/${key}.jpg`)
-  })
+  }
   if (timeValue) {
     const {
       // @ts-ignore
@@ -1940,9 +1963,9 @@ map.on('popupopen', function (e) {
       var minutes = parseInt(String((mss % (1000 * 60 * 60)) / (1000 * 60)))
       var seconds = parseInt(String((mss % (1000 * 60)) / 1000))
       $('.myPopContainer #time ').text(
-        seconds >= 0
-          ? `リフレッシュ時間：${day}日, ${hours}:${minutes}:${seconds}`
-          : ''
+        seconds >= 0 ?
+        `リフレッシュ時間：${day}日, ${hours}:${minutes}:${seconds}` :
+        ''
       )
     }, 500)
   }
@@ -1986,31 +2009,31 @@ function updatePointTime() {
           let downShadow
           if (
             currentShowdow ==
-              'https://assets.yuanshen.site/icons/loc_find.svg' ||
+            'https://assets.yuanshen.site/icons/loc_find.svg' ||
             currentShowdow ==
+            'https://assets.yuanshen.site/icons/loc_notfind.svg'
+          ) {
+            downShadow = newValue ?
+              'https://assets.yuanshen.site/icons/loc_find.svg' :
               'https://assets.yuanshen.site/icons/loc_notfind.svg'
-          ) {
-            downShadow = newValue
-              ? 'https://assets.yuanshen.site/icons/loc_find.svg'
-              : 'https://assets.yuanshen.site/icons/loc_notfind.svg'
           } else if (
             currentShowdow ==
-              'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
+            'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
             currentShowdow ==
-              'https://assets.yuanshen.site/icons/loc_stonefound.svg'
+            'https://assets.yuanshen.site/icons/loc_stonefound.svg'
           ) {
-            downShadow = newValue
-              ? 'https://assets.yuanshen.site/icons/loc_stonefound.svg'
-              : 'https://assets.yuanshen.site/icons/loc_stonenot.svg'
+            downShadow = newValue ?
+              'https://assets.yuanshen.site/icons/loc_stonefound.svg' :
+              'https://assets.yuanshen.site/icons/loc_stonenot.svg'
           } else if (
             currentShowdow ==
-              'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
+            'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
             currentShowdow ==
+            'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
+          ) {
+            downShadow = newValue ?
+              'https://assets.yuanshen.site/icons/loc_find_black.svg' :
               'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
-          ) {
-            downShadow = newValue
-              ? 'https://assets.yuanshen.site/icons/loc_find_black.svg'
-              : 'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
           }
           let doneShadowUrl = currentShowdow ? downShadow : ''
           let newIcon = new currentIcon({
