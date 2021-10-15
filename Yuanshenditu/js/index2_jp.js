@@ -24,6 +24,7 @@ var map = L.map('map', {
   maxZoom: 2,
   minZoom: -4,
   zoom: -4,
+  tap: false,
   maxBounds: L.latLngBounds(
     L.latLng(-mapCenter[0], -mapCenter[1]),
     L.latLng(mapSize[0] - mapCenter[0], mapSize[1] - mapCenter[1])
