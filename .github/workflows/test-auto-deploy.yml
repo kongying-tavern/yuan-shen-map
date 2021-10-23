@@ -42,7 +42,7 @@ jobs:
       - name: gen Item_Json
         run: |
           tail -n 3 ./Yuanshenditu/js/Item_Json.js
-          node ./tools/gen-item-json.js ${{ secrets.SERVER_QUERY_URL }}
+          node ./tools/genGeoJson.mjs ${{ secrets.SERVER_QUERY_URL }}
           yes | cp -rf ./Item_Json.js ./Yuanshenditu/js/Item_Json.js
           tail -n 3 ./Yuanshenditu/js/Item_Json.js
       # 部署
