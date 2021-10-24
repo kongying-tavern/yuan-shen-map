@@ -47,7 +47,7 @@ jobs:
         run: |
           node ./tools/genGeoJson.mjs "$qurey_url"
           mv -f ./Item_Features.js ./Yuanshenditu/js/Item_Features.js
-          tail -n 2 ./Yuanshenditu/js/Item_Features.js
+          tail -n 1 ./Yuanshenditu/js/Item_Features.js
       # 部署
       # - name: Deploy
       #   uses: easingthemes/ssh-deploy@v2.2.11
