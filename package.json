@@ -52,6 +52,8 @@
     "@types/leaflet": "^1.5.19",
     "conventional-changelog-cli": "2.1.1",
     "cz-conventional-changelog": "3.3.0",
+    "fs-extra": "latest",
+    "node-fetch": "latest",
     "husky": "7.0.1",
     "lint-staged": "^11.1.2",
     "prettier": "^2.3.2"
