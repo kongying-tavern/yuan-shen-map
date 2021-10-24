@@ -1,8 +1,6 @@
 name: 'test-auto-deploy'
 
 on:
-  # schedule:
-  #  - cron: '5 * * * *'
   push:
     branches:
       - master
@@ -12,10 +10,13 @@ on:
     branches:
       - master
       - dev
+  schedule:
+    - cron: '10 * * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@main
         with:
@@ -39,12 +40,13 @@ jobs:
         with:
           version: 6.0.2
           run_install: true
-
-      - name: auto gen Item_Features.js
+          
       - shell: bash
-        with: # Set the secret as an input
+        env: # Set the secret as an input
           qurey_url: ${{ secrets.SERVER_QUERY_URL }}
+      - name: auto gen Item_Features.js
         run: |
+          shell: bash 
           node ./tools/genGeoJson.mjs "$qurey_url"
           yes | cp -rf ./Item_Features.js ./Yuanshenditu/js/Item_Features.js
           tail -n 10 ./Yuanshenditu/js/Item_Features.js
