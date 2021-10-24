@@ -41,7 +41,7 @@ jobs:
           run_install: true
           
       - name: auto gen Item_Features.js
-      - shell: bash
+        shell: bash
         env: # Set the secret as an input
           qurey_url: ${{ secrets.SERVER_QUERY_URL }}
         run: |
