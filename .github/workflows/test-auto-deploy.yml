@@ -45,7 +45,6 @@ jobs:
         env: # Set the secret as an input
           qurey_url: ${{ secrets.SERVER_QUERY_URL }}
         run: |
-          shell: bash 
           node ./tools/genGeoJson.mjs "$qurey_url"
           yes | cp -rf ./Item_Features.js ./Yuanshenditu/js/Item_Features.js
           tail -n 10 ./Yuanshenditu/js/Item_Features.js
