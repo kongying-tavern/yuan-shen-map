@@ -84,7 +84,7 @@ const fetchData = async () => {
   const content = await fetchData();
   const onSuccess = await genGeoJson(content);
   await Promise.all([content, onSuccess]).then(async () => {
-    const tmpFilePath = await writeTempStream("marker.json", JSON.stringify(JS_array));
-    await copyFiles(tmpFilePath, "./Item_Json.js");
+    const tmpFilePath = await writeTempStream("marker.js",`var originJsonArr =${JSON.stringify(JS_array)};for (var i = 0; i < originJsonArr.length; i++) { JS_array[i].features = originJsonArr[i].features; }`);
+    await copyFiles(tmpFilePath, "./Item_Features.js");
   });
 })();
