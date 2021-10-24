@@ -46,7 +46,7 @@ jobs:
           qurey_url: ${{ secrets.SERVER_QUERY_URL }}
         run: |
           node ./tools/genGeoJson.mjs "$qurey_url"
-          yes | cp -rf ./Item_Features.js ./Yuanshenditu/js/Item_Features.js
+          mv -f ./Item_Features.js ./Yuanshenditu/js/Item_Features.js
           tail -n 10 ./Yuanshenditu/js/Item_Features.js
       # 部署
       # - name: Deploy
