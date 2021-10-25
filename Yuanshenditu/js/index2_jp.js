@@ -1909,7 +1909,7 @@ map.on('popupopen', function (e) {
 		</div>
 		<div class="time-wrapper"><span id="time"></span></div>
 		<div class="myPopPicture disable">
-			<img/>
+			<img class="img" />
 		</div>
 		<div class="${switchClass}" onclick="MarkPoint(this)" data-key="${key}">
 			<p class="switchOff">未完成</p>
