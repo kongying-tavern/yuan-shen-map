@@ -5,7 +5,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: '10 * * * *'
+    - cron: '0 0 * * *'
 
 jobs:
   build:
@@ -34,7 +34,7 @@ jobs:
           version: 6.0.2
           run_install: true
           
-      - name: auto gen Item_Features.js
+      - name: Auto gen Item_Features.js
         shell: bash
         env: # Set the secret as an input
           qurey_url: ${{ secrets.SERVER_QUERY_URL }}
