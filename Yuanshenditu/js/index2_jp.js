@@ -1923,30 +1923,7 @@ map.on('popupopen', function (e) {
 		<div class="tipcard"></div>
 
 	</div>`
-  if (isWebP) {
-    $.ajax({
-      url: `comment_png/${key}.jpg`,
-      headers: {
-        Accept: "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
-      },
-      type: "get",
-      success: function (data) {
-        $('.myPopComment,.myPopPicture').removeClass('disable')
-        $('.myPopComment').css({
-          cursor: 'point',
-        })
-        $('.myPopPicture>.img').attr('src', `comment_png/${key}.jpg`)
-      }
-    });
-  } else {
-    $.get(`comment_png/${key}.jpg`, function (data) {
-      $('.myPopComment,.myPopPicture').removeClass('disable')
-      $('.myPopComment').css({
-        cursor: 'point',
-      })
-      $('.myPopPicture>.img').attr('src', `comment_png/${key}.jpg`)
-    })
-  }
+
   if (timeValue) {
     const {
       // @ts-ignore
@@ -1971,6 +1948,30 @@ map.on('popupopen', function (e) {
   }
 
   marker.bindPopup(popupHtml)
+  if (isWebP) {
+    $.ajax({
+      url: `comment_png/${key}.jpg`,
+      headers: {
+        Accept: "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8"
+      },
+      type: "get",
+      success: function (data) {
+        $('.myPopComment,.myPopPicture').removeClass('disable')
+        $('.myPopComment').css({
+          cursor: 'point',
+        })
+        $('.myPopPicture>.img').attr('src', `comment_png/${key}.jpg`)
+      }
+    });
+  } else {
+    $.get(`comment_png/${key}.jpg`, function (data) {
+      $('.myPopComment,.myPopPicture').removeClass('disable')
+      $('.myPopComment').css({
+        cursor: 'point',
+      })
+      $('.myPopPicture>.img').attr('src', `comment_png/${key}.jpg`)
+    })
+  }
 })
 
 map.on('popupclose', function () {
