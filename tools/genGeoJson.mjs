@@ -93,5 +93,5 @@ const fetchData = async () => {
     'marker.js',
     `var originJsonArr =${content};\nfor (var i = 0; i < originJsonArr.length; i++) { JS_array[i].features = originJsonArr[i].features; }\n// ${Date()}\n`
   )
-  await copyFiles(tmpFilePath, './Item_Features.js')
+  await copyFiles(tmpFilePath, './Yuanshenditu/js/Item_Features.js')
 })()
