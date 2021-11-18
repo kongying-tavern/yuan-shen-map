@@ -41,6 +41,13 @@ jobs:
         run: |
           node ./tools/genGeoJson.mjs "$qurey_url"
           tail -n 1 ./Yuanshenditu/js/Item_Features.js
+      - name: Auto gen Item_Features.js
+        shell: bash
+        env: # Set the secret as an input
+          qurey_url: ${{ secrets.SERVER_QUERY_URL }}
+        run: |
+          node ./tools/genGeoJson.mjs "$qurey_url"
+          tail -n 1 ./Yuanshenditu/js/Item_Features.js
 
       # 部署
       - name: Deploy
