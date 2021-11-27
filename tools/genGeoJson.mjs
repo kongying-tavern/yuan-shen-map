@@ -61,6 +61,9 @@ const genGeoJson = async (res) => {
       },
       id: item.id,
     }
+    if(JS_array[item.layerId] == undefined) {
+      JS_array[item.layerId]=JSON.parse(JSON.stringify(JS_Item))
+    }
     JS_array[item.layerId].features.push(markerInfo)
   }
   consoleInfo('gen geojson file succeed.')
