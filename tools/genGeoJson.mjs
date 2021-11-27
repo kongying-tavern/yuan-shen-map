@@ -5,6 +5,12 @@ import process from 'process'
 const url = process.argv[2]
 
 import fs from 'fs-extra'
+
+var JS_Item = {
+  type: "FeatureCollection",
+  features: [],
+};
+
 const writeTempStream = async (fileName, data) => {
   try {
     const tmpDir = await makeTempDir()
