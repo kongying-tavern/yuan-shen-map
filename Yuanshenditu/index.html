@@ -3825,6 +3825,9 @@
       // 	},
       // 	reuseTiles: true
       // });
+    }
+
+    function filter2() {
       if (area_idx == 'YXG') {
         area_idx_cur = 'YXG'
         map.flyTo([4000, 742], -4)
@@ -4034,6 +4037,7 @@
         $(`.area-list-li-containor:eq(${idx}) .area-img`).addClass('on')
         area_idx = $(this).attr('i_area')
         filter()
+        filter2()
       }
     })
     //点击筛选项以改变选择器项目

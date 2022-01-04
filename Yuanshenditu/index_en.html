@@ -28,7 +28,8 @@
   <meta name="description" content="The interactive map of Genshin full resources strategy made by Kongying Tavern." />
   <meta name="baidu_union_verify" content="50113a1916bc6375d27b9699c721c4da" />
 
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; connect-src https:; font-src 'self' data: https://at.alicdn.com https://*.yuanshen.site https://*.google.com;
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'none'; base-uri 'none'; connect-src https:; font-src 'self' data: https://at.alicdn.com https://*.yuanshen.site https://*.google.com;
 			form-action 'self' https://support.qq.com; frame-src 'self'; img-src 'self' data: https: https://cdn.jsdelivr.net;
       manifest-src 'self'; media-src 'self' https://cdn.jsdelivr.net; script-src 'unsafe-eval' 'unsafe-hashes' 'unsafe-inline' 'self' https://esm.run https://polyfill.io https://b.alicdn.com https://*.clarity.ms/ https://hm.baidu.com https://cdn.jsdelivr.net https://widget.qweather.net https://*.baidu.com https://widget.heweather.net https://cdn.heweather.com/ https://webapi.amap.com https://restapi.amap.com https://*.googletagmanager.com https://*.google-analytics.com;
       style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://widget.heweather.net; worker-src 'self' blob:;" />
@@ -3819,6 +3820,9 @@
       // 	},
       // 	reuseTiles: true
       // });
+    }
+
+    function filter2() {
       if (area_idx == 'YXG') {
         area_idx_cur = 'YXG'
         map.flyTo([4000, 742], -4)
@@ -3854,6 +3858,7 @@
             break;
         }
       }
+
       if (area_idx_last != area_idx_cur) {
         $('.selector-list-containor p').click()
         area_idx_last = area_idx_cur
@@ -4004,7 +4009,8 @@
           map.removeLayer(LayerMap['Layer_LCMD_DQ3'])
         } catch {}
       }
-    } //页签和地区选择按钮的样式切换函数
+    }
+    //页签和地区选择按钮的样式切换函数
     $('.con-type-label').click(function () {
       $('.con-type-label').removeClass('on')
       $(this).addClass('on')
@@ -4026,6 +4032,7 @@
         $(`.area-list-li-containor:eq(${idx}) .area-img`).addClass('on')
         area_idx = $(this).attr('i_area')
         filter()
+        filter2()
       }
     })
     //点击筛选项以改变选择器项目
