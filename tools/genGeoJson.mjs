@@ -100,7 +100,7 @@ const fetchData = async () => {
   })
   const tmpFilePath = await writeTempStream(
     'marker.js',
-    `var originJsonArr =${content};\nfor (var i = 0; i < originJsonArr.length; i++) { JS_array[i].features = originJsonArr[i].features; }\n// ${Date()}\n`
+    `var originJsonArr =${content};\nfor (var i = 0; i < originJsonArr.length; i++) { if(originJsonArr[i]!=null)JS_array[i].features = originJsonArr[i].features;else JS_array[i].features=[] }\n// ${Date()}\n`
   )
   await copyFiles(tmpFilePath, './Yuanshenditu/js/Item_Features.js')
 })()
