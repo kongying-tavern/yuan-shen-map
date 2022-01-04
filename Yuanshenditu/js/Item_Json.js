@@ -511,6 +511,102 @@ var JS_NPCShop_LY = JSON.parse(JSON.stringify(JS_Item))
 var JS_NPCShop_DQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_NPCShop_DQ2 = JSON.parse(JSON.stringify(JS_Item))
 var JS_NPCShop_DQ3 = JSON.parse(JSON.stringify(JS_Item))
+var JS_JW_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_BX_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_QKBX_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_DLK_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SJRW_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_TFWT_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_DWQ_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_ND_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_JWJZ_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SSZPSP_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_TYCS_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_ShiP_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SJ_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_TZ_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_JG_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_NPCShop_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_NPC_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_DYD_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_MLDCD1_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_YL_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_DBY_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SYWD_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_MLDCD_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_WQDCD_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_XWZM_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SX_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_CSD_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_LCMD_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_MJ_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_FB_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_RYLH_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_JHBSC_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SJDJG_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SHZZ_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_XH_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_YCX_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SJK_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_BTK_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_TK_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_MJK_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_ZJK_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_KDCD_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_YFZ_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_HLG_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_DGSN_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_YJZJ_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_YJJB_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_DXQQR_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SYFS_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_YSS_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_DBT_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_PPH_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_XQD_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SLM_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_KFZH_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_QQR_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_QQRSS_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_QQSM_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_ZWCLR_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_PFL_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SJQ_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SHLX_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_HaiCao_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_JinGua_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_MR_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SongR_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_PX_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_ShouR_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_QR_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_YR_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_QD_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_RLG_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_PG_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_JYC_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_BLB_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_HLB_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SG_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_TTH_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_MG_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_BH_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SM_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SCDCD_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_JH_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_BWHHD_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_LYHHR_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_DQSJ_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_FGS_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_HDCB_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_QW_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_XYWB_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_QQBY_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_LiuShan_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_YingShu_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_YuJiaShu_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_YuShanFeng_YXG = JSON.parse(JSON.stringify(JS_Item))
+var JS_SongShu_YXG = JSON.parse(JSON.stringify(JS_Item))
 
 var JS_array = [
   JS_FST,
@@ -1029,4 +1125,101 @@ var JS_array = [
   JS_NPCShop_DQ,
   JS_NPCShop_DQ2,
   JS_NPCShop_DQ3,
+
+JS_JW_YXG,
+JS_BX_YXG,
+JS_QKBX_YXG,
+JS_DLK_YXG,
+JS_SJRW_YXG,
+JS_TFWT_YXG,
+JS_DWQ_YXG,
+JS_ND_YXG,
+JS_JWJZ_YXG,
+JS_SSZPSP_YXG,
+JS_TYCS_YXG,
+JS_ShiP_YXG,
+JS_SJ_YXG,
+JS_TZ_YXG,
+JS_JG_YXG,
+JS_NPCShop_YXG,
+JS_NPC_YXG,
+JS_DYD_YXG,
+JS_MLDCD1_YXG,
+JS_YL_YXG,
+JS_DBY_YXG,
+JS_SYWD_YXG,
+JS_MLDCD_YXG,
+JS_WQDCD_YXG,
+JS_XWZM_YXG,
+JS_SX_YXG,
+JS_CSD_YXG,
+JS_LCMD_YXG,
+JS_MJ_YXG,
+JS_FB_YXG,
+JS_RYLH_YXG,
+JS_JHBSC_YXG,
+JS_SJDJG_YXG,
+JS_SHZZ_YXG,
+JS_XH_YXG,
+JS_YCX_YXG,
+JS_SJK_YXG,
+JS_BTK_YXG,
+JS_TK_YXG,
+JS_MJK_YXG,
+JS_ZJK_YXG,
+JS_KDCD_YXG,
+JS_YFZ_YXG,
+JS_HLG_YXG,
+JS_DGSN_YXG,
+JS_YJZJ_YXG,
+JS_YJJB_YXG,
+JS_DXQQR_YXG,
+JS_SYFS_YXG,
+JS_YSS_YXG,
+JS_DBT_YXG,
+JS_PPH_YXG,
+JS_XQD_YXG,
+JS_SLM_YXG,
+JS_KFZH_YXG,
+JS_QQR_YXG,
+JS_QQRSS_YXG,
+JS_QQSM_YXG,
+JS_ZWCLR_YXG,
+JS_PFL_YXG,
+JS_SJQ_YXG,
+JS_SHLX_YXG,
+JS_HaiCao_YXG,
+JS_JinGua_YXG,
+JS_MR_YXG,
+JS_SongR_YXG,
+JS_PX_YXG,
+JS_ShouR_YXG,
+JS_QR_YXG,
+JS_YR_YXG,
+JS_QD_YXG,
+JS_RLG_YXG,
+JS_PG_YXG,
+JS_JYC_YXG,
+JS_BLB_YXG,
+JS_HLB_YXG,
+JS_SG_YXG,
+JS_TTH_YXG,
+JS_MG_YXG,
+JS_BH_YXG,
+JS_SM_YXG,
+JS_SCDCD_YXG,
+JS_JH_YXG,
+JS_BWHHD_YXG,
+JS_LYHHR_YXG,
+JS_DQSJ_YXG,
+JS_FGS_YXG,
+JS_HDCB_YXG,
+JS_QW_YXG,
+JS_XYWB_YXG,
+JS_QQBY_YXG,
+JS_LiuShan_YXG,
+JS_YingShu_YXG,
+JS_YuJiaShu_YXG,
+JS_YuShanFeng_YXG,
+JS_SongShu_YXG,
 ]

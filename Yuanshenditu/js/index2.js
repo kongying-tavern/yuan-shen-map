@@ -17,7 +17,7 @@ var mapCRS = L.Util.extend({}, L.CRS.Simple, {
 })
 var map = L.map('map', {
   crs: mapCRS,
-  center: [-528, 1742],
+  center: [2576, 1742],
   zoomDelta: 0,
   zoomSnap: 0.5,
   maxZoom: 2,
@@ -25,8 +25,8 @@ var map = L.map('map', {
   zoom: -4,
   tap: false,
   maxBounds: L.latLngBounds(
-    L.latLng(-mapCenter[0], -mapCenter[1]),
-    L.latLng(mapSize[0] - mapCenter[0], mapSize[1] - mapCenter[1])
+    L.latLng(-mapCenter[0] - 10000, -mapCenter[1] - 10000),
+    L.latLng(mapSize[0] - mapCenter[0] + 10000, mapSize[1] - mapCenter[1] + 10000)
   ),
   attributionControl: false,
   zoomControl: false,
@@ -54,17 +54,7 @@ L.TileLayer.T = L.TileLayer.extend({
       y = coords.y,
       z = coords.z + 13
     if (true) {
-      if (area_idx == 'MD' || area_idx == 'LY') {
-        return (
-          'https://assets.yuanshen.site/tiles_dq3/' +
-          z +
-          '/' +
-          x +
-          '_' +
-          y +
-          '.jpg'
-        )
-      } else if (area_idx == 'QD') {
+      if (area_idx == 'QD') {
         return (
           'https://assets.yuanshen.site/tiles_qd/' +
           z +
@@ -84,15 +74,25 @@ L.TileLayer.T = L.TileLayer.extend({
           y +
           '.jpg'
         )
-      } else {
+      } else if (area_idx == 'YXG') {
         return (
-          'https://assets.yuanshen.site/tiles_dq3/' +
+          'https://assets.yuanshen.site/tiles_yxg2/' +
           z +
           '/' +
           x +
           '_' +
           y +
-          '.jpg'
+          '.png'
+        )
+      } else {
+        return (
+          'https://assets.yuanshen.site/tiles_twt/' +
+          z +
+          '/' +
+          x +
+          '_' +
+          y +
+          '.png'
         )
       }
     } else {
@@ -787,6 +787,113 @@ var LayerMap = {
   Layer_NPCShop_DQ2: L.markerClusterGroup(),
   Layer_NPCShop_DQ3: L.markerClusterGroup(),
 
+  Layer_JW_YXG: L.markerClusterGroup(),
+  Layer_BX_YXG: L.markerClusterGroup({
+    maxClusterRadius: function (e) {
+      let radius = 0
+      if (e == -3) radius = 100
+      else if (e == -2) radius = 80
+      else if (e == -1) radius = 55
+      else if (e == 0) radius = 25
+      else if (e == 1) radius = 0
+      //console.log(radius);
+      return radius
+    },
+  }),
+  Layer_QKBX_YXG: L.markerClusterGroup(),
+  Layer_DLK_YXG: L.markerClusterGroup(),
+  Layer_SJRW_YXG: L.markerClusterGroup(),
+  Layer_TFWT_YXG: L.markerClusterGroup(),
+  Layer_DWQ_YXG: L.markerClusterGroup(),
+  Layer_ND_YXG: L.markerClusterGroup(),
+  Layer_JWJZ_YXG: L.markerClusterGroup(),
+  Layer_SSZPSP_YXG: L.markerClusterGroup(),
+  Layer_TYCS_YXG: L.markerClusterGroup(),
+  Layer_ShiP_YXG: L.markerClusterGroup(),
+  Layer_SJ_YXG: L.markerClusterGroup(),
+  Layer_TZ_YXG: L.markerClusterGroup(),
+  Layer_JG_YXG: L.markerClusterGroup(),
+  Layer_NPCShop_YXG: L.markerClusterGroup(),
+  Layer_NPC_YXG: L.markerClusterGroup(),
+  Layer_DYD_YXG: L.markerClusterGroup(),
+  Layer_MLDCD1_YXG: L.markerClusterGroup(),
+  Layer_YL_YXG: L.markerClusterGroup(),
+  Layer_DBY_YXG: L.markerClusterGroup(),
+  Layer_SYWD_YXG: L.markerClusterGroup(),
+  Layer_MLDCD_YXG: L.markerClusterGroup(),
+  Layer_WQDCD_YXG: L.markerClusterGroup(),
+  Layer_XWZM_YXG: L.markerClusterGroup(),
+  Layer_SX_YXG: L.markerClusterGroup(),
+  Layer_CSD_YXG: L.markerClusterGroup(),
+  Layer_LCMD_YXG: L.markerClusterGroup(),
+  Layer_MJ_YXG: L.markerClusterGroup(),
+  Layer_FB_YXG: L.markerClusterGroup(),
+  Layer_RYLH_YXG: L.markerClusterGroup(),
+  Layer_JHBSC_YXG: L.markerClusterGroup(),
+  Layer_SJDJG_YXG: L.markerClusterGroup(),
+  Layer_SHZZ_YXG: L.markerClusterGroup(),
+  Layer_XH_YXG: L.markerClusterGroup(),
+  Layer_YCX_YXG: L.markerClusterGroup(),
+  Layer_SJK_YXG: L.markerClusterGroup(),
+  Layer_BTK_YXG: L.markerClusterGroup(),
+  Layer_TK_YXG: L.markerClusterGroup(),
+  Layer_MJK_YXG: L.markerClusterGroup(),
+  Layer_ZJK_YXG: L.markerClusterGroup(),
+  Layer_KDCD_YXG: L.markerClusterGroup(),
+  Layer_YFZ_YXG: L.markerClusterGroup(),
+  Layer_HLG_YXG: L.markerClusterGroup(),
+  Layer_DGSN_YXG: L.markerClusterGroup(),
+  Layer_YJZJ_YXG: L.markerClusterGroup(),
+  Layer_YJJB_YXG: L.markerClusterGroup(),
+  Layer_DXQQR_YXG: L.markerClusterGroup(),
+  Layer_SYFS_YXG: L.markerClusterGroup(),
+  Layer_YSS_YXG: L.markerClusterGroup(),
+  Layer_DBT_YXG: L.markerClusterGroup(),
+  Layer_PPH_YXG: L.markerClusterGroup(),
+  Layer_XQD_YXG: L.markerClusterGroup(),
+  Layer_SLM_YXG: L.markerClusterGroup(),
+  Layer_KFZH_YXG: L.markerClusterGroup(),
+  Layer_QQR_YXG: L.markerClusterGroup(),
+  Layer_QQRSS_YXG: L.markerClusterGroup(),
+  Layer_QQSM_YXG: L.markerClusterGroup(),
+  Layer_ZWCLR_YXG: L.markerClusterGroup(),
+  Layer_PFL_YXG: L.markerClusterGroup(),
+  Layer_SJQ_YXG: L.markerClusterGroup(),
+  Layer_SHLX_YXG: L.markerClusterGroup(),
+  Layer_HaiCao_YXG: L.markerClusterGroup(),
+  Layer_JinGua_YXG: L.markerClusterGroup(),
+  Layer_MR_YXG: L.markerClusterGroup(),
+  Layer_SongR_YXG: L.markerClusterGroup(),
+  Layer_PX_YXG: L.markerClusterGroup(),
+  Layer_ShouR_YXG: L.markerClusterGroup(),
+  Layer_QR_YXG: L.markerClusterGroup(),
+  Layer_YR_YXG: L.markerClusterGroup(),
+  Layer_QD_YXG: L.markerClusterGroup(),
+  Layer_RLG_YXG: L.markerClusterGroup(),
+  Layer_PG_YXG: L.markerClusterGroup(),
+  Layer_JYC_YXG: L.markerClusterGroup(),
+  Layer_BLB_YXG: L.markerClusterGroup(),
+  Layer_HLB_YXG: L.markerClusterGroup(),
+  Layer_SG_YXG: L.markerClusterGroup(),
+  Layer_TTH_YXG: L.markerClusterGroup(),
+  Layer_MG_YXG: L.markerClusterGroup(),
+  Layer_BH_YXG: L.markerClusterGroup(),
+  Layer_SM_YXG: L.markerClusterGroup(),
+  Layer_SCDCD_YXG: L.markerClusterGroup(),
+  Layer_JH_YXG: L.markerClusterGroup(),
+  Layer_BWHHD_YXG: L.markerClusterGroup(),
+  Layer_LYHHR_YXG: L.markerClusterGroup(),
+  Layer_DQSJ_YXG: L.markerClusterGroup(),
+  Layer_FGS_YXG: L.markerClusterGroup(),
+  Layer_HDCB_YXG: L.markerClusterGroup(),
+  Layer_QW_YXG: L.markerClusterGroup(),
+  Layer_XYWB_YXG: L.markerClusterGroup(),
+  Layer_QQBY_YXG: L.markerClusterGroup(),
+  Layer_LiuShan_YXG: L.markerClusterGroup(),
+  Layer_YingShu_YXG: L.markerClusterGroup(),
+  Layer_YuJiaShu_YXG: L.markerClusterGroup(),
+  Layer_YuShanFeng_YXG: L.markerClusterGroup(),
+  Layer_SongShu_YXG: L.markerClusterGroup(),
 }
 
 //定义各个坐标使用的图标
@@ -809,12 +916,12 @@ function getIconInfo(Name) {
       //地灵龛
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: 'https://assets.yuanshen.site/icons/loc_notfind.svg',
-          iconSize: [24, 23], // size of the icon
-          shadowSize: [40, 40], // size of the shadow
-          iconAnchor: [12, 34.5], // point of the icon which will correspond to marker's location
-          shadowAnchor: [20, 40], // the same for the shadow
-          popupAnchor: [0, -34.5], // point from which the popup should open relative to the iconAnchor
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_02_off.png',
+          iconSize: [22, 22], // size of the icon
+          shadowSize: [32, 36], // size of the shadow
+          iconAnchor: [11, 30], // point of the icon which will correspond to marker's location
+          shadowAnchor: [16, 35], // the same for the shadow
+          popupAnchor: [0, -35], // point from which the popup should open relative to the iconAnchor
         },
       })
       return icon_base
@@ -823,12 +930,12 @@ function getIconInfo(Name) {
       //特产
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: 'https://assets.yuanshen.site/icons/loc_notfind_black.svg',
-          iconSize: [16.5, 17], // size of the icon
-          shadowSize: [28, 28], // size of the shadow
-          iconAnchor: [8.2, 24.3], // point of the icon which will correspond to marker's location
-          shadowAnchor: [14, 28], // the same for the shadow
-          popupAnchor: [0, -24.3], // point from which the popup should open relative to the iconAnchor
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_02_off.png',
+          iconSize: [22, 22], // size of the icon
+          shadowSize: [32, 36], // size of the shadow
+          iconAnchor: [11, 30], // point of the icon which will correspond to marker's location
+          shadowAnchor: [16, 35], // the same for the shadow
+          popupAnchor: [0, -35], // point from which the popup should open relative to the iconAnchor
         },
       })
       return icon_base
@@ -837,12 +944,12 @@ function getIconInfo(Name) {
       //矿物
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: 'https://assets.yuanshen.site/icons/loc_stonenot.svg',
-          iconSize: [20, 20], // size of the icon
-          shadowSize: [34, 34], // size of the shadow
-          iconAnchor: [10, 28], // point of the icon which will correspond to marker's location
-          shadowAnchor: [17, 34], // the same for the shadow
-          popupAnchor: [0, -28], // point from which the popup should open relative to the iconAnchor
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_02_off.png',
+          iconSize: [22, 22], // size of the icon
+          shadowSize: [32, 36], // size of the shadow
+          iconAnchor: [11, 30], // point of the icon which will correspond to marker's location
+          shadowAnchor: [16, 35], // the same for the shadow
+          popupAnchor: [0, -35], // point from which the popup should open relative to the iconAnchor
         },
       })
       return icon_base
@@ -851,12 +958,12 @@ function getIconInfo(Name) {
       //精英怪
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: 'https://assets.yuanshen.site/icons/loc_notfind.svg',
-          iconSize: [23.4, 23.4], // size of the icon
-          shadowSize: [38, 38], // size of the shadow
-          iconAnchor: [11.7, 33.4], // point of the icon which will correspond to marker's location
-          shadowAnchor: [19, 38], // the same for the shadow
-          popupAnchor: [0, -33.4], // point from which the popup should open relative to the iconAnchor
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_02_off.png',
+          iconSize: [22, 22], // size of the icon
+          shadowSize: [32, 36], // size of the shadow
+          iconAnchor: [11, 30], // point of the icon which will correspond to marker's location
+          shadowAnchor: [16, 35], // the same for the shadow
+          popupAnchor: [0, -35], // point from which the popup should open relative to the iconAnchor
         },
       })
       return icon_base
@@ -865,12 +972,12 @@ function getIconInfo(Name) {
       //普通怪
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: 'https://assets.yuanshen.site/icons/loc_notfind.svg',
-          iconSize: [17, 17], // size of the icon
-          shadowSize: [28, 28], // size of the shadow
-          iconAnchor: [8.5, 24.5], // point of the icon which will correspond to marker's location
-          shadowAnchor: [14, 28], // the same for the shadow
-          popupAnchor: [0, -24.5], // point from which the popup should open relative to the iconAnchor
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_02_off.png',
+          iconSize: [22, 22], // size of the icon
+          shadowSize: [32, 36], // size of the shadow
+          iconAnchor: [11, 30], // point of the icon which will correspond to marker's location
+          shadowAnchor: [16, 35], // the same for the shadow
+          popupAnchor: [0, -35], // point from which the popup should open relative to the iconAnchor
         },
       })
       return icon_base
@@ -879,12 +986,12 @@ function getIconInfo(Name) {
       // 宝箱
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: 'https://assets.yuanshen.site/icons/loc_stonenot.svg',
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_02_off.png',
           iconSize: [22, 22], // size of the icon
-          shadowSize: [24, 24], // size of the shadow
-          iconAnchor: [11, 24], // point of the icon which will correspond to marker's location
-          shadowAnchor: [12, 24], // the same for the shadow
-          popupAnchor: [0, -22], // point from which the popup should open relative to the iconAnchor
+          shadowSize: [32, 36], // size of the shadow
+          iconAnchor: [11, 30], // point of the icon which will correspond to marker's location
+          shadowAnchor: [16, 35], // the same for the shadow
+          popupAnchor: [0, -35], // point from which the popup should open relative to the iconAnchor
         },
       })
       return icon_base
@@ -932,12 +1039,12 @@ function getIconInfo(Name) {
       //默认
       var icon_base = L.Icon.extend({
         options: {
-          shadowUrl: 'https://assets.yuanshen.site/icons/loc_notfind.svg',
-          iconSize: [17, 17], // size of the icon
-          shadowSize: [28, 28], // size of the shadow
-          iconAnchor: [8.5, 24.5], // point of the icon which will correspond to marker's location
-          shadowAnchor: [14, 28], // the same for the shadow
-          popupAnchor: [0, -24.5], // point from which the popup should open relative to the iconAnchor
+          shadowUrl: 'https://assets.yuanshen.site/icons/loc_02_off.png',
+          iconSize: [22, 22], // size of the icon
+          shadowSize: [32, 36], // size of the shadow
+          iconAnchor: [11, 30], // point of the icon which will correspond to marker's location
+          shadowAnchor: [16, 35], // the same for the shadow
+          popupAnchor: [0, -35], // point from which the popup should open relative to the iconAnchor
         },
       })
       return icon_base
@@ -1520,6 +1627,103 @@ var typearray = [
   [LayerMap['Layer_NPCShop_DQ2'], JS_NPCShop_DQ2, 'TC', 'NPCShop_DQ2'],
   [LayerMap['Layer_NPCShop_DQ3'], JS_NPCShop_DQ3, 'TC', 'NPCShop_DQ3'],
 
+  [LayerMap['Layer_JW_YXG'], JS_JW_YXG, 'TC', 'JW_YXG'],
+  [LayerMap['Layer_BX_YXG'], JS_BX_YXG, 'TC', 'BX_YXG'],
+  [LayerMap['Layer_QKBX_YXG'], JS_QKBX_YXG, 'TC', 'QKBX_YXG'],
+  [LayerMap['Layer_DLK_YXG'], JS_DLK_YXG, 'TC', 'DLK_YXG'],
+  [LayerMap['Layer_SJRW_YXG'], JS_SJRW_YXG, 'TC', 'SJRW_YXG'],
+  [LayerMap['Layer_TFWT_YXG'], JS_TFWT_YXG, 'TC', 'TFWT_YXG'],
+  [LayerMap['Layer_DWQ_YXG'], JS_DWQ_YXG, 'TC', 'DWQ_YXG'],
+  [LayerMap['Layer_ND_YXG'], JS_ND_YXG, 'TC', 'ND_YXG'],
+  [LayerMap['Layer_JWJZ_YXG'], JS_JWJZ_YXG, 'TC', 'JWJZ_YXG'],
+  [LayerMap['Layer_SSZPSP_YXG'], JS_SSZPSP_YXG, 'TC', 'SSZPSP_YXG'],
+  [LayerMap['Layer_TYCS_YXG'], JS_TYCS_YXG, 'TC', 'TYCS_YXG'],
+  [LayerMap['Layer_ShiP_YXG'], JS_ShiP_YXG, 'TC', 'ShiP_YXG'],
+  [LayerMap['Layer_SJ_YXG'], JS_SJ_YXG, 'TC', 'SJ_YXG'],
+  [LayerMap['Layer_TZ_YXG'], JS_TZ_YXG, 'TC', 'TZ_YXG'],
+  [LayerMap['Layer_JG_YXG'], JS_JG_YXG, 'TC', 'JG_YXG'],
+  [LayerMap['Layer_NPCShop_YXG'], JS_NPCShop_YXG, 'TC', 'NPCShop_YXG'],
+  [LayerMap['Layer_NPC_YXG'], JS_NPC_YXG, 'TC', 'NPC_YXG'],
+  [LayerMap['Layer_DYD_YXG'], JS_DYD_YXG, 'TC', 'DYD_YXG'],
+  [LayerMap['Layer_MLDCD1_YXG'], JS_MLDCD1_YXG, 'TC', 'MLDCD1_YXG'],
+  [LayerMap['Layer_YL_YXG'], JS_YL_YXG, 'TC', 'YL_YXG'],
+  [LayerMap['Layer_DBY_YXG'], JS_DBY_YXG, 'TC', 'DBY_YXG'],
+  [LayerMap['Layer_SYWD_YXG'], JS_SYWD_YXG, 'TC', 'SYWD_YXG'],
+  [LayerMap['Layer_MLDCD_YXG'], JS_MLDCD_YXG, 'TC', 'MLDCD_YXG'],
+  [LayerMap['Layer_WQDCD_YXG'], JS_WQDCD_YXG, 'TC', 'WQDCD_YXG'],
+  [LayerMap['Layer_XWZM_YXG'], JS_XWZM_YXG, 'TC', 'XWZM_YXG'],
+  [LayerMap['Layer_SX_YXG'], JS_SX_YXG, 'TC', 'SX_YXG'],
+  [LayerMap['Layer_CSD_YXG'], JS_CSD_YXG, 'CSD', 'CSD_YXG'],
+  [LayerMap['Layer_LCMD_YXG'], JS_LCMD_YXG, 'TC', 'LCMD_YXG'],
+  [LayerMap['Layer_MJ_YXG'], JS_MJ_YXG, 'TC', 'MJ_YXG'],
+  [LayerMap['Layer_FB_YXG'], JS_FB_YXG, 'TC', 'FB_YXG'],
+  [LayerMap['Layer_RYLH_YXG'], JS_RYLH_YXG, 'TC', 'RYLH_YXG'],
+  [LayerMap['Layer_JHBSC_YXG'], JS_JHBSC_YXG, 'TC', 'JHBSC_YXG'],
+  [LayerMap['Layer_SJDJG_YXG'], JS_SJDJG_YXG, 'TC', 'SJDJG_YXG'],
+  [LayerMap['Layer_SHZZ_YXG'], JS_SHZZ_YXG, 'TC', 'SHZZ_YXG'],
+  [LayerMap['Layer_XH_YXG'], JS_XH_YXG, 'TC', 'XH_YXG'],
+  [LayerMap['Layer_YCX_YXG'], JS_YCX_YXG, 'TC', 'YCX_YXG'],
+  [LayerMap['Layer_SJK_YXG'], JS_SJK_YXG, 'TC', 'SJK_YXG'],
+  [LayerMap['Layer_BTK_YXG'], JS_BTK_YXG, 'TC', 'BTK_YXG'],
+  [LayerMap['Layer_TK_YXG'], JS_TK_YXG, 'TC', 'TK_YXG'],
+  [LayerMap['Layer_MJK_YXG'], JS_MJK_YXG, 'TC', 'MJK_YXG'],
+  [LayerMap['Layer_ZJK_YXG'], JS_ZJK_YXG, 'TC', 'ZJK_YXG'],
+  [LayerMap['Layer_KDCD_YXG'], JS_KDCD_YXG, 'TC', 'KDCD_YXG'],
+  [LayerMap['Layer_YFZ_YXG'], JS_YFZ_YXG, 'TC', 'YFZ_YXG'],
+  [LayerMap['Layer_HLG_YXG'], JS_HLG_YXG, 'TC', 'HLG_YXG'],
+  [LayerMap['Layer_DGSN_YXG'], JS_DGSN_YXG, 'TC', 'DGSN_YXG'],
+  [LayerMap['Layer_YJZJ_YXG'], JS_YJZJ_YXG, 'TC', 'YJZJ_YXG'],
+  [LayerMap['Layer_YJJB_YXG'], JS_YJJB_YXG, 'TC', 'YJJB_YXG'],
+  [LayerMap['Layer_DXQQR_YXG'], JS_DXQQR_YXG, 'TC', 'DXQQR_YXG'],
+  [LayerMap['Layer_SYFS_YXG'], JS_SYFS_YXG, 'TC', 'SYFS_YXG'],
+  [LayerMap['Layer_YSS_YXG'], JS_YSS_YXG, 'TC', 'YSS_YXG'],
+  [LayerMap['Layer_DBT_YXG'], JS_DBT_YXG, 'TC', 'DBT_YXG'],
+  [LayerMap['Layer_PPH_YXG'], JS_PPH_YXG, 'TC', 'PPH_YXG'],
+  [LayerMap['Layer_XQD_YXG'], JS_XQD_YXG, 'TC', 'XQD_YXG'],
+  [LayerMap['Layer_SLM_YXG'], JS_SLM_YXG, 'TC', 'SLM_YXG'],
+  [LayerMap['Layer_KFZH_YXG'], JS_KFZH_YXG, 'TC', 'KFZH_YXG'],
+  [LayerMap['Layer_QQR_YXG'], JS_QQR_YXG, 'TC', 'QQR_YXG'],
+  [LayerMap['Layer_QQRSS_YXG'], JS_QQRSS_YXG, 'TC', 'QQRSS_YXG'],
+  [LayerMap['Layer_QQSM_YXG'], JS_QQSM_YXG, 'TC', 'QQSM_YXG'],
+  [LayerMap['Layer_ZWCLR_YXG'], JS_ZWCLR_YXG, 'TC', 'ZWCLR_YXG'],
+  [LayerMap['Layer_PFL_YXG'], JS_PFL_YXG, 'TC', 'PFL_YXG'],
+  [LayerMap['Layer_SJQ_YXG'], JS_SJQ_YXG, 'TC', 'SJQ_YXG'],
+  [LayerMap['Layer_SHLX_YXG'], JS_SHLX_YXG, 'TC', 'SHLX_YXG'],
+  [LayerMap['Layer_HaiCao_YXG'], JS_HaiCao_YXG, 'TC', 'HaiCao_YXG'],
+  [LayerMap['Layer_JinGua_YXG'], JS_JinGua_YXG, 'TC', 'JinGua_YXG'],
+  [LayerMap['Layer_MR_YXG'], JS_MR_YXG, 'TC', 'MR_YXG'],
+  [LayerMap['Layer_SongR_YXG'], JS_SongR_YXG, 'TC', 'SongR_YXG'],
+  [LayerMap['Layer_PX_YXG'], JS_PX_YXG, 'TC', 'PX_YXG'],
+  [LayerMap['Layer_ShouR_YXG'], JS_ShouR_YXG, 'TC', 'ShouR_YXG'],
+  [LayerMap['Layer_QR_YXG'], JS_QR_YXG, 'TC', 'QR_YXG'],
+  [LayerMap['Layer_YR_YXG'], JS_YR_YXG, 'TC', 'YR_YXG'],
+  [LayerMap['Layer_QD_YXG'], JS_QD_YXG, 'TC', 'QD_YXG'],
+  [LayerMap['Layer_RLG_YXG'], JS_RLG_YXG, 'TC', 'RLG_YXG'],
+  [LayerMap['Layer_PG_YXG'], JS_PG_YXG, 'TC', 'PG_YXG'],
+  [LayerMap['Layer_JYC_YXG'], JS_JYC_YXG, 'TC', 'JYC_YXG'],
+  [LayerMap['Layer_BLB_YXG'], JS_BLB_YXG, 'TC', 'BLB_YXG'],
+  [LayerMap['Layer_HLB_YXG'], JS_HLB_YXG, 'TC', 'HLB_YXG'],
+  [LayerMap['Layer_SG_YXG'], JS_SG_YXG, 'TC', 'SG_YXG'],
+  [LayerMap['Layer_TTH_YXG'], JS_TTH_YXG, 'TC', 'TTH_YXG'],
+  [LayerMap['Layer_MG_YXG'], JS_MG_YXG, 'TC', 'MG_YXG'],
+  [LayerMap['Layer_BH_YXG'], JS_BH_YXG, 'TC', 'BH_YXG'],
+  [LayerMap['Layer_SM_YXG'], JS_SM_YXG, 'TC', 'SM_YXG'],
+  [LayerMap['Layer_SCDCD_YXG'], JS_SCDCD_YXG, 'TC', 'SCDCD_YXG'],
+  [LayerMap['Layer_JH_YXG'], JS_JH_YXG, 'TC', 'JH_YXG'],
+  [LayerMap['Layer_BWHHD_YXG'], JS_BWHHD_YXG, 'TC', 'BWHHD_YXG'],
+  [LayerMap['Layer_LYHHR_YXG'], JS_LYHHR_YXG, 'TC', 'LYHHR_YXG'],
+  [LayerMap['Layer_DQSJ_YXG'], JS_DQSJ_YXG, 'TC', 'DQSJ_YXG'],
+  [LayerMap['Layer_FGS_YXG'], JS_FGS_YXG, 'TC', 'FGS_YXG'],
+  [LayerMap['Layer_HDCB_YXG'], JS_HDCB_YXG, 'TC', 'HDCB_YXG'],
+  [LayerMap['Layer_QW_YXG'], JS_QW_YXG, 'TC', 'QW_YXG'],
+  [LayerMap['Layer_XYWB_YXG'], JS_XYWB_YXG, 'TC', 'XYWB_YXG'],
+  [LayerMap['Layer_QQBY_YXG'], JS_QQBY_YXG, 'TC', 'QQBY_YXG'],
+  [LayerMap['Layer_LiuShan_YXG'], JS_LiuShan_YXG, 'TC', 'LiuShan_YXG'],
+  [LayerMap['Layer_YingShu_YXG'], JS_YingShu_YXG, 'TC', 'YingShu_YXG'],
+  [LayerMap['Layer_YuJiaShu_YXG'], JS_YuJiaShu_YXG, 'TC', 'YuJiaShu_YXG'],
+  [LayerMap['Layer_YuShanFeng_YXG'], JS_YuShanFeng_YXG, 'TC', 'YuShanFeng_YXG'],
+  [LayerMap['Layer_SongShu_YXG'], JS_SongShu_YXG, 'TC', 'SongShu_YXG'],
+
 ]
 const MonosTime = {
   LLD: 48,
@@ -1602,10 +1806,30 @@ function MarkPoint(element) {
     layerNumber == 290 ||
     layerNumber == 288 ||
     layerNumber == 402 ||
-    layerNumber == 404
+    layerNumber == 404 ||
+    layerNumber == 506
   ) {
-    var iconUrl =
-      'https://assets.yuanshen.site/icons/' + layerNumber + doneUrl + '.svg'
+    if (that.parent().html().indexOf("宝箱") != -1) {
+      if (that.parent().html().indexOf("普通") != -1) {
+        var iconUrl =
+          'https://assets.yuanshen.site/icons/普通宝箱' + doneUrl + '.png'
+      } else if (that.parent().html().indexOf("精致") != -1) {
+        var iconUrl =
+          'https://assets.yuanshen.site/icons/精致宝箱' + doneUrl + '.png'
+      } else if (that.parent().html().indexOf("珍贵") != -1) {
+        var iconUrl =
+          'https://assets.yuanshen.site/icons/珍贵宝箱' + doneUrl + '.png'
+      } else if (that.parent().html().indexOf("华丽") != -1) {
+        var iconUrl =
+          'https://assets.yuanshen.site/icons/华丽宝箱' + doneUrl + '.png'
+      } else {
+        var iconUrl =
+          'https://assets.yuanshen.site/icons/' + layerNumber + doneUrl + '.svg'
+      }
+    } else {
+      var iconUrl =
+        'https://assets.yuanshen.site/icons/' + layerNumber + doneUrl + '.svg'
+    }
   } else {
     var iconUrl =
       'https://assets.yuanshen.site/icons/' + layerNumber + doneUrl + '.png'
@@ -1613,12 +1837,12 @@ function MarkPoint(element) {
   var currentShowdow = currentIcon.prototype.options.shadowUrl
   var downShadow
   if (
-    currentShowdow == 'https://assets.yuanshen.site/icons/loc_find.svg' ||
-    currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind.svg'
+    currentShowdow == 'https://assets.yuanshen.site/icons/loc_02_on.png' ||
+    currentShowdow == 'https://assets.yuanshen.site/icons/loc_02_off.png'
   ) {
     downShadow = newValue ?
-      'https://assets.yuanshen.site/icons/loc_find.svg' :
-      'https://assets.yuanshen.site/icons/loc_notfind.svg'
+      'https://assets.yuanshen.site/icons/loc_02_on.png' :
+      'https://assets.yuanshen.site/icons/loc_02_off.png'
   } else if (
     currentShowdow == 'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
     currentShowdow == 'https://assets.yuanshen.site/icons/loc_stonefound.svg'
@@ -1627,12 +1851,12 @@ function MarkPoint(element) {
       'https://assets.yuanshen.site/icons/loc_stonefound.svg' :
       'https://assets.yuanshen.site/icons/loc_stonenot.svg'
   } else if (
-    currentShowdow == 'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
-    currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
+    currentShowdow == 'https://assets.yuanshen.site/icons/loc_02_on_black.svg' ||
+    currentShowdow == 'https://assets.yuanshen.site/icons/loc_02_off_black.svg'
   ) {
     downShadow = newValue ?
-      'https://assets.yuanshen.site/icons/loc_find_black.svg' :
-      'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
+      'https://assets.yuanshen.site/icons/loc_02_on_black.svg' :
+      'https://assets.yuanshen.site/icons/loc_02_off_black.svg'
   }
   var doneShadowUrl = currentShowdow ? downShadow : ''
   var newIcon = new currentIcon({
@@ -1686,10 +1910,28 @@ function InitMarkerLayer() {
           i == 290 ||
           i == 288 ||
           i == 402 ||
-          i == 404
+          i == 404 ||
+          i == 506
         ) {
-          var iconUrl =
-            'https://assets.yuanshen.site/icons/' + i + doneUrl + '.svg'
+          if (feature.properties.popupContent.indexOf("宝箱") != -1) {
+            if (feature.properties.popupContent.indexOf("普通") != -1) {
+              var iconUrl =
+                'https://assets.yuanshen.site/icons/普通宝箱' + doneUrl + '.png'
+            } else if (feature.properties.popupContent.indexOf("精致") != -1) {
+              var iconUrl =
+                'https://assets.yuanshen.site/icons/精致宝箱' + doneUrl + '.png'
+            } else if (feature.properties.popupContent.indexOf("珍贵") != -1) {
+              var iconUrl =
+                'https://assets.yuanshen.site/icons/珍贵宝箱' + doneUrl + '.png'
+            } else if (feature.properties.popupContent.indexOf("华丽") != -1) {
+              var iconUrl =
+                'https://assets.yuanshen.site/icons/华丽宝箱' + doneUrl + '.png'
+            } else
+              var iconUrl =
+                'https://assets.yuanshen.site/icons/' + i + doneUrl + '.svg'
+          } else
+            var iconUrl =
+              'https://assets.yuanshen.site/icons/' + i + doneUrl + '.svg'
         } else {
           var iconUrl =
             'https://assets.yuanshen.site/icons/' + i + doneUrl + '.png'
@@ -1697,12 +1939,12 @@ function InitMarkerLayer() {
         var currentShowdow = currentIcon.prototype.options.shadowUrl
         var downShadow
         if (
-          currentShowdow == 'https://assets.yuanshen.site/icons/loc_find.svg' ||
-          currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind.svg'
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_02_on.png' ||
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_02_off.png'
         ) {
           downShadow = markedFlag ?
-            'https://assets.yuanshen.site/icons/loc_find.svg' :
-            'https://assets.yuanshen.site/icons/loc_notfind.svg'
+            'https://assets.yuanshen.site/icons/loc_02_on.png' :
+            'https://assets.yuanshen.site/icons/loc_02_off.png'
         } else if (
           currentShowdow ==
           'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
@@ -1714,13 +1956,13 @@ function InitMarkerLayer() {
             'https://assets.yuanshen.site/icons/loc_stonenot.svg'
         } else if (
           currentShowdow ==
-          'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
+          'https://assets.yuanshen.site/icons/loc_02_on_black.svg' ||
           currentShowdow ==
-          'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
+          'https://assets.yuanshen.site/icons/loc_02_off_black.svg'
         ) {
           downShadow = markedFlag ?
-            'https://assets.yuanshen.site/icons/loc_find_black.svg' :
-            'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
+            'https://assets.yuanshen.site/icons/loc_02_on_black.svg' :
+            'https://assets.yuanshen.site/icons/loc_02_off_black.svg'
         }
         var doneShadowUrl = currentShowdow ? downShadow : ''
         var marker = L.marker([latlng.lng, latlng.lat], {
@@ -1766,10 +2008,28 @@ function freshMarkerLayer() {
           i == 290 ||
           i == 288 ||
           i == 402 ||
-          i == 404
+          i == 404 ||
+          i == 506
         ) {
-          var iconUrl =
-            'https://assets.yuanshen.site/icons/' + i + doneUrl + '.svg'
+          if (feature.properties.popupContent.indexOf("宝箱") != -1) {
+            if (feature.properties.popupContent.indexOf("普通") != -1) {
+              var iconUrl =
+                'https://assets.yuanshen.site/icons/普通宝箱' + doneUrl + '.png'
+            } else if (feature.properties.popupContent.indexOf("精致") != -1) {
+              var iconUrl =
+                'https://assets.yuanshen.site/icons/精致宝箱' + doneUrl + '.png'
+            } else if (feature.properties.popupContent.indexOf("珍贵") != -1) {
+              var iconUrl =
+                'https://assets.yuanshen.site/icons/珍贵宝箱' + doneUrl + '.png'
+            } else if (feature.properties.popupContent.indexOf("华丽") != -1) {
+              var iconUrl =
+                'https://assets.yuanshen.site/icons/华丽宝箱' + doneUrl + '.png'
+            } else
+              var iconUrl =
+                'https://assets.yuanshen.site/icons/' + i + doneUrl + '.svg'
+          } else
+            var iconUrl =
+              'https://assets.yuanshen.site/icons/' + i + doneUrl + '.svg'
         } else {
           var iconUrl =
             'https://assets.yuanshen.site/icons/' + i + doneUrl + '.png'
@@ -1777,12 +2037,12 @@ function freshMarkerLayer() {
         var currentShowdow = currentIcon.prototype.options.shadowUrl
         var downShadow
         if (
-          currentShowdow == 'https://assets.yuanshen.site/icons/loc_find.svg' ||
-          currentShowdow == 'https://assets.yuanshen.site/icons/loc_notfind.svg'
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_02_on.png' ||
+          currentShowdow == 'https://assets.yuanshen.site/icons/loc_02_off.png'
         ) {
           downShadow = markedFlag ?
-            'https://assets.yuanshen.site/icons/loc_find.svg' :
-            'https://assets.yuanshen.site/icons/loc_notfind.svg'
+            'https://assets.yuanshen.site/icons/loc_02_on.png' :
+            'https://assets.yuanshen.site/icons/loc_02_off.png'
         } else if (
           currentShowdow ==
           'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
@@ -1794,13 +2054,13 @@ function freshMarkerLayer() {
             'https://assets.yuanshen.site/icons/loc_stonenot.svg'
         } else if (
           currentShowdow ==
-          'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
+          'https://assets.yuanshen.site/icons/loc_02_on_black.svg' ||
           currentShowdow ==
-          'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
+          'https://assets.yuanshen.site/icons/loc_02_off_black.svg'
         ) {
           downShadow = markedFlag ?
-            'https://assets.yuanshen.site/icons/loc_find_black.svg' :
-            'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
+            'https://assets.yuanshen.site/icons/loc_02_on_black.svg' :
+            'https://assets.yuanshen.site/icons/loc_02_off_black.svg'
         }
         var doneShadowUrl = currentShowdow ? downShadow : ''
         var newIcon = new currentIcon({
@@ -1862,6 +2122,7 @@ $.getJSON(
     JS_MEDIA_LIST1 = data
   }
 )
+
 function checkWebp() {
   try {
     return (document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') == 0);
@@ -2003,13 +2264,13 @@ function updatePointTime() {
           let downShadow
           if (
             currentShowdow ==
-            'https://assets.yuanshen.site/icons/loc_find.svg' ||
+            'https://assets.yuanshen.site/icons/loc_02_on.png' ||
             currentShowdow ==
-            'https://assets.yuanshen.site/icons/loc_notfind.svg'
+            'https://assets.yuanshen.site/icons/loc_02_off.png'
           ) {
             downShadow = newValue ?
-              'https://assets.yuanshen.site/icons/loc_find.svg' :
-              'https://assets.yuanshen.site/icons/loc_notfind.svg'
+              'https://assets.yuanshen.site/icons/loc_02_on.png' :
+              'https://assets.yuanshen.site/icons/loc_02_off.png'
           } else if (
             currentShowdow ==
             'https://assets.yuanshen.site/icons/loc_stonenot.svg' ||
@@ -2021,13 +2282,13 @@ function updatePointTime() {
               'https://assets.yuanshen.site/icons/loc_stonenot.svg'
           } else if (
             currentShowdow ==
-            'https://assets.yuanshen.site/icons/loc_find_black.svg' ||
+            'https://assets.yuanshen.site/icons/loc_02_on_black.svg' ||
             currentShowdow ==
-            'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
+            'https://assets.yuanshen.site/icons/loc_02_off_black.svg'
           ) {
             downShadow = newValue ?
-              'https://assets.yuanshen.site/icons/loc_find_black.svg' :
-              'https://assets.yuanshen.site/icons/loc_notfind_black.svg'
+              'https://assets.yuanshen.site/icons/loc_02_on_black.svg' :
+              'https://assets.yuanshen.site/icons/loc_02_off_black.svg'
           }
           let doneShadowUrl = currentShowdow ? downShadow : ''
           let newIcon = new currentIcon({
