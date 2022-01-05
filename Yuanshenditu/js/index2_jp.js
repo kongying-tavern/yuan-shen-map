@@ -1794,20 +1794,13 @@ function MarkPoint(element) {
   }
 
   var doneUrl = newValue ? '_done' : ''
-  // @ts-ignore
   if (
-    layerNumber == 0 ||
-    layerNumber == 1 ||
     layerNumber == 26 ||
     layerNumber == 27 ||
-    layerNumber == 111 ||
     layerNumber == 150 ||
     layerNumber == 271 ||
     layerNumber == 198 ||
-    layerNumber == 196 ||
     layerNumber == 290 ||
-    layerNumber == 288 ||
-    layerNumber == 402 ||
     layerNumber == 404 ||
     layerNumber == 506
   ) {
@@ -1832,10 +1825,20 @@ function MarkPoint(element) {
       var iconUrl =
         'https://assets.yuanshen.site/icons/' + layerNumber + doneUrl + '.svg'
     }
+  } else if (layerNumber == 0 ||
+    layerNumber == 1 ||
+    layerNumber == 111 ||
+    layerNumber == 196 ||
+    layerNumber == 288 ||
+    layerNumber == 402
+  ) {
+    var iconUrl =
+      'https://assets.yuanshen.site/icons/' + layerNumber + doneUrl + '.svg'
   } else {
     var iconUrl =
       'https://assets.yuanshen.site/icons/' + layerNumber + doneUrl + '.png'
   }
+
   var currentShowdow = currentIcon.prototype.options.shadowUrl
   var downShadow
   if (
@@ -1917,7 +1920,7 @@ function InitMarkerLayer() {
           i == 404 ||
           i == 506
         ) {
-          if (feature.properties.popupContent.indexOf("宝箱") != -1) {
+          if (feature.properties.popTitle.indexOf("宝箱") != -1) {
             if (feature.properties.popupContent.indexOf("普通") != -1) {
               var iconUrl =
                 'https://assets.yuanshen.site/icons/普通宝箱' + doneUrl + '.png'
@@ -2019,7 +2022,7 @@ function freshMarkerLayer() {
           i == 404 ||
           i == 506
         ) {
-          if (feature.properties.popupContent.indexOf("宝箱") != -1) {
+          if (feature.properties.popTitle.indexOf("宝箱") != -1) {
             if (feature.properties.popupContent.indexOf("普通") != -1) {
               var iconUrl =
                 'https://assets.yuanshen.site/icons/普通宝箱' + doneUrl + '.png'
