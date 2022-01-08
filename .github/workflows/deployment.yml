@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - master
-  schedule:
-    - cron: '0 */1 * * *'
+#   schedule:
+#     - cron: '0 */1 * * *'
 
 jobs:
   build:
@@ -34,20 +34,20 @@ jobs:
           version: 6.0.2
           run_install: true
 
-      - name: Auto gen Item_Features.js
-        shell: bash
-        env: # Set the secret as an input
-          qurey_url: ${{ secrets.SERVER_QUERY_URL }}
-        run: |
-          node ./tools/genGeoJson.mjs "$qurey_url"
-          tail -n 1 ./Yuanshenditu/js/Item_Features.js
-      - name: Auto gen Item_Features.js
-        shell: bash
-        env: # Set the secret as an input
-          qurey_url: ${{ secrets.SERVER_QUERY_URL }}
-        run: |
-          node ./tools/genGeoJson.mjs "$qurey_url"
-          tail -n 1 ./Yuanshenditu/js/Item_Features.js
+#       - name: Auto gen Item_Features.js
+#         shell: bash
+#         env: # Set the secret as an input
+#           qurey_url: ${{ secrets.SERVER_QUERY_URL }}
+#         run: |
+#           node ./tools/genGeoJson.mjs "$qurey_url"
+#           tail -n 1 ./Yuanshenditu/js/Item_Features.js
+#       - name: Auto gen Item_Features.js
+#         shell: bash
+#         env: # Set the secret as an input
+#           qurey_url: ${{ secrets.SERVER_QUERY_URL }}
+#         run: |
+#           node ./tools/genGeoJson.mjs "$qurey_url"
+#           tail -n 1 ./Yuanshenditu/js/Item_Features.js
 
       # 部署
       - name: Deploy
