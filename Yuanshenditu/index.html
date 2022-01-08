@@ -168,7 +168,23 @@
   <div class="wiki">
     <a href="https://teyvats.wiki" target="_bal" class="YQLJ4"></a>
   </div>
-  <div class="switch_FB"></div>
+  <div class="switch_content">
+    <div class="switch switch_FB">
+      <div class="switch_text">
+        传送点位
+      </div>
+    </div>
+    <!-- <div class="switch switch_WC">
+      <div class="switch_text">
+        完成点位
+      </div>
+    </div> -->
+    <div class="switch switch_BG off">
+      <div class="switch_text">
+        背景动效
+      </div>
+    </div>
+  </div>
   <div class="loading" style="display: none"></div>
   <div id="map"></div>
   <div class="danjixiazai"></div>
@@ -4179,6 +4195,7 @@
         }
 
         new SwitchMemory('.switch_FB', 'on')
+        new SwitchMemory('.switch_BG', 'off')
       })()
 
       map.addLayer(LayerMap['Layer_SX_MD'])
@@ -4345,10 +4362,10 @@
         $('.jpindex-btn').css('transform', 'scale(0.5)')
         $('.jpindex-btn').css('left', '35px')
         $('.jpindex-btn').css('top', '45px')
-        $('.switch_FB').css('transform-origin', '0% 100% 0')
-        $('.switch_FB').css('transform', 'scale(0.5)')
-        $('.switch_FB').css('left', '5px')
-        $('.switch_FB').css('bottom', '35px')
+        $('.switch_content').css('transform-origin', '0% 100% 0')
+        $('.switch_content').css('transform', 'scale(0.5)')
+        $('.switch_content').css('left', '5px')
+        $('.switch_content').css('bottom', '35px')
         // $(".control-containor").css("right", "-255px");
         // $(".control-containor").css("width", "300px");
         // $(".fold-btn").css("left", "-55px");
@@ -4526,10 +4543,7 @@
       () => {
         csd = !csd
         if (csd) {
-          $('.switch_FB').css(
-            'background-image',
-            'url(imgs/con_img/switch_on.png)'
-          )
+          $('.switch_FB').removeClass("off");
           if (area_idx_cur == 'TWT') {
             map.addLayer(LayerMap['Layer_SX_MD'])
             map.addLayer(LayerMap['Layer_SX_LY'])
@@ -4564,10 +4578,7 @@
             map.addLayer(LayerMap['Layer_CSD_YXG'])
           }
         } else {
-          $('.switch_FB').css(
-            'background-image',
-            'url(imgs/con_img/switch_off.png)'
-          )
+          $('.switch_FB').addClass("off");
           if (area_idx_cur == 'TWT') {
             map.removeLayer(LayerMap['Layer_SX_MD'])
             map.removeLayer(LayerMap['Layer_SX_LY'])
@@ -4605,6 +4616,20 @@
       },
       false
     )
+    var BGAnimation = false;
+    const BGSwitch = document.querySelector('.switch_BG')
+    BGSwitch.addEventListener(
+      'click',
+      () => {
+        BGAnimation = !BGAnimation;
+        if (BGAnimation) {
+          $('.switch_BG').removeClass("off");
+          $(".twinkling").addClass("on")
+        } else {
+          $('.switch_BG').addClass("off");
+          $(".twinkling").removeClass("on")
+        }
+      }, false)
     $(function () {
       FastClick.attach(document.body)
     })

@@ -14,18 +14,47 @@ body,
   display: none;
 }
 
-.switch_FB {
-  z-index: 4000;
-  display: block;
+.switch_content {
+  display: flex;
+  width: fit-content;
+  height: fit-content;
   position: absolute;
-  background-image: url('../imgs/con_img/switch_on_jp.png');
-  background-size: contain;
-  width: 200px;
-  height: 30px;
   left: 20px;
-  bottom: 30px;
-  background-size: 100% 100%;
+  bottom: 45px;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.switch {
+  z-index: 4000;
+  display: flex;
+  background-image: url(../imgs/con_img/i_switch_on.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: fit-content;
+  height: 30px;
   cursor: pointer;
+  align-items: center;
+}
+.switch:not(:first-child){
+  margin-top: 5px;
+}
+.switch.off{
+  background-image: url(../imgs/con_img/i_switch_off.png);
+}
+
+.switch_text {
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 62px;
+  color: white;
+  height: fit-content;
+  background-color: #0000005e;
+  width: fit-content;
+  padding: 0px 10px;
+  border-radius: 20px;
+  align-content: center;
 }
 
 .genshin_pub {

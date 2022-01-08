@@ -1868,6 +1868,8 @@ function MarkPoint(element) {
     shadowUrl: doneShadowUrl,
   })
   markers[key].setIcon(newIcon)
+  if (doneUrl == "") $(`.mark-${key}`).removeClass("_done")
+  else $(`.mark-${key}`).addClass("_done")
   if (newValue) {
     that.addClass('myPopSwitchDone')
     that.removeClass('myPopSwitchTodo')
@@ -1970,13 +1972,15 @@ function InitMarkerLayer() {
         var doneShadowUrl = currentShowdow ? downShadow : ''
         var marker = L.marker([latlng.lng, latlng.lat], {
           icon: new currentIcon({
-            className: 'mark-' + i + '_' + `${feature.id}`,
+            className: 'mark-' + key,
             iconUrl: iconUrl,
             shadowUrl: doneShadowUrl,
           }),
           alt: `${latlng.lng},${latlng.lat}`,
         })
         markers[key] = marker
+        if (doneUrl == "") $(`.mark-${key}`).removeClass("_done")
+        else $(`.mark-${key}`).addClass("_done")
         return marker.addTo(typearray[i][0])
       },
       onEachFeature: onEachFeature,
@@ -2073,6 +2077,8 @@ function freshMarkerLayer() {
         })
         markers[key].setIcon(newIcon)
         markers[key].refreshIconOptions(newIcon, true)
+        if (doneUrl == "") $(`.mark-${key}`).removeClass("_done")
+        else $(`.mark-${key}`).addClass("_done")
       },
       onEachFeature: onEachFeature,
     })

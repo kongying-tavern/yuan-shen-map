@@ -99,6 +99,9 @@
 .twinkling {
   background: transparent url(images/twinkling.png) repeat top center;
   z-index: -98;
+
+}
+.twinkling.on{
   -moz-animation: move-twink-back 200s linear infinite;
   -ms-animation: move-twink-back 200s linear infinite;
   -o-animation: move-twink-back 200s linear infinite;
@@ -107,6 +110,10 @@
 }
 
 .clouds {
+  background: transparent url(images/clouds.png) repeat top center;
+  z-index: -97;
+}
+.clouds.on{
   background: transparent url(images/clouds.png) repeat top center;
   z-index: -97;
   -moz-animation: move-clouds-back 200s linear infinite;
