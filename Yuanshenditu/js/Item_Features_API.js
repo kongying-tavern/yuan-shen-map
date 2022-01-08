@@ -3,7 +3,7 @@ var JS_Item = {
   features: [],
 }
 // var originJsonArr = []
-let url = 'https://api.minemc.top/marker/queryAll'
+let url = '/item/marker/queryAll'
 const originalMapSize = [8192, 8192];
 const centerOffsetFromLeftTop = [3568, 6286];
 
