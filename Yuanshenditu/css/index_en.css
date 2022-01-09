@@ -15,6 +15,7 @@ body,
 }
 
 .switch_content {
+  z-index: 4000;
   display: flex;
   width: fit-content;
   height: fit-content;
@@ -27,7 +28,6 @@ body,
 }
 
 .switch {
-  z-index: 4000;
   display: flex;
   background-image: url(../imgs/con_img/i_switch_on.png);
   background-size: contain;
