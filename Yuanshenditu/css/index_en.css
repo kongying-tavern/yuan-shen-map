@@ -22,6 +22,9 @@ body,
 ._done{
   opacity: var(--opacity)!important;
 }
+._doneCluster{
+  opacity: var(--opacity);
+}
 
 .switch_content {
   z-index: 4000;

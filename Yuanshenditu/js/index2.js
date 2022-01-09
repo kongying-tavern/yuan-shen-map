@@ -1863,13 +1863,11 @@ function MarkPoint(element) {
   }
   var doneShadowUrl = currentShowdow ? downShadow : ''
   var newIcon = new currentIcon({
-    className: 'mark-' + key,
+    className: 'mark-' + key + " " + doneUrl,
     iconUrl: iconUrl,
     shadowUrl: doneShadowUrl,
   })
   markers[key].setIcon(newIcon)
-  if (doneUrl == "") $(`.mark-${key}`).removeClass("_done")
-  else $(`.mark-${key}`).addClass("_done")
   if (newValue) {
     that.addClass('myPopSwitchDone')
     that.removeClass('myPopSwitchTodo')
