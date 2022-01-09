@@ -1767,7 +1767,7 @@ var markers = {}
 function MarkPoint(element) {
   console.log('element', element)
   var that = $(element)
-  var key = that.attr('data-key')
+  var key = that.attr('data-key').split(' ')[0]
   var layerNumber = key.split('_')[0]
   var currentIcon = getIconInfo(typearray[layerNumber][2])
   var oldValue = localStorage.getItem(key)
@@ -1865,7 +1865,7 @@ function MarkPoint(element) {
   }
   var doneShadowUrl = currentShowdow ? downShadow : ''
   var newIcon = new currentIcon({
-    className: 'mark-' + key,
+    className: 'mark-' + key + " " + doneUrl,
     iconUrl: iconUrl,
     shadowUrl: doneShadowUrl,
   })
@@ -1975,7 +1975,7 @@ function InitMarkerLayer() {
         // @ts-ignore
         var marker = L.marker([latlng.lng, latlng.lat], {
           icon: new currentIcon({
-            className: 'mark-' + i + '_' + `${feature.id}`,
+            className: 'mark-' + key + " " + doneUrl,
             iconUrl: iconUrl,
             shadowUrl: doneShadowUrl,
           }),
@@ -2075,7 +2075,7 @@ function freshMarkerLayer() {
         }
         var doneShadowUrl = currentShowdow ? downShadow : ''
         var newIcon = new currentIcon({
-          className: 'mark-' + key,
+          className: 'mark-' + key + " " + doneUrl,
           iconUrl: iconUrl,
           shadowUrl: doneShadowUrl,
         })

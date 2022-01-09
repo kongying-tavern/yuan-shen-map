@@ -3,15 +3,24 @@
   src: url(hywh_thin4.ttf);
 }
 
+:root{
+  --opacity:1
+}
+
 html,
 body,
 #map {
   height: 100%;
+  /* background-color: #2c2b30; */
   background: transparent;
 }
 
 .myPopIssue {
   display: none;
+}
+
+._done{
+  opacity: var(--opacity)!important;
 }
 
 .switch_content {

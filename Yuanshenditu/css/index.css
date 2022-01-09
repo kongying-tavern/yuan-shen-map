@@ -3,6 +3,10 @@
   src: url(hywh_thin2.ttf);
 }
 
+:root{
+  --opacity:1
+}
+
 html,
 body,
 #map {
@@ -13,6 +17,10 @@ body,
 
 .myPopIssue {
   display: none;
+}
+
+._done{
+  opacity: var(--opacity)!important;
 }
 
 .switch_content {

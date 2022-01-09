@@ -169,16 +169,16 @@
     <a href="https://teyvats.wiki" target="_bal" class="YQLJ4"></a>
   </div>
   <div class="switch_content">
+    <div class="switch switch_WC">
+      <div class="switch_text">
+        完成点位
+      </div>
+    </div>
     <div class="switch switch_FB">
       <div class="switch_text">
         传送点位
       </div>
     </div>
-    <!-- <div class="switch switch_WC">
-      <div class="switch_text">
-        完成点位
-      </div>
-    </div> -->
     <div class="switch switch_BG off">
       <div class="switch_text">
         背景动效
@@ -4196,6 +4196,7 @@
 
         new SwitchMemory('.switch_FB', 'on')
         new SwitchMemory('.switch_BG', 'off')
+        new SwitchMemory('.switch_WC', 'on')
       })()
 
       map.addLayer(LayerMap['Layer_SX_MD'])
@@ -4628,6 +4629,20 @@
         } else {
           $('.switch_BG').addClass("off");
           $(".twinkling").removeClass("on")
+        }
+      }, false)
+    var POIComplete = true;
+    const WCSwitch = document.querySelector('.switch_WC')
+    WCSwitch.addEventListener(
+      'click',
+      () => {
+        POIComplete = !POIComplete;
+        if (POIComplete) {
+          $('.switch_WC').removeClass("off");
+          $(":root").css("--opacity", "1")
+        } else {
+          $('.switch_WC').addClass("off");
+          $(":root").css("--opacity", "0.2")
         }
       }, false)
     $(function () {

@@ -1766,7 +1766,7 @@ var markers = {}
 function MarkPoint(element) {
   console.log('element', element)
   var that = $(element)
-  var key = that.attr('data-key')
+  var key = that.attr('data-key').split(' ')[0]
   var layerNumber = key.split('_')[0]
   var currentIcon = getIconInfo(typearray[layerNumber][2])
   var oldValue = localStorage.getItem(key)
@@ -1972,15 +1972,15 @@ function InitMarkerLayer() {
         var doneShadowUrl = currentShowdow ? downShadow : ''
         var marker = L.marker([latlng.lng, latlng.lat], {
           icon: new currentIcon({
-            className: 'mark-' + key,
+            className: 'mark-' + key + " " + doneUrl,
             iconUrl: iconUrl,
             shadowUrl: doneShadowUrl,
           }),
           alt: `${latlng.lng},${latlng.lat}`,
         })
         markers[key] = marker
-        if (doneUrl == "") $(`.mark-${key}`).removeClass("_done")
-        else $(`.mark-${key}`).addClass("_done")
+        // if (doneUrl == "") $(`.mark-${key}`).removeClass("_done")
+        // else $(`.mark-${key}`).addClass("_done")
         return marker.addTo(typearray[i][0])
       },
       onEachFeature: onEachFeature,
@@ -2071,14 +2071,14 @@ function freshMarkerLayer() {
         }
         var doneShadowUrl = currentShowdow ? downShadow : ''
         var newIcon = new currentIcon({
-          className: 'mark-' + key,
+          className: 'mark-' + key + " " + doneUrl,
           iconUrl: iconUrl,
           shadowUrl: doneShadowUrl,
         })
         markers[key].setIcon(newIcon)
         markers[key].refreshIconOptions(newIcon, true)
-        if (doneUrl == "") $(`.mark-${key}`).removeClass("_done")
-        else $(`.mark-${key}`).addClass("_done")
+        // if (doneUrl == "") $(`.mark-${key}`).removeClass("_done")
+        // else $(`.mark-${key}`).addClass("_done")
       },
       onEachFeature: onEachFeature,
     })
