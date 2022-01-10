@@ -2141,7 +2141,7 @@ map.on('popupopen', function (e) {
   console.log('e', e)
   state = 1
   var marker = e.popup._source
-  var className = marker.options.icon.options.className
+  var className = marker.options.icon.options.className.split(" ")[0]
   var key = className.substring(5, className.length)
   var markedFlag = localStorage.getItem(key)
   var switchClass = !markedFlag ? 'myPopSwitchTodo' : 'myPopSwitchDone'
