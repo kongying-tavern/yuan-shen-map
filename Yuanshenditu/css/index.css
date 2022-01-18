@@ -204,6 +204,7 @@ body,
   position: absolute;
   top: 5px;
   left: 195px;
+  border: none;
   background: url(../imgs/con_img/fankui.png) no-repeat center top;
   background-size: contain;
   width: 170px;
