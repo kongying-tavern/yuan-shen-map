@@ -5,7 +5,7 @@ on:
   # trigger deployment on every push to main branch
   push:
     branches:
-      - master
+      - dev
     # @See https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
     paths-ignore:
       - '**/__tests__/**'
