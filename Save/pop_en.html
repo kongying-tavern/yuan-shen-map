@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="../js/jquery-3.5.1.min.js"></script>
+    <style>
+      body {
+        margin: 0;
+        cursor: default;
+      }
+
+      .saveContent {
+        position: relative;
+        width: 473px;
+        height: 488px;
+        background: #ffffff;
+        border: 1px solid #000000;
+      }
+
+      .saveTitle {
+        position: absolute;
+        width: 473px;
+        height: 67px;
+        left: 0px;
+        top: 0px;
+        line-height: 67px;
+        border-bottom: 1px solid #000000;
+        box-sizing: border-box;
+      }
+
+      .saveClose {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 23px;
+        top: 25px;
+        cursor: pointer;
+        background: url('saveClose.svg') no-repeat;
+        background-size: contain;
+      }
+
+      .userID {
+        /* UserID: NanJi2020 */
+        position: absolute;
+        width: 70%;
+        height: 48px;
+        left: 19px;
+        top: calc(50% - 48px / 2 + 0.5px);
+        font-family: Microsoft YaHei UI;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 22px;
+        line-height: 48px;
+        display: flex;
+        align-items: center;
+        /* Label Color / Light / Primary */
+        color: #000000;
+      }
+
+      .currentUserTitle {
+        /* 当前使用： */
+        position: absolute;
+        width: 200px;
+        height: 48px;
+        left: calc(50% - 98px / 2 - 168.5px);
+        top: calc(50% - 166.5px);
+        font-family: Microsoft YaHei UI;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 48px;
+        display: flex;
+        align-items: center;
+        /* Label Color / Light / Primary */
+        color: #000000;
+      }
+
+      .currentUserName {
+        position: absolute;
+        width: 200px;
+        height: 48px;
+        left: 135px;
+        top: calc(50% - 166.5px);
+        font-family: Microsoft YaHei UI;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 24px;
+        line-height: 48px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+        overflow: hidden;
+      }
+      .saveUpdate {
+        position: absolute;
+        width: 103px;
+        height: 48px;
+        left: 354px;
+        top: 80px;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        cursor: pointer;
+        opacity: 1;
+        text-align: center;
+      }
+
+      .saveUpdate.none {
+        opacity: 0.3;
+      }
+
+      .saveUpdateText {
+        position: absolute;
+        width: 52px;
+        height: 34px;
+        left: 26px;
+        top: calc(50% - 34px / 2);
+        font-family: Microsoft YaHei UI;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 17px;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        /* Label Color / Light / Primary */
+        color: #000000;
+      }
+
+      .saveTableContent {
+        position: absolute;
+        width: 454px;
+        height: 336px;
+        left: 10px;
+        top: 141px;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+      }
+
+      th {
+        font-family: Microsoft YaHei UI;
+        font-style: normal;
+        font-weight: normal;
+        height: 38px;
+        font-size: 14px;
+        line-height: 38px;
+        align-items: center;
+        color: #4f4f4f;
+      }
+
+      td {
+        text-align: center;
+        vertical-align: center;
+      }
+
+      .saveTableState {
+        width: 40px;
+        height: 40px;
+        background: url('NoSelected.svg') no-repeat;
+        cursor: pointer;
+      }
+
+      .saveTableState.sync {
+        background: url('Selected.svg') no-repeat;
+      }
+
+      .tb1 {
+        padding-left: 18px;
+        width: 40px;
+      }
+
+      .tb2 {
+        padding-left: 11px;
+        width: 28px;
+      }
+
+      .tb3 {
+        padding-left: 15px;
+        width: 139px;
+      }
+
+      .tb4 {
+        padding-left: 15px;
+        width: 121px;
+      }
+
+      .tb5 {
+        padding-left: 15px;
+        width: 41px;
+        padding-right: 5px;
+      }
+
+      td.tb2 {
+        font-family: Microsoft YaHei UI;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 22px;
+        line-height: 28px;
+      }
+
+      td.tb3 {
+        font-family: Microsoft YaHei UI;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      td.tb4 {
+        font-family: Microsoft YaHei UI;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      td.tb5 {
+        font-family: Microsoft YaHei UI;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 18px;
+      }
+
+      .saveTableNameContent {
+        width: 139px;
+        /* height: 100%; */
+        background: #ffffff;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        cursor: pointer;
+        display: flex;
+        margin: 5px 0;
+      }
+
+      .saveTableName {
+        position: relative;
+        /* display: flow-root; */
+        width: 94px;
+        /* line-height: 31px; */
+        margin: 6px 0;
+      }
+
+      .saveTableEdit {
+        display: flex;
+        float: right;
+        top: 0px;
+        right: 0px;
+        width: 45px;
+        /* height: 100%; */
+        /* line-height: 100%; */
+        /* line-height: 33px; */
+        border-left: 1px solid #000000;
+        box-sizing: border-box;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .tra {
+        height: 48px;
+      }
+
+      .trb {
+        height: 48px;
+        background: #00000015;
+      }
+
+      table {
+        border-collapse: separate;
+        border-spacing: 0;
+      }
+
+      .saveTabelDel {
+        position: relative;
+        width: 41px;
+        height: 33px;
+        line-height: 33px;
+        background: #ffffff;
+        border: 1px solid #000000;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+
+      .saveTabelDel.disable {
+        cursor: default;
+        pointer-events: none;
+        opacity: 0.3;
+      }
+
+      .saveTableDiv {
+        height: 293px;
+        overflow: scroll;
+      }
+
+      .saveTableDiv::-webkit-scrollbar {
+        /*隐藏滚轮*/
+        display: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="saveContent">
+      <div class="saveTitle">
+        <div class="userID">userID: BlackLotusccw</div>
+        <div class="saveClose"></div>
+      </div>
+      <div class="currentUserTitle">Save in use：</div>
+      <div class="currentUserName">Loading...</div>
+      <div class="saveUpdate">Upload to Cloud</div>
+      <div class="saveTableContent">
+        <table class="saveTableTH">
+          <tr>
+            <th class="tb1">State</th>
+            <th class="tb2">NO</th>
+            <th class="tb3">SaveName</th>
+            <th class="tb4">LastSave</th>
+            <th class="tb5">Setting</th>
+          </tr>
+        </table>
+        <div class="saveTableDiv">
+          <table class="saveTable">
+            <tr>
+              <p
+                style="
+                  text-align: center;
+                  margin: auto;
+                  line-height: 270px;
+                  font-size: 50px;
+                "
+              >
+                Loading...
+              </p>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+      // window.onload = function () {
+      //     if (isInit == false) {
+      //         window.parent.getToken();
+      //     }
+      // }
+      $('.saveClose').click(function () {
+        window.parent.postMessage('saveClose', '*')
+      })
+      // $(".saveUpdateText").click(function () {
+      //     window.parent.postMessage("upLoad", '*');
+      // });
+      function saveTableEdit(element) {
+        var that = $(element)
+        var fileID = that.attr('data')
+        window.parent.updateGistDescription(fileID)
+      }
+
+      function saveTabelDel(element) {
+        var that = $(element)
+        var fileID = that.attr('data')
+        window.parent.deleteGistFile(fileID)
+      }
+
+      function copyData(element) {
+        var that = $(element)
+        var fileID = that.attr('data')
+        window.parent.isCopy = true
+        const seletedRow = parent.user_files.find((i) => i.id === fileID)
+        window.parent.addGistFile(seletedRow.description + 'Copy', (res) => {
+          window.parent.isCopy = false
+        })
+      }
+
+      function saveLoad(element) {
+        var that = $(element)
+        var file = that.attr('data')
+        var fileID = file.split(',')[0]
+        var fileLastUpdateTime = file.split(',')[1]
+        window.parent.loadGistFile(fileID, fileLastUpdateTime)
+      }
+
+      function saveTabelNew() {
+        window.parent.addGistFile()
+      }
+      window.addEventListener(
+        'message',
+        function (event) {
+          if (event.data.message == 'refreshGistList') {
+            $('.currentUserName').html('Not selected')
+            $('.saveUpdate').unbind() //取消上传按钮事件绑定
+            $('.saveUpdate').click(function () {
+              window.parent.addGistFile()
+            })
+            $('p').remove()
+            $('.saveTable tr').remove()
+            for (let fileIndex in event.data.files) {
+              let fileIndexTemp = event.data.files.length - Number(fileIndex)
+              let trClass = fileIndexTemp % 2 == 0 ? 'tra' : 'trb'
+              let file = event.data.files[fileIndex]
+              let saveTableStateClass = 'saveTableState'
+              let action_btn = 'DEL'
+              var saveTabelDelClass = 'saveTabelDel'
+
+              if (
+                localStorage.getItem('lastUpdateTime') == file.lastUpdateTime &&
+                localStorage.getItem('lastUpdateID') == file.id
+              ) {
+                action_btn = 'COPY'
+                saveTableStateClass = 'saveTableState sync'
+                var NetSync = localStorage.getItem('NetSync')
+                if (NetSync == 'true') {
+                  $('.currentUserName').html(
+                    fileIndexTemp + '.' + file.description
+                  )
+                } else {
+                  $('.currentUserName').html(
+                    '*' + fileIndexTemp + '.' + file.description
+                  )
+                }
+                $('.saveUpdate').unbind() //取消上传按钮事件绑定
+                console.log('取消上传按钮事件绑定')
+                $('.saveUpdate').click(function () {
+                  window.parent.updateGistFile(file.id)
+                })
+                if (event.data.files.length >= 6) {
+                  var saveTabelDelClass = 'saveTabelDel disable'
+                }
+              }
+              var savePopHtml = `
+                    <tr class=${trClass}>
+                    <td class="tb1">
+                        <div class="${saveTableStateClass}" onclick="saveLoad(this)" data="${
+                file.id
+              },${file.lastUpdateTime}"></div>
+                    </td>
+                    <td class="tb2">${fileIndexTemp}</td>
+                    <td class="tb3">
+                        <div class="saveTableNameContent" onclick="saveTableEdit(this)" data="${
+                          file.id
+                        }">
+                            <div class="saveTableName">${file.description}</div>
+                            <div class="saveTableEdit">EDIT</div>
+                        </div>
+                    </td>
+                    <td class="tb4">${file.lastUpdateTime}</td>
+                    <td class="tb5">
+                        <div class="${saveTabelDelClass}" onclick="${
+                action_btn === 'COPY' ? 'copyData' : 'saveTabelDel'
+              }(this)" data="${file.id}">${action_btn}</div>
+                    </td>
+                </tr>
+                    `
+              $('.saveTable').prepend(savePopHtml)
+            }
+            var trC = event.data.files.length % 2 == 0 ? 'trb' : 'tra'
+            var savePopHtml = `
+                    <tr class=${trC}>
+                    <td class="tb1" style="opacity: 0;">
+                        <div class="saveTableStateClass" style="opacity: 0;"></div>
+                    </td>
+                    <td class="tb2" style="opacity: 0;">0</td>
+                    <td class="tb3">
+                        <div class="saveTableNameContent">
+                            <div class="saveTableName" onclick="saveTabelNew()">+ NewSave</div>
+                        </div>
+                    </td>
+                    <td class="tb4" style="opacity: 0;"></td>
+                    <td class="tb5" style="opacity: 0;">
+                        <div class="saveTabelDel">DEL</div>
+                    </td>
+                </tr>
+                    `
+            if (event.data.files.length < 6) {
+              $('.saveTable').append(savePopHtml)
+            }
+          } else if (event.data.message == 'refreshUser') {
+            $('.userID').html('userID: ' + event.data.userName)
+          }
+        },
+        false
+      )
+    </script>
+  </body>
+</html>

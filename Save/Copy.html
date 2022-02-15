@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>下拉菜单</title>
+    <style type="text/css">
+      body,
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+        font-size: 13px;
+      }
+
+      ul,
+      li {
+        list-style: none;
+      }
+
+      .divselect {
+        position: relative;
+        width: 402px;
+        height: 160px;
+        margin: 0px auto;
+        z-index: 10000;
+      }
+
+      .divselect cite {
+        width: 150px;
+        height: 24px;
+        line-height: 24px;
+        display: block;
+        color: #807a62;
+        cursor: pointer;
+        font-style: normal;
+        padding-left: 4px;
+        padding-right: 30px;
+        border: 1px solid #333333;
+      }
+
+      .divselect ul {
+        width: 165px;
+        border: 1px solid #333333;
+        background-color: #ffffff;
+        position: absolute;
+        z-index: 20000;
+        display: none;
+        float: right;
+        right: 16px;
+        top: 54px;
+      }
+
+      .divselect ul li {
+        height: 39px;
+        line-height: 39px;
+      }
+
+      .divselect ul li a {
+        display: block;
+        height: 39px;
+        color: #333333;
+        text-decoration: none;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .divselect ul li:hover {
+        background: #eee;
+      }
+
+      .bg {
+        background: #eee;
+      }
+
+      .SelectSpan {
+        position: relative;
+        float: right;
+        right: 16px;
+        top: 16px;
+        width: 167px;
+        height: 39px;
+        padding-left: 10px;
+        line-height: 39px;
+        background: #ffffff;
+        /* Gray 1 */
+
+        font-size: 18px;
+        border: 1px solid #333333;
+        box-sizing: border-box;
+        border-radius: 2px;
+      }
+
+      .selectText {
+        position: relative;
+        display: inline;
+        font-size: 16px;
+        padding-right: 30px;
+      }
+
+      .selectIcon {
+        position: relative;
+        float: right;
+        background: url('SelectIcon.svg') no-repeat;
+        background-size: contain;
+        width: 13px;
+        height: 7px;
+        top: 16px;
+        right: 12px;
+      }
+
+      .popContent {
+        position: absolute;
+        width: 402px;
+        height: 218px;
+
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+        background: #ffffff;
+      }
+
+      .popTitle {
+        position: relative;
+        width: 402px;
+        height: 58px;
+        left: 0px;
+        top: 0px;
+
+        background: #ffffff;
+        /* border: 1px solid #333333; */
+        box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+      }
+
+      .popTitleName {
+        font-size: 24px;
+        line-height: 58px;
+        padding-left: 19px;
+      }
+
+      .popClose {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 19px;
+        top: 19px;
+        cursor: pointer;
+        background: url('saveClose.svg') no-repeat;
+        background-size: contain;
+      }
+
+      .popMainText {
+        display: inline;
+        font-size: 18px;
+        line-height: 74px;
+        padding-left: 19px;
+      }
+
+      .cancel {
+        position: absolute;
+        float: block;
+        width: 114px;
+        height: 32px;
+        left: 148px;
+        bottom: 14px;
+
+        font-size: 16px;
+        color: #ffffff;
+        line-height: 32px;
+        text-align: center;
+
+        background: #969696;
+        border-radius: 2px;
+      }
+
+      .enter {
+        position: absolute;
+        display: block;
+        width: 114px;
+        height: 32px;
+        left: 273px;
+        bottom: 14px;
+
+        font-size: 16px;
+        color: #ffffff;
+        line-height: 32px;
+        text-align: center;
+
+        background: #42946c;
+        border-radius: 2px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="popContent">
+      <div class="popTitle">
+        <div class="popTitleName">复制存档</div>
+        <div class="popClose"></div>
+      </div>
+      <div class="divselect">
+        <div class="popMainText">复制"2 南极的小号"到</div>
+        <span class="SelectSpan"
+          ><div class="selectText">请点击选择分类</div>
+          <div class="selectIcon"></div
+        ></span>
+        <ul>
+          <li>
+            <a href="javascript:;">ASP开发</a>
+          </li>
+          <li>
+            <a href="javascript:;">.NET开发</a>
+          </li>
+          <li>
+            <a href="javascript:;">PHP开发</a>
+          </li>
+          <li>
+            <a href="javascript:;">Javascript开发</a>
+          </li>
+          <li>
+            <a href="javascript:;">Java特效</a>
+          </li>
+        </ul>
+        <div class="cancel">取消</div>
+        <div class="enter">确定</div>
+      </div>
+    </div>
+    <script type="text/javascript">
+      var cite = document.querySelector('span'), //选择的内容
+        ul = document.querySelector('ul'), //列表
+        list = document.querySelectorAll('a'), //选择项
+        index = -1 //索引
+      //点击列表显示
+      cite.addEventListener('click', function (e) {
+        var e = e || window.e
+        e.stopPropagation() //阻止冒泡防止触发document上绑定的隐藏事件
+        ul.style.display = 'block'
+      })
+      //给每个列表项绑定点击
+      for (var i = 0; i < list.length; i++) {
+        list[i].onclick = function () {
+          cite.innerHTML = this.innerHTML
+          ul.style.display = 'none' //这里隐藏可以不写，不写冒泡到document上触发document上的隐藏事件
+        }
+      }
+      //键盘按下事件
+      document.addEventListener('keyup', function (e) {
+        var e = e || window.e
+        reset()
+        //向上键
+        if (e.keyCode == '38') {
+          index--
+          if (index < 0) {
+            index = list.length - 1
+          }
+        }
+        //向下键
+        if (e.keyCode == '40') {
+          index++
+          if (index > list.length - 1) {
+            index = 0
+          }
+        }
+        //enter确认键
+        if (e.keyCode == '13') {
+          cite.innerHTML = list[index].innerHTML
+          ul.style.display = 'none'
+          return
+        }
+        list[index].className = 'bg'
+      })
+      //未选择时点击document隐藏
+      document.addEventListener('click', function () {
+        ul.style.display = 'none'
+      })
+      //样式重置
+      function reset() {
+        for (var i = 0; i < list.length; i++) {
+          list[i].className = ''
+        }
+      }
+    </script>
+  </body>
+</html>

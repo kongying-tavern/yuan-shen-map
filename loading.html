@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>原神地图</title>
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimal-ui"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="msappdivcation-navbutton-color" content="#ffffff" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="lack-translucent"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Genshin Impact Map" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="google" value="notranslate" />
+    <meta
+      name="keywords"
+      content="原神地图,原神地図,原神地图工具,全资源攻略地图,空荧酒馆,原神資源地圖,Genshin Map,Genshin Impact Map"
+    />
+    <meta
+      name="description"
+      content="米游社空荧酒馆制作的原神全资源攻略地图。"
+    />
+    <!-- Open Graph -->
+    <meta property="fb:app_id" content="3340670332825887" />
+    <meta property="og:url" content="https://yuanshen.site/" />
+    <meta property="og:title" content="原神地图" />
+    <meta property="og:site_name" content="Genshin Impact Map" />
+    <meta
+      property="og:description"
+      content="米游社空荧酒馆制作的原神全资源攻略地图。"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:image"
+      content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg"
+    />
+    <meta name="twitter:widgets:csp" content="on" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@yuanshen_site" />
+    <meta
+      name="twitter:image:src"
+      content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg"
+    />
+    <meta name="twitter:creator" content="@yuanshen_site" />
+    <meta property="twitter:url" content="https://yuanshen.site/" />
+    <meta property="twitter:type" content="website" />
+    <meta property="twitter:title" content="原神地图" />
+    <meta
+      property="twitter:description"
+      content="米游社空荧酒馆制作的原神全资源攻略地图。"
+    />
+    <meta
+      property="twitter:image"
+      content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg"
+    />
+    <meta property="url" content="https://yuanshen.site/" />
+    <meta property="type" content="website" />
+    <meta property="title" content="原神地图" />
+    <meta
+      property="description"
+      content="米游社空荧酒馆制作的原神全资源攻略地图。"
+    />
+    <meta
+      property="image"
+      content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg"
+    />
+    <meta itemprop="name" content="原神地图" />
+    <meta
+      itemprop="description"
+      content="米游社空荧酒馆制作的原神全资源攻略地图。"
+    />
+    <meta
+      itemprop="image"
+      content="https://yuanshen.site/tiles_test/4/ppp10_9.jpg"
+    />
+    <!-- Open Graph -->
+    <meta
+      http-equiv="refresh"
+      content="4; url='https://yuanshen.site/index.html'"
+    />
+    <link rel="alternate" href="https://yuanshen.site/" hreflang="x-default" />
+    <link rel="canonical" href="https://yuanshen.site/" />
+    <link
+      rel="shortcut icon"
+      href="https://yuanshen.site/favicon.ico"
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://yuanshen.site/favicon.ico"
+      sizes="120x120"
+    />
+    <link rel="dns-prefetch" href="//assets.yuanshen.site" />
+    <link rel="dns-prefetch" href="//gitee.com" />
+    <link rel="prefetch" href="/css/reset.css" as="style" />
+    <link rel="prefetch" href="/leaflet/leaflet.css" as="style" />
+    <link rel="prefetch" href="/dist/MarkerCluster.Default.css" as="style" />
+    <link rel="prefetch" href="/dist/MarkerCluster.css" as="style" />
+    <link rel="prefetch" href="/js/Cookie.js" as="script" />
+    <link rel="prefetch" href="/js/jquery-3.5.1.min.js" as="script" />
+    <link rel="prefetch" href="/js/getError.js" as="script" />
+    <link rel="prefetch" href="/leaflet/leaflet.js" as="script" />
+    <link
+      rel="prefetch"
+      href="/dist/leaflet.markercluster-src.js"
+      as="script"
+    />
+    <!-- Auto Polyfill -->
+    <script
+      crossorigin="anonymous"
+      src="https://b.alicdn.com/s/polyfill.min.js?features=%7Ehtml5-elements%2CCSS.supports%2ClocalStorage%2Cdefault%2Ces6%2Ces2015%2Ces2016%2CElement.prototype.scroll%2CElement.prototype.scrollBy%2CglobalThis%2Cfetch%2CURLSearchParams"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="//assets.yuanshen.site/styles/global.min.css"
+    />
+    <link rel="stylesheet" href="./css/loading/loading.css" />
+    <!-- Google Tag Manager -->
+    <script>
+      ;(function (w, d, s, l, i) {
+        w[l] = w[l] || []
+        w[l].push({
+          'gtm.start': new Date().getTime(),
+          'event': 'gtm.js',
+        })
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : ''
+        j.async = true
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl
+        f.parentNode.insertBefore(j, f)
+      })(window, document, 'script', 'dataLayer', 'GTM-5H6V3NB')
+    </script>
+    <script>
+      window.__DEV__ = !location.origin.includes('yuanshen.site')
+    </script>
+    <script>
+      ;(function () {
+        var prefersDark =
+          window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+        var setting = localStorage.getItem('color-schema') || 'auto'
+        var hours = new Date().getHours()
+        if (
+          setting === 'dark' ||
+          (prefersDark && setting !== 'light') ||
+          (hours <= 18 && hours <= 7)
+        )
+          document.documentElement.classList.toggle('dark', true)
+      })()
+    </script>
+    <!-- End Google Tag Manager -->
+    <script type="application/ld+json">
+      [
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "url": "https://yuanshen.site",
+          "logo": "https://yuanshen.site/tiles_test/4/ppp10_9.jpg"
+        },
+        {
+          "@context": "https://schema.org/",
+          "@type": "WebPage",
+          "name": "Genshin Map",
+          "author": {
+            "@type": "Organization",
+            "name": " Kongying"
+          },
+          "datePublished": "2021-05-08"
+        },
+        {
+          "@context": "https://schema.org/",
+          "@type": "ImageObject",
+          "url": "https://yuanshen.site",
+          "license": "https://yuanshen.site/disclaimer_en.html",
+          "acquireLicensePage": "https://yuanshen.site/disclaimer_en.html"
+        }
+      ]
+    </script>
+  </head>
+
+  <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript
+      ><iframe
+        src="https://www.googletagmanager.com/ns.html?id=GTM-5H6V3NB"
+        height="0"
+        width="0"
+        style="display: none; visibility: hidden"
+      ></iframe
+    ></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <noscript>
+      <p>(:</p>
+      <p>We"re sorry but</p>
+      <p>This page requires JavaScript to work properly</p>
+    </noscript>
+    <div class="wrapper">
+      <main class="loading">
+        <div class="loading-default" role="presentation" aria-hidden="true">
+          <img
+            src="./imgs/loading-bar.png"
+            alt="Loading..."
+            focusable="false"
+          />
+        </div>
+        <div class="loading-mobile" role="presentation">
+          <ul class="rotate" aria-hidden="true" focusable="false">
+            <li class="item"></li>
+            <li class="item"></li>
+            <li class="item"></li>
+            <li class="item"></li>
+            <li class="item"></li>
+          </ul>
+          <h2 id="loading-text">Loading<dot></dot></h2>
+        </div>
+      </main>
+    </div>
+    <script>
+      ;(function () {
+        if (
+          (window.fetch && window.Proxy && globalThis == window) ||
+          window.__ERRORPAGE__ === true
+        )
+          return
+        window.onload = function () {
+          var locale = '/en/'
+          var lang = (
+            document.documentElement.lang ||
+            window.navigator.language ||
+            'zh'
+          ).toLocaleLowerCase()
+
+          if (/^(yue|zh)(-cn|-hans(-[a-z]+)?)?$/i.test(lang)) {
+            locale = '/'
+          } else if (lang.startsWith('ja') || lang.startsWith('jp')) {
+            locale = '/ja/'
+          }
+
+          location.href =
+            'docs' +
+            locale +
+            'error.html?path=' +
+            window.location.pathname +
+            '&timestamp=' +
+            window.Date.now()
+        }
+      })()
+    </script>
+    <script>
+      ;(function () {
+        function setPseudoStyle(className, pseudo, obj) {
+          var str = ''
+
+          for (var prop in obj) {
+            if (obj.hasOwnProperty(prop)) str += prop + ':' + obj[prop] + ';'
+          }
+
+          var style = document.createElement('style')
+          style.innerHTML = '.' + className + '::' + pseudo + '{' + str + '}'
+          document.head.appendChild(style)
+          return style
+        }
+
+        function getCanonicalLocales(localeCode) {
+          try {
+            if (Intl.getCanonicalLocales())
+              return Intl.getCanonicalLocales(localeCode)
+          } catch (err) {
+            console.error('Error Locales:', err, '\nLocaleCode:', localeCode)
+            return document.documentElement.lang
+          }
+        }
+
+        function getUserLanguage() {
+          if (localStorage.getItem('locale'))
+            return getCanonicalLocales(localStorage.getItem('locale'))[0]
+          localStorage.setItem(
+            'locale',
+            getCanonicalLocales(
+              navigator.language || document.documentElement.lang
+            )[0]
+          )
+          return getUserLanguage()
+        }
+
+        function prefetch(href) {
+          var PRELOADLINK = document.createElement('link')
+          PRELOADLINK.rel = 'prefetch'
+          PRELOADLINK.href = href
+          if (
+            RegExp('^((https|http)?://)').test(href) &&
+            !href.includes(document.domain)
+          )
+            PRELOADLINK.setAttribute('crossorigin', 'anonymous')
+          document.head.appendChild(PRELOADLINK)
+          return PRELOADLINK
+        }
+
+        function LoadingBar(element, maxDelay) {
+          this.element = element
+          this.maxDelay = maxDelay || 3000
+        }
+
+        LoadingBar.prototype.start = function () {
+          setPseudoStyle(this.element.className, 'after', {
+            animation: 'loading-bar '.concat(
+              this.maxDelay / 1000,
+              's cubic-bezier(0.28, 0.11, 0.32, 1) 1 forwards'
+            ),
+          })
+        }
+
+        LoadingBar.prototype.finish = function () {
+          setPseudoStyle(this.element.className, 'after', {
+            animation: 'none',
+          })
+          this.element.parentNode.style.opacity = 0
+        }
+
+        var i18n = function i18n() {
+          var lang = getUserLanguage()
+
+          if (!lang || /^(yue|zh)(-cn|-hans(-[a-z]+)?)?$/i.test(lang)) {
+            return {
+              lang: 'zh-CN',
+              title: '原神地图',
+              loadingText: '加载中',
+              link: 'index.html',
+              prefetchList: ['/index.html', '/js/index2.js', '/css/index.css'],
+            }
+          } else if (lang.startsWith('zh') || lang.startsWith('yue')) {
+            return {
+              lang: 'zh-TW',
+              title: '原神地圖',
+              loadingText: '加載中',
+              link: 'index.html',
+              prefetchList: ['/index.html', '/js/index2.js', '/css/index.css'],
+            }
+          } else if (lang.startsWith('ja') || lang.startsWith('jp')) {
+            return {
+              lang: 'ja-JP',
+              title: '原神地図',
+              loadingText: '読み込み中',
+              link: 'index_jp.html',
+              prefetchList: [
+                '/index_jp.html',
+                '/js/index2_jp.js',
+                '/css/index_jp.css',
+              ],
+            }
+          } else {
+            return {
+              lang: 'en-US',
+              title: 'Genshin Map',
+              loadingText: 'Loading',
+              link: 'index_en.html',
+              prefetchList: [
+                '/index_en.html',
+                '/js/index2_en.js',
+                '/css/index_en.css',
+                '/js/milo.js',
+              ],
+            }
+          }
+        }
+
+        var _i18n = i18n(),
+          lang = _i18n.lang,
+          title = _i18n.title,
+          loadingText = _i18n.loadingText,
+          link = _i18n.link,
+          prefetchList = _i18n.prefetchList
+
+        var loadingBar = new LoadingBar(
+          document.querySelector('.loading-default')
+        )
+        loadingBar.start()
+        prefetchList.forEach(function (val) {
+          return prefetch(val)
+        })
+        document.documentElement.lang = lang
+        document.title = title
+        if (getUserLanguage().startsWith('ar'))
+          document.documentElement.setAttribute('dir', 'rtl')
+        var tip = document.getElementById('loading-text')
+        tip.innerHTML = loadingText + '<dot></dot>'
+        tip.title = loadingText
+
+        document.documentElement.oncontextmenu = function (e) {
+          return e.preventDefault()
+        }
+
+        window.onload = function () {
+          return setTimeout(function () {
+            return replace(link)
+          }, 1500)
+        }
+
+        function replace(link) {
+          if (__DEV__) return
+          loadingBar.finish()
+          document.location.replace(
+            'https://yuanshen.site/'
+              .concat(link, '?locale=')
+              .concat(getUserLanguage())
+          )
+        }
+      })()
+    </script>
+  </body>
+</html>
