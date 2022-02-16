@@ -444,25 +444,22 @@ body,
 
 .options-list .map-opts {
   position: relative;
-  display: block;
+  display: flex;
   width: 266px;
   height: 74px;
-  background: linear-gradient(
-      270deg,
-      #ffffff -95.11%,
-      rgba(255, 255, 255, 0) 100%
-    ),
-    #f0e9e2;
+  background: linear-gradient(270deg, #ffffff -95.11%, rgba(255, 255, 255, 0) 100%), #f0e9e2;
   margin: 0 0 10px 37px;
   border-radius: 2px;
-  line-height: 74px;
-  text-indent: 53px;
-  font-size: 21px;
+  /* line-height: 74px; */
+  /* text-indent: 53px; */
+  font-size: 24px;
   border: 1px solid #d2c6bb;
   box-sizing: border-box;
   cursor: pointer;
   color: #78583d;
-  font-weight: bold;
+  align-content: center;
+  align-items: center;
+  padding-left: 53px;
 }
 
 .options-list .map-opts.on {
