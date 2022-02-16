@@ -7,7 +7,7 @@ jobs:
     name: label stale issues
     runs-on: ubuntu-latest
     steps:
-      - uses: actions-cool/issues-helper@v2
+      - uses: actions-cool/issues-helper@v3
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
