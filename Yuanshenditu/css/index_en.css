@@ -289,7 +289,7 @@ body,
 .area-list-containor {
   position: absolute;
   display: none;
-  top: 286px;
+  top: 236px;
   left: -129px;
   width: 158px;
   height: auto;
@@ -403,6 +403,10 @@ body,
   text-indent: 66px;
   font-size: 24px;
   color: #666666;
+}
+
+.area-text.small{
+  font-size: 20px;
 }
 
 .area-list-li-containor.off .area-text {
