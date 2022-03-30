@@ -803,7 +803,7 @@ var JS_YuShanFeng_CYJY = JSON.parse(JSON.stringify(JS_Item))
 var JS_SongShu_CYJY = JSON.parse(JSON.stringify(JS_Item))
 var JS_LMSYK_DXKQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_BX_DXKQ = JSON.parse(JSON.stringify(JS_Item))
-var JS_LS_DXKQ = JSON.parse(JSON.stringify(JS_Item))
+var JS_KGDYS_DXKQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_DLK_DXKQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_SJRW_DXKQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_TFWT_DXKQ = JSON.parse(JSON.stringify(JS_Item))
@@ -897,6 +897,12 @@ var JS_YingShu_DXKQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_YuJiaShu_DXKQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_YuShanFeng_DXKQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_SongShu_DXKQ = JSON.parse(JSON.stringify(JS_Item))
+var JS_XYYB_MD = JSON.parse(JSON.stringify(JS_Item))
+var JS_XYYB_LY = JSON.parse(JSON.stringify(JS_Item))
+var JS_XYYB_DQ = JSON.parse(JSON.stringify(JS_Item))
+var JS_XYYB_DQ2 = JSON.parse(JSON.stringify(JS_Item))
+var JS_XYYB_DQ3 = JSON.parse(JSON.stringify(JS_Item))
+
 
 var JS_array = [
   JS_FST,
@@ -1708,7 +1714,7 @@ JS_YuShanFeng_CYJY,
 JS_SongShu_CYJY,
 JS_LMSYK_DXKQ,
 JS_BX_DXKQ,
-JS_LS_DXKQ,
+JS_KGDYS_DXKQ,
 JS_DLK_DXKQ,
 JS_SJRW_DXKQ,
 JS_TFWT_DXKQ,
@@ -1802,6 +1808,12 @@ JS_YingShu_DXKQ,
 JS_YuJiaShu_DXKQ,
 JS_YuShanFeng_DXKQ,
 JS_SongShu_DXKQ,
+JS_XYYB_MD,
+JS_XYYB_LY,
+JS_XYYB_DQ,
+JS_XYYB_DQ2,
+JS_XYYB_DQ3,
+
 ]
 
 var JS_array_index=[
@@ -2602,7 +2614,7 @@ var JS_array_index=[
   "Layer_SongShu_CYJY",
   "Layer_LMSYK_DXKQ",
   "Layer_BX_DXKQ",
-  "Layer_LS_DXKQ",
+  "Layer_KGDYS_DXKQ",
   "Layer_DLK_DXKQ",
   "Layer_SJRW_DXKQ",
   "Layer_TFWT_DXKQ",
@@ -2696,4 +2708,10 @@ var JS_array_index=[
   "Layer_YuJiaShu_DXKQ",
   "Layer_YuShanFeng_DXKQ",
   "Layer_SongShu_DXKQ",
+  "Layer_XYYB_MD",
+  "Layer_XYYB_LY",
+  "Layer_XYYB_DQ",
+  "Layer_XYYB_DQ2",
+  "Layer_XYYB_DQ3",
+
   ]

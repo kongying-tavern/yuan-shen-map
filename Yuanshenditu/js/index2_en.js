@@ -1135,7 +1135,7 @@ var LayerMap = {
       return radius
     },
   }),
-  Layer_LS_DXKQ: L.markerClusterGroup(),
+  Layer_KGDYS_DXKQ: L.markerClusterGroup(),
   Layer_DLK_DXKQ: L.markerClusterGroup(),
   Layer_SJRW_DXKQ: L.markerClusterGroup(),
   Layer_TFWT_DXKQ: L.markerClusterGroup(),
@@ -1231,6 +1231,11 @@ var LayerMap = {
   Layer_YuJiaShu_DXKQ: L.markerClusterGroup(),
   Layer_YuShanFeng_DXKQ: L.markerClusterGroup(),
   Layer_SongShu_DXKQ: L.markerClusterGroup(),
+  Layer_XYYB_MD: L.markerClusterGroup(),
+  Layer_XYYB_LY: L.markerClusterGroup(),
+  Layer_XYYB_DQ: L.markerClusterGroup(),
+  Layer_XYYB_DQ2: L.markerClusterGroup(),
+  Layer_XYYB_DQ3: L.markerClusterGroup(),
 }
 
 //定义各个坐标使用的图标
@@ -2254,7 +2259,7 @@ var typearray = [
 [LayerMap['Layer_SongShu_CYJY'],JS_SongShu_CYJY,'TC','SongShu_CYJY'],
 [LayerMap['Layer_LMSYK_DXKQ'],JS_LMSYK_DXKQ,'TC','LMSYK_DXKQ'],
 [LayerMap['Layer_BX_DXKQ'],JS_BX_DXKQ,'TC','BX_DXKQ'],
-[LayerMap['Layer_LS_DXKQ'],JS_LS_DXKQ,'TC','LS_DXKQ'],
+[LayerMap['Layer_KGDYS_DXKQ'],JS_KGDYS_DXKQ,'TC','KGDYS_DXKQ'],
 [LayerMap['Layer_DLK_DXKQ'],JS_DLK_DXKQ,'TC','DLK_DXKQ'],
 [LayerMap['Layer_SJRW_DXKQ'],JS_SJRW_DXKQ,'TC','SJRW_DXKQ'],
 [LayerMap['Layer_TFWT_DXKQ'],JS_TFWT_DXKQ,'TC','TFWT_DXKQ'],
@@ -2348,6 +2353,11 @@ var typearray = [
 [LayerMap['Layer_YuJiaShu_DXKQ'],JS_YuJiaShu_DXKQ,'TC','YuJiaShu_DXKQ'],
 [LayerMap['Layer_YuShanFeng_DXKQ'],JS_YuShanFeng_DXKQ,'TC','YuShanFeng_DXKQ'],
 [LayerMap['Layer_SongShu_DXKQ'],JS_SongShu_DXKQ,'TC','SongShu_DXKQ'],
+[LayerMap['Layer_XYYB_MD'], JS_XYYB_MD, 'TC', 'XYYB_MD'],
+[LayerMap['Layer_XYYB_LY'], JS_XYYB_LY, 'TC', 'XYYB_LY'],
+[LayerMap['Layer_XYYB_DQ'], JS_XYYB_DQ, 'TC', 'XYYB_DQ'],
+[LayerMap['Layer_XYYB_DQ2'], JS_XYYB_DQ2, 'TC', 'XYYB_DQ2'],
+[LayerMap['Layer_XYYB_DQ3'], JS_XYYB_DQ3, 'TC', 'XYYB_DQ3'],
 ]
 const MonosTime = {
   LLD: 48,
