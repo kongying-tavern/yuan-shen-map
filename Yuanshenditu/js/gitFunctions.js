@@ -1095,7 +1095,7 @@ function getGistList() {
             jumpLogin()
           } else {
             alert(
-              '当前所有客户端连接数均已超额，请联系管理员添加客户端QQ790489566'
+              '请重新登录'
             )
           }
         }
@@ -1264,7 +1264,7 @@ function updateGistFile(fileID) {
             jumpLogin()
           } else {
             alert(
-              '当前所有客户端连接数均已超额，请联系管理员添加客户端QQ790489566'
+              '请重新登录'
             )
           }
         }
@@ -1486,7 +1486,7 @@ function checkAutoUpdate() {
               jumpLogin()
             } else {
               alert(
-                '当前所有客户端连接数均已超额，请联系管理员添加客户端QQ790489566'
+                '请重新登录'
               )
             }
           }
