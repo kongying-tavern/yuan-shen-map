@@ -809,7 +809,7 @@ var JS_SJRW_DXKQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_TFWT_DXKQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_ASKK_DXKQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_LMJS_DXKQ = JSON.parse(JSON.stringify(JS_Item))
-var JS_JWJZ_DXKQ = JSON.parse(JSON.stringify(JS_Item))
+var JS_SP_DXKQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_QGYSZP_DXKQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_TYCS_DXKQ = JSON.parse(JSON.stringify(JS_Item))
 var JS_ShiP_DXKQ = JSON.parse(JSON.stringify(JS_Item))
@@ -1720,7 +1720,7 @@ JS_SJRW_DXKQ,
 JS_TFWT_DXKQ,
 JS_ASKK_DXKQ,
 JS_LMJS_DXKQ,
-JS_JWJZ_DXKQ,
+JS_SP_DXKQ,
 JS_QGYSZP_DXKQ,
 JS_TYCS_DXKQ,
 JS_ShiP_DXKQ,
@@ -2620,7 +2620,7 @@ var JS_array_index=[
   "Layer_TFWT_DXKQ",
   "Layer_ASKK_DXKQ",
   "Layer_LMJS_DXKQ",
-  "Layer_JWJZ_DXKQ",
+  "Layer_SP_DXKQ",
   "Layer_QGYSZP_DXKQ",
   "Layer_TYCS_DXKQ",
   "Layer_ShiP_DXKQ",
