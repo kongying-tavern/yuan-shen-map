@@ -4,7 +4,7 @@ title: '[Bug report]'
 labels: ''
 assignees: ''
 body:
-- type: markdown
+  - type: markdown
     attributes:
       value: |
         # 感谢您的反馈
