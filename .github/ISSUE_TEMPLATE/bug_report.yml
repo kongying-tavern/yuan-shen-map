@@ -1,4 +1,3 @@
----
 name: Bug report
 about: Create a report to help us improve
 title: '[Bug report]'
@@ -66,5 +65,3 @@ body:
       label: 补充说明
       description: 可以是遇到这个问题场景、上下文、错误提示的截图等信息。
       placeholder: 请填写
----
-
