@@ -1,0 +1,27 @@
+name: Links (Fail Fast)
+
+on:
+  push:
+    branches:
+      - dev
+      - master
+    paths-ignore:
+      - '**.md'
+  pull_request:
+    branches:
+      - dev
+      - master
+  workflow_dispatch:
+
+jobs:
+  linkChecker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Link Checker
+        uses: lycheeverse/lychee-action@v1.4.1
+        with:
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
