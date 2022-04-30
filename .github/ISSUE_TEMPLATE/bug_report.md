@@ -4,39 +4,67 @@ about: Create a report to help us improve
 title: '[Bug report]'
 labels: ''
 assignees: ''
+body:
+- type: markdown
+    attributes:
+      value: |
+        # 感谢您的反馈
+         Kongying Tavern Genshin Map 的 Issue 列表接受 bug 报告或是新功能请求。也可加入官方反馈群：<a href="https://qm.qq.com/cgi-bin/qm/qr?k=4KGTnjyXiYm2NnoiFm0pwpeX8ZKRZSlN&jump_from=webapi" target="_blank" rel="noopener noreferrer" title="官方反馈群"><img width="80px" src="https://assets.yuanshen.site/qrcode/228382171.png" alt="QRCode" /></a>（点击二维码一键加入群聊）
+
+        在发布一个 Issue 前，请确保：
+        - 在 [常见问题](https://support.qq.com/products/321980/faqs-more/)、[更新日志](https://support.qq.com/products/321980/blog/505810) 和 [旧Issue列表](https://github.com/kongying-tavern/yuan-shen-map/issues?q=is%3Aissue) 中搜索过你的问题。（你的问题可能已有人提出，也可能已在最新版本中被修正）
+        - 地图点位相关反馈请前往 [兔小巢](https://support.qq.com/products/321980/)
+        - 如果你发现一个已经关闭的旧 Issue 在最新版本中仍然存在，不要在旧 Issue 下面留言，请建一个新的 issue。
+  - type: input
+    id: reproduce
+    attributes:
+      label: 错误页面的链接
+      description: 请提供问题页面的完整链接。请不要填无关链接，否则你的 Issue 将被关闭。
+      placeholder: 请填写
+
+  - type: textarea
+    id: reproduceSteps
+    attributes:
+      label: 重现步骤
+      description: 请清晰的描述重现该 Issue 的步骤，这能帮助我们快速定位问题。没有清晰重现步骤将不会被修复，标有 'need reproduction' 的 Issue 在 7 天内不提供相关步骤，将被关闭。
+      placeholder: 请填写
+
+  - type: textarea
+    id: expect
+    attributes:
+      label: 期望结果
+      placeholder: 请填写
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果
+      placeholder: 请填写
+
+ - type: input
+    id: browsersVersion
+    attributes:
+      label: 浏览器版本
+      placeholder: Chrome(8.213.231.123)
+
+  - type: input
+    id: systemVersion
+    attributes:
+      label: 系统版本
+      placeholder: MacOS(11.2.3)
+
+  - type: textarea
+    id: environmentInfo
+    attributes:
+      label: 环境信息
+      description: 输出 `envinfo`
+      placeholder: 请在此处粘贴 `envinfo` 的输出
+
+  - type: textarea
+    id: remarks
+    attributes:
+      label: 补充说明
+      description: 可以是遇到这个问题场景、上下文、错误提示的截图等信息。
+      placeholder: 请填写
 ---
 
-<!-- Please fill in relevant information as much as possible. That would be helpful to locate the problem and save us each other's time -->
-
-<!-- If some fields are irrelevant or you are not sure, remove it or mark it as "not related" / not sure" -->
-
-<!-- If you don't follow the template and not providing valid information, we'll close your issue without further reply -->
-
-## Bug report
-
-### Description
-
-<!-- A clear and concise description of what the bug is. -->
-
-### Steps to reproduce
-
-<!-- Steps to reproduce the behavior -->
-
-- Reproduction link / repo:
-
-### Expected behavior
-
-<!-- A clear and concise description of what you expected to happen. -->
-
-### Screenshots
-
-<!-- If applicable, add screenshots to help explain your problem. -->
-
-### Environment info
-
-- Browser:
-- Output of `envinfo`:
-
-```bash
-# Paste output of `envinfo` here
-```
