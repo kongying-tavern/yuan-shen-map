@@ -14,6 +14,7 @@ body:
         - 在 [常见问题](https://support.qq.com/products/321980/faqs-more/)、[更新日志](https://support.qq.com/products/321980/blog/505810) 和 [旧Issue列表](https://github.com/kongying-tavern/yuan-shen-map/issues?q=is%3Aissue) 中搜索过你的问题。（你的问题可能已有人提出，也可能已在最新版本中被修正）
         - 地图点位相关反馈请前往 [兔小巢](https://support.qq.com/products/321980/)
         - 如果你发现一个已经关闭的旧 Issue 在最新版本中仍然存在，不要在旧 Issue 下面留言，请建一个新的 issue。
+
   - type: input
     id: reproduce
     attributes:
@@ -40,7 +41,7 @@ body:
       label: 实际结果
       placeholder: 请填写
 
- - type: input
+  - type: input
     id: browsersVersion
     attributes:
       label: 浏览器版本
