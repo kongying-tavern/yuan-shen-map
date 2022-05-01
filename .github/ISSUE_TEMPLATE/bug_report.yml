@@ -1,10 +1,11 @@
 name: 'Bug report'
+description: 'Create a report to help us improve'
 title: '[Bug report]'
 body:
   - type: markdown
     attributes:
       value: |
-        # 感谢您的反馈
+        ## 感谢您的反馈
          Kongying Tavern Genshin Map 的 Issue 列表接受 bug 报告或是新功能请求。也可加入官方反馈群：<a href="https://qm.qq.com/cgi-bin/qm/qr?k=4KGTnjyXiYm2NnoiFm0pwpeX8ZKRZSlN&jump_from=webapi" target="_blank" rel="noopener noreferrer" title="官方反馈群"><img width="80px" src="https://assets.yuanshen.site/qrcode/228382171.png" alt="QRCode" /></a>（点击二维码一键加入群聊）
 
         在发布一个 Issue 前，请确保：
