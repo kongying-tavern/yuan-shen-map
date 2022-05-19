@@ -8,6 +8,13 @@
 
 html:focus-within {
   scroll-behavior: smooth;
+
+}
+
+@font-face {
+  font-family: Emoji;
+  src: local("Apple Color Emojiji"), local("Segoe UI Emoji"), local("Segoe UI Symbol"), local("Noto Color Emoji");
+  unicode-range: U+1F000-1F644, U+203C-3299;
 }
 
 html {
@@ -16,7 +23,7 @@ html {
   height: 100%;
   font-size: 16px;
   font-family: -apple-system, HarmonyOS_Regular, blinkmacsystemfont,
-    Microsoft YaHei, "Segoe UI", roboto, oxygen, ubuntu, cantarell, "Fira Sans",
+    Microsoft YaHei, "Segoe UI", roboto, Emoji, oxygen, ubuntu, cantarell, "Fira Sans",
     "Droid Sans", "Helvetica Neue", sans-serif;
   line-height: 1.15;
   text-size-adjust: 100%;
