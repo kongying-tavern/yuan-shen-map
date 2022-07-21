@@ -1426,7 +1426,7 @@ function autoUpdateGistFile(cb = false) {
     //console.log(msg);
   }
   var markersJsonData = {
-    content: JSON.stringify(markersData),
+    content: JSON.stringify(transStampToId(markersData)),
   }
   //console.log(JSON.stringify(markersJsonData));
   var url = '/giteegist/' + fileID
@@ -1609,7 +1609,7 @@ function addGistFile(_default = '', cb) {
     }
   }
   var markersJsonData = {
-    content: JSON.stringify(markersData),
+    content: JSON.stringify(transStampToId(markersData)),
   }
   var description = window.prompt('请输入存档名', _default)
   if (description) {
@@ -1769,7 +1769,11 @@ function loadGistFile(fileID, fileLastUpdateTime) {
         // @ts-ignore
         var markerLogArr = eval(file.data)
         for (var i = 0; i < markerLogArr.length; i++) {
-          localStorage.setItem(markerLogArr[i], '1')
+          var currentMarker = markerLogArr[i]
+          var currentMarkerStamp = transIdToStampSingle(currentMarker)
+          if(currentMarkerStamp) {
+            localStorage.setItem(currentMarkerStamp, '1')
+          }
         }
         localStorage.setItem('lastUpdateTime', fileLastUpdateTime)
         localStorage.setItem('lastUpdateID', fileID)
@@ -1919,7 +1923,11 @@ function loadFile(number) {
   // @ts-ignore
   var markerLogArr = user_fileContents(number)
   for (var i = 0; i < markerLogArr.length; i++) {
-    localStorage.setItem(markerLogArr[i], '1')
+    var currentMarker = markerLogArr[i]
+    var currentMarkerStamp = transIdToStampSingle(currentMarker)
+    if(currentMarkerStamp) {
+      localStorage.setItem(currentMarkerStamp, '1')
+    }
   }
   alert('导入该存档成功!')
 }
