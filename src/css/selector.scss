@@ -1,0 +1,337 @@
+//各个选择器的样式
+@media screen and (max-height: 650px) {
+    .item_selector {
+        display: none;
+    }
+}
+//地区选择器的样式
+.area_selector {
+    position: absolute;
+    width: 100vw;
+    height: 0;
+    top: 0;
+    right: 0;
+    z-index: 2000;
+    user-select: none;
+    
+    .area_selector_container {
+        font-family: HYWH;
+        font-weight: 400;
+        width: 100%;
+        height: 100%;
+        position: relative;
+        .area_selector_fold {
+            position: absolute;
+            min-width: 356px;
+            height: 96px;
+            right: 28px;
+            top: 15px;
+            cursor: pointer;
+            .area_switch_btn {
+                min-width: 160px;
+                height: 36px;
+                background: rgba(0, 0, 0, 0.5);
+                border-radius: 19px;
+                margin-top: 4px;
+                .area_switch_btn_icon {
+                    width: 34px;
+                    height: 34px;
+                    background: url(/imgs/compass_icon.png) no-repeat;
+                    margin-left: 12px;
+                }
+                .area_switch_btn_text {
+                    height: 29px;
+                    font-size: 24px;
+                    line-height: 29px;
+                    color: #ffffff;
+                    margin-left: 4px;
+                }
+            }
+            .area_name {
+                font-size: 38px;
+                line-height: 46px;
+                color: #ffffff;
+                margin-left: 8px;
+            }
+            .selected_area_child_name {
+                font-size: 26px;
+                line-height: 32px;
+                color: #ffc700;
+                margin-left: 60px;
+                text-align: right;
+            }
+            .area_icon {
+                width: 96px;
+                height: 96px;
+                margin-left: 16px;
+            }
+        }
+        .area_selector_unfold {
+            width: 100%;
+            height: 130px;
+            background: url(/imgs/area_swicth_unfold_bg.png) no-repeat;
+            background-size: 100% 100%;
+            .area_selector_icon {
+                display: block;
+                position: absolute;
+                top: 110px;
+                left: 50%;
+                width: 34px;
+                height: 34px;
+                background: url(/imgs/compass_icon.png) no-repeat;
+            }
+            .area_type_containor {
+                width: 120px;
+                height: 120px;
+                cursor: pointer;
+            }
+            .child_selector {
+                width: 100%;
+                .area_name {
+                    width: 420px;
+                    height: 56px;
+                    margin: 15px auto 0;
+                    background: url(/imgs/area_name_bg.png) no-repeat;
+                    span {
+                        display: block;
+                        width: 100%;
+                        height: 100%;
+                        text-align: center;
+                        line-height: 56px;
+                        font-size: 28px;
+                        color: #ffffff;
+                    }
+                }
+                .child_area_list {
+                    margin-top: 5px;
+                    .child_area {
+                        padding: 5px 24px 4px;
+                        background: rgba(0, 0, 0, 0.5);
+                        border: 4px solid rgba(0, 0, 0, 0);
+                        border-radius: 24.96px;
+                        color: #ffffff;
+                        font-size: 24px;
+                        cursor: pointer;
+                        margin: 5px;
+                    }
+                    .child_area.on {
+                        border: 4px solid #fffaed;
+                        border-radius: 24.96px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+//物品选择器的样式
+@keyframes item_selector_on {
+    from {
+        right: -400px;
+    }
+    to {
+        right: 24px;
+    }
+}
+@keyframes item_selector_off {
+    from {
+        right: 24px;
+    }
+    to {
+        right: -400px;
+    }
+}
+.item_selector {
+    position: absolute;
+    top: 133px;
+    right: 24px;
+    z-index: 2000;
+    user-select: none;
+    .item_selector_main {
+        position: relative;
+        .fold_btn {
+            position: absolute;
+            width: 120px;
+            height: 73px;
+            left: -102px;
+            top: 5px;
+            background: url(/imgs/fold_btn_bg.png) no-repeat;
+            cursor: pointer;
+            .fold_btn_arrow {
+                position: absolute;
+                top: 15px;
+                left: 46px;
+                width: 42px;
+                height: 42px;
+                background: url(/imgs/fold_arrow_right.png) no-repeat;
+            }
+            .fold_btn_arrow.on {
+                width: 42px;
+                height: 42px;
+                background: url(/imgs/fold_arrow_left.png) no-repeat;
+            }
+        }
+        .item_selector_container {
+            width: 402px;
+            height: 87vh;
+            .item_selector_header {
+                width: 100%;
+                height: 88px;
+                background: url(/imgs/Menu_bac_top.png) no-repeat;
+                background-size: 100% 100%;
+            }
+            .item_selector_body {
+                width: 100%;
+                height: calc(85vh - 218px - 88px);
+                margin-top: -2px;
+                background: url(/imgs/Menu_bac_mid.png) no-repeat;
+                background-size: 100% 100%;
+            }
+            .item_selector_footer {
+                width: 100%;
+                height: 218px;
+                margin-top: -2px;
+                background: url(/imgs/Menu_bac_down.png) no-repeat;
+                background-size: 100% 100%;
+            }
+        }
+        .item_selector_list_container {
+            position: absolute;
+            width: 360px;
+            height: 90%;
+            left: 26.5px;
+            top: 20px;
+            background: #f2f0eb;
+            border-radius: 6px;
+        }
+        .item_selector_item {
+            width: 336px;
+            margin: 5px auto;
+            background: #ffffff;
+            border: 1px solid #ddd8d3;
+            border-radius: 3px;
+            .item_header {
+                width: 100%;
+                height: 48px;
+                cursor: pointer;
+                .item_name {
+                    margin-left: 8px;
+                    font-weight: bold;
+                    font-size: 21px;
+                    color: #2c3241;
+                }
+                .item_fold_btn {
+                    width: 20px;
+                    height: 20px;
+                    margin: 0 14px 5px 0;
+                    background: url(/imgs/treasure_fold_down.png) no-repeat;
+                }
+                .item_fold_btn.on {
+                    background: url(/imgs/treasure_fold_up.png) no-repeat;
+                }
+            }
+            .item_body {
+                border-top: 1px solid #ddd8d3;
+                .item_option {
+                    width: 156px;
+                    height: 48px;
+                    background: #f6f6f6;
+                    margin: 5px;
+                    cursor: pointer;
+                    .item_option_avatar {
+                        width: 48px;
+                        height: 48px;
+                        background: rgba(0, 0, 0, 0.1);
+                    }
+                    .item_option_title {
+                        display: block;
+                        width: 99%;
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #817472;
+                        margin: 3px 0 0 6px;
+                    }
+                    .item_option_count {
+                        display: block;
+                        width: 99%;
+                        font-size: 12px;
+                        font-weight: bold;
+                        color: #c2b9b8;
+                        margin: -3px 0 0 3px;
+                    }
+                    .item_option_progress {
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        height: 3px;
+                        background: rgba(0, 0, 0, 0.05);
+                        .item_option_progress_bar {
+                            display: block;
+                            height: 100%;
+                            background: #00fff0;
+                        }
+                    }
+                }
+                .item_option.on {
+                    background: #424b63;
+                    .item_option_avatar {
+                        background: rgba(255, 255, 255, 0.1);
+                    }
+                    .item_option_title {
+                        color: #f2f0eb;
+                    }
+                }
+            }
+        }
+    }
+    animation: item_selector_on 1s forwards;
+}
+.item_selected_bar {
+    position: absolute;
+    top: 86px;
+    left: -60px;
+    z-index: 5000;
+    width: 56px;
+    height: 75vh;
+    background: rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(0, 0, 0, 0.3);
+    border-radius: 32px;
+    .close-all {
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        width: 56px;
+        height: 56px;
+        background: url(/imgs/btn_close.png) no-repeat;
+        cursor: pointer;
+    }
+    .item_list {
+        width: 100%;
+        height: 100%;
+        margin-top: 60px;
+        .item {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            margin: 7.5px auto;
+            background: rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(0, 0, 0, 0.3);
+            border-radius: 28px;
+            cursor: pointer;
+            .item_close {
+                position: absolute;
+                left: 29px;
+                top: -5px;
+                width: 18px;
+                height: 18px;
+                background: url(/imgs/btn_close_mini.png) no-repeat;
+                background-size: 100% 100%;
+            }
+        }
+    }
+}
+.item_selector.off {
+    animation: item_selector_off 1s forwards;
+}
+

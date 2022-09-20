@@ -1,12 +1,39 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es6",
-    "checkJs": true
+    "baseUrl": ".",
+    "paths": {
+      "src/*": [
+        "src/*"
+      ],
+      "app/*": [
+        "*"
+      ],
+      "components/*": [
+        "src/components/*"
+      ],
+      "layouts/*": [
+        "src/layouts/*"
+      ],
+      "pages/*": [
+        "src/pages/*"
+      ],
+      "assets/*": [
+        "src/assets/*"
+      ],
+      "boot/*": [
+        "src/boot/*"
+      ],
+      "stores/*": [
+        "src/stores/*"
+      ],
+      "vue$": [
+        "node_modules/vue/dist/vue.runtime.esm-bundler.js"
+      ]
+    }
   },
-  "include": ["Yuanshenditu/js/*"],
-  "exclude": ["node_modules", "**/node_modules/*"],
-  "typeAcquisition": {
-    "include": ["jquery", "leaflet", "geojson"]
-  }
+  "exclude": [
+    "dist",
+    ".quasar",
+    "node_modules"
+  ]
 }

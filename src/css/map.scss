@@ -1,0 +1,159 @@
+// 地图的样式
+.main {
+    overflow: hidden;
+}
+#map {
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    z-index: 1000;
+    background: radial-gradient(transparent 70%, rgba(0, 0, 0, 0.5));
+}
+.map_overlay {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    z-index: 1500;
+    background: radial-gradient(transparent 70%, rgba(0, 0, 0, 0.6));
+    pointer-events: none;
+}
+//地图弹窗的样式
+#popup_window {
+    font-family: HYWH;
+    .text {
+        width: 250px;
+    }
+    .toggle_btn {
+        user-select: none;
+        position: relative;
+        width: 100%;
+        height: 30px;
+        background: #f0e9e2;
+        border-radius: 50px;
+        border: 2px solid #c5b79d;
+        margin-top: 10px;
+        .thumb {
+            z-index: 1;
+            position: absolute;
+            width: 50%;
+            height: 24px;
+            border-radius: 50px;
+            .thumb_sign {
+                position: absolute;
+                left: 10px;
+                top: 5px;
+                width: 12px;
+                height: 12px;
+            }
+        }
+        .text_first,
+        .text_last {
+            z-index: 2;
+            background: rgba(0, 0, 0, 0);
+            color: #c5b79d;
+            margin: 2px 4px 0;
+            text-align: center;
+            cursor: pointer;
+        }
+    }
+    .toggle_btn.off {
+        .text_first {
+            color: #fff;
+        }
+        .thumb {
+            border: 1px solid #a69678;
+            background: #cfbfa4;
+            left: 2px;
+            .thumb_sign {
+                background: url(https://yuanshen.site/imgs/con_img/icon_not.svg) no-repeat;
+                background-size: 100% 100%;
+            }
+        }
+    }
+    .toggle_btn.on {
+        .text_last {
+            color: #fff;
+        }
+        .thumb {
+            border: 1px solid #21707f;
+            background: #30a3b9;
+            right: 2px;
+            .thumb_sign {
+                background: url(https://yuanshen.site/imgs/con_img/icon_find.svg) no-repeat;
+                background-size: 100% 100%;
+            }
+        }
+    }
+    .close_btn {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        background: url(https://yuanshen.site/imgs/con_img/popClose.svg) no-repeat;
+        background-size: 100% 100%;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+}
+//左下开关样式
+.switch_list {
+    user-select: none;
+    position: absolute;
+    left: 32px;
+    bottom: 40px;
+    z-index: 1500;
+    .switch {
+        margin-top: 16px;
+        .switch_btn {
+            width: 75px;
+            height: 40px;
+            background: url(/imgs/Switch_OFF.png) no-repeat;
+            cursor: pointer;
+        }
+        .switch_btn.on {
+            background: url(/imgs/Switch_ON.png) no-repeat;
+        }
+        .text {
+            font-family: HYWH;
+            font-size: 28px;
+            color: #fff;
+            margin-left: 12px;
+        }
+    }
+}
+//左上开关样式
+.extra_btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 6000;
+    .btn {
+        width: 64px;
+        height: 64px;
+        margin-right: 20px;
+        cursor: pointer;
+    }
+    .feedback {
+        background: url(/imgs/icon_feedback.png) no-repeat;
+    }
+    .discuss {
+        background: url(/imgs/icon_fankui.png) no-repeat;
+    }
+    .save {
+        background: url(/imgs/icon_cloud.png) no-repeat;
+    }
+}
+//leaflet的一些样式覆盖
+.leaflet-popup-content-wrapper {
+    background: #f0e9e2;
+}
+.leaflet-popup-content {
+    width: 100% !important;
+    margin: 0;
+}
+.leaflet-popup-close-button {
+    display: none;
+    zoom: 2;
+}
