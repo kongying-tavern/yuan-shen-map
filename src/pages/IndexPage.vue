@@ -36,6 +36,14 @@
         ></div>
         <div class="text">传送点位</div>
       </div>
+      <div class="switch row items-center">
+        <div
+          class="switch_btn"
+          :class="{ on: completion_state }"
+          @click="completion_switch"
+        ></div>
+        <div class="text">完成点位</div>
+      </div>
     </div>
     <!-- 左上侧各种开关 -->
     <extra-btn></extra-btn>
@@ -51,6 +59,7 @@ import { init_map } from "../api/map";
 import { mapStores } from "pinia";
 import { useCounterStore } from "../stores/example-store";
 import { useUserStore } from "../stores/user";
+import { useSavedStore } from "../stores/saved";
 import { layergroup_register, layer_mark, layer_register } from "../api/layer";
 import { query_itemlayer_infolist } from "../service/base_request";
 import { switch_area_list, data_statistics } from "../api/common";
@@ -65,6 +74,7 @@ export default {
       handle_layer: null,
       handle_layergroup: null,
       teleport_state: false,
+      completion_state: false,
     };
   },
   components: {
@@ -250,6 +260,11 @@ export default {
         this.map.removeLayer(this.teleport_group);
       }
     },
+    //切换完成点位显隐
+    completion_switch() {
+      this.completion_state = !this.completion_state;
+      // TODO 完成点位
+    },
   },
   mounted() {
     if (this.$q.platform.is.mobile) {
@@ -264,13 +279,12 @@ export default {
     if (localStorage.getItem("marked_layers") == null) {
       localStorage.setItem("marked_layers", JSON.stringify([]));
     }
-    const userStore = useUserStore();
-    console.log(userStore.getAccessToken);
+    console.log(this.savedStore.getFiles);
   },
   computed: {
     //请参考pinia不使用组合式api的用法的说明文档
     //https://pinia.web3doc.top/cookbook/options-api.html
-    ...mapStores(useCounterStore),
+    ...mapStores(useCounterStore, useSavedStore),
   },
   watch: {
     "mainStore.selected_child_area": function (val, oldval) {

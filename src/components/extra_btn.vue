@@ -20,17 +20,18 @@
         <q-tooltip> 下载客户端 </q-tooltip>
       </div>
       <div class="btn" @click="check_log_state">
+        <!-- icon="mdi-content-save" -->
         <q-avatar
-          square
+          rounded
           size="64px"
           font-size="64px"
           text-color="white"
-          icon="mdi-content-save"
+          :icon="loginIcon"
         >
         </q-avatar>
       </div>
     </div>
-    <q-dialog v-model="save_window">
+    <q-dialog v-model="save_window" v-if="isLogin">
       <q-card style="max-width: 100vw">
         <q-card-section>
           <q-table
@@ -43,6 +44,12 @@
             <!-- 表格头插槽 -->
             <template v-slot:top-right>
               <div class="row">
+                <q-btn
+                  color="primary"
+                  style="margin-right: 15px"
+                  label="注销"
+                  @click="logoutConfirm"
+                />
                 <q-btn
                   color="primary"
                   label="新增存档"
@@ -61,6 +68,8 @@
 
 <script>
 import { openURL } from "quasar";
+import { mapStores } from "pinia";
+import { useUserStore } from "../stores/user";
 export default {
   name: "ExtraBtn",
   data() {
@@ -70,10 +79,45 @@ export default {
       save_columns: [],
     };
   },
+  computed: {
+    ...mapStores(useUserStore),
+    isLogin() {
+      return !!this.userStore.getAccessToken;
+    },
+    loginIcon() {
+      return this.isLogin
+        ? `img:${(this.userStore.getUserInfo || {}).avatar_url}`
+        : "mdi-content-save";
+    },
+  },
   methods: {
     openURL,
+    logoutConfirm() {
+      this.$q
+        .dialog({
+          title: "提示",
+          message: "确定要注销账户吗?",
+          cancel: true,
+          persistent: true,
+        })
+        .onOk(() => {
+          // console.log(">>>> OK");
+          this.logout();
+        });
+    },
+    logout() {
+      // 本地状态更新
+      this.userStore.resetState();
+    },
     check_log_state() {
-      this.log_to_gitee();
+      // 已登录->用户注销
+      if (this.userStore.getAccessToken) {
+        // console.log("用户注销");
+        this.save_window = true;
+      } else {
+        // 未登录->oAuth
+        this.log_to_gitee();
+      }
     },
     log_to_gitee() {
       this.$q
@@ -87,14 +131,12 @@ export default {
           persistent: true,
         })
         .onOk(() => {
-          window.location.href =
-            "https://gitee.com/oauth/authorize?client_id=bbb8c4dbf4d5256ea8f3b5d2080893a166ebc9b7bb91ef09107c3922f5b16a1e&redirect_uri=http://localhost:9000/&response_type=code";
+          const client_id =
+            "bbb8c4dbf4d5256ea8f3b5d2080893a166ebc9b7bb91ef09107c3922f5b16a1e";
+          const redirect_uri = "http://localhost:9000/";
+          const url = `https://gitee.com/oauth/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code`;
 
-          // https://gitee.com/api/v5/oauth_doc#/
-          // 请求过程建议将 client_secret 放在 Body 中传值，以保证数据安全。
-          // https://gitee.com/oauth/token?grant_type=authorization_code&code={code}&client_id={client_id}&redirect_uri={redirect_uri}&client_secret={client_secret}
-
-          // https://gitee.com/oauth/token?grant_type=refresh_token&refresh_token={refresh_token}
+          window.location.href = url;
         });
     },
   },

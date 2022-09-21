@@ -60,4 +60,25 @@ function get_access_token(code) {
   });
 }
 
-export { quest_request, get_access_token };
+// 返回用户信息
+function get_userinfo(access_token) {
+  const url = `https://yuanshen.site/giteeuser/?access_token=${access_token}`;
+
+  return axios({
+    method: "get",
+    url: url,
+  }).catch((error) => {
+    if (error.response) {
+      create_notify(
+        `${error.response.status} ${error.response.statusText}`,
+        "negative"
+      );
+    } else if (error.request) {
+      create_notify("链接失败，请稍后重试", "negative");
+    } else {
+      create_notify(error.message, "negative");
+    }
+  });
+}
+
+export { quest_request, get_access_token, get_userinfo };

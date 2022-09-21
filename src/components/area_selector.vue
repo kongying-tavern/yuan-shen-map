@@ -32,7 +32,7 @@
       </div>
       <!-- 地区选择器的展开部分 -->
       <div class="area_selector_unfold" v-show="area_selector_show">
-        <!-- <span class="area_selector_icon"></span> -->
+        <span class="area_selector_icon"></span>
         <div class="parent_selector row justify-center">
           <div class="row">
             <div
