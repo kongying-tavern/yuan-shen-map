@@ -38,8 +38,13 @@
             title="存档列表"
             :rows="save_data"
             :columns="save_columns"
-            row-key="name"
+            row-key="id"
+            selection="single"
+            v-model:selected="selected"
+            hide-pagination
+            hide-bottom
             style="min-width: 70vh"
+            :pagination="initialPagination"
           >
             <!-- 表格头插槽 -->
             <template v-slot:top-right>
@@ -54,9 +59,71 @@
                   color="primary"
                   label="新增存档"
                   style="margin-right: 15px"
+                  @click="addGist"
                 />
-                <q-btn color="primary" label="同步" />
+                <q-btn
+                  color="primary"
+                  label="同步"
+                  :disabled="selected.length == 0"
+                />
               </div>
+            </template>
+            <template v-slot:body="props">
+              <q-tr :props="props">
+                <q-td width="52">
+                  <q-checkbox
+                    dense
+                    v-model="props.selected"
+                    color="orange-12"
+                  />
+                </q-td>
+                <q-td key="description" :props="props">
+                  {{ props.row.description }}
+                </q-td>
+                <q-td key="lastUpdateTime" :props="props">
+                  {{ props.row.lastUpdateTime }}
+                </q-td>
+                <q-td key="action" :props="props">
+                  <q-btn round color="primary" icon="edit">
+                    <q-tooltip
+                      anchor="center left"
+                      self="center right"
+                      :offset="[10, 10]"
+                    >
+                      <strong>编辑存档</strong>
+                    </q-tooltip>
+                  </q-btn>
+                  <q-btn
+                    round
+                    color="primary"
+                    icon="content_copy"
+                    style="margin-left: 12px"
+                  >
+                    <q-tooltip
+                      anchor="top middle"
+                      self="bottom middle"
+                      :offset="[10, 10]"
+                    >
+                      <strong>复制存档</strong>
+                    </q-tooltip>
+                  </q-btn>
+                  <q-btn
+                    round
+                    color="red"
+                    icon="delete"
+                    style="margin-left: 12px"
+                    @click="deleteSaved(props.row)"
+                  >
+                    <q-tooltip
+                      anchor="center right"
+                      self="center left"
+                      :offset="[10, 10]"
+                    >
+                      <strong>删除存档</strong>
+                    </q-tooltip>
+                  </q-btn>
+                </q-td>
+              </q-tr>
             </template>
           </q-table>
         </q-card-section>
@@ -70,17 +137,45 @@
 import { openURL } from "quasar";
 import { mapStores } from "pinia";
 import { useUserStore } from "../stores/user";
+import { useSavedStore } from "../stores/saved";
+import { addGistFile, deleteGistFile } from "../service/gist_request";
+
 export default {
   name: "ExtraBtn",
   data() {
     return {
       save_window: false,
       save_data: [],
-      save_columns: [],
+      save_columns: [
+        // { name: "id", label: "ID", field: "id" },
+        {
+          name: "description",
+          label: "存档名",
+          field: "description",
+          align: "left",
+        },
+        {
+          name: "lastUpdateTime",
+          label: "最后更新时间",
+          field: "lastUpdateTime",
+          align: "left",
+        },
+        { name: "action", label: "操作", field: "", align: "left" },
+      ],
+      selected: [],
+      initialPagination: {
+        // sortBy: "desc",
+        // descending: false,
+        page: 1,
+        rowsPerPage: 10,
+      },
     };
   },
+  mounted() {
+    this.save_data = this.savedStore.getFiles;
+  },
   computed: {
-    ...mapStores(useUserStore),
+    ...mapStores(useUserStore, useSavedStore),
     isLogin() {
       return !!this.userStore.getAccessToken;
     },
@@ -139,6 +234,54 @@ export default {
           window.location.href = url;
         });
     },
+    addGist() {
+      console.log("addGist");
+      this.$q
+        .dialog({
+          title: "提示",
+          message: "请输入存档名称",
+          prompt: {
+            model: "",
+            isValid: (val) => val.length > 0,
+            type: "text", // optional
+          },
+          cancel: true,
+          persistent: false,
+        })
+        .onOk((data) => {
+          // console.log(">>>> OK, received", data);
+          addGistFile(this.userStore.getAccessToken, data).then((result) => {
+            this.$q.notify({
+              message: "存档创建成功！",
+              position: "top",
+              type: "positive",
+            });
+          });
+        });
+    },
+    deleteSaved(row) {
+      const { id: fileID } = row;
+
+      this.$q
+        .dialog({
+          title: "提示",
+          message: "存档删除后不可恢复，您确定要删除这个存档吗？",
+          cancel: true,
+          persistent: true,
+        })
+        .onOk(() => {
+          deleteGistFile(this.userStore.getAccessToken, fileID).then(
+            (result) => {
+              this.$q.notify({
+                message: "存档删除成功！",
+                position: "top",
+                type: "positive",
+              });
+            }
+          );
+        });
+    },
+    copyGist() {},
   },
 };
 </script>

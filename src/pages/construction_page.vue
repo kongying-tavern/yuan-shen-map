@@ -38,11 +38,11 @@
 import { openURL } from "quasar";
 import { mapStores } from "pinia";
 import { get_access_token, get_userinfo } from "../service/user_request";
-import { getGistList } from "../service/gist_request";
+
 import { useUserStore } from "../stores/user";
 import { useSavedStore } from "../stores/saved";
 import { create_notify } from "../api/common";
-import { formatDate } from "../utils/index";
+
 export default {
   name: "ConstructionPage",
   methods: {
@@ -60,49 +60,6 @@ export default {
         })
         .catch((err) => {});
     },
-    loadUserData(access_token) {
-      getGistList(access_token)
-        .then((result) => {
-          console.log("loadUserData", result.data);
-          const res = result.data;
-
-          let user_files = [];
-          for (let obj of res) {
-            let currentKey = Object.keys(obj.files)[0];
-            if (currentKey == "Data_KYJG") {
-              const currentData = obj.files[Object.keys(obj.files)[0]].content;
-              const lastUpdateTime = formatDate(new Date(obj.updated_at));
-              const createdTime = formatDate(new Date(obj.created_at));
-              const description = obj.description;
-              console.log(description);
-              const id = obj.id;
-              console.log(id);
-              const tempFile = {
-                id: id,
-                description: description,
-                lastUpdateTime: lastUpdateTime,
-                data: currentData,
-                createdTime: createdTime,
-              };
-              user_files.push(tempFile);
-
-              // if (currentID == id) {
-              //   IDSync = true;
-              //   var tempLastUpdateTime = lastUpdateTime;
-              //   if (currentTime == lastUpdateTime) {
-              //     TimeSync = true;
-              //   }
-              // }
-            }
-          }
-
-          // 状态管理
-          this.savedStore.setGists(res);
-          this.savedStore.setFiles(user_files);
-        })
-        .catch((err) => {});
-    },
-    parseUserData() {},
   },
   computed: {
     // note we are not passing an array, just one store after the other
@@ -119,7 +76,7 @@ export default {
           this.userStore.setRefreshToken(refresh_token);
           // access_token 获取用户信息
           this.getUserInfo(access_token);
-          this.loadUserData(access_token);
+          // this.loadUserData(access_token);
           // 存储
           create_notify("登录成功！", "positive");
         })
