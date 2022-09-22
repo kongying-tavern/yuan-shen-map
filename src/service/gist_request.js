@@ -79,5 +79,36 @@ function deleteGistFile(access_token, fileID) {
     }
   });
 }
-
-export { getGistList, addGistFile, deleteGistFile };
+/**
+ *修改存档备注 by giteeGist
+ *
+ *@param fileID {string} 需要修改的存档ID
+ *
+ */
+function updateGistDescription(access_token, fileID, savedName) {
+  let requestData = {
+    access_token: access_token,
+    description: savedName,
+  };
+  // let formData = new FormData();
+  // for (let key in data) {
+  //   formData.append(key, data[key]);
+  // }
+  return axios({
+    method: "patch",
+    url: `https://yuanshen.site/giteegist/${fileID}`,
+    data: requestData,
+  }).catch((error) => {
+    if (error.response) {
+      create_notify(
+        `${error.response.status} ${error.response.statusText}`,
+        "negative"
+      );
+    } else if (error.request) {
+      create_notify("链接失败，请稍后重试", "negative");
+    } else {
+      create_notify(error.message, "negative");
+    }
+  });
+}
+export { getGistList, addGistFile, deleteGistFile, updateGistDescription };

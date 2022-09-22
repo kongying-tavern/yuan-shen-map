@@ -84,7 +84,12 @@
                   {{ props.row.lastUpdateTime }}
                 </q-td>
                 <q-td key="action" :props="props">
-                  <q-btn round color="primary" icon="edit">
+                  <q-btn
+                    round
+                    color="primary"
+                    icon="edit"
+                    @click="renameSaved(props.row)"
+                  >
                     <q-tooltip
                       anchor="center left"
                       self="center right"
@@ -98,6 +103,7 @@
                     color="primary"
                     icon="content_copy"
                     style="margin-left: 12px"
+                    @click="copySaved(props.row)"
                   >
                     <q-tooltip
                       anchor="top middle"
@@ -138,7 +144,11 @@ import { openURL } from "quasar";
 import { mapStores } from "pinia";
 import { useUserStore } from "../stores/user";
 import { useSavedStore } from "../stores/saved";
-import { addGistFile, deleteGistFile } from "../service/gist_request";
+import {
+  addGistFile,
+  deleteGistFile,
+  updateGistDescription,
+} from "../service/gist_request";
 
 export default {
   name: "ExtraBtn",
@@ -235,7 +245,6 @@ export default {
         });
     },
     addGist() {
-      console.log("addGist");
       this.$q
         .dialog({
           title: "提示",
@@ -281,7 +290,35 @@ export default {
           );
         });
     },
-    copyGist() {},
+    renameSaved(row) {
+      this.$q
+        .dialog({
+          title: "提示",
+          message: "请输入新的存档名称",
+          prompt: {
+            model: row.description || "",
+            isValid: (val) => val.length > 0,
+            type: "text", // optional
+          },
+          cancel: true,
+          persistent: false,
+        })
+        .onOk((data) => {
+          updateGistDescription(
+            this.userStore.getAccessToken,
+            row.id,
+            data
+          ).then((result) => {
+            console.log("renameSaved", result);
+            this.$q.notify({
+              message: "存档名修改成功！",
+              position: "top",
+              type: "positive",
+            });
+          });
+        });
+    },
+    copySaved(row) {},
   },
 };
 </script>
