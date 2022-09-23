@@ -121,6 +121,7 @@ export default {
     },
     //切换子地区的触发事件
     change_child_area(area) {
+      // console.log("change_child_area", area, JSON.stringify(area));
       this.selected_child_area = area;
       this.mainStore.selected_child_area = area;
       this.area_selector_show = false;

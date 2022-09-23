@@ -149,13 +149,14 @@ import {
   deleteGistFile,
   updateGistDescription,
 } from "../service/gist_request";
+import { loadUserData } from "../api/gist";
 
 export default {
   name: "ExtraBtn",
   data() {
     return {
       save_window: false,
-      save_data: [],
+      // save_data: [],
       save_columns: [
         // { name: "id", label: "ID", field: "id" },
         {
@@ -182,7 +183,7 @@ export default {
     };
   },
   mounted() {
-    this.save_data = this.savedStore.getFiles;
+    // this.save_data = this.savedStore.getFiles;
   },
   computed: {
     ...mapStores(useUserStore, useSavedStore),
@@ -193,6 +194,9 @@ export default {
       return this.isLogin
         ? `img:${(this.userStore.getUserInfo || {}).avatar_url}`
         : "mdi-content-save";
+    },
+    save_data() {
+      return this.savedStore.getFiles || [];
     },
   },
   methods: {
@@ -260,6 +264,7 @@ export default {
         .onOk((data) => {
           // console.log(">>>> OK, received", data);
           addGistFile(this.userStore.getAccessToken, data).then((result) => {
+            loadUserData();
             this.$q.notify({
               message: "存档创建成功！",
               position: "top",
@@ -281,6 +286,8 @@ export default {
         .onOk(() => {
           deleteGistFile(this.userStore.getAccessToken, fileID).then(
             (result) => {
+              loadUserData();
+
               this.$q.notify({
                 message: "存档删除成功！",
                 position: "top",
@@ -309,7 +316,9 @@ export default {
             row.id,
             data
           ).then((result) => {
-            console.log("renameSaved", result);
+            // console.log("renameSaved", result);
+            loadUserData();
+
             this.$q.notify({
               message: "存档名修改成功！",
               position: "top",
@@ -318,7 +327,36 @@ export default {
           });
         });
     },
-    copySaved(row) {},
+    copySaved(row) {
+      const { id: fileID, data: fileData } = row;
+      const copyName = (row.description || "") + "副本";
+      this.$q
+        .dialog({
+          title: "提示",
+          message: "请输入新的存档名称",
+          prompt: {
+            model: copyName,
+            isValid: (val) => val.length > 0,
+            type: "text", // optional
+          },
+          cancel: true,
+          persistent: false,
+        })
+        .onOk((data) => {
+          // console.log(">>>> OK, received", data, fileData);
+          addGistFile(this.userStore.getAccessToken, data, fileData).then(
+            (result) => {
+              loadUserData();
+
+              this.$q.notify({
+                message: "存档复制成功！",
+                position: "top",
+                type: "positive",
+              });
+            }
+          );
+        });
+    },
   },
 };
 </script>

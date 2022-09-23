@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+// import store from "./index";
 
 export const useUserStore = defineStore({
   id: "user",
@@ -62,3 +63,8 @@ export const useUserStore = defineStore({
   },
   persist: true,
 });
+
+// Need to be used outside the setup
+// export function useUserStoreWithOut() {
+//   return useUserStore(store());
+// }

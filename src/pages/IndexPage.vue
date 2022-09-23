@@ -63,8 +63,7 @@ import { useSavedStore } from "../stores/saved";
 import { layergroup_register, layer_mark, layer_register } from "../api/layer";
 import { query_itemlayer_infolist } from "../service/base_request";
 import { switch_area_list, data_statistics } from "../api/common";
-import { getGistList } from "../service/gist_request";
-import { formatDate } from "../utils/index";
+import { loadUserData } from "../api/gist";
 
 export default {
   name: "IndexPage",
@@ -87,53 +86,11 @@ export default {
     ExtraBtn,
   },
   methods: {
-    loadUserData(access_token) {
-      getGistList(access_token)
-        .then((result) => {
-          // console.log("loadUserData", result.data);
-          const res = result.data;
-
-          let user_files = [];
-          for (let obj of res) {
-            let currentKey = Object.keys(obj.files)[0];
-            if (currentKey == "Data_KYJG") {
-              const currentData = obj.files[Object.keys(obj.files)[0]].content;
-              const lastUpdateTime = formatDate(new Date(obj.updated_at));
-              const createdTime = formatDate(new Date(obj.created_at));
-              const description = obj.description;
-              // console.log(description);
-              const id = obj.id;
-              // console.log(id);
-              const tempFile = {
-                id: id,
-                description: description,
-                lastUpdateTime: lastUpdateTime,
-                data: currentData,
-                createdTime: createdTime,
-              };
-              user_files.push(tempFile);
-
-              // if (currentID == id) {
-              //   IDSync = true;
-              //   var tempLastUpdateTime = lastUpdateTime;
-              //   if (currentTime == lastUpdateTime) {
-              //     TimeSync = true;
-              //   }
-              // }
-            }
-          }
-
-          // 状态管理
-          this.savedStore.setGists(res);
-          this.savedStore.setFiles(user_files);
-        })
-        .catch((err) => {});
-    },
     //返回图标数组
     item_selector_callback(value) {
       this.icon_list = value;
     },
-    //查询物品类型对应的图标
+    //查询物品类型（名）对应的图标
     get_itemicon(value) {
       let icon = this.icon_list.find((item) => item.name == value.iconTag);
       if (icon != undefined) {
@@ -163,6 +120,13 @@ export default {
                   this.handle_layer = layer;
                   this.popup_window_show = true;
                   this.handle_layergroup = layergroup;
+                  // console.log(
+                  //   "点位点击事件 teleport_layer_init popupopen",
+                  //   this.handle_layer,
+                  //   this.popup_window_show,
+                  //   this.handle_layergroup,
+                  //   layer.target._leaflet_id
+                  // );
                 },
               });
               let arr = JSON.parse(localStorage.getItem("marked_layers"));
@@ -221,6 +185,8 @@ export default {
       let layerid = layer.target.options.data.id;
       let arr = JSON.parse(localStorage.getItem("marked_layers"));
       let index = arr.findIndex((item) => item == layerid);
+      console.log("点位标记 popup_callback", layerid, arr, index);
+
       if (index == -1) {
         arr.push(layerid);
         localStorage.setItem("marked_layers", JSON.stringify(arr));
@@ -235,16 +201,19 @@ export default {
     },
     //查询并生成该地区的传送点
     teleport_layer_init() {
-      console.log(this.mainStore.selected_child_area);
+      // 选择区域 {"version":1,"areaId":3,"name":"层岩巨渊","content":"层岩巨渊","iconTag":"","parentId":1,"isFinal":true,"hiddenFlag":0,"sortIndex":-2}
+      // console.log(this.mainStore.selected_child_area);
       if (this.teleport_group != null) {
         this.map.removeLayer(this.teleport_group);
       }
+      // map已添加 表示图层已经创建
       if (
         !this.teleport_map.has(`${this.mainStore.selected_child_area.name}`)
       ) {
         this.loading = true;
         let item_list = [];
         let icon_list = [];
+        // 创建不同类型点位对象  "传送锚点" "秘境" "征讨领域" {itemId: 159, itemName: '七天神像', iconurl: 'https://assets.yuanshen.site/icons/125.png'}
         for (let i of this.mainStore.teleport_list) {
           item_list.push(i.itemId);
           icon_list.push({
@@ -260,6 +229,7 @@ export default {
           itemIdList: item_list,
           getBeta: 0,
         }).then((res) => {
+          // 获取类型下的点位列表
           for (let i of res.data.data) {
             let iconurl = icon_list.find(
               (item) => item.itemId == i.itemList[0].itemId
@@ -267,9 +237,11 @@ export default {
             let iconname = icon_list.find(
               (item) => item.itemId == i.itemList[0].itemId
             ).itemName;
-            let marker = layer_register(i, iconurl, iconname);
-            layergroup.addLayer(marker);
+
+            let marker = layer_register(i, iconurl, iconname); // 注册标记点
+            layergroup.addLayer(marker); // 添加至图层
           }
+
           layergroup.eachLayer((layer) => {
             layer.bindPopup(this.$refs.window);
             layer.on({
@@ -280,15 +252,17 @@ export default {
               },
             });
           });
+          // 添加map
           this.teleport_map.set(
             `${this.mainStore.selected_child_area.name}`,
             layergroup
           );
           this.teleport_group = layergroup;
-          this.map.addLayer(this.teleport_group);
+          this.map.addLayer(this.teleport_group); // 显示图层
           this.loading = false;
         });
       } else {
+        // 重新获取 图层并显示
         this.map.removeLayer(this.teleport_group);
         this.teleport_group = this.teleport_map.get(
           `${this.mainStore.selected_child_area.name}`
@@ -300,6 +274,7 @@ export default {
     teleport_switch() {
       this.teleport_state = !this.teleport_state;
       if (this.teleport_state) {
+        // 显示传动点位
         this.teleport_layer_init();
       } else {
         this.map.removeLayer(this.teleport_group);
@@ -308,7 +283,14 @@ export default {
     //切换完成点位显隐
     completion_switch() {
       this.completion_state = !this.completion_state;
-      // TODO 完成点位
+      // 通过透明度控制显示状态
+      // $(':root').css('--opacity', '1')
+      // $(':root').css('--opacity', '0.2')
+      // if (this.completion_state) {
+      //   this.teleport_layer_init();
+      // } else {
+      //   this.map.removeLayer(this.teleport_group);
+      // }
     },
   },
   mounted() {
@@ -325,7 +307,8 @@ export default {
       localStorage.setItem("marked_layers", JSON.stringify([]));
     }
     if (this.userStore.getAccessToken) {
-      this.loadUserData(this.userStore.getAccessToken);
+      // this.loadUserData(this.userStore.getAccessToken);
+      loadUserData();
     }
   },
   computed: {

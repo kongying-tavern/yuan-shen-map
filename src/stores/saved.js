@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+// import store from "./index";
 
 // 用户存档 数据来源 gitee gist
 export const useSavedStore = defineStore({
@@ -29,3 +30,7 @@ export const useSavedStore = defineStore({
   },
   persist: true,
 });
+
+// export function useSavedStoreWithOut() {
+//   return useSavedStore(store());
+// }

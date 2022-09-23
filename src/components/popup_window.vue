@@ -80,6 +80,7 @@ export default {
   },
   methods: {
     marklayer() {
+      console.log("点位状态切换", this.marked);
       this.marked = !this.marked;
       this.$emit("callback", this.layer);
     },
