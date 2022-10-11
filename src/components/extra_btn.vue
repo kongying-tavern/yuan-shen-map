@@ -3,7 +3,7 @@
     <div class="extra_btn row">
       <div
         class="btn feedback"
-        @click="openURL('https://yuanshen.site/docs/communication-group.html')"
+        @click="openURL('https://yuanshen.site/docs/community.html')"
       >
         <q-tooltip> 加入讨论组 </q-tooltip>
       </div>
