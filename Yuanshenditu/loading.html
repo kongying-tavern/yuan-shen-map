@@ -65,6 +65,14 @@
     src="https://b.alicdn.com/s/polyfill.min.js?features=%7Ehtml5-elements%2CCSS.supports%2ClocalStorage%2Cdefault%2Ces6%2Ces2015%2Ces2016%2CElement.prototype.scroll%2CElement.prototype.scrollBy%2CglobalThis%2Cfetch%2CURLSearchParams"></script>
   <link rel="stylesheet" href="//assets.yuanshen.site/styles/global.min.css">
   <link rel="stylesheet" href="./css/loading/loading.css">
+  <script>
+    if (/MSIE \d|Trident.*rv:/.test(navigator.userAgent)) {
+      window.location = "microsoft-edge:" + window.location;
+      setTimeout(function () {
+        window.location = "https://go.microsoft.com/fwlink/?linkid=2135547";
+      }, 1);
+    }
+  </script>
   <!-- Google Tag Manager -->
   <script>
     ; (function (w, d, s, l, i) {
